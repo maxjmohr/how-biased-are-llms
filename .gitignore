@@ -1,5 +1,17 @@
 .DS_Store
 
+# Directories
 00_Organisatorisches
 01_Potential_Topics
 04_References
+
+# LaTeX
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
