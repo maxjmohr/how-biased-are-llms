@@ -1,0 +1,167 @@
+\documentclass[12pt, a4paper, titlepage]{article}
+
+% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+% Sets page size and margins
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+
+% Adjust heading font sizes
+\usepackage{titlesec}
+\titleformat*{\section}{\fontsize{14}{16}\bfseries}
+\titleformat*{\subsection}{\fontsize{13}{15}\bfseries}
+\titleformat*{\subsubsection}{\fontsize{13}{15}\itshape}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage[
+  backend=biber,
+  style=numeric,
+  sorting=none,
+]{biblatex}
+\addbibresource{bib.bib}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = black, %Colour of internal links
+  citecolor   = blue %Colour of citations
+}
+\usepackage{multicol}
+\usepackage[super]{nth}
+\usepackage[parfill]{parskip}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+
+% Increase line spacing for text
+\usepackage{setspace}
+\setstretch{1.5}
+% Reset line spacing for other elements
+\AtBeginDocument{\renewcommand{\baselinestretch}{1}}
+
+\begin{document}
+
+
+%%%=======| TITLE PAGE |=======%%%
+\begin{titlepage}
+  \begin{center}
+    Faculty of Economics and Social Sciences\\
+    of the University of Tuebingen
+
+    \vspace{3cm}
+
+    Master thesis
+
+    \vspace{1cm}
+
+    {\Large\textbf{Do language models make human-like decisions?}}
+
+    \vspace{0.5cm}
+
+    Supervisor: Prof. Dr. Dominik Papies
+
+    \vspace{0.5cm}
+
+    Summer term 2024
+
+  \end{center}
+
+  \vfill
+
+  \begin{multicols}{2}
+
+    Max Mohr\\
+    308 Negra Arroyo Lane\\
+    Albuquerque, New Mexico
+
+    \vfill
+
+    Study Program: Data Science in Business and Economics (M.Sc.)\\
+    \nth{4} semester\\
+    Matriculation Number: 6304784
+  \end{multicols}
+
+  \begin{multicols}{2}
+    Phone: +49 174 3973783\\
+    E-Mail: max.mohr@student.uni-tuebingen.de\\
+
+    \vfill
+
+    Date of Submission: MONTH DAY, 2024
+
+  \end{multicols}
+\end{titlepage}
+
+
+%%%=======| TABLE OF CONTENTS ETC |=======%%%
+\newpage
+\pagenumbering{roman} % Start Roman page numbering
+\setcounter{page}{2}
+\tableofcontents
+
+
+%%%=======| MAIN CONTENT |=======%%%
+\clearpage
+\pagenumbering{arabic} % Switch to Arabic page numbering
+
+% Introduction
+\section{Introduction}
+Xxx
+
+% Literature review
+\section{Literature review}
+Xxx
+
+
+% Methodology
+\section{Methodology}
+Xxx
+
+
+% Bias analysis
+\section{Bias analysis}
+Xxx
+
+\subsection{Bias 1}
+Xxx
+
+\subsection{Bias 2}
+Xxx
+
+
+% Results
+\section{Results}
+Xxx
+
+
+% Conclusion
+\section{Conclusion}
+Xxx
+
+
+%%%=======| REFERENCES |=======%%%
+\clearpage
+\pagenumbering{roman} % Start Roman page numbering
+\setcounter{page}{3}
+\printbibliography
+
+%%%=======| FORMAL DECLARATION |=======%%%
+\newpage
+{\Large\textbf{Formal declaration}}\\
+
+I hereby declare that I have written this thesis independently, did not use any sources or resources other than those cited and that the thesis has not been submitted as a whole or in any significant part as part of any other examination process. All information taken from other works - either verbatim or paraphrased - has been clearly indicated. The copy submitted in electronic form is identical in content to the bound copies submitted.
+
+\vspace{1cm}
+
+Tuebingen, MONTH DAY, 2024
+
+\vspace{1cm}
+\makebox[5cm]{\hrulefill}\\
+Max Mohr
+
+
+\end{document}
