@@ -1,5 +1,8 @@
 .DS_Store
 
+# Config files
+pyrightconfig.json
+
 # Directories
 00_Organisatorisches
 01_Potential_Topics
