@@ -25,11 +25,29 @@ if __name__ == "__main__":
         required=True,
     )
     parser.add_argument(
+        "-l",
+        "--local",
+        type=bool,
+        default=False,
+        choices=[True, False],
+        help="run the experiment locally (default: False)",
+        required=False,
+    )
+    parser.add_argument(
         "-m",
         "--model",
         type=str,
-        choices=["gpt3.5", "gpt4", "llama2", "llama3"],
+        choices=["gpt-3.5-turbo", "gpt4", "llama2", "llama3"],
         help="model to use",
         required=True,
+    )
+    parser.add_argument(
+        "-t",
+        "--test",
+        type=bool,
+        default=False,
+        choices=[True, False],
+        help="pipeline test mode (default: False)",
+        required=False,
     )
     args: argparse.Namespace = parser.parse_args()
