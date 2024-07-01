@@ -18,3 +18,6 @@ pyrightconfig.json
 *.run.xml
 *.synctex.gz
 *.toc
+
+# Excel
+*~$*
