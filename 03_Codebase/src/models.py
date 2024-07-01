@@ -8,16 +8,16 @@ from pydantic import BaseModel
 
 
 class ExperimentOutput(BaseModel):
-    """Output format for experiments"""
+    # Output format for experiments
 
     choice: str
     reason: str
 
 
 class ModelInteractor:
-    "Class to interact with large language models"
+    # Class to interact with large language models
 
-    def init(self, model: str = "", api_key: str = "", local: bool = False) -> None:
+    def __init__(self, model: str = "", api_key: str = "", local: bool = False) -> None:
         """Initialize the model class
         Parameters:
         model: str
@@ -27,7 +27,8 @@ class ModelInteractor:
         """
         assert model in [
             "gpt-3.5-turbo",
-            "gpt4",
+            "-gpt4",
+            "gpt-4o",
             "llama2",
             "llama3",
         ], f"{datetime.now()} | Model is required"
@@ -35,7 +36,7 @@ class ModelInteractor:
             self.llm = self.llama(model=model)
         elif model in ["llama2", "llama3"] and not local:
             self.llm = self.replicate(model=model)
-        elif model in ["gpt-3.5-turbo", "gpt4"]:
+        elif model in ["gpt-3.5-turbo", "gpt-4", "gpt-4o"]:
             self.llm = self.openai(model=model, api_key=api_key)
 
     @staticmethod

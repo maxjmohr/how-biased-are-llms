@@ -20,7 +20,7 @@ if __name__ == "__main__":
         "-e",
         "--experiment",
         type=str,
-        choices=["a", "b", "c"],
+        choices=["standard", "odd_numbers", "c"],
         help="experiment to run",
         required=True,
     )
@@ -37,7 +37,7 @@ if __name__ == "__main__":
         "-m",
         "--model",
         type=str,
-        choices=["gpt-3.5-turbo", "gpt4", "llama2", "llama3"],
+        choices=["gpt-3.5-turbo", "gpt-4", "llama2", "llama3"],
         help="model to use",
         required=True,
     )
