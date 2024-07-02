@@ -1,25 +1,33 @@
 from datetime import datetime
 import json
 import os
+from numpy import NAN
 import pandas as pd
 from pydantic import BaseModel
 from typing import List, Dict
 
 
 class ExperimentConfig(BaseModel):
-    # Configuration for experiments stored in csv
+    # Configuration for experiments stored in excel
+
+    experiment_id: int
+    bias_id: int
+    model_id: int
     bias: str
-    experiment: str
+    experiment_type: str
     model: str
     local: bool
     temperature: float
     top_p: float
-    content: str
-    variables: Dict[str, str | float | int | bool] | None
+    total_content: str
+    updated_at: datetime
+
+    class Config:
+        protected_namespaces = ()  # model_ otherwise protected by pydantic
 
 
 class DataInteractor:
-    def __init__(self, config_class: BaseModel = ExperimentConfig) -> None:
+    def __init__(self, config_class: type[BaseModel] = ExperimentConfig) -> None:
         """Initialize the data interactor class
         Parameters:
         config_class: BaseModel
@@ -29,8 +37,12 @@ class DataInteractor:
         files = ["bias_params.xlsx", "model_params.xlsx"]
         if DataInteractor.check_if_any_mods(files):
             # Merge the files
+            print(f"{datetime.now()} | Merging master data files")
             experiments = self.merge_master_data(files)
         else:
+            print(
+                f"{datetime.now()} | No modifications to master data, reading experiments from excel"
+            )
             experiments = pd.read_excel(
                 "./03_Codebase/res/experiments_config/experiments.xlsx"
             )
@@ -38,26 +50,11 @@ class DataInteractor:
         # Assert that excel is not empty
         assert not experiments.empty, f"{datetime.now()} | No experiments found"
 
-        # Convert the variables column to a dictionary
-        experiments["variables"] = experiments["variables"].apply(json.loads)
-
         # Convert the excel to a list of dictionaries with type checking
         self.experiments: List[ExperimentConfig] = [
             ExperimentConfig(**experiment)
             for experiment in experiments.to_dict(orient="records")
         ]
-
-    @staticmethod
-    def check_mod_date(file_path: str) -> float:
-        """Check the modification date of a file
-        Parameters:
-        file_path: str
-            Path to the file
-        Outputs:
-        float
-            Modification date
-        """
-        return os.path.getmtime(file_path)
 
     @staticmethod
     def check_if_any_mods(files: List[str]) -> bool:
@@ -71,16 +68,14 @@ class DataInteractor:
         """
         # Get modification dates for all separated files
         mod_dates: List[float] = [
-            DataInteractor.check_mod_date(
-                f"./03_Codebase/res/experiments_config/{file}"
-            )
+            os.path.getmtime(f"./03_Codebase/res/experiments_config/{file}")
             for file in files
         ]
 
         # Get modification date for the entire master data file, if it exists
         if not os.path.exists("./03_Codebase/res/experiments_config/experiments.xlsx"):
             return True
-        master_data_date: float = DataInteractor.check_mod_date(
+        master_data_date: float = os.path.getmtime(
             "./03_Codebase/res/experiments_config/experiments.xlsx"
         )
 
@@ -89,6 +84,34 @@ class DataInteractor:
             return True
 
         return False
+
+    @staticmethod
+    def combine_content_variables(content: str, variables: str) -> str:
+        """Combine the content and variables into a single string
+        Parameters:
+        content: str
+            Content of the experiment
+        variables: str
+            Variables of the experiment
+        Outputs:
+        str
+            Combined content and variables
+        """
+        # Check if the variables are empty
+        if variables is NAN:
+            return content
+
+        # Convert the variables column to a dictionary
+        try:
+            variables_dict: Dict[str, str | float | int | bool] = json.loads(variables)
+        except json.JSONDecodeError as e:
+            raise ValueError(f"Error decoding JSON from variables: {variables}") from e
+
+        # Replace the variables in the content
+        for key, value in variables_dict.items():
+            content = content.replace(f"{key}", str(value))
+
+        return content
 
     def merge_master_data(self, files: List[str], save: bool = True) -> pd.DataFrame:
         """Merge the master data file with the modified files
@@ -111,6 +134,41 @@ class DataInteractor:
             master_data = master_data.merge(data, on="helper")
         master_data = master_data.drop("helper", axis=1)
 
+        # Create the experiment_id by combining the bias_id and model_id
+        master_data["experiment_id"] = (
+            master_data["bias_id"].astype(str) + master_data["model_id"].astype(str)
+        ).astype(int)
+
+        # Combine the content and variables
+        print(f"{datetime.now()} | Replacing variables in content")
+        master_data["total_content"] = master_data.apply(
+            lambda x: DataInteractor.combine_content_variables(
+                x["content"], x["variables"]
+            ),
+            axis=1,
+        )
+
+        # Add the updated_at column
+        master_data["updated_at"] = datetime.now()
+
+        # Make sure the order of the columns is correct
+        master_data.loc[
+            :,
+            [
+                "experiment_id",
+                "bias_id",
+                "model_id",
+                "bias",
+                "experiment_type",
+                "model",
+                "local",
+                "temperature",
+                "top_p",
+                "total_content",
+                "updated_at",
+            ],
+        ]
+
         # Save the merged file
         if save:
             master_data.to_excel(
@@ -122,3 +180,4 @@ class DataInteractor:
 
 if __name__ == "__main__":
     DataInteractor()
+    # print(DataInteractor().experiments)
