@@ -1,10 +1,10 @@
 from datetime import datetime
 import json
-import os
 from numpy import NAN
+import os
 import pandas as pd
 from pydantic import BaseModel
-from typing import List, Dict
+from typing import Dict, List, Tuple
 
 
 class ExperimentConfig(BaseModel):
@@ -147,6 +147,8 @@ class DataInteractor:
             ),
             axis=1,
         )
+        # Drop content and variables
+        master_data = master_data.drop(["content", "variables"], axis=1)
 
         # Add the updated_at column
         master_data["updated_at"] = datetime.now()
@@ -176,6 +178,62 @@ class DataInteractor:
             )
 
         return master_data
+
+    # TODO: def remove_ran_experiments
+    # TODO: def partition_data
+    # TODO: def get_specific_experiment
+    # TODO: def filter_experiments
+
+    @staticmethod
+    def check_create_directory(directory: str) -> None:
+        """Check if the directory exists, if not create it
+        Parameters:
+        directory: str
+            Directory to check
+        """
+        if not os.path.exists(directory):
+            print(f"{datetime.now()} | Creating directory: {directory}")
+            os.makedirs(directory)
+
+    @staticmethod
+    def save_responses(
+        results: Dict[str, List[Tuple[str, str]]], filename: str, save_as: str = "json"
+    ) -> None:
+        """Save the responses to the specified directory
+        Parameters:
+        results: Dict[str, List[Tuple[str, str]]]
+            Results to save
+        filename: str
+            Filename to save the results as
+        save_as: str
+            Format to save the results as
+        """
+        assert results != {}, "Results are empty"
+        assert filename != "", "Filename is empty"
+        assert save_as in ["json", "csv"], "Invalid save_as format (either json or csv)"
+
+        # Check if the directory exists, if not create it
+        DataInteractor.check_create_directory("./03_Codebase/res/results")
+
+        # Save the results
+        print(
+            f"{datetime.now()} | Saving results as: ./03_Codebase/res/results/{filename}.{save_as}"
+        )
+        if save_as == "json":
+            with open(f"./03_Codebase/res/results/{filename}.json", "w") as f:
+                json.dump(results, f, indent=4)
+        elif save_as == "csv":
+            df = pd.DataFrame(results)
+            df.to_csv(f"./03_Codebase/res/results/{filename}.csv", index=False)
+
+    # TODO: def save_concat_results (use BiasDetector and then store the concatenated results)
+
+    @staticmethod
+    def concat_results():
+        # Load the responses
+        # Open all files in ./03_Codebase/res/results
+        # Concatenate the results
+        pass
 
 
 if __name__ == "__main__":
