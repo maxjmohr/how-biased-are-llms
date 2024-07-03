@@ -15,50 +15,67 @@ class ExperimentOutput(BaseModel):
 
 
 class ModelInteractor:
-    # Class to interact with large language models
-
-    def __init__(self, model: str = "", api_key: str = "", local: bool = False) -> None:
+    def __init__(
+        self,
+        model: str = "",
+        api_key: str = "",
+        local: bool = False,
+        temperature: float = 0.7,
+    ) -> None:
         """Initialize the model class
         Parameters:
         model: str
             Model to use
         api_key: str
             API key to access OpenAI API
+        local: bool
+            Run the model locally
+        temperature: float
+            Temperature for sampling
         """
         assert model in [
+            "gemma2",
+            "gemma2:27b",
             "gpt-3.5-turbo",
-            "-gpt4",
             "gpt-4o",
-            "llama2",
             "llama3",
+            "llama3:70b",
+            "phi3:mini",
+            "phi3:medium",
         ], f"{datetime.now()} | Model is required"
-        if model in ["llama2", "llama3"] and local:
-            self.llm = self.llama(model=model)
-        elif model in ["llama2", "llama3"] and not local:
+        if model not in ["gpt-3.5-turbo", "gpt-4o"] and local:
+            self.llm = self.llama(model=model, temperature=temperature)
+        elif model in ["gpt-3.5-turbo", "gpt-4o"] and not local:
             self.llm = self.replicate(model=model)
-        elif model in ["gpt-3.5-turbo", "gpt-4", "gpt-4o"]:
-            self.llm = self.openai(model=model, api_key=api_key)
+        elif model in ["gpt-3.5-turbo", "gpt-4o"]:
+            self.llm = self.openai(
+                model=model, api_key=api_key, temperature=temperature
+            )
 
     @staticmethod
-    def llama(model: str = "") -> Ollama:
+    def llama(model: str = "", temperature: float = 0.7) -> Ollama:
         """Initialize the Llama class
         Parameters:
         model: str
             Model to use
+        temperature: float
+            Temperature for sampling
         Returns:
         Ollama
             Llama class
         """
-        return Ollama(model=model)
+        return Ollama(model=model, temperature=temperature)
 
     @staticmethod
-    def openai(model: str = "", api_key: str = "") -> OpenAI:
+    def openai(model: str = "", api_key: str = "", temperature: float = 0.7) -> OpenAI:
         """Initialize the OpenAI class
         Parameters:
         model: str
             Model to use for the API
         apikey: str
             API key to access OpenAI API
+        temperature: float
+            Temperature for sampling
         Returns:
         OpenAI
             OpenAI class
@@ -67,7 +84,7 @@ class ModelInteractor:
             api_key = str(os.getenv("OPENAI_API_KEY"))
         assert api_key != "", f"{datetime.now()} | API key is required"
 
-        return OpenAI(model=model, api_key=api_key)
+        return OpenAI(model=model, api_key=api_key, temperature=temperature)
 
     @staticmethod
     def replicate(model: str = "") -> Replicate:
@@ -95,29 +112,29 @@ class ModelInteractor:
 
     def prompt(
         self,
-        experiment: str,
+        total_content: str,
         system_message: str = "",
-        output_class: BaseModel = ExperimentOutput,
+        output_class: type[BaseModel] = ExperimentOutput,
     ):
         """Get the prompt for the experiment
         Parameters:
-        experiment: str
-            Experiment to run
-        user_message: str
-            User message to send to the chatbot
+        total_content: str
+            Content for the experiment
+        system_message: str
+            System message for the experiment
+        output_class: type[BaseModel]
+            Output class for the experiment
         Returns:
         PromptTemplate
             Prompt for the experiment
         """
-        assert experiment != "", f"{datetime.now()} | Experiment is required"
+        assert total_content != "", f"{datetime.now()} | Experiment content is required"
 
         if system_message != "":
-            system_message = (
-                "Please answer by only giving the letter of the answer option A or B."
-            )
-        entire_message = system_message + " {experiment}"
+            system_message = "Please answer the experiment by only giving the letter of the answer options (e.g. A, B, C, ...). Afterwards, state a short reason in 1-2 sentences for your choice. \n"
+        entire_message = system_message + "---------------------\n" + "{total_content}"
         prompt = PromptTemplate(entire_message)
 
         return self.llm.structured_predict(
-            ExperimentOutput, prompt, experiment=experiment
+            output_class, prompt, total_content=total_content
         )
