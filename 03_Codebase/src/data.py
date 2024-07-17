@@ -20,6 +20,7 @@ class ExperimentConfig(BaseModel):
     temperature: float
     top_p: float
     total_content: str
+    target_choice: str
     updated_at: datetime
 
     class Config:
@@ -154,7 +155,7 @@ class DataInteractor:
         master_data["updated_at"] = datetime.now()
 
         # Make sure the order of the columns is correct
-        master_data.loc[
+        master_data = master_data.loc[
             :,
             [
                 "experiment_id",
@@ -167,6 +168,7 @@ class DataInteractor:
                 "temperature",
                 "top_p",
                 "total_content",
+                "target_choice",
                 "updated_at",
             ],
         ]
