@@ -23,6 +23,7 @@ class ModelInteractor:
         api_key: str = "",
         local: bool = False,
         temperature: float = 0.7,
+        request_timeout: int = 600,
     ) -> None:
         """Initialize the model class
         Parameters:
@@ -34,6 +35,8 @@ class ModelInteractor:
             Run the model locally
         temperature: float
             Temperature for sampling
+        request_timeout: int
+            Timeout for the request in seconds
         """
         assert model in [
             "gemma2",
@@ -46,7 +49,7 @@ class ModelInteractor:
             "phi3:medium",
         ], f"{datetime.now()} | Model is required"
         if model not in ["gpt-3.5-turbo", "gpt-4o"] and local:
-            self.llm = self.ollama(model=model, temperature=temperature)
+            self.llm = self.ollama(model=model, temperature=temperature, request_timeout=request_timeout)
         elif model in ["gpt-3.5-turbo", "gpt-4o"] and not local:
             self.llm = self.replicate(model=model)
         elif model in ["gpt-3.5-turbo", "gpt-4o"]:
@@ -55,13 +58,15 @@ class ModelInteractor:
             )
 
     @staticmethod
-    def ollama(model: str = "", temperature: float = 0.7) -> Ollama:
+    def ollama(model: str = "", temperature: float = 0.7, request_timeout: int = 600) -> Ollama:
         """Initialize the Ollama class
         Parameters:
         model: str
             Model to use
         temperature: float
             Temperature for sampling
+        request_timeout: int
+            Timeout for the request in seconds
         Returns:
         Ollama
             Model class
@@ -73,7 +78,7 @@ class ModelInteractor:
             ollama.pull(model)
 
         # Initialize the model
-        return Ollama(model=model, temperature=temperature)
+        return Ollama(model=model, temperature=temperature, request_timeout=request_timeout)
 
     @staticmethod
     def openai(model: str = "", api_key: str = "", temperature: float = 0.7) -> OpenAI:
@@ -140,7 +145,7 @@ class ModelInteractor:
         assert total_content != "", f"{datetime.now()} | Experiment content is required"
 
         if system_message != "":
-            system_message = "Please answer the experiment by only giving the letter of the answer options (e.g. A, B, C, ...) without naming anything else! Afterwards, state a short reason in 1-2 sentences for your choice. \n"
+            system_message = "Please answer the experiment by only giving the letter of the answer options (e.g. 'A', 'B', 'C', ...) without stating anything else! Afterwards, state a short reason in 1-2 sentences for your choice. \n"
         entire_message = system_message + "---------------------\n" + "{total_content}"
         prompt = PromptTemplate(entire_message)
 
@@ -166,12 +171,26 @@ if __name__ == "__main__":
     )
     print(f"GEMMA2 // Choice: {response.choice}, Reason: {response.reason}")
 
+    # Gemma2:27b
+    gemma2_27b = ModelInteractor(model="gemma2:27b", local=True)
+    response = gemma2_27b.prompt(
+        "What is the capital of France? A. Paris B. London C. Berlin"
+    )
+    print(f"GEMMA2 27B // Choice: {response.choice}, Reason: {response.reason}")
+
     # Llama3
     llama3 = ModelInteractor(model="llama3", local=True)
     response = llama3.prompt(
         "What is the capital of France? A. Paris B. London C. Berlin"
     )
     print(f"LLAMA3 // Choice: {response.choice}, Reason: {response.reason}")
+
+    # Llama3:70b
+    llama3_70b = ModelInteractor(model="llama3:70b", local=True)
+    response = llama3_70b.prompt(
+        "What is the capital of France? A. Paris B. London C. Berlin"
+    )
+    print(f"LLAMA3 70B // Choice: {response.choice}, Reason: {response.reason}")
 
     # Phi3
     phi3 = ModelInteractor(model="phi3", local=True)
