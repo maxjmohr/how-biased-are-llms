@@ -1,3 +1,8 @@
+"""
+DISCLAIMER: THIS FILE IS MEANT TO BE USED IF THE DATA IS STORED LOCALLY IN EXCEL FILES.
+The script was not further developed since the data was stored in a database.
+"""
+
 from datetime import datetime
 import json
 from numpy import NAN
@@ -18,7 +23,7 @@ class ExperimentConfig(BaseModel):
     model: str
     local: bool
     temperature: float
-    top_p: float
+    system: str
     total_content: str
     target_choice: str
     updated_at: datetime

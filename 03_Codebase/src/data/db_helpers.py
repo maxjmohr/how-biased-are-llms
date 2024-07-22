@@ -36,7 +36,7 @@ class Database:
         # Ask for password in terminal if not provided
         if password == "":
             current_script_directory: str = os.path.dirname(os.path.realpath(__file__))
-            path: str = "../res/keys/db.txt"
+            path: str = "../../res/keys/db.txt"
             if os.path.exists(os.path.join(current_script_directory, path)):
                 with open(os.path.join(current_script_directory, path), "r") as f:
                     self.password = f.read().strip()
@@ -174,14 +174,16 @@ class Database:
         else:
             sql_final: str = sql
 
-        self.execute_sql(sql_final, commit=commit)
-        print(
-            "\033[1m\033[92mSuccessfully deleted data from table {}.\033[0m".format(
-                total_object
+        # Always ask for confirmation before deleting data
+        if input("Are you sure you want to delete the data? (y/n) ").lower() == "y":
+            self.execute_sql(sql_final, commit=commit)
+            print(
+                "\033[1m\033[92mSuccessfully deleted data from table {}.\033[0m".format(
+                    total_object
+                )
             )
-        )
 
-    def create_db_object(
+    def create_object(
         self,
         object: str = "",
         sql: str = "",
@@ -211,7 +213,7 @@ class Database:
         if sql == "":
             current_dir: str = os.path.dirname(os.path.abspath(__file__))
             file_path: str = os.path.join(
-                current_dir, f"../res/db_objects/{object}.sql"
+                current_dir, f"../../res/db_objects/{object}.sql"
             )
             with open(file_path, "r") as file:
                 sql_final: str = file.read()
@@ -242,21 +244,27 @@ class Database:
         ), "Please provide either the object name or the SQL script to drop the object."
 
         # SQL query to drop the table
-        if sql == "":
+        object_type = object.split("_")[0]  # Get the type of the object
+        if sql == "" and object_type == "t":
             sql_final: str = f"DROP TABLE {object} CASCADE"
+        elif sql == "" and object_type == "v":
+            sql_final: str = f"DROP VIEW {object}"
         else:
             sql_final: str = sql
 
         # Execute the SQL query
-        self.execute_sql(sql_final, commit=commit)
-        print("\033[1m\033[92mSuccessfully dropped object {}.\033[0m".format(object))
+        # Always ask in the terminal if you are sure
+        if input(f"Are you sure you want to drop {object}? (y/n): ").lower() == "y":
+            self.execute_sql(sql_final, commit=commit)
+            print(
+                "\033[1m\033[92mSuccessfully dropped object {}.\033[0m".format(object)
+            )
 
 
 """
 if __name__ == "__main__":
     db = Database()
     db.connect()
-    # TASK
-
+    
     db.disconnect()
 """
