@@ -5,7 +5,7 @@ import psycopg2
 from psycopg2.extensions import connection, cursor
 from sqlalchemy import create_engine
 from sqlalchemy.engine import Engine
-from typing import Literal
+from typing import Literal, Tuple
 
 
 class Database:
@@ -48,7 +48,7 @@ class Database:
             self.password: str = password
         self.port: str = port
 
-    def connect(self) -> tuple[connection, cursor, Engine]:
+    def connect(self) -> Tuple[connection, cursor, Engine]:
         """Connect to PostgreSQL database via psycopg2
         Outputs:
         self.conn: connection to the database
