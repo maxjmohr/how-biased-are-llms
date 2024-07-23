@@ -4,7 +4,7 @@ if __name__ == "__main__":
     # Parse arguments
     parser: argparse.ArgumentParser = argparse.ArgumentParser(
         prog="Run Bias Experiments",
-        description="Run one of the experiments for a specific bias on one of the models.",
+        description="Run one of the experiments for a specific bias on one of the models. If you want to automize the process, you can use the 'run_experiments script instead of the CLI.",
         epilog="Output saved in the 'output' folder.",
         usage="%(prog)s [options]",
     )
@@ -37,7 +37,16 @@ if __name__ == "__main__":
         "-m",
         "--model",
         type=str,
-        choices=["gpt-3.5-turbo", "gpt-4", "llama2", "llama3"],
+        choices=[
+            "gemma2",
+            "gemma2:27b",
+            "gpt-4o-mini",
+            "gpt-4o",
+            "llama3",
+            "llama3:70b",
+            "phi3:mini",
+            "phi3:medium",
+        ],
         help="model to use",
         required=True,
     )
