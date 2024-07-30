@@ -8,8 +8,10 @@ pyrightconfig.json
 01_Potential_Topics
 04_References
 **/keys
+**/planning
 
 # LaTeX
+02_Thesis/Chapters/**/*.pdf
 *.aux
 *.bbl
 *.bcf
