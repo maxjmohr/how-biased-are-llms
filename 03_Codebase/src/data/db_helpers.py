@@ -80,7 +80,7 @@ class Database:
         self.engine.dispose()
         print("\033[1m\033[92mSuccessfully disconnected from database.\033[0m")
 
-    def execute_sql(self, sql: str, commit: bool = True):
+    def execute_sql(self, script: str = "", sql: str = "", commit: bool = True):
         """Execute SQL query
         Parameters:
         sql: str
@@ -88,10 +88,14 @@ class Database:
         commit: bool
             Whether to commit the changes
         """
-        assert sql != "", "Please provide an SQL query to execute."
+        if script != "":
+            with open(script, "r") as f:
+                sql_final: str = f.read()
+        else:
+            sql_final: str = sql
 
         # Execute the SQL query
-        self.cur.execute(sql)
+        self.cur.execute(sql_final)
         if commit:
             self.conn.commit()
         print("\033[1m\033[92mSuccessfully executed SQL query.\033[0m")
@@ -176,7 +180,7 @@ class Database:
 
         # Always ask for confirmation before deleting data
         if input("Are you sure you want to delete the data? (y/n) ").lower() == "y":
-            self.execute_sql(sql_final, commit=commit)
+            self.execute_sql(sql=sql_final, commit=commit)
             print(
                 "\033[1m\033[92mSuccessfully deleted data from table {}.\033[0m".format(
                     total_object
@@ -224,7 +228,7 @@ class Database:
             sql_final: str = sql
 
         # Execute the SQL query
-        self.execute_sql(sql_final, commit=commit)
+        self.execute_sql(sql=sql_final, commit=commit)
         print(
             "\033[1m\033[92mSuccessfully created object{}.\033[0m".format(" " + object)
         )
@@ -255,7 +259,7 @@ class Database:
         # Execute the SQL query
         # Always ask in the terminal if you are sure
         if input(f"Are you sure you want to drop {object}? (y/n): ").lower() == "y":
-            self.execute_sql(sql_final, commit=commit)
+            self.execute_sql(sql=sql_final, commit=commit)
             print(
                 "\033[1m\033[92mSuccessfully dropped object {}.\033[0m".format(object)
             )
@@ -301,7 +305,7 @@ class Database:
                 sql: str = (
                     f"UPDATE {object} SET {update_cols_str} WHERE {where_cols_str};"
                 )
-                self.execute_sql(sql, commit=commit)
+                self.execute_sql(sql=sql, commit=commit)
                 print(
                     "\033[1m\033[92mSuccessfully updated data in table {}.\033[0m".format(
                         object
@@ -316,7 +320,7 @@ class Database:
                     VALUES ({", ".join([f"'{data[col]}'" for col in data.columns])})
                     ;
                 """
-                self.execute_sql(sql, commit=commit)
+                self.execute_sql(sql=sql, commit=commit)
 
         # Done
         print(
@@ -333,6 +337,12 @@ class Database:
 
 """
 if __name__ == "__main__":
+    import os
+    import sys
+    # Add total codebase
+    parent_dir: str = os.path.dirname(os.path.realpath(__file__+"../../"))
+    sys.path.append(parent_dir)
+    
     db = Database()
     db.connect()
     
