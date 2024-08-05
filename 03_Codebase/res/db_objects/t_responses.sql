@@ -5,6 +5,7 @@ CREATE TABLE t_responses (
     response_type   VARCHAR(255) NOT NULL,
     response        VARCHAR(255) NOT NULL,
     reason          VARCHAR(255) NOT NULL,
+    correct_run     INTEGER NOT NULL,
     updated_at      TIMESTAMP,
     PRIMARY KEY (experiment_id, response, updated_at),
     FOREIGN KEY (bias_id) REFERENCES t_biases(bias_id),
@@ -19,4 +20,5 @@ COMMENT ON COLUMN t_responses.model_id IS 'Identifier for the model';
 COMMENT ON COLUMN t_responses.response_type IS 'Type of response';
 COMMENT ON COLUMN t_responses.response IS 'Response of the model';
 COMMENT ON COLUMN t_responses.reason IS 'Reason for the response';
+COMMENT ON COLUMN t_responses.correct_run IS 'Whether the model output is correct';
 COMMENT ON COLUMN t_responses.updated_at IS 'Timestamp of the last update';
