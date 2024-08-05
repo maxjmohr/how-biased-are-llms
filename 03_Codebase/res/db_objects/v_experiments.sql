@@ -7,12 +7,16 @@ WITH
             m.model_id,
             b.bias,
             b.experiment_type,
+            b.scenario,
             m.model,
             m.local,
             m.temperature,
             b.content,
             b.variables,
-            b.target_choice
+            b.response_type,
+            b.target_response,
+            b.part,
+            b.parts_total
         FROM
             t_biases b
             CROSS JOIN t_models m
@@ -46,12 +50,16 @@ COMMENT ON COLUMN v_experiments.bias_id IS 'Identifier for the bias';
 COMMENT ON COLUMN v_experiments.model_id IS 'Identifier for the model';
 COMMENT ON COLUMN v_experiments.bias IS 'Name of the bias';
 COMMENT ON COLUMN v_experiments.experiment_type IS 'Type of experiment';
+COMMENT ON COLUMN v_experiments.scenario IS 'Scenario of the experiment';
 COMMENT ON COLUMN v_experiments.model IS 'Name of the model';
 COMMENT ON COLUMN v_experiments.local IS 'Local or global model';
 COMMENT ON COLUMN v_experiments.temperature IS 'Temperature of the model';
 COMMENT ON COLUMN v_experiments.content IS 'Description of the bias';
 COMMENT ON COLUMN v_experiments.variables IS 'Variables used in the experiment';
-COMMENT ON COLUMN v_experiments.target_choice IS 'Target choice for the bias';
+COMMENT ON COLUMN v_experiments.response_type IS 'Type of response';
+COMMENT ON COLUMN v_experiments.target_response IS 'Target response from studies';
+COMMENT ON COLUMN v_experiments.part IS 'Which part of a multi-part experiment is this';
+COMMENT ON COLUMN v_experiments.parts_total IS 'Total number of parts in a multi-part experiment';
 COMMENT ON COLUMN v_experiments.ran_date IS 'Date when the experiment was ran';
 COMMENT ON COLUMN v_experiments.correct_ran_loops IS 'Number of loops with correct output ran in the experiment';
 COMMENT ON COLUMN v_experiments.total_ran_loops IS 'Total number of loops ran in the experiment';
