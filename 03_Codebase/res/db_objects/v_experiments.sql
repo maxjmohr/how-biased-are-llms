@@ -21,13 +21,11 @@ WITH
     ran_experiments AS (
         SELECT
             re.experiment_id,
-            MAX(re.ran_date) AS ran_date,
-            SUM(re.correct_ran_loops) AS correct_ran_loops,
-            SUM(re.total_ran_loops) AS total_ran_loops
+            re.max_updated_at AS ran_date,
+            re.correct_ran_loops,
+            re.total_ran_loops
         FROM
-            t_ran_experiments re
-        GROUP BY
-            re.experiment_id
+            v_ran_experiments re
     )
 
     SELECT
@@ -38,7 +36,7 @@ WITH
         NOW() AS updated_at
     FROM
         base b
-        LEFT JOIN ran_experiments re ON b.experiment_id = re.experiment_id
+        LEFT JOIN ran_experiments re ON re.experiment_id = b.experiment_id
 ;
 
 COMMENT ON VIEW v_experiments IS 'View to store all experiments and their properties';
