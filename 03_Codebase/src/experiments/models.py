@@ -43,8 +43,8 @@ class ModelInteractor:
             "gemma2:27b",
             "gpt-4o-mini",
             "gpt-4o",
-            "llama3",
-            "llama3:70b",
+            "llama3.1",
+            "llama3.1:70b",
             "phi3",
             "phi3:medium",
         ], f"{datetime.now()} | Model is required"
