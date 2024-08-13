@@ -4,23 +4,23 @@
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{fontspec}
-\setmainfont{Times New Roman}
+% \setmainfont{Times New Roman}
 
 % Sets page size and margins
 \usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 
 % Adjust heading font sizes
 \usepackage{titlesec} % Customize chapter and section headings
-\titleformat*{\section}{\fontsize{14}{16}\bfseries}
-\titleformat*{\subsection}{\fontsize{13}{15}\bfseries}
-\titleformat*{\subsubsection}{\fontsize{13}{15}\itshape}
+\titleformat*{\section}{\fontsize{20}{22}\bfseries}
+\titleformat*{\subsection}{\fontsize{17}{19}\bfseries}
+\titleformat*{\subsubsection}{\fontsize{14}{16}\bfseries}
 
 % Useful packages
 \usepackage{amsmath} % For math
 \usepackage[
   backend=biber,
-  style=numeric,
-  sorting=none,
+  style=apa,
+  sorting=nyt,
 ]{biblatex} % For bibliography
 \addbibresource{bib.bib}
 \usepackage{graphicx} % For including images
@@ -29,7 +29,7 @@
   colorlinks   = true, % Colours links instead of ugly boxes
   urlcolor     = blue, % Colour for external hyperlinks
   linkcolor    = black, % Colour of internal links
-  citecolor   = blue % Colour of citations
+  citecolor   = black % Colour of citations
 }
 \usepackage{multicol} % For multiple columns
 \usepackage[super]{nth} % For superscript ordinal numbers
@@ -66,42 +66,66 @@
 
     \vspace{0.5cm}
 
-    Summer term 2024
+    Winter term 2024/25
 
   \end{center}
 
   \vfill
 
   \begin{multicols}{2}
-
+    \small
+    \setstretch{1.2}
     Max Mohr\\
     Grünwalder Straße 14\\
     81547 Munich
 
     \vfill
 
-    Study Program: Data Science in Business and Economics (M.Sc.)\\
-    \nth{4} semester\\
-    Matriculation Number: 6304784
+    M.Sc. Data Science in Business and Economics\\
+    \nth{5} semester\\
+    Matriculation number: 6304784
   \end{multicols}
 
   \begin{multicols}{2}
-    Phone: +49 174 3973783\\
-    E-Mail: max.mohr@student.uni-tuebingen.de\\
+    \small
+    \setstretch{1.2}
+    % +49 174 3973783\\
+    max.mohr@student.uni-tuebingen.de\\
 
     \vfill
 
-    Date of Submission: MONTH DAY, 2024
+    Date of submission: January 29, 2025
 
   \end{multicols}
 \end{titlepage}
 
+%%%=======| ABSTRACT |=======%%%
+\newpage
+\pagenumbering{Roman} % Start Roman page numbering
+\setcounter{page}{1}
+\include{Chapters/00_Abstract/text}
 
 %%%=======| TABLE OF CONTENTS ETC |=======%%%
 \newpage
-\pagenumbering{roman} % Start Roman page numbering
-\setcounter{page}{2}
+% \renewcommand{\contentsname}{\Huge Contents} % Make the title larger
 \tableofcontents
+
+\newpage
+\section*{List of Abbreviations}
+\addcontentsline{toc}{section}{List of Abbreviations}
+\begin{tabbing}
+    Abbreviation \hspace{1cm} \= Description \kill
+    XXX \> Xxx \\
+    XXX \> Xxx \\
+\end{tabbing}
+
+\newpage
+\listoftables
+\addcontentsline{toc}{section}{List of Tables}
+
+\newpage
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
 
 
 %%%=======| MAIN CONTENT |=======%%%
@@ -110,20 +134,19 @@
 
 % Chapters
 \include{Chapters/01_Introduction/text}
-\include{Chapters/02_Preliminaries/text}
-\include{Chapters/03_TheoreticalBackground/text}
-\include{Chapters/04_Setup/text}
-\include{Chapters/05_Methodology/text}
-\include{Chapters/06_MetaAnalysis/text}
-\include{Chapters/07_Discussion/text}
-\include{Chapters/08_Conclusion/text}
+\include{Chapters/02_TheoreticalBackground/text}
+\include{Chapters/03_Framework/text}
+\include{Chapters/04_Methodology/text}
+\include{Chapters/05_Results/text}
+\include{Chapters/06_DiscussionOutlook/text}
 
 
 %%%=======| REFERENCES |=======%%%
 \clearpage
-\pagenumbering{roman} % Start Roman page numbering
-\setcounter{page}{3}
+\pagenumbering{Roman} % Start Roman page numbering
+\setcounter{page}{7}
 \printbibliography
+\addcontentsline{toc}{section}{References}
 
 %%%=======| FORMAL DECLARATION |=======%%%
 \newpage
@@ -133,7 +156,7 @@ I hereby declare that I have written this thesis independently, did not use any 
 
 \vspace{1cm}
 
-Munich, MONTH DAY, 2024
+Munich, January 29, 2025
 
 \vspace{1cm}
 \makebox[5cm]{\hrulefill}\\
