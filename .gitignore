@@ -2,6 +2,7 @@
 
 # Config files
 pyrightconfig.json
+.vscode/
 
 # Directories
 00_Organisatorisches
