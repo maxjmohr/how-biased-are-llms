@@ -18,6 +18,8 @@ pyrightconfig.json
 *.bcf
 *.blg
 *.log
+*.lof
+*.lot
 *.out
 *.run.xml
 *.synctex.gz
