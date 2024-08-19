@@ -1,0 +1,44 @@
+\section{Methodology}
+Xxx
+
+\subsection{Experiments}
+\subsubsection{Studies}
+Some are choice experiments, some expect a number and then compare the answers between different questioning types.
+
+\subsubsection{Scenarios}
+- Normal (replication of original study) \\
+- Random values \\
+- Explicitly prompt to behave humanlike \\
+
+Also describe how the normal prompt is structured.
+
+
+\subsection{Bias selections}
+\par Former research revolving around cognitive biases has shown that there are numerous biases influencing human behavior. Thus, we have to sample a concise yet ideally comprehensive sample of biases to get more generalizable analysis results. To narrow down the range of biases, we focus on biases affecting economic decision-making processes.
+
+\setlength{\parindent}{20pt}
+\par \textbf{Endowment effect} The human tendency to value objects of their endowment higher than if they did not own them is known as the endowment effect. Further, they demand more when giving up the item compared to acquiring it. This effect is often explained as a byproduct of loss aversion. (\cite{kahneman1990experimental}). The effect is independent of whether sellers actually earn money or exchange similarly valued goods (\cite{knetsch1989endowment}), though recent research such as \cite{weaver2012reference} suggest that other effects (e.g. fear of financial disadvantage) could be causes. The classic example to illustrate the endowment effect is comparing the willingness to pay for a mug versus the willingness to accept compensation for a mug. The results show that participants owning the mug valued it at more than double the value than the other participants (\cite{kahneman1990experimental}).
+
+\par \textbf{Loss aversion} Loss aversion describes the human habit to prefer avoiding losses over acquiring gains of the same value  (\cite{liu2023review}). Within their research on prospect theory (decision-making biases under risk and uncertainty), \cite{tversky1992advances} estimated that losses are twice as impactful as gains. This bias is particularly relevant in the context of economic decision-making and has been applied to various fields such as retail sale strategies (discount for additional spending), financial investments (sell winners, hold losers) and more (\cite{liu2023review}). We recreate the experiment from \cite{thaler2015misbehaving} which phrases two scenarios as a loss and a gain to test for loss aversion.
+
+B) Sunk Cost Fallacy \\
+\href{http://www.communicationcache.com/uploads/1/0/8/8/10887248/the_psychology_of_sunk_cost.pdf}{Arkes, H.R., and C. Blumer. 1985. The psychology of sunk cost. Organizational Behavior and Human Decision Processes 35(1): 124–140.} \\
+
+\subsection{Model selections}
+Ollama for models, larger models ran on cluster
+
+
+\subsection{Response analysis}
+Somewhere describe what the expected output of the models should look like and what I do if it is different.
+
+\subsubsection{Replicability analysis}
+Original studies and compare results. Perhaps a "bias detected" number. If always 100 experiment runs, bias detected is the percentage of runs where the model acted biased. (Between 0 and 1, perhaps normalize)
+
+\subsubsection{Average treatment effects}
+Average treatment effects of treated on randomized values as well as explicitely prompting humanlike behavior. The control group is the normal prompt.
+
+\subsubsection{Model metadata analysis}
+Are there any trends between newer/larger models?
+
+\subsubsection{Model parameter analysis}
+Temperature?
