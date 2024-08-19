@@ -1,6 +1,7 @@
 import getpass
 import os
 import pandas as pd
+import platform
 import psycopg2
 from psycopg2.extensions import connection, cursor
 from sqlalchemy import create_engine
@@ -165,6 +166,60 @@ class Database:
 
         # Fetch the data
         return pd.read_sql(sql_final, self.engine)
+
+    def fetch_next_experiment(self, n: int = 100) -> pd.DataFrame:
+        """Fetch the next experiment to run
+        Parameters:
+        n: int
+            Number of experiments to fetch
+        Returns:
+        pd.DataFrame
+            Data of the next experiment to run
+        """
+        # Get the current system (Mac or Linux(cluster)))
+        system: str = platform.system()
+        if (
+            system == "Darwin"
+        ):  # Only experiment runs with smaller models on Mac (Darwin)
+            # Make sure that the experiment_id is not in t_currently_running
+            sql: str = f""" SELECT v.*
+                    FROM        v_experiments v
+                    LEFT JOIN   t_currently_running t USING (experiment_id)
+                    WHERE       v.system = 'All'
+                                AND v.correct_ran_loops <= {n}
+                                AND t.experiment_id IS NULL
+                    ORDER BY    v.scenario ASC,
+                                v.correct_ran_loops ASC
+                    LIMIT 1
+                """
+        else:  # Prefer Linux experiment runs on cluster
+            sql: str = f""" SELECT v.*
+                    FROM        v_experiments
+                    LEFT JOIN   t_currently_running t USING (experiment_id)
+                    WHERE       v.correct_ran_loops <= {n}
+                                AND t.experiment_id IS NULL
+                    ORDER BY    v.system DESC,
+                                v.scenario ASC,
+                                v.correct_ran_loops ASC
+                    LIMIT 1
+                """
+
+        # Fetch the next experiment to run
+        experiment: pd.DataFrame = pd.read_sql(sql, self.engine)
+
+        # Check if an experiment was fetched
+        if experiment.empty:
+            print("No experiments are available to run.")
+            return experiment
+
+        # Add the experiment to t_currently_running
+        currently_running: pd.DataFrame = experiment.loc[:, ["experiment_id"]]
+        currently_running["system"] = system
+        self.insert_data(
+            table="t_currently_running", data=currently_running, updated_at=True
+        )
+
+        return experiment
 
     def delete_data(
         self, total_object: str, sql: str = "", commit: bool = True
