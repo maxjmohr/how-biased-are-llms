@@ -1,0 +1,43 @@
+- bias_id: 101
+  bias: endowment effect
+  experiment_type: multi-scenario
+  scenario: normal
+  content: I hand you a mug. You now own the mug. You can feel it and look at it in detail from all angles. The mug was originally priced at $ price_value but the value of the mug is different for different individuals. What price would you sell it for?
+  variables: '{"price_value": 4}'
+  response_type: numerical
+  target_response: 
+  part: 1
+  parts_total: 2
+
+- bias_id: 102
+  bias: endowment effect
+  experiment_type: multi-scenario
+  scenario: normal
+  content: I show you a mug from a distance. You can see it but you cannot touch it. The mug was originally priced at $ price_value but the value of the mug is different for different individuals.  What price would you buy it for?
+  variables: '{"price_value": 4}'
+  response_type: numerical
+  target_response: 
+  part: 2
+  parts_total: 2
+
+- bias_id: 201
+  bias: loss aversion
+  experiment_type: multi-scenario
+  scenario: normal
+  content: Assume yourself richer by $ richer_value than you are today. You are offered a choice between A. A sure gain of $ sure_gain_value, or B. A 50% chance to gain $ gain_value and a 50% chance to lose $ 0.
+  variables: '{"richer_value": 300, "sure_gain_value": 100, "gain_value": 200}'
+  response_type: choice
+  target_response: A
+  part: 1
+  parts_total: 2
+  
+- bias_id: 202
+  bias: loss aversion
+  experiment_type: multi-scenario
+  scenario: normal
+  content: Assume yourself richer by $ richer_value than you are today. You are offered a choice between A. A sure loss of $ sure_loss_value, or B. A 50% chance to lose $ loss_value and a 50% chance to lose $ 0.
+  variables: '{"richer_value": 500, "sure_loss_value": 100, "loss_value": 200}'
+  response_type: choice
+  target_response: A
+  part: 2
+  parts_total: 2

@@ -6,6 +6,7 @@ from psycopg2.extensions import connection, cursor
 from sqlalchemy import create_engine
 from sqlalchemy.engine import Engine
 from typing import List, Literal, Tuple
+import yaml
 
 
 class Database:
@@ -33,12 +34,12 @@ class Database:
         self.db: str = db
         self.host: str = host
         self.user: str = user
+        self.current_script_directory: str = os.path.dirname(os.path.realpath(__file__))
         # Ask for password in terminal if not provided
         if password == "":
-            current_script_directory: str = os.path.dirname(os.path.realpath(__file__))
             path: str = "../../res/keys/db.txt"
-            if os.path.exists(os.path.join(current_script_directory, path)):
-                with open(os.path.join(current_script_directory, path), "r") as f:
+            if os.path.exists(os.path.join(self.current_script_directory, path)):
+                with open(os.path.join(self.current_script_directory, path), "r") as f:
                     self.password = f.read().strip()
             else:
                 self.password: str = getpass.getpass(
@@ -102,24 +103,33 @@ class Database:
 
     def insert_data(
         self,
-        data: pd.DataFrame,
         table: str,
+        data: pd.DataFrame = pd.DataFrame(),
         if_exists: Literal["fail", "replace", "append"] = "append",
         updated_at: bool = False,
     ) -> None:
         """Insert data into a table
         Parameters:
-        data: pd.DataFrame
-            Data to insert
         table: str
             Table to insert the data into
+        data: pd.DataFrame
+            Data to insert
         if_exists: str
             What to do if the table already exists
         updated_at: bool
             Whether to add the current date and time to the data
         """
-        assert not data.empty, "Data is empty."
         assert table != "", "Please provide the table name to insert the data into."
+        # Check if a yaml file for the table exists, otherwise we need data as input
+        path: str = f"../../res/db_objects_content/{table}.yaml"
+        total_path: str = os.path.join(self.current_script_directory, path)
+        if not os.path.exists(os.path.join(total_path)):
+            assert not data.empty, "Data is empty."
+        else:
+            # Load the yaml file and save as df
+            with open(total_path, "r") as f:
+                table_content: dict = yaml.safe_load(f)
+            data = pd.DataFrame(table_content)
 
         # Add current date and time to the data
         if updated_at:

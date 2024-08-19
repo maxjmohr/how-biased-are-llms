@@ -26,10 +26,3 @@ COMMENT ON COLUMN t_biases.target_response IS 'Target response from studies';
 COMMENT ON COLUMN t_biases.part IS 'Which part of a multi-part experiment is this';
 COMMENT ON COLUMN t_biases.parts_total IS 'Total number of parts in a multi-part experiment';
 COMMENT ON COLUMN t_biases.updated_at IS 'Timestamp of the last update';
-
--- Create biases
-INSERT INTO t_biases (bias_id, bias, experiment_type, scenario, content, variables, response_type, target_response, part, parts_total, updated_at) VALUES
-    (100, 'category size bias', 'multi-scenario', 'normal', 'Lets test this and whether it is different to that.', '{"this": 12, "that": 22}', 'choice', 'A', 1, 2, NOW()),
-    (101, 'category size bias', 'multi-scenario', 'odd numbers', 'Lets test this and whether it is different to that.', '{"this": 841758, "that": 1341}', 'choice', 'B', 2, 2, NOW()),
-    (110, 'category size bias', 'one-scenario', 'odd numbers', 'Lets test this and whether it is different to that.', NULL, 'free', '100', 1, 1, NOW())
-;
