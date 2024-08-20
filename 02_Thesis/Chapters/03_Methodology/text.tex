@@ -17,14 +17,36 @@ Also describe how the normal prompt is structured.
 \par Former research revolving around cognitive biases has shown that there are numerous biases influencing human behavior. Thus, we have to sample a concise yet ideally comprehensive sample of biases to get more generalizable analysis results. To narrow down the range of biases, we focus on biases affecting economic decision-making processes.
 
 \setlength{\parindent}{20pt}
+\par \textbf{Category size bias} Decision-making is often influenced by the way alternatives are presented. The category size bias in particular focuses on whether alternatives are presented in a categorized manner and how the resulting categories are distributed (\cite{isaac2014judging}). For example, an investor's expectation about the performance of a particular stock could be influenced by the number of other stocks in the portfolio that belong to the same industry. Similarly, \cite{tversky1994support} showed that participants judged the probability of dying of unnatural cases different when the other causes were presented as one category (natural causes) or individually. To test for the category size bias, we use an experiment from \cite{isaac2014judging} where participants should estimate the probability of randomly selecting a ball from a lottery, itself containing balls with three different colors and varying category sizes.
+
 \par \textbf{Endowment effect} The human tendency to value objects of their endowment higher than if they did not own them is known as the endowment effect. Further, they demand more when giving up the item compared to acquiring it. This effect is often explained as a byproduct of loss aversion. (\cite{kahneman1990experimental}). The effect is independent of whether sellers actually earn money or exchange similarly valued goods (\cite{knetsch1989endowment}), though recent research such as \cite{weaver2012reference} suggest that other effects (e.g. fear of financial disadvantage) could be causes. The classic example to illustrate the endowment effect is comparing the willingness to pay for a mug versus the willingness to accept compensation for a mug. The results show that participants owning the mug valued it at more than double the value than the other participants (\cite{kahneman1990experimental}).
+
+\par \textbf{Framing effect} 
+
+\par \textbf{Gambler's fallacy} 
+
+\par \textbf{Illusory correlation} 
+
+\par \textbf{Incentivization} 
 
 \par \textbf{Loss aversion} Loss aversion describes the human habit to prefer avoiding losses over acquiring gains of the same value  (\cite{liu2023review}). Within their research on prospect theory (decision-making biases under risk and uncertainty), \cite{tversky1992advances} estimated that losses are twice as impactful as gains. This bias is particularly relevant in the context of economic decision-making and has been applied to various fields such as retail sale strategies (discount for additional spending), financial investments (sell winners, hold losers) and more (\cite{liu2023review}). We recreate the experiment from \cite{thaler2015misbehaving} which phrases two scenarios as a loss and a gain to test for loss aversion.
 
-B) Sunk Cost Fallacy \\
-\href{http://www.communicationcache.com/uploads/1/0/8/8/10887248/the_psychology_of_sunk_cost.pdf}{Arkes, H.R., and C. Blumer. 1985. The psychology of sunk cost. Organizational Behavior and Human Decision Processes 35(1): 124–140.} \\
+\par \textbf{Normalcy bias} ?
+
+\par \textbf{Overjustification bias} 
+
+\par \textbf{Sunk cost fallacy} This effect refers to the human phenomenon to preferring an option due to a prior investment into it (sunk costs) even though a better alternative would be available (\cite{arkes1985psychology}). Due to this, even temporally distant investment decisions can have a substantial impact on the decision-making process. The sunk cost fallacy has also been linked as a side effect to some other cognitive biases, most notably loss aversion or commitment bias (\cite{jarmolowicz2016sunk}). We choose to examine the experiment introduced by \cite{arkes1985psychology} where participants are asked to decide between two ski trip scenarios with different sunk costs.
+
+\par \textbf{Take-the-best heuristic} 
+
+\par \textbf{Transaction utility theory} 
+
+\par \textbf{Ultimate game} ?
+
 
 \subsection{Model selections}
+\par The development and publication of new models and model architectures is ongoing and rapid. 
+
 Ollama for models, larger models ran on cluster
 
 
@@ -35,7 +57,7 @@ Somewhere describe what the expected output of the models should look like and w
 Original studies and compare results. Perhaps a "bias detected" number. If always 100 experiment runs, bias detected is the percentage of runs where the model acted biased. (Between 0 and 1, perhaps normalize)
 
 \subsubsection{Average treatment effects}
-Average treatment effects of treated on randomized values as well as explicitely prompting humanlike behavior. The control group is the normal prompt.
+Average treatment effects of treated on randomized values as well as explicitly prompting humanlike behavior. The control group is the normal prompt.
 
 \subsubsection{Model metadata analysis}
 Are there any trends between newer/larger models?

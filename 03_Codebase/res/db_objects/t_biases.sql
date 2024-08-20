@@ -3,7 +3,7 @@ CREATE TABLE t_biases (
     bias                VARCHAR(255) NOT NULL,
     experiment_type     VARCHAR(255) NOT NULL,
     scenario            VARCHAR(255) NOT NULL,
-    content             VARCHAR(255) NOT NULL,
+    content             VARCHAR(1000) NOT NULL,
     variables           VARCHAR(255),
     response_type       VARCHAR(255) NOT NULL,
     target_response     VARCHAR(255),
