@@ -167,11 +167,13 @@ class Database:
         # Fetch the data
         return pd.read_sql(sql_final, self.engine)
 
-    def fetch_next_experiment(self, n: int = 100) -> pd.DataFrame:
+    def fetch_next_experiments(self, top: int = 0, n_loops: int = 100) -> pd.DataFrame:
         """Fetch the next experiment to run
         Parameters:
-        n: int
+        top: int
             Number of experiments to fetch
+        n_loops: int
+            Number of loops an experiment should run
         Returns:
         pd.DataFrame
             Data of the next experiment to run
@@ -186,22 +188,22 @@ class Database:
                     FROM        v_experiments v
                     LEFT JOIN   t_currently_running t USING (experiment_id)
                     WHERE       v.system = 'All'
-                                AND v.correct_ran_loops <= {n}
+                                AND v.correct_ran_loops <= {n_loops}
                                 AND t.experiment_id IS NULL
                     ORDER BY    v.scenario ASC,
                                 v.correct_ran_loops ASC
-                    LIMIT 1
+                    {"LIMIT " + str(top) if top > 0 else ""}
                 """
         else:  # Prefer Linux experiment runs on cluster
             sql: str = f""" SELECT v.*
                     FROM        v_experiments
                     LEFT JOIN   t_currently_running t USING (experiment_id)
-                    WHERE       v.correct_ran_loops <= {n}
+                    WHERE       v.correct_ran_loops <= {n_loops}
                                 AND t.experiment_id IS NULL
                     ORDER BY    v.system DESC,
                                 v.scenario ASC,
                                 v.correct_ran_loops ASC
-                    LIMIT 1
+                    {"LIMIT " + str(top) if top > 0 else ""}
                 """
 
         # Fetch the next experiment to run
@@ -393,11 +395,6 @@ class Database:
                 object
             )
         )
-
-        # TODO: def remove_ran_experiments
-        # TODO: def partition_data
-        # TODO: def get_specific_experiment
-        # TODO: def filter_experiments
 
 
 """
