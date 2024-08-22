@@ -7,12 +7,13 @@ import ollama
 import os
 from pydantic import BaseModel
 from pydantic_core import ValidationError
+from typing import Literal, Tuple
 
 
 class ExperimentOutput(BaseModel):
     # Output format for experiments
 
-    choice: str
+    response: str | int
     reason: str
 
 
@@ -134,16 +135,16 @@ class ModelInteractor:
         self,
         total_content: str,
         system_message: str = "",
-        output_class: type[BaseModel] = ExperimentOutput,
-    ) -> ExperimentOutput:
+        additional_system_message: str = "",
+    ) -> Tuple[ExperimentOutput, Literal[1, 0]]:
         """Get the prompt for the experiment
         Parameters:
         total_content: str
             Content for the experiment
         system_message: str
             System message for the experiment
-        output_class: type[BaseModel]
-            Output class for the experiment
+        additional_system_message: str
+            Additional system message for the experiment
         Returns:
         PromptTemplate
             Prompt for the experiment
@@ -151,65 +152,69 @@ class ModelInteractor:
         assert total_content != "", f"{datetime.now()} | Experiment content is required"
 
         if system_message != "":
-            system_message = "Please answer the experiment by only giving the letter of the answer options (e.g. 'A', 'B', 'C', ...) without stating anything else! Afterwards, state a short reason in 1-2 sentences for your choice. \n"
+            system_message = "Please answer the experiment by only giving the letter of the answer options (e.g. 'A', 'B', 'C', ...) or a numerical value (80, 100, 1000, ...) without stating anything else! Afterwards, state a short reason in 1-2 sentences for your choice. \n"
+        if additional_system_message != "":
+            system_message = system_message + additional_system_message
         entire_message = system_message + "---------------------\n" + "{total_content}"
         prompt = PromptTemplate(entire_message)
 
         # Try the structured prediciton, sometimes it doesnt work with smaller models, then just use the completion
         try:
-            response = self.llm.structured_predict(
-                output_class, prompt, total_content=total_content
+            total_response = self.llm.structured_predict(
+                ExperimentOutput, prompt, total_content=total_content
             )
+            correct_run = 1
         except ValidationError as e:
             print(f"Pydantic Validation Error: {e}")
             entire_message = f"system_message---------------------\n{total_content}"
-            response = ExperimentOutput(
-                choice=str(self.llm.complete(entire_message)), reason=""
+            total_response = ExperimentOutput(
+                response=str(self.llm.complete(entire_message)), reason=""
             )
-        return response
+            correct_run = 0
+        return total_response, correct_run
 
 
 """
 if __name__ == "__main__":
     # Gemma2
     gemma2 = ModelInteractor(model="gemma2", local=True)
-    response = gemma2.prompt(
+    total_response = gemma2.prompt(
         "What is the capital of France? A. Paris B. London C. Berlin"
     )
-    print(f"GEMMA2 // Choice: {response.choice}, Reason: {response.reason}")
+    print(f"GEMMA2 // Choice: {total_response.response}, Reason: {total_response.reason}")
 
     # Gemma2:27b
     gemma2_27b = ModelInteractor(model="gemma2:27b", local=True)
-    response = gemma2_27b.prompt(
+    total_response = gemma2_27b.prompt(
         "What is the capital of France? A. Paris B. London C. Berlin"
     )
-    print(f"GEMMA2 27B // Choice: {response.choice}, Reason: {response.reason}")
+    print(f"GEMMA2 27B // Choice: {total_response.response}, Reason: {total_response.reason}")
 
     # Llama3
     llama3 = ModelInteractor(model="llama3", local=True)
-    response = llama3.prompt(
+    total_response = llama3.prompt(
         "What is the capital of France? A. Paris B. London C. Berlin"
     )
-    print(f"LLAMA3 // Choice: {response.choice}, Reason: {response.reason}")
+    print(f"LLAMA3 // Choice: {total_response.response}, Reason: {total_response.reason}")
 
     # Llama3:70b
     llama3_70b = ModelInteractor(model="llama3:70b", local=True)
-    response = llama3_70b.prompt(
+    total_response = llama3_70b.prompt(
         "What is the capital of France? A. Paris B. London C. Berlin"
     )
-    print(f"LLAMA3 70B // Choice: {response.choice}, Reason: {response.reason}")
+    print(f"LLAMA3 70B // Choice: {total_response.response}, Reason: {total_response.reason}")
 
     # Phi3
     phi3 = ModelInteractor(model="phi3", local=True)
-    response = phi3.prompt(
+    total_response = phi3.prompt(
         "What is the capital of France? A. Paris B. London C. Berlin"
     )
-    print(f"PHI3 // Choice: {response.choice}, Reason: {response.reason}")
+    print(f"PHI3 // Choice: {total_response.response}, Reason: {total_response.reason}")
 
     # Phi3 Medium
     phi3_medium = ModelInteractor(model="phi3:medium", local=True)
-    response = phi3_medium.prompt(
+    total_response = phi3_medium.prompt(
         "What is the capital of France? A. Paris B. London C. Berlin"
     )
-    print(f"PHI3 MEDIUM // Choice: {response.choice}, Reason: {response.reason}")
+    print(f"PHI3 MEDIUM // Choice: {total_response.response}, Reason: {total_response.reason}")
 """
