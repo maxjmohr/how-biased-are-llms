@@ -1,4 +1,13 @@
 import argparse
+from data.db_helpers import Database
+from data.manipulations import (
+    calc_remaining_loops,
+    combine_content_variables,
+    filter_parser_args,
+)
+from experiments.run import run_experiment
+import pandas as pd
+import os
 
 if __name__ == "__main__":
     # Parse arguments
@@ -39,7 +48,6 @@ if __name__ == "__main__":
         "-l",
         "--local",
         type=bool,
-        default=False,
         choices=[True, False],
         help="optional filter to run experiment locally",
         required=False,
@@ -77,14 +85,90 @@ if __name__ == "__main__":
         required=False,
     )
     parser.add_argument(
+        "-n",
+        "--n_loops",
+        type=int,
+        help="optional filter how often an experiment should correctly be run",
+        required=False,
+    )
+    parser.add_argument(
         "-t",
         "--test",
         type=bool,
-        default=False,
         choices=[True, False],
         help="activate test mode",
         required=False,
     )
     args: argparse.Namespace = parser.parse_args()
 
-    # If there are parser arguments, get the right data, else just get the next experiment
+    # Initialize and connect to the database
+    db: Database = Database()
+    db.connect()
+
+    try:
+        # Get all runnable experiments
+        n: int = 100
+        if args.n_loops:
+            n = args.n_loops
+        experiments: pd.DataFrame = db.fetch_next_experiments(n_loops=n)
+
+        # Perhaps activate test mode
+        test: bool = False
+        if args.test:
+            test = args.test
+
+        # Filter for experiments if arguments parsed
+        experiments = filter_parser_args(experiments, args)
+
+        # Create total_content of experiment by combining content and variables
+        experiments["total_content"] = experiments.apply(
+            lambda row: combine_content_variables(row["content"], row["variables"]),
+            axis=1,
+        )
+
+        # Try to run through as many experiments as possible
+        while not experiments.empty:
+            # Get first experiment
+            experiment: pd.DataFrame = experiments.iloc[0]
+
+            # Get remaining loops
+            n_remain: int = calc_remaining_loops(
+                target_loops=n, correct_runs=experiment["correct_ran_loops"].iloc[0]
+            )
+
+            # Run the experiment
+            responses, reasons, correct_runs = run_experiment(
+                bias=experiment["bias"].iloc[0],
+                scenario=experiment["scenario"].iloc[0],
+                total_content=experiment["total_content"].iloc[0],
+                model=experiment["model"].iloc[0],
+                local=experiment["local"].iloc[0],
+                temperature=experiment["temperature"].iloc[0],
+                n=n_remain,
+                test=test,
+            )
+
+            # Add missing columns and insert responses into database
+            responses_df: pd.DataFrame = pd.DataFrame(
+                {
+                    "experiment_id": experiment["experiment_id"],
+                    "bias_id": experiment["bias_id"],
+                    "model_id": experiment["model_id"],
+                    "response_type": experiment["response_type"],
+                    "response": responses,
+                    "reason": reasons,
+                    "correct_run": correct_runs,
+                }
+            )
+            # Save intermediate responses
+            responses_df.to_csv("intermediate_responses.csv")
+            db.insert_data(table="t_responses", data=responses_df, updated_at=True)
+            # Delete intermediate responses
+            os.remove("intermediate_responses.csv")
+
+            # Remove experiment from df
+            experiments = experiments.iloc[1:]
+
+    finally:
+        # Close the database connection
+        db.disconnect()
