@@ -314,7 +314,9 @@ class Database:
             "\033[1m\033[92mSuccessfully created object{}.\033[0m".format(" " + object)
         )
 
-    def drop_object(self, object: str, sql: str = "", commit: bool = True) -> None:
+    def drop_object(
+        self, object: str, sql: str = "", commit: bool = True, cascade: bool = False
+    ) -> None:
         """Drop a database object
         Parameters:
         object: str
@@ -323,6 +325,8 @@ class Database:
             SQL query to drop the object
         commit: bool
             Whether to commit the changes
+        cascade: bool
+            Whether to drop the object and all its dependencies
         """
         assert (
             object != "" or sql != ""
@@ -330,10 +334,16 @@ class Database:
 
         # SQL query to drop the table
         object_type = object.split("_")[0]  # Get the type of the object
-        if sql == "" and object_type == "t":
-            sql_final: str = f"DROP TABLE {object} CASCADE"
-        elif sql == "" and object_type == "v":
-            sql_final: str = f"DROP VIEW {object}"
+        if not cascade:
+            if sql == "" and object_type == "t":
+                sql_final: str = f"DROP TABLE {object}"
+            elif sql == "" and object_type == "v":
+                sql_final: str = f"DROP VIEW {object}"
+        elif cascade:
+            if sql == "" and object_type == "t":
+                sql_final: str = f"DROP TABLE {object} CASCADE"
+            elif sql == "" and object_type == "v":
+                sql_final: str = f"DROP VIEW {object} CASCADE"
         else:
             sql_final: str = sql
 
@@ -418,7 +428,6 @@ if __name__ == "__main__":
     # Add total codebase
     parent_dir: str = os.path.dirname(os.path.realpath(__file__+"../../"))
     sys.path.append(parent_dir)
-    
     db = Database()
     db.connect()
     
