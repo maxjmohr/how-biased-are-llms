@@ -11,6 +11,7 @@ WITH
             m.model,
             m.local,
             m.temperature,
+            m.system,
             b.content,
             b.variables,
             b.response_type,
@@ -35,8 +36,8 @@ WITH
     SELECT
         b.*,
         re.ran_date,
-        re.correct_ran_loops,
-        re.total_ran_loops,
+        COALESCE(re.correct_ran_loops, 0) AS correct_ran_loops,
+        COALESCE(re.total_ran_loops, 0) AS total_ran_loops,
         NOW() AS updated_at
     FROM
         base b
@@ -54,6 +55,7 @@ COMMENT ON COLUMN v_experiments.scenario IS 'Scenario of the experiment';
 COMMENT ON COLUMN v_experiments.model IS 'Name of the model';
 COMMENT ON COLUMN v_experiments.local IS 'Local or global model';
 COMMENT ON COLUMN v_experiments.temperature IS 'Temperature of the model';
+COMMENT ON COLUMN v_experiments.system IS 'System of the model';
 COMMENT ON COLUMN v_experiments.content IS 'Description of the bias';
 COMMENT ON COLUMN v_experiments.variables IS 'Variables used in the experiment';
 COMMENT ON COLUMN v_experiments.response_type IS 'Type of response';
