@@ -1,10 +1,17 @@
 CREATE TABLE t_models (
-    model_id    INTEGER NOT NULL,
-    model       VARCHAR(255) NOT NULL,
-    local       VARCHAR(255) NOT NULL,
-    temperature VARCHAR(255) NOT NULL,
-    system      VARCHAR(255) NOT NULL,
-    updated_at  TIMESTAMP,
+    model_id            INTEGER NOT NULL,
+    model               VARCHAR(255) NOT NULL,
+    local               VARCHAR(255) NOT NULL,
+    temperature         VARCHAR(255) NOT NULL,
+    system              VARCHAR(255) NOT NULL,
+    release_date        DATE,
+    last_updated_at     DATE,
+    download_date       DATE,
+    size                DECIMAL(10, 2),
+    number_parameters   INTEGER,
+    model_architecture  VARCHAR(255),
+    ollama_id           VARCHAR(255),
+    updated_at          TIMESTAMP,
     PRIMARY KEY (model_id)
 );
 
@@ -15,15 +22,11 @@ COMMENT ON COLUMN t_models.model IS 'Name of the model';
 COMMENT ON COLUMN t_models.local IS 'Local model';
 COMMENT ON COLUMN t_models.temperature IS 'Temperature of the model';
 COMMENT ON COLUMN t_models.system IS 'System of the model';
-
--- Create models
-INSERT INTO t_models (model_id, model, local, temperature, system, updated_at) VALUES
-    (10, 'gemma2', 'True', '0.7', 'All', NOW()),
-    (15, 'gemma2:27b', 'True', '0.7', 'Linux', NOW()),
-    (20, 'gpt-4o-mini', 'False', '0.7', 'All', NOW()),
-    (25, 'gpt-4o', 'False', '0.7', 'All', NOW()),
-    (30, 'llama3', 'True', '0.7', 'All', NOW()),
-    (35, 'llama3:70b', 'True', '0.7', 'Linux', NOW()),
-    (40, 'phi3', 'True', '0.7', 'All', NOW()),
-    (45, 'phi3:medium', 'True', '0.7', 'All', NOW())
-;
+COMMENT ON COLUMN t_models.release_date IS 'Release date of the model';
+COMMENT ON COLUMN t_models.last_updated_at IS 'Last updated date of the model';
+COMMENT ON COLUMN t_models.download_date IS 'Personal download date of the model';
+COMMENT ON COLUMN t_models.size IS 'Size of the model in GB';
+COMMENT ON COLUMN t_models.number_parameters IS 'Number of parameters of the model in billions';
+COMMENT ON COLUMN t_models.model_architecture IS 'Architecture of the model';
+COMMENT ON COLUMN t_models.ollama_id IS 'Identifier of the model in the OLLAMA database';
+COMMENT ON COLUMN t_models.updated_at IS 'Timestamp of the last update of the row';

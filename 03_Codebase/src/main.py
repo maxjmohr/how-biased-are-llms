@@ -65,7 +65,7 @@ if __name__ == "__main__":
             "gpt-4o",
             "llama3.1",
             "llama3.1:70b",
-            "phi3:mini",
+            "phi3.5",
             "phi3:medium",
         ],
         help="optional filter for model",
