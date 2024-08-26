@@ -224,7 +224,11 @@ class Database:
         return experiment
 
     def delete_data(
-        self, total_object: str, sql: str = "", commit: bool = True
+        self,
+        total_object: str = "",
+        sql: str = "",
+        commit: bool = True,
+        definitely_delete: bool = False,
     ) -> None:
         """Delete data from a table
         Parameters:
@@ -234,6 +238,8 @@ class Database:
             SQL query to delete the data
         commit: bool
             Whether to commit the changes
+        definitely_delete: bool
+            Whether to skip the confirmation
         """
         assert (
             total_object != "" or sql != ""
@@ -246,7 +252,15 @@ class Database:
             sql_final: str = sql
 
         # Always ask for confirmation before deleting data
-        if input("Are you sure you want to delete the data? (y/n) ").lower() == "y":
+        if not definitely_delete:
+            if input("Are you sure you want to delete the data? (y/n) ").lower() == "y":
+                self.execute_sql(sql=sql_final, commit=commit)
+                print(
+                    "\033[1m\033[92mSuccessfully deleted data from table {}.\033[0m".format(
+                        total_object
+                    )
+                )
+        elif definitely_delete:
             self.execute_sql(sql=sql_final, commit=commit)
             print(
                 "\033[1m\033[92mSuccessfully deleted data from table {}.\033[0m".format(
