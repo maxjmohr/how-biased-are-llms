@@ -47,6 +47,10 @@ def filter_parser_args(
 
     # Filter the experiments based on the args
     print(f"{datetime.now()} | Filtering experiments for these arguments: {args_dict}")
+    # If key is "test", delete here (it is solely needed to activate test mode)
+    if "test" in args_dict:
+        del args_dict["test"]
+    # Filter
     for key, value in args_dict.items():
         experiments = experiments.loc[experiments[key] == value]
 
