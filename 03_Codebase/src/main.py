@@ -7,7 +7,9 @@ from data.manipulations import (
 )
 from experiments.run import run_experiment
 import pandas as pd
+import platform
 import os
+from typing import List
 
 if __name__ == "__main__":
     # Parse arguments
@@ -131,6 +133,26 @@ if __name__ == "__main__":
             # Get first experiment
             experiment: pd.DataFrame = experiments.iloc[0]
 
+            # Check if currently any experiments are running and if so, if it is the same experiment
+            currently_running: List[int] = list(
+                db.fetch_data(total_object="t_currently_running")["experiment_id"]
+            )
+            if experiment["experiment_id"].iloc[0] in currently_running:
+                # Remove experiment from df
+                experiments = experiments.iloc[1:]
+                continue
+            else:  # Add experiment to currently running
+                db.insert_data(
+                    table="t_currently_running",
+                    data=pd.DataFrame(
+                        {
+                            "experiment_id": experiment["experiment_id"],
+                            "system": platform.system(),
+                        }
+                    ),
+                    updated_at=True,
+                )
+
             # Get remaining loops
             n_remain: int = calc_remaining_loops(
                 target_loops=n, correct_runs=experiment["correct_ran_loops"].iloc[0]
@@ -168,6 +190,15 @@ if __name__ == "__main__":
 
             # Remove experiment from df
             experiments = experiments.iloc[1:]
+
+            # Delete experiment from currently running
+            db.delete_data(
+                sql=f"""
+                DELETE FROM t_currently_running
+                WHERE experiment_id = {experiment["experiment_id"]};
+                """,
+                definitely_delete=True,
+            )
 
     finally:
         # Close the database connection
