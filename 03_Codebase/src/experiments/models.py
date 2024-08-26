@@ -46,7 +46,7 @@ class ModelInteractor:
             "gpt-4o",
             "llama3.1",
             "llama3.1:70b",
-            "phi3",
+            "phi3.5",
             "phi3:medium",
         ], f"{datetime.now()} | Model is required"
         if local:
