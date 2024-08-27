@@ -167,13 +167,17 @@ class Database:
         # Fetch the data
         return pd.read_sql(sql_final, self.engine)
 
-    def fetch_next_experiments(self, top: int = 0, n_loops: int = 100) -> pd.DataFrame:
+    def fetch_next_experiments(
+        self, top: int = 0, n_loops: int = 100, add_to_currentlyrunning: bool = False
+    ) -> pd.DataFrame:
         """Fetch the next experiment to run
         Parameters:
         top: int
             Number of experiments to fetch
         n_loops: int
             Number of loops an experiment should run
+        add_to_tcurrentlyrunning: bool
+            Whether to add the experiment to t_currently_running
         Returns:
         pd.DataFrame
             Data of the next experiment to run
@@ -208,18 +212,18 @@ class Database:
 
         # Fetch the next experiment to run
         experiment: pd.DataFrame = pd.read_sql(sql, self.engine)
-
         # Check if an experiment was fetched
         if experiment.empty:
             print("No experiments are available to run.")
             return experiment
 
         # Add the experiment to t_currently_running
-        currently_running: pd.DataFrame = experiment.loc[:, ["experiment_id"]]
-        currently_running["system"] = system
-        self.insert_data(
-            table="t_currently_running", data=currently_running, updated_at=True
-        )
+        if add_to_currentlyrunning:
+            currently_running: pd.DataFrame = experiment.loc[:, ["experiment_id"]]
+            currently_running["system"] = system
+            self.insert_data(
+                table="t_currently_running", data=currently_running, updated_at=True
+            )
 
         return experiment
 
@@ -253,7 +257,12 @@ class Database:
 
         # Always ask for confirmation before deleting data
         if not definitely_delete:
-            if input("Are you sure you want to delete the data? (y/n) ").lower() == "y":
+            if (
+                input(
+                    f"Are you sure you want to delete the data from {total_object}? (y/n) "
+                ).lower()
+                == "y"
+            ):
                 self.execute_sql(sql=sql_final, commit=commit)
                 print(
                     "\033[1m\033[92mSuccessfully deleted data from table {}.\033[0m".format(
