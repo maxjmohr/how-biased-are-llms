@@ -24,7 +24,7 @@
   bias: loss aversion
   experiment_type: multi-scenario
   scenario: 0_normal
-  content: Assume yourself richer by $ richer_value than you are today. You are offered a choice between A. A sure gain of $ sure_gain_value, or B. A 50% chance to gain $ gain_value and a 50% chance to lose $ 0.
+  content: Assume yourself richer by $ richer_value than you are today. You are offered a choice between A. A sure gain of $ sure_gain_value, or B. A 50% chance to gain $ gain_value and a 50% chance to lose $ 0. Choose between A and B.
   variables: '{"richer_value": 300, "sure_gain_value": 100, "gain_value": 200}'
   response_type: choice
   target_response: A
@@ -35,7 +35,7 @@
   bias: loss aversion
   experiment_type: multi-scenario
   scenario: 0_normal
-  content: Assume yourself richer by $ richer_value than you are today. You are offered a choice between A. A sure loss of $ sure_loss_value, or B. A 50% chance to lose $ loss_value and a 50% chance to lose $ 0.
+  content: Assume yourself richer by $ richer_value than you are today. You are offered a choice between A. A sure loss of $ sure_loss_value, or B. A 50% chance to lose $ loss_value and a 50% chance to lose $ 0. Choose between A and B.
   variables: '{"richer_value": 500, "sure_loss_value": 100, "loss_value": 200}'
   response_type: choice
   target_response: A

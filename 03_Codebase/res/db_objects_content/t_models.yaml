@@ -22,7 +22,7 @@
   size: 15
   number_parameters: 27
   model_architecture: transformer
-  ollama_id:
+  ollama_id: 53261bc9c192
 
 - model_id: 30
   model: gpt-4o-mini
