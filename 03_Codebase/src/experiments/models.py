@@ -7,6 +7,7 @@ import ollama
 import os
 from pydantic import BaseModel
 from pydantic_core import ValidationError
+import re
 from typing import Literal, Tuple
 
 
@@ -152,25 +153,85 @@ class ModelInteractor:
         assert total_content != "", f"{datetime.now()} | Experiment content is required"
 
         if system_message != "":
-            system_message = "Please answer the experiment by only giving the letter of the answer options (e.g. 'A', 'B', 'C', ...) or a numerical value (80, 100, 1000, ...) without stating anything else! Afterwards, state a short reason in 1-2 sentences for your choice. \n"
-        if additional_system_message != "":
-            system_message = system_message + additional_system_message
-        entire_message = system_message + "---------------------\n" + "{total_content}"
+            system_message = "You are forced to choose! Answer the experiment by only giving the letter of the answer options (e.g. 'A', 'B', 'C', ...) or a numerical value (80, 100, 1000, ...). Do not state anything else! Afterwards, state a short reason in 1-2 sentences for your choice (hard cap at 2 sentences). Do not halucinate.  Your 'response' output is only the single letter/integer (such as A/B/C... or 80, 100, 1000,)!\n"
+        system_message += additional_system_message if additional_system_message else ""
+
+        entire_message: str = (
+            system_message + "---------------------\n" + "{total_content}"
+        )
         prompt = PromptTemplate(entire_message)
 
         # Try the structured prediciton, sometimes it doesnt work with smaller models, then just use the completion
         try:
+            print(f"{datetime.now()} | Trying structured prediction")
             total_response = self.llm.structured_predict(
                 ExperimentOutput, prompt, total_content=total_content
             )
-            correct_run = 1
-        except ValidationError as e:
-            print(f"Pydantic Validation Error: {e}")
-            entire_message = f"system_message---------------------\n{total_content}"
-            total_response = ExperimentOutput(
-                response=str(self.llm.complete(entire_message)), reason=""
-            )
-            correct_run = 0
+
+            # Make sure if there are letters, it is only one letter
+            if len(total_response.response) != 1 and total_response.response.isalpha():
+                print(f"{datetime.now()} | Structured prediction failed")
+                raise ValueError("Structured prediction response format failed")
+            else:
+                correct_run = 1
+
+        except (ValueError, ValidationError) as e:
+            print(f"Error encountered: {e}")  # Debugging line
+
+            # First we try to extract the outputs manually
+            if isinstance(e, ValidationError):
+                print(f"{datetime.now()} | Trying manual extraction")
+                match_response = re.search(r'"response"\s*:\s*"([^"]+)"', str(e))
+                match_reason = re.search(r'"reason"\s*:\s*"([^"]+)"', str(e))
+
+                # Especially the response matters
+                if match_response:
+                    response = match_response.group(1)
+                    # Make sure if there are letters, it is only one letter
+                    if len(response) == 1 and response.isalpha():
+                        reason = match_reason.group(1) if match_reason else ""
+                        correct_run = 1 if reason != "" else 0.5
+                        total_response = ExperimentOutput(
+                            response=response, reason=reason
+                        )
+
+                        return total_response, correct_run
+
+            # If we cannot extract the response, we try to complete the prompt without reasoning
+            try:
+                print(f"{datetime.now()} | Trying completion without reasoning")
+                system_message_onlyresponse: str = "You are forced to choose! Answer the experiment by only giving the letter of the answer options (e.g. 'A', 'B', 'C', ...) or a numerical value (80, 100, 1000, ...). Do not state anything else! Do not halucinate. Your output is only the single letter/integer (such as A/B/C... or 80, 100, 1000,).\n"
+                system_message_onlyresponse += (
+                    additional_system_message if additional_system_message else ""
+                )
+
+                entire_message_onlyresponse: str = (
+                    system_message_onlyresponse
+                    + "---------------------\n"
+                    + total_content
+                )
+                total_response = ExperimentOutput(
+                    response=str(self.llm.complete(entire_message_onlyresponse)),
+                    reason="Prompt without reasoning",
+                )
+
+                # Make sure if there are letters, it is only one letter
+                if (
+                    len(total_response.response) != 1
+                    and total_response.response.isalpha()
+                ):
+                    print(f"{datetime.now()} | Structured prediction failed")
+                    raise ValueError("Structured prediction response format failed")
+                else:
+                    correct_run = 0.5
+
+            except (Exception, ValueError) as e:
+                print(f"Error: {e}")
+                total_response = ExperimentOutput(
+                    response="Failed prompt", reason="Failed prompt"
+                )
+                correct_run = 0
+
         return total_response, correct_run
 
 
