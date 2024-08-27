@@ -32,7 +32,9 @@ def run_experiment(
         Whether to activate test mode
     """
     # Initialize the model interactor
+    print(f"{datetime.now()} | Initializing model interactor for model {model}")
     mi = ModelInteractor(model=model, local=local, temperature=temperature)
+    print(f"{datetime.now()} | Initialized model interactor for model {model}")
 
     # Check if test mode is activated
     if test:
@@ -46,15 +48,22 @@ def run_experiment(
         )
 
     # Store responses and whether they are in the correct format
-    responses: List[str | int] = [] * n
+    responses: List[str | int] = [""] * n
     reasons: List[str] = [""] * n
     correct_runs: List[int] = [0] * n
 
     # Run the experiment
     for i in trange(n, desc=f"Scenario {scenario} for bias {bias} on model {model}"):
         total_response, correct_run = mi.prompt(total_content)
-        responses[i] = total_response.response
-        reasons[i] = total_response.reason
-        correct_runs[i] = correct_run
+        try:
+            responses[i] = total_response.response
+            reasons[i] = total_response.reason
+            correct_runs[i] = correct_run
+        except IndexError:
+            print(f"Index {i} is out of range. List length: {len(responses)}")
+            continue
 
+    print(
+        f"{datetime.now()} | Finished experiment scenario {scenario} for bias {bias} on model {model}"
+    )
     return responses, reasons, correct_runs
