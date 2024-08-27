@@ -5,6 +5,7 @@ from data.manipulations import (
     combine_content_variables,
     filter_parser_args,
 )
+from datetime import datetime
 from experiments.run import run_experiment
 import pandas as pd
 import platform
@@ -131,17 +132,18 @@ if __name__ == "__main__":
         # Try to run through as many experiments as possible
         while not experiments.empty:
             # Get first experiment
-            experiment: pd.DataFrame = experiments.iloc[0]
+            experiment: pd.DataFrame = experiments.head(1)
 
             # Check if currently any experiments are running and if so, if it is the same experiment
             currently_running: List[int] = list(
                 db.fetch_data(total_object="t_currently_running")["experiment_id"]
             )
-            if experiment["experiment_id"].iloc[0] in currently_running:
+            if experiment["experiment_id"] in currently_running:
                 # Remove experiment from df
                 experiments = experiments.iloc[1:]
                 continue
             else:  # Add experiment to currently running
+                print(f"{datetime.now()} | Adding experiment to t_currently_running")
                 db.insert_data(
                     table="t_currently_running",
                     data=pd.DataFrame(
@@ -154,9 +156,14 @@ if __name__ == "__main__":
                 )
 
             # Get remaining loops
+            print(f"{datetime.now()} | Calculating remaining loops")
             n_remain: int = calc_remaining_loops(
                 target_loops=n, correct_runs=experiment["correct_ran_loops"].iloc[0]
             )
+
+            # Some checks
+            # print(f"total_content: {experiment['total_content'].iloc[0]}")
+            # print(f"experiment_id: {experiment['experiment_id'].iloc[0]}")
 
             # Run the experiment
             responses, reasons, correct_runs = run_experiment(
@@ -173,10 +180,10 @@ if __name__ == "__main__":
             # Add missing columns and insert responses into database
             responses_df: pd.DataFrame = pd.DataFrame(
                 {
-                    "experiment_id": experiment["experiment_id"],
-                    "bias_id": experiment["bias_id"],
-                    "model_id": experiment["model_id"],
-                    "response_type": experiment["response_type"],
+                    "experiment_id": experiment["experiment_id"].iloc[0],
+                    "bias_id": experiment["bias_id"].iloc[0],
+                    "model_id": experiment["model_id"].iloc[0],
+                    "response_type": experiment["response_type"].iloc[0],
                     "response": responses,
                     "reason": reasons,
                     "correct_run": correct_runs,
@@ -184,21 +191,37 @@ if __name__ == "__main__":
             )
             # Save intermediate responses
             responses_df.to_csv("intermediate_responses.csv")
+            if test:  # If test mode, break here
+                print(f"response: {responses_df['response'].iloc[0]}")
+                print(f"reason: {responses_df['reason'].iloc[0]}")
+
+                # Delete experiment from currently running
+                db.delete_data(
+                    total_object="t_currently_running",
+                    sql=f"""
+                    DELETE FROM t_currently_running
+                    WHERE experiment_id = '{experiment["experiment_id"].iloc[0]}';
+                    """,
+                    definitely_delete=True,
+                )
+                break
+
             db.insert_data(table="t_responses", data=responses_df, updated_at=True)
             # Delete intermediate responses
             os.remove("intermediate_responses.csv")
 
-            # Remove experiment from df
-            experiments = experiments.iloc[1:]
-
             # Delete experiment from currently running
             db.delete_data(
+                total_object="t_currently_running",
                 sql=f"""
                 DELETE FROM t_currently_running
-                WHERE experiment_id = {experiment["experiment_id"]};
+                WHERE experiment_id = {experiment["experiment_id"].iloc[0]};
                 """,
                 definitely_delete=True,
             )
+
+            # Remove experiment from df
+            experiments = experiments.iloc[1:]
 
     finally:
         # Close the database connection
