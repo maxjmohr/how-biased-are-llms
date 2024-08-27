@@ -1,7 +1,6 @@
 import argparse
 from datetime import datetime
 import json
-from numpy import NAN
 import pandas as pd
 from typing import Dict
 
@@ -18,7 +17,7 @@ def combine_content_variables(content: str, variables: str) -> str:
         Combined content and variables
     """
     # Check if the variables are empty
-    if variables is NAN:
+    if pd.isna(variables) or variables == "":
         return content
 
     # Convert the variables column to a dictionary
