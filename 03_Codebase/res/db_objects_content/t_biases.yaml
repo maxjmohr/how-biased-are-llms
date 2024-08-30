@@ -118,3 +118,25 @@
   target_response: 45
   part: 2
   parts_total: 2
+
+- bias_id: 701
+  bias: transaction utility
+  experiment_type: multi-scenario
+  scenario: 0_normal
+  content: You set off to buy a new radio. At the store where you expect to buy it, you find that the price is $ initial_price_value. A clerk informs you that the same item is available at another branch of the same store for on $ second_price_value. The store is a 20-minute drive away and the clerk assures you that they have what you want there. Do you buy A) at the initial store or B) go to the other store?  Choose between A and B.
+  variables: '{"initial_price_value": 35, "second_price_value": 25}'
+  response_type: choice
+  target_response: B
+  part: 1
+  parts_total: 2
+
+- bias_id: 702
+  bias: transaction utility
+  experiment_type: multi-scenario
+  scenario: 0_normal
+  content: You set off to buy a new television. At the store where you expect to buy it, you find that the price is $ initial_price_value. A clerk informs you that the same item is available at another branch of the same store for on $ second_price_value. The store is a 20-minute drive away and the clerk assures you that they have what you want there. Do you buy A) at the initial store or B) go to the other store?  Choose between A and B.
+  variables: '{"initial_price_value": 650, "second_price_value": 640}'
+  response_type: choice
+  target_response: A
+  part: 2
+  parts_total: 2
