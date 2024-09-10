@@ -21,51 +21,55 @@ Also describe how the normal prompt is structured.
 
 \par \textbf{Category size bias} Decision-making is also influenced by the way alternatives are categorized and distributed, a phenomenon known as the category size bias \parencite{isaac2014judging}. For example, an investor's expectation about the performance of a particular stock could be influenced by the number of other stocks in the portfolio that belong to the same industry. Similarly, \textcite{tversky1994support} showed that participants judged the probability of dying of unnatural cases differently when natural causes were presented as one category or  broken down into individual categories. To test for the category size bias, we replicate an experiment from \textcite{isaac2014judging} where participants estimate the probability of randomly selecting a ball from a lottery, itself containing balls with three different colors and varying category sizes. The output of the experiment showed that if the ball is drawn from a larger category, the probability is estimated higher even though the actual probability is equal.
 
-\par \textbf{Central tendency bias} Humans generally tend towards the mean of a scale when asked to estimate a value.
-
 \par \textbf{Endowment effect} The human tendency to value objects in their possession (endowment) higher than if they did not own them is known as the endowment effect. This effect is strongly linked to loss aversion, where people demand more to give up an item than they would be willing to pay to acquire it \parencite{kahneman1990experimental}. Research has also shown that the effect is independent of whether sellers actually sell the product or exchange similarly valued goods \parencite{knetsch1989endowment}. \textcite{kahneman1990experimental} demonstrated the effect by asking participants for their willingness to pay for a mug versus their willingness to accept compensation for the mug. The results showed that participants owning the mug valued it at more than double the value than the other participants.
 
 \par \textbf{Framing effect} Framing is a cognitive bias where humans react significantly differently to an equivalent choice depending on how it is presented. The effect is strongly influenced by the loss aversion of humans as well as them heavily relying on their emotional state \parencite{tversky1981framing}. To detach the experiment on framing effect as well as possible from the experiment on loss aversion, we target to simulate two scenarios that both have losses (not comparison between loss and gain framing). We recreate the experiment by \textcite{tversky1981framing} where participants were asked to buy another concert ticket after having lost either the original ticket or the same amount of money (different framing of lost monetary value). The study showed that participants were more likely to buy the ticket when they lost the money as from the human perspective, the lost money is decoupled from the ticket purchase.
 
 \par \textbf{Gambler's fallacy} The gambler's fallacy is the mistaken belief that the probability of a certain event occurring is influenced by the frequency of prior events, despite each event being independent \parencite{bar1991perception,kovic2019gambler}. Known as an "insensitivity to sample size", humans also often tailor their decisions to a small sample size which, in their mind, represents the distribution of the larger sample. For instance, humans might quickly adapt their judgement based on the law of large numbers even though they are faced with random events \parencite{tversky1974judgment}. The shifts in probability perceptions can thus be major causes for biased (economic) decision-making. While there has been research on the mechanisms influencing the fallacy (for example the presentation of information \parencite{barron2010role}) as well as possible side effects and fallacies \parencite{kovic2019gambler}, we focus on assessing whether the models are prone to the fallacy through an experiment involving coin flips (similar to the Monte Carlo fallacy).
 
-\par \textbf{Illusory correlation} This bias hinges on the idea of gambler's fallacy that is that humans tend to see associations between independent, random events.
-
-\par \textbf{Incentivization} 
-
 \par \textbf{Loss aversion} Loss aversion describes the human tendency to prefer avoiding losses over acquiring gains of the same value  \parencite{liu2023review}. Within their research on prospect theory (decision-making biases under risk and uncertainty), \textcite{tversky1992advances} estimated that losses are twice as impactful as gains. Closely related to the framing effect, the presentation of the same base information in more risk-averse and risk-seeking scenarios can have significant impact on human decision-making \parencite{druckman2001evaluating}. This bias is particularly relevant in the context of economic decision-making and has been applied to various fields such as retail sale strategies (discount for additional spending), financial investments (sell winners, hold losers) and more \parencite{liu2023review}. We recreate the experiment from \textcite{thaler2015misbehaving} which phrases two scenarios as a financial loss and a gain to test for loss aversion. The results showed that participants were more likely to take risks in the gain scenario than in the loss scenario.
-
-\par \textbf{Overjustification bias} 
 
 \par \textbf{Sunk cost fallacy} This effect refers to the human phenomenon to preferring an option due to a prior investment into it (sunk costs) even though a better alternative would be available \parencite{arkes1985psychology}. Due to this, even temporally distant investment decisions can have a substantial impact on the decision-making process. The sunk cost fallacy is also strongly intertwined with other cognitive biases, most notably loss aversion or commitment bias \parencite{jarmolowicz2016sunk}. We choose to examine the experiment introduced by \textcite{arkes1985psychology} where participants are asked to decide between two ski trip scenarios with different sunk costs. In their study, the participants were more likely to choose the more expensive trip (but being the less attractive trip) even though the costs were already sunk.
 
-\par \textbf{Take-the-best heuristic} ? Heuristics not biases (Take-the-last, minimalist)
-
 \par \textbf{Transaction utility theory} Transaction utility describes perceived psychological non-monetary gains of a deal that are beyond the actual economic value. \textcite{thaler1983transaction} defined the concept as the difference between the actual price and one's reference price. A simple example is the satisfaction from buying a product itself; the additional joy of saving 20 percent is the transactional utility in the purchase. To test this theory, we will recreate an experiment where participants have the option to buy two products either directly or at a store 20 minutes away, each for 20 percent discount. The difference in the scenarios is that one product is cheap (radio) and the other is expensive (television) \parencite{thaler1983transaction}. The results showed that participants were more likely to buy the cheaper product directly without the discount even though the absolute savings were the same.
 
-\par \textbf{Ultimate game} ?
-
 \setlength{\parindent}{0pt}
-The exact replications of the experiments are described in the appendix.
+\par With the selected biases, we aim to examine the cognitive decision behavior of large language models as broadly as possible. The exact replications and wordings of the experiments are described in the appendix.
 
 
 \subsection{Model selections}
-\par The development and publication of new models and model architectures is ongoing and rapid. 
+\par The development and publication of new models and model architectures is ongoing and rapid. We focus on models which are widely available to the public and have seen significant use in research and industry. The models we selected are those of major technology companies and have some similarities but also differences in their architecture, size and training data. We aim to include models from different companies to ensure a broad analysis of the models' behavior. The models we selected are:
 
-Ollama for models, larger models ran on cluster, llamaindex, structured prediction
+\setlength{\parindent}{20pt}
+\par \textbf{Gemma2 (Google\footnote{Google, founded in 1998, is a global technology company specializing in internet-related services and products, including search engines, online advertising, and AI; in 2023, its parent company Alphabet reported a revenue of over \$305 billion \parencite{alphabet2023annual}.})} The Gemma model family is Google's offering of open language models. The latest and second generation Gemma models were released in late June 2024. They exhibit a decoder-only transformer architecture for text-to-text tasks and are designed similarly to Google's larger and private models (\textit{Gemini}). The focus of the Gemma2 models lies on the availability and usability to the public and thus exist in two, seven and 25 billion parameter sizes \parencite{team2024gemma}. For our research, we examine the reasoning capabilities and existence of biases in the seven and 27 billion parameter versions.
+
+\par \textbf{GPT-4o (OpenAI\footnote{OpenAI, founded in 2015 as a non-profit but now a capped for-profit, is a leading AI research and deployment company. OpenAI's primary products include the GPT series of language models as well as text-to-image and text-to-vision models \parencite{openai2024about}.})} With the introduction and rash success of OpenAI's artificial intelligence chatbot \textit{ChatGPT} in 2022, the models backing the chatbot (GPTs) have a significant impact on the field of natural language processing and in communicating the latest advancements in AI to the public. The latest iteration are the GPT-4o models (\textit{o} standing for "omni" or multi-modal) which are designed to be more human-like and capable of reasoning and understanding context. The architecture of GPT-4o is similar to its predecessors, a transformer model which however includes additional layers for multimodal input, with encoders for images, videos and audio. While language processing and reasoning has improved marginally compared to GPT-4 Turbo, the tokenizer has become much more efficient and thus the model is capable of processing more data in less time \parencite{achiam2023gpt, openai2024gpt4o}. We analyze GPT-4o mini, which is natively used for the free \textit{ChatGPT} service and despite its smaller parameter size outperforms the previously established model GPT-3.5 Turbo, and GPT-4o, which is the largest model and available to premium users \parencite{openai2024gpt4omini}.
+
+\par \textbf{Llama3 (Meta\footnote{Xxx})} Xxx
+
+\par \textbf{Phi3 (Microsoft\footnote{Xxx})} Xxx
+
+\setlength{\parindent}{0pt}
+\par Xxx
+
+Ollama for models, larger models ran on cluster, llamaindex \parencite{liullamaindex2022}, structured prediction
 
 
 \subsection{Response analysis}
 Somewhere describe what the expected output of the models should look like and what I do if it is different.
 
-\subsubsection{Replicability analysis}
+\subsubsection{Analysis of detected biases}
 Original studies and compare results. Perhaps a "bias detected" number. If always 100 experiment runs, bias detected is the percentage of runs where the model acted biased. (Between 0 and 1, perhaps normalize)
+Perhaps Chi-Square Test of Independence to see if there are significant differences between the biases.
 
-\subsubsection{Average treatment effects}
+\subsubsection{Scenario impact}
 Average treatment effects of treated on randomized values as well as explicitly prompting humanlike behavior. The control group is the normal prompt.
+Perhaps with Repeated Measures ANOVA (RM-ANOVA) to see if there are significant differences between the scenarios.
+Perhaps Mixed-Effects Models to see if there are significant differences between the scenarios.
+Friedman test? https://datatab.de/tutorial/friedman-test
 
-\subsubsection{Model metadata analysis}
+\subsubsection{Model analysis}
 Are there any trends between newer/larger models?
+Temperature? Ggf nur für das normale Szenario da es sonst die Runs sprengt
 
-\subsubsection{Model parameter analysis}
-Temperature?
+Train XGBoost model, get feature importances and see if there are important features that can explain whether a model is more biased or less.
