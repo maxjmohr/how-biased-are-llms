@@ -8,7 +8,7 @@ import os
 from pydantic import BaseModel
 from pydantic_core import ValidationError
 import re
-from typing import Literal, Tuple
+from typing import Literal
 
 
 class ExperimentOutput(BaseModel):
@@ -137,7 +137,7 @@ class ModelInteractor:
         total_content: str,
         system_message: str = "",
         additional_system_message: str = "",
-    ) -> Tuple[ExperimentOutput, Literal[1, 0]]:
+    ) -> tuple[ExperimentOutput, Literal[1, 0]]:
         """Get the prompt for the experiment
         Parameters:
         total_content: str
@@ -153,7 +153,7 @@ class ModelInteractor:
         assert total_content != "", f"{datetime.now()} | Experiment content is required"
 
         if system_message != "":
-            system_message = "You are forced to choose! Answer the experiment by only giving the letter of the answer options (e.g. 'A', 'B', 'C', ...) or a numerical value (80, 100, 1000, ...). Do not state anything else! Afterwards, state a short reason in 1-2 sentences for your choice (hard cap at 2 sentences). Do not halucinate.  Your 'response' output is only the single letter/integer (such as A/B/C... or 80, 100, 1000,)!\n"
+            system_message = "You are forced to choose! Answer the experiment by only giving the letter of the answer options (e.g. 'A', 'B', 'C', ...) or a numerical value (80, 100, 1000, ...). Do not state anything else! Afterwards, state a short reason in 1-2 sentences for your choice (hard cap at 2 sentences). Do not halucinate. Your 'response' output is only the single letter/integer (such as A/B/C... or 80, 100, 1000,)!\n"
         system_message += additional_system_message if additional_system_message else ""
 
         entire_message: str = (
@@ -164,12 +164,19 @@ class ModelInteractor:
         # Try the structured prediciton, sometimes it doesnt work with smaller models, then just use the completion
         try:
             print(f"{datetime.now()} | Trying structured prediction")
-            total_response = self.llm.structured_predict(
-                ExperimentOutput, prompt, total_content=total_content
+            total_response = ExperimentOutput.parse_obj(
+                self.llm.structured_predict(
+                    output_cls=ExperimentOutput,  # type: ignore
+                    prompt=prompt,
+                    total_content=total_content,
+                )
             )
 
             # Make sure if there are letters, it is only one letter
-            if len(total_response.response) != 1 and total_response.response.isalpha():
+            if (
+                len(str(total_response.response)) != 1
+                and str(total_response.response).isalpha()
+            ):
                 print(f"{datetime.now()} | Structured prediction failed")
                 raise ValueError("Structured prediction response format failed")
             else:
@@ -190,7 +197,7 @@ class ModelInteractor:
                     # Make sure if there are letters, it is only one letter
                     if len(response) == 1 and response.isalpha():
                         reason = match_reason.group(1) if match_reason else ""
-                        correct_run = 1 if reason != "" else 0.5
+                        correct_run = 1 if reason != "" else 0
                         total_response = ExperimentOutput(
                             response=response, reason=reason
                         )
@@ -217,13 +224,13 @@ class ModelInteractor:
 
                 # Make sure if there are letters, it is only one letter
                 if (
-                    len(total_response.response) != 1
-                    and total_response.response.isalpha()
+                    len(str(total_response.response)) != 1
+                    and str(total_response.response).isalpha()
                 ):
                     print(f"{datetime.now()} | Structured prediction failed")
                     raise ValueError("Structured prediction response format failed")
                 else:
-                    correct_run = 0.5
+                    correct_run = 0
 
             except (Exception, ValueError) as e:
                 print(f"Error: {e}")
