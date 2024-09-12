@@ -49,11 +49,11 @@ Also describe how the normal prompt is structured.
 \par \textbf{Phi3.5 (Microsoft\footnote{Microsoft, founded in 1975, is a global technology company known for its software products (revenue of \$211 billion). With recent large investments such as in OpenAI, Microsoft plays a significant role in the AI space \parencite{microsoft2024about}.})} The Phi models by Microsoft are considered SLMs (small language models) and focus on efficiency and speed. While this does lead to less factual knowledge in the models, they are still competitive regarding reasoning and coding tasks even when implemented and running on phones. There are multiple sizes and different architectures of the Phi models to account for multilingual or multimodal inputs. In particular, Phi 3.5 has a much expanded context length limit from 4 to 128 thousand tokens. We analyze the new Phi 3.5 Mini model (roughly 4 billion parameters) and the slightly larger Phi 3 Medium model (14 billion parameters). With these smaller models we hope to cover not only the spectrum of large language models but also small ones \parencite{abdin2024phi}.
 
 \setlength{\parindent}{0pt}
-\par Ollama for models, larger models ran on cluster, llamaindex \parencite{liullamaindex2022}, structured prediction
+\par In total, we analyze four model families and eight distinct models. Besides the GPT models of OpenAI, the models are run locally. These models are downloaded as well as accessed through Ollama, a wrapper around llama.cpp which allows for efficient inference of most open-source local models \parencite{gerganov2023llamacpp}. To minimize discrepancies in prompting and response extraction between the models, we use the language model framework LlamaIndex to interact with the models and build a unified experiment pipeline \parencite{liullamaindex2022}. More details on the models and their configurations are provided in the appendix.
 
 
 \subsection{Response analysis}
-Somewhere describe what the expected output of the models should look like and what I do if it is different.
+Somewhere describe what the expected output of the models should look like (structured prediction) and what I do if it is different.
 
 \subsubsection{Analysis of detected biases}
 Original studies and compare results. Perhaps a "bias detected" number. If always 100 experiment runs, bias detected is the percentage of runs where the model acted biased. (Between 0 and 1, perhaps normalize)
