@@ -341,20 +341,21 @@ class Database:
             object != "" or sql != ""
         ), "Please provide either the object name or the SQL script to drop the object."
 
-        # SQL query to drop the table
-        object_type = object.split("_")[0]  # Get the type of the object
-        if not cascade:
-            if sql == "" and object_type == "t":
-                sql_final: str = f"DROP TABLE {object}"
-            elif sql == "" and object_type == "v":
-                sql_final: str = f"DROP VIEW {object}"
-        elif cascade:
-            if sql == "" and object_type == "t":
-                sql_final: str = f"DROP TABLE {object} CASCADE"
-            elif sql == "" and object_type == "v":
-                sql_final: str = f"DROP VIEW {object} CASCADE"
-        else:
-            sql_final: str = sql
+        # SQL query to drop the table/view (cascade if necessary)
+        sql_final: str = sql
+        if sql == "":
+            object_type = object.split("_")[0]  # Get the type of the object
+            drop_type = (
+                "TABLE"
+                if object_type == "t"
+                else "VIEW"
+                if object_type == "v"
+                else None
+            )
+            if drop_type:
+                sql_final = f"DROP {drop_type} {object}"
+                if cascade:
+                    sql_final += " CASCADE"
 
         # Execute the SQL query
         # Always ask in the terminal if you are sure
