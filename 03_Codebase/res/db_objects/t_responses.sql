@@ -4,7 +4,7 @@ CREATE TABLE t_responses (
     model_id        INTEGER NOT NULL,
     response_type   VARCHAR(255) NOT NULL,
     response        VARCHAR(255) NOT NULL,
-    reason          VARCHAR(255) NOT NULL,
+    reason          VARCHAR(255),
     correct_run     INTEGER NOT NULL,
     updated_at      TIMESTAMP,
     PRIMARY KEY (experiment_id, response, updated_at),
