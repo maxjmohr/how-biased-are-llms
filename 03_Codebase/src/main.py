@@ -84,18 +84,26 @@ if __name__ == "__main__":
         required=False,
     )
     parser.add_argument(
+        "-n",
+        "--n_loops",
+        type=int,
+        help="optional filter how often an experiment should correctly be run",
+        required=False,
+    )
+    parser.add_argument(
+        "-r",
+        "--reason",
+        type=bool,
+        choices=[True, False],
+        help="optional model output to include reason for choice",
+        required=False,
+    )
+    parser.add_argument(
         "-s",
         "--scenario",
         type=str,
         choices=["00_normal", "01_odd_numbers"],
         help="optional filter for experiment scenario",
-        required=False,
-    )
-    parser.add_argument(
-        "-n",
-        "--n_loops",
-        type=int,
-        help="optional filter how often an experiment should correctly be run",
         required=False,
     )
     parser.add_argument(
@@ -117,12 +125,28 @@ if __name__ == "__main__":
         n: int = 100
         if args.n_loops:
             n = args.n_loops
-        experiments: pd.DataFrame = db.fetch_next_experiments(n_loops=n)
+        if args.model and (
+            # Ask user in terminal if they are sure to run the model on the selected device
+            input(
+                "Are you sure you want to run the experiments on the selected model on this device (y/n)? "
+            ).lower()
+            == "y"
+        ):
+            experiments: pd.DataFrame = db.fetch_next_experiments(
+                n_loops=n, check_system=False
+            )
+        else:
+            experiments: pd.DataFrame = db.fetch_next_experiments(n_loops=n)
 
         # Perhaps activate test mode
         test: bool = False
         if args.test:
             test = args.test
+
+        # Check whether reason is requested
+        reason: bool = False
+        if args.reason:
+            reason = args.reason
 
         # Filter for experiments if arguments parsed
         experiments = filter_parser_args(experiments, args)
@@ -179,6 +203,7 @@ if __name__ == "__main__":
                 temperature=experiment["temperature"].iloc[0],
                 n=n_remain,
                 test=test,
+                reason=reason,
             )
 
             # Add missing columns and insert responses into database
@@ -194,7 +219,7 @@ if __name__ == "__main__":
                 }
             )
             # Save intermediate responses
-            responses_df.to_csv("intermediate_responses.csv")
+            responses_df.to_csv(f"{experiment['experiment_id'].iloc[0]}.csv")
             if test:  # If test mode, break here
                 print(f"response: {responses_df['response'].iloc[0]}")
                 print(f"reason: {responses_df['reason'].iloc[0]}")
@@ -212,7 +237,7 @@ if __name__ == "__main__":
 
             db.insert_data(table="t_responses", data=responses_df, updated_at=True)
             # Delete intermediate responses
-            os.remove("intermediate_responses.csv")
+            os.remove(f"{experiment['experiment_id'].iloc[0]}.csv")
 
             # Delete experiment from currently running
             db.delete_data(
