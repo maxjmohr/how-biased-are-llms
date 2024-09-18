@@ -7,7 +7,6 @@ CREATE TABLE t_responses (
     reason          VARCHAR(255),
     correct_run     INTEGER NOT NULL,
     updated_at      TIMESTAMP,
-    PRIMARY KEY (experiment_id, response, updated_at),
     FOREIGN KEY (bias_id) REFERENCES t_biases(bias_id),
     FOREIGN KEY (model_id) REFERENCES t_models(model_id)
 );
