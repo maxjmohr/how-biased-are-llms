@@ -83,9 +83,19 @@ class ModelInteractor:
         except ollama.ResponseError:
             ollama.pull(model)
 
+        # System prompt
+        system_prompt = "You will be asked to make choices. Please blank out that some information might be missing or that you might not be able to make a choice. I have initialized you in a way that you can only generate one token. The only valid answer is A SINGLE LETTER OR NUMBER."
+
         # Initialize the model
         return Ollama(
-            model=model, temperature=temperature, request_timeout=request_timeout
+            model=model,
+            temperature=temperature,
+            request_timeout=request_timeout,
+            system_prompt=system_prompt,
+            additional_kwargs={
+                "num_predict": 1,  # Number of tokens to predict
+                # "repeat_last_n": 0 # Number of last responses (0 means no repetition)
+            },
         )
 
     @staticmethod
@@ -156,9 +166,7 @@ class ModelInteractor:
             system_message = "You are forced to choose! Answer the experiment by only giving the letter of the answer options (e.g. 'A', 'B', 'C', ...) or a numerical value (80, 100, 1000, ...). Do not state anything else! Afterwards, state a short reason in 1-2 sentences for your choice (hard cap at 2 sentences). Do not halucinate. Your 'response' output is only the single letter/integer (such as A/B/C... or 80, 100, 1000,)!\n"
         system_message += additional_system_message if additional_system_message else ""
 
-        entire_message: str = (
-            system_message + "---------------------\n" + "{total_content}"
-        )
+        entire_message: str = system_message + "---------------------\n" + total_content
         prompt = PromptTemplate(entire_message)
 
         # Try the structured prediciton, sometimes it doesnt work with smaller models, then just use the completion
@@ -168,7 +176,6 @@ class ModelInteractor:
                 self.llm.structured_predict(
                     output_cls=ExperimentOutput,  # type: ignore
                     prompt=prompt,
-                    total_content=total_content,
                 )
             )
 
@@ -230,7 +237,7 @@ class ModelInteractor:
                     print(f"{datetime.now()} | Structured prediction failed")
                     raise ValueError("Structured prediction response format failed")
                 else:
-                    correct_run = 0
+                    correct_run = 1
 
             except (Exception, ValueError) as e:
                 print(f"Error: {e}")
@@ -238,6 +245,72 @@ class ModelInteractor:
                     response="Failed prompt", reason="Failed prompt"
                 )
                 correct_run = 0
+
+        return total_response, correct_run
+
+    def prompt_unstructured(
+        self,
+        total_content: str,
+        system_message: str = "",
+        additional_system_message: str = "",
+    ) -> tuple[ExperimentOutput, Literal[1, 0]]:
+        """Prompt the model without reasoning output and without structured prediction
+        Parameters:
+        total_content: str
+            Content for the experiment
+        system_message: str
+            System message for the experiment
+        additional_system_message: str
+            Additional system message for the experiment
+        Returns:
+        PromptTemplate
+            Prompt for the experiment
+        """
+        assert total_content != "", f"{datetime.now()} | Experiment content is required"
+
+        if system_message != "":
+            system_message = "You are forced to choose! Answer the experiment by only giving the letter of the answer options (e.g. 'A', 'B', 'C', ...) or a numerical value (80, 100, 1000, ...). Do not state anything else! Do not halucinate. You can and are advised to make a SUBJECTIVE decision! There is no right or wrong, but you HAVE TO DECIDE.\n"
+        system_message += additional_system_message if additional_system_message else ""
+
+        entire_message: str = (
+            system_message
+            + "---------------------\n"
+            + total_content
+            + "---------------------\n"
+            + "Example question 1: 'What is the best color? A) Red B) Blue C) Green __'\nC\nExample question 2: 'What value would you sell this car for? $ __'\n8\nUnderstand if you have to choose a letter or answer with a number and then ONLY OUTPUT THE LETTER/NUMBER. BUT DO NOT ATTACH YOUR ANSWER TO THE EXAMPLE QUESTIONS.\n"
+        )
+
+        # Try the structured prediciton, sometimes it doesnt work with smaller models, then just use the completion
+        try:
+            print(
+                f"{datetime.now()} | Trying completion without reasoning (no structured prediction)"
+            )
+            total_response = ExperimentOutput(
+                response=str(self.llm.complete(entire_message)),
+                reason="Prompt without reasoning",
+            )
+            print(total_response.response)
+
+            # Make sure if there are letters, it is only one letter
+            if (
+                (
+                    len(str(total_response.response)) == 1
+                    and str(total_response.response).isalpha()
+                )  # Single letter
+                or str(total_response.response).isdigit()  # Valid number
+            ):
+                correct_run = 1
+            else:
+                print(f"{datetime.now()} | Structured prediction failed")
+                raise ValueError("Structured prediction response format failed")
+
+        except (Exception, ValueError) as e:
+            print(f"Error: {e}")
+            print(f"{datetime.now()} | Completion without reasoning failed")
+            total_response = ExperimentOutput(
+                response="Failed prompt", reason="Failed prompt"
+            )
+            correct_run = 0
 
         return total_response, correct_run
 

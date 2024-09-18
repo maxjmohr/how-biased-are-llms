@@ -13,7 +13,8 @@ def run_experiment(
     temperature: float = 0.7,
     n: int = 100,
     test: bool = False,
-) -> Tuple[List[str | int], List[str], List[int]]:
+    reason: bool = False,
+) -> Tuple[List[str], List[str], List[int]]:
     """Run an experiment for a specific bias on one of the models
     Parameters:
     bias: str
@@ -30,6 +31,8 @@ def run_experiment(
         Number of loops
     test: bool
         Whether to activate test mode
+    reason: bool
+        Whether to activate reasoning mode
     """
     # Initialize the model interactor
     print(f"{datetime.now()} | Initializing model interactor for model {model}")
@@ -48,15 +51,19 @@ def run_experiment(
         )
 
     # Store responses and whether they are in the correct format
-    responses: List[str | int] = [""] * n
+    responses: List[str] = [""] * n
     reasons: List[str] = [""] * n
     correct_runs: List[int] = [0] * n
 
     # Run the experiment
     for i in trange(n, desc=f"Scenario {scenario} for bias {bias} on model {model}"):
-        total_response, correct_run = mi.prompt(total_content)
+        # Prompt the model
+        if reason:
+            total_response, correct_run = mi.prompt(total_content)
+        else:
+            total_response, correct_run = mi.prompt_unstructured(total_content)
         try:
-            responses[i] = total_response.response
+            responses[i] = str(total_response.response)
             reasons[i] = total_response.reason
             correct_runs[i] = correct_run
         except IndexError:
