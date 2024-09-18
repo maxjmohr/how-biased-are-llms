@@ -168,7 +168,11 @@ class Database:
         return pd.read_sql(sql_final, self.engine)
 
     def fetch_next_experiments(
-        self, top: int = 0, n_loops: int = 100, add_to_currentlyrunning: bool = False
+        self,
+        top: int = 0,
+        n_loops: int = 100,
+        add_to_currentlyrunning: bool = False,
+        check_system: bool = True,
     ) -> pd.DataFrame:
         """Fetch the next experiment to run
         Parameters:
@@ -184,10 +188,19 @@ class Database:
         """
         # Get the current system (Mac or Linux(cluster)))
         system: str = platform.system()
-        if (
-            system == "Darwin"
-        ):  # Only experiment runs with smaller models on Mac (Darwin)
+        if system != "Darwin" or not check_system:
             # Make sure that the experiment_id is not in t_currently_running
+            sql: str = f""" SELECT v.*
+                    FROM        v_experiments v
+                    LEFT JOIN   t_currently_running t USING (experiment_id)
+                    WHERE       v.correct_ran_loops <= {n_loops}
+                                AND t.experiment_id IS NULL
+                    ORDER BY    v.system DESC,
+                                v.scenario ASC,
+                                v.correct_ran_loops ASC
+                    {"LIMIT " + str(top) if top > 0 else ""}
+                """
+        else:  # Only experiment runs with smaller models on Mac (Darwin)
             sql: str = f""" SELECT v.*
                     FROM        v_experiments v
                     LEFT JOIN   t_currently_running t USING (experiment_id)
@@ -195,17 +208,6 @@ class Database:
                                 AND v.correct_ran_loops <= {n_loops}
                                 AND t.experiment_id IS NULL
                     ORDER BY    v.scenario ASC,
-                                v.correct_ran_loops ASC
-                    {"LIMIT " + str(top) if top > 0 else ""}
-                """
-        else:  # Prefer Linux experiment runs on cluster
-            sql: str = f""" SELECT v.*
-                    FROM        v_experiments
-                    LEFT JOIN   t_currently_running t USING (experiment_id)
-                    WHERE       v.correct_ran_loops <= {n_loops}
-                                AND t.experiment_id IS NULL
-                    ORDER BY    v.system DESC,
-                                v.scenario ASC,
                                 v.correct_ran_loops ASC
                     {"LIMIT " + str(top) if top > 0 else ""}
                 """
