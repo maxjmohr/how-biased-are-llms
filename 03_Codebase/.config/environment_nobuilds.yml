@@ -7,6 +7,7 @@ dependencies:
   - aiosignal=1.2.0
   - aiostream=0.6.2
   - annotated-types=0.6.0
+  - ansi2html=1.9.1
   - anyio=4.2.0
   - appnope=0.1.2
   - argon2-cffi=21.3.0
@@ -19,12 +20,13 @@ dependencies:
   - beautifulsoup4=4.12.3
   - blas=1.0
   - bleach=4.1.0
+  - blinker=1.6.2
   - bottleneck=1.3.7
   - brotli-python=1.0.9
   - bzip2=1.0.8
   - ca-certificates=2024.7.4
   - catalogue=2.0.10
-  - certifi=2024.7.4
+  - certifi=2024.8.30
   - cffi=1.16.0
   - cfgv=3.4.0
   - charset-normalizer=2.0.4
@@ -37,6 +39,7 @@ dependencies:
   - cymem=2.0.6
   - cyrus-sasl=2.1.28
   - cython-blis=0.7.9
+  - dash=2.14.2
   - dataclasses-json=0.6.5
   - debugpy=1.6.7
   - decorator=5.1.1
@@ -48,6 +51,8 @@ dependencies:
   - et_xmlfile=1.1.0
   - executing=0.8.3
   - filelock=3.14.0
+  - flask=3.0.3
+  - flask-compress=1.13
   - freetype=2.12.1
   - frozenlist=1.4.0
   - fsspec=2024.3.1
@@ -62,10 +67,12 @@ dependencies:
   - icu=73.1
   - identify=2.5.36
   - idna=3.7
+  - importlib-metadata=7.0.1
   - importlib_resources=6.4.0
   - ipykernel=6.28.0
   - ipython=8.25.0
   - ipywidgets=8.1.2
+  - itsdangerous=2.2.0
   - jedi=0.19.1
   - jinja2=3.1.4
   - joblib=1.4.2
@@ -89,8 +96,6 @@ dependencies:
   - jupyterlab_server=2.25.1
   - jupyterlab_widgets=3.0.10
   - krb5=1.20.1
-  - langchain=0.2.10
-  - langchain-core=0.2.22
   - langchain-text-splitters=0.2.2
   - langcodes=3.3.0
   - langsmith=0.1.93
@@ -98,7 +103,7 @@ dependencies:
   - lerc=3.0
   - libclang=14.0.6
   - libclang13=14.0.6
-  - libcxx=16.0.6
+  - libcxx=19.1.0
   - libdeflate=1.17
   - libedit=3.1.20230828
   - libffi=3.4.4
@@ -117,14 +122,11 @@ dependencies:
   - libxml2=2.10.4
   - libzlib=1.2.13
   - llama-cloud=0.0.9
-  - llama-index=0.8.42
   - llama-index-agent-openai=0.2.9
   - llama-index-cli=0.1.11
-  - llama-index-core=0.10.56
   - llama-index-embeddings-openai=0.1.11
   - llama-index-indices-managed-llama-cloud=0.2.5
   - llama-index-legacy=0.9.48
-  - llama-index-llms-openai=0.1.26
   - llama-index-multi-modal-llms-openai=0.1.8
   - llama-index-program-openai=0.1.6
   - llama-index-question-gen-openai=0.1.3
@@ -157,7 +159,6 @@ dependencies:
   - numexpr=2.8.7
   - numpy=1.26.4
   - numpy-base=1.26.4
-  - openai=1.36.1
   - openjpeg=2.4.0
   - openpyxl=3.1.2
   - openssl=3.3.1
@@ -173,6 +174,7 @@ dependencies:
   - pip=24.0
   - pkgutil-resolve-name=1.3.10
   - platformdirs=4.2.1
+  - plotly=5.24.1
   - ply=3.11
   - pre-commit=3.7.0
   - preshed=3.0.6
@@ -208,11 +210,12 @@ dependencies:
   - regex=2023.10.3
   - replicate=0.29.0
   - requests=2.32.2
+  - retrying=1.3.3
   - rfc3339-validator=0.1.4
   - rfc3986-validator=0.1.1
   - rich=13.7.1
   - rpds-py=0.10.6
-  - ruff=0.6.1
+  - ruff=0.6.5
   - send2trash=1.8.2
   - setuptools=69.5.1
   - shellingham=1.5.0
@@ -255,6 +258,7 @@ dependencies:
   - weasel=0.3.4
   - webencodings=0.5.1
   - websocket-client=1.8.0
+  - werkzeug=3.0.3
   - wheel=0.43.0
   - widgetsnbextension=4.0.10
   - wrapt=1.14.1
@@ -262,14 +266,23 @@ dependencies:
   - yaml=0.2.5
   - yarl=1.9.3
   - zeromq=4.3.5
+  - zipp=3.17.0
   - zlib=1.2.13
   - zstd=1.5.5
   - pip:
       - asn1crypto==1.5.1
       - httpx==0.27.0
+      - jiter==0.5.0
+      - langchain==0.2.14
+      - langchain-community==0.2.12
+      - langchain-core==0.2.34
+      - llama-index==0.10.68
+      - llama-index-core==0.10.68.post1
       - llama-index-llms-ollama==0.1.4
+      - llama-index-llms-openai==0.1.31
       - llama-index-llms-replicate==0.1.3
       - ollama==0.2.1
+      - openai==1.42.0
       - pg8000==1.31.2
       - psycopg2-binary==2.9.9
       - scramp==1.4.5
