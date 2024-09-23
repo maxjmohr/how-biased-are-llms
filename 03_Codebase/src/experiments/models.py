@@ -93,7 +93,7 @@ class ModelInteractor:
             request_timeout=request_timeout,
             system_prompt=system_prompt,
             additional_kwargs={
-                "num_predict": 1,  # Number of tokens to predict
+                "num_predict": 2,  # Number of tokens to predict
                 # "repeat_last_n": 0 # Number of last responses (0 means no repetition)
             },
         )
@@ -200,7 +200,7 @@ class ModelInteractor:
 
                 # Especially the response matters
                 if match_response:
-                    response = match_response.group(1)
+                    response = match_response.group(1).strip()
                     # Make sure if there are letters, it is only one letter
                     if len(response) == 1 and response.isalpha():
                         reason = match_reason.group(1) if match_reason else ""
@@ -225,7 +225,9 @@ class ModelInteractor:
                     + total_content
                 )
                 total_response = ExperimentOutput(
-                    response=str(self.llm.complete(entire_message_onlyresponse)),
+                    response=str(
+                        self.llm.complete(entire_message_onlyresponse)
+                    ).strip(),
                     reason="Prompt without reasoning",
                 )
 
@@ -286,10 +288,10 @@ class ModelInteractor:
                 f"{datetime.now()} | Trying completion without reasoning (no structured prediction)"
             )
             total_response = ExperimentOutput(
-                response=str(self.llm.complete(entire_message)),
+                response=str(self.llm.complete(entire_message)).strip(),
                 reason="Prompt without reasoning",
             )
-            print(total_response.response)
+            print(f"Initial response: '{total_response.response}'")
 
             # Make sure if there are letters, it is only one letter
             if (
@@ -301,8 +303,24 @@ class ModelInteractor:
             ):
                 correct_run = 1
             else:
-                print(f"{datetime.now()} | Structured prediction failed")
-                raise ValueError("Structured prediction response format failed")
+                print(
+                    f"{datetime.now()} | Structured prediction failed, trying extraction with LLM extractor"
+                )
+                total_response.response = self.response_extractor(
+                    str(total_response.response)
+                )
+                print(f"Extracted response: '{total_response.response}'")
+                if (
+                    (
+                        len(str(total_response.response)) == 1
+                        and str(total_response.response).isalpha()
+                    )  # Single letter
+                    or str(total_response.response).isdigit()  # Valid number
+                ):
+                    correct_run = 1
+                else:
+                    print(f"{datetime.now()} | Structured prediction failed")
+                    raise ValueError("Structured prediction response format failed")
 
         except (Exception, ValueError) as e:
             print(f"Error: {e}")
@@ -311,8 +329,31 @@ class ModelInteractor:
                 response="Failed prompt", reason="Failed prompt"
             )
             correct_run = 0
+        print(f"Final response: '{total_response.response}'")
 
         return total_response, correct_run
+
+    @staticmethod
+    def response_extractor(response: str, model: str = "llama3.1") -> str:
+        "Leverage a LLM to extract the letter/number of a model response)"
+        system_prompt = "You will be given a model response to an experimental question. There are two response types: either a choice (A, B, C, ...) or an integer (0, 4, 26, ...). Some models however add some symbols or other letters to their answer. Extract the letter or integer from the response and only output that. Do not halucinate."
+        ollama = Ollama(
+            model=model,
+            system_prompt=system_prompt,
+            additional_kwargs={
+                "num_predict": 1,  # Number of tokens to predict
+                # "repeat_last_n": 0 # Number of last responses (0 means no repetition)
+            },
+        )
+        entire_message = (
+            system_prompt
+            + "\n"
+            + "This was the model's response: "
+            + response
+            + "\nOnly output the letter or number of the response. Examples: 'A', 'B', 'C', '1', '2', '3', ... DO NOT OUTPUT ANYTHING ELSE BESIDES THE ONE LETTER OR INTEGER."
+        )
+        extracted_response = str(ollama.complete(entire_message)).strip()
+        return extracted_response
 
 
 """

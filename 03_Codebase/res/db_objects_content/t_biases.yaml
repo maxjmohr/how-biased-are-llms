@@ -101,7 +101,7 @@
   bias: anchoring
   experiment_type: multi-scenario
   scenario: 0_normal
-  content: Do you think the portion of African countries in the United Nations is higher or lower than portion_value %? Now that you have thought about that, what would you estimate the actual exact portion to be? Answer the percentage between 0 and 100. % __
+  content: Do you think the portion of African countries in the United Nations is higher or lower than portion_value %? Now that you have thought about that, what would you estimate the actual exact portion to be? Answer the percentage between 0 and 100. % __ (Please only answer the percentage as an integer without the % sign.)
   variables: '{"portion_value": 10}'
   response_type: numerical
   target_response: 25
@@ -112,7 +112,7 @@
   bias: anchoring
   experiment_type: multi-scenario
   scenario: 0_normal
-  content: Do you think the portion of African countries in the United Nations is higher or lower than portion_value %? Now that you have thought about that, what would you estimate the actual exact portion to be? Answer the percentage between 0 and 100. % __
+  content: Do you think the portion of African countries in the United Nations is higher or lower than portion_value %? Now that you have thought about that, what would you estimate the actual exact portion to be? Answer the percentage between 0 and 100. % __ (Please only answer the percentage as an integer without the % sign.)
   variables: '{"portion_value": 65}'
   response_type: numerical
   target_response: 45
