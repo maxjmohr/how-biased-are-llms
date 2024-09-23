@@ -235,7 +235,9 @@ if __name__ == "__main__":
                 )
                 break
 
-            db.insert_data(table="t_responses", data=responses_df, updated_at=True)
+            if not responses_df.empty:
+                db.insert_data(table="t_responses", data=responses_df, updated_at=True)
+
             # Delete intermediate responses
             os.remove(f"{experiment['experiment_id'].iloc[0]}.csv")
 
