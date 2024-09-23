@@ -2,7 +2,7 @@
   bias: endowment effect
   experiment_type: multi-scenario
   scenario: 0_normal
-  content: I hand you a mug. You now own the mug. You can feel it and look at it in detail from all angles. The mug was originally priced at $ price_value but the value of the mug is different for different individuals. What price would you sell it for? $ __
+  content: I hand you a mug. You now own the mug. You can feel it and look at it in detail from all angles. The mug was originally priced at $ price_value but the value of the mug is different for different individuals. What price would you sell it for? Answer your price between 0 and 10. $ __
   variables: '{"price_value": 4}'
   response_type: numerical
   target_response: 
@@ -13,7 +13,7 @@
   bias: endowment effect
   experiment_type: multi-scenario
   scenario: 0_normal
-  content: I show you a mug from a distance. You can see it but you cannot touch it. The mug was originally priced at $ price_value but the value of the mug is different for different individuals. What price would you buy it for? $ __
+  content: I show you a mug from a distance. You can see it but you cannot touch it. The mug was originally priced at $ price_value but the value of the mug is different for different individuals. What price would you buy it for? Answer your price between 0 and 10. $ __
   variables: '{"price_value": 4}'
   response_type: numerical
   target_response: 
@@ -57,7 +57,7 @@
   bias: category size bias
   experiment_type: multi-scenario
   scenario: 0_normal
-  content: Imagine a lottery containing total_balls_value. Balls 1 to upper_black_balls_value are black, lower_gray_balls_value to upper_gray_balls_value are gray, and lower_white_balls_value to upper_white_balls_value are white. If one ball is drawn from the urn, what is the probability that it will be ball target_ball? % __
+  content: Imagine a lottery containing total_balls_value. Balls 1 to upper_black_balls_value are black, lower_gray_balls_value to upper_gray_balls_value are gray, and lower_white_balls_value to upper_white_balls_value are white. If one ball is drawn from the urn, what is the probability that it will be ball target_ball? Answer the percentage between 0 and 100. % __
   variables: '{"total_balls_value": 15, "upper_black_balls_value": 5, "lower_gray_balls_value": 6, "upper_gray_balls_value": 10, "lower_white_balls_value": 11, "upper_white_balls_value": 15, "target_ball": 8}'
   response_type: numerical
   target_response:
@@ -68,7 +68,7 @@
   bias: category size bias
   experiment_type: multi-scenario
   scenario: 0_normal
-  content: Imagine a lottery containing total_balls_value. Balls 1 to upper_black_balls_value are black, lower_gray_balls_value to total_balls_value are gray, and lower_white_balls_value to total_balls_value are white. If one ball is drawn from the urn, what is the probability that it will be ball target_ball? % __
+  content: Imagine a lottery containing total_balls_value. Balls 1 to upper_black_balls_value are black, lower_gray_balls_value to total_balls_value are gray, and lower_white_balls_value to total_balls_value are white. If one ball is drawn from the urn, what is the probability that it will be ball target_ball? Answer the percentage between 0 and 100. % __
   variables: '{"total_balls_value": 15, "upper_black_balls_value": 2, "lower_gray_balls_value": 3, "upper_gray_balls_value": 13, "lower_white_balls_value": 14, "upper_white_balls_value": 15, "target_ball": 8}'
   response_type: numerical
   target_response:
@@ -79,7 +79,7 @@
   bias: gambler's fallacy
   experiment_type: multi-scenario
   scenario: 0_normal
-  content: A fair coin has been flipped flip_times_value times and has come up heads each time. What is the probability that the next flip will be heads? % __
+  content: A fair coin has been flipped flip_times_value times and has come up heads each time. What is the probability that the next flip will be heads? Answer the percentage between 0 and 100. % __
   variables: '{"flip_times_value": 6}'
   response_type: numerical
   target_response: 50
@@ -90,7 +90,7 @@
   bias: gambler's fallacy
   experiment_type: multi-scenario
   scenario: 0_normal
-  content: A fair coin has been flipped flip_times_value times and has come up heads half the time and tails half the time. What is the probability that the next flip will be heads? % __
+  content: A fair coin has been flipped flip_times_value times and has come up heads half the time and tails half the time. What is the probability that the next flip will be heads? Answer the percentage between 0 and 100. % __
   variables: '{"flip_times_value": 6}'
   response_type: numerical
   target_response: 50
@@ -101,7 +101,7 @@
   bias: anchoring
   experiment_type: multi-scenario
   scenario: 0_normal
-  content: Do you think the portion of African countries in the United Nations is higher or lower than portion_value %? Now that you have thought about that, what would you estimate the actual exact portion to be? % __
+  content: Do you think the portion of African countries in the United Nations is higher or lower than portion_value %? Now that you have thought about that, what would you estimate the actual exact portion to be? Answer the percentage between 0 and 100. % __
   variables: '{"portion_value": 10}'
   response_type: numerical
   target_response: 25
@@ -112,7 +112,7 @@
   bias: anchoring
   experiment_type: multi-scenario
   scenario: 0_normal
-  content: Do you think the portion of African countries in the United Nations is higher or lower than portion_value %? Now that you have thought about that, what would you estimate the actual exact portion to be? % __
+  content: Do you think the portion of African countries in the United Nations is higher or lower than portion_value %? Now that you have thought about that, what would you estimate the actual exact portion to be? Answer the percentage between 0 and 100. % __
   variables: '{"portion_value": 65}'
   response_type: numerical
   target_response: 45
