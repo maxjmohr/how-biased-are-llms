@@ -1,3 +1,4 @@
+from datetime import datetime
 import getpass
 import os
 import pandas as pd
@@ -6,7 +7,7 @@ import psycopg2
 from psycopg2.extensions import connection, cursor
 from sqlalchemy import create_engine
 from sqlalchemy.engine import Engine
-from typing import List, Literal, Tuple
+from typing import Any, Dict, List, Literal, Tuple
 import yaml
 
 
@@ -431,6 +432,46 @@ class Database:
                 object
             )
         )
+
+    def update_master_data(
+        self,
+        table: str,
+        columns_to_update: List[str],
+        columns_to_filter: Dict[str, List[Any]],
+        updated_at: bool = True,
+    ) -> None:
+        "Function to quickly update certain columns in the master data tables"
+        # Get master data from yaml file
+        print(f"{datetime.now()} | Getting master data from yaml file.")
+        path: str = f"../../res/db_objects_content/{table}.yaml"
+        total_path: str = os.path.join(self.current_script_directory, path)
+        if os.path.exists(os.path.join(total_path)):
+            # Load the yaml file and save as df
+            with open(total_path, "r") as f:
+                table_content: dict = yaml.safe_load(f)
+            data: pd.DataFrame = pd.DataFrame(table_content)
+        else:
+            raise FileNotFoundError("No yaml file found for the table.")
+
+        # Add current date and time to the data
+        if updated_at:
+            data["updated_at"] = pd.to_datetime("today")
+            columns_to_update.append("updated_at")
+
+        # Filter for the data that needs to be updated
+        for col, values in columns_to_filter.items():
+            data = data.loc[data[col].isin(values)]
+
+        # Update the data
+        print(f"{datetime.now()} | Updating the data in the database.")
+        for _, row in data.iterrows():
+            sql = f"""
+            UPDATE {table}
+            SET {", ".join([f"{col} = '{row[col]}'" for col in columns_to_update])}
+            WHERE {", ".join([f"{col} = '{row[col]}'" for col in columns_to_filter.keys()])}
+            ;
+            """
+            self.execute_sql(sql=sql, commit=True)
 
 
 """
