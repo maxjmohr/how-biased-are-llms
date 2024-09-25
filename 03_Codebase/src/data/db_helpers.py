@@ -473,6 +473,34 @@ class Database:
             """
             self.execute_sql(sql=sql, commit=True)
 
+    def cleanup_responses(self) -> None:
+        "Cleanup the responses table from wrong formatted answers"
+        # Delete all responses that are not A, B, C, D or a number from 0 to 100
+        # First select the data and export it for inspection
+        sql = r"""
+            FROM t_responses
+            WHERE response NOT IN ('A', 'B', 'C', 'D', 'Failed prompt')
+            AND response NOT SIMILAR TO '([0-9]{1,3}|1000)(\.[0-9]{1,2})?'
+            ;
+        """
+
+        data: pd.DataFrame = self.fetch_data(sql=f"SELECT * {sql}")
+        data.to_excel("responses_to_check.xlsx", index=False)  # Export as excel
+        count_prior: int = len(data)
+
+        if (
+            input(
+                "Please inspect the data in responses_to_check.xlsx before continuing. Type 'y' to continue and 'n' to abort: "
+            )
+            == "y"
+        ):
+            self.delete_data(sql=f"DELETE {sql}", commit=True)
+            data = self.fetch_data(sql=f"SELECT * {sql}")
+            count_after: int = len(data)
+            print(
+                f"{datetime.now()} | Deleted {count_prior - count_after} unusable responses from the responses table."
+            )
+
 
 """
 if __name__ == "__main__":
