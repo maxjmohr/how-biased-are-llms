@@ -1,5 +1,5 @@
 from datetime import datetime
-from experiments.models import ModelInteractor
+from src.experiments.models import ModelInteractor
 from tqdm import trange
 from typing import List, Tuple
 
