@@ -1,15 +1,15 @@
 import argparse
-from data.db_helpers import Database
-from data.manipulations import (
+from datetime import datetime
+import pandas as pd
+import platform
+import os
+from src.data.db_helpers import Database
+from src.data.manipulations import (
     calc_remaining_loops,
     combine_content_variables,
     filter_parser_args,
 )
-from datetime import datetime
-from experiments.run import run_experiment
-import pandas as pd
-import platform
-import os
+from src.experiments.run import run_experiment
 from typing import List
 
 if __name__ == "__main__":
