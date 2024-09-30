@@ -475,7 +475,7 @@ class Database:
 
     def cleanup_responses(self) -> None:
         "Cleanup the responses table from wrong formatted answers"
-        # Delete all responses that are not A, B, C, D or a number from 0 to 100
+        # Delete all responses that are not A, B, C, D or a number from 0 to 1000
         # First select the data and export it for inspection
         sql = r"""
             FROM t_responses
@@ -502,15 +502,107 @@ class Database:
             )
 
 
-"""
 if __name__ == "__main__":
+    import inquirer
     import os
     import sys
+
     # Add total codebase
-    parent_dir: str = os.path.dirname(os.path.realpath(__file__+"../../"))
+    parent_dir: str = os.path.dirname(os.path.realpath(__file__ + "../../"))
     sys.path.append(parent_dir)
+
+    # Connect to the database
     db = Database()
     db.connect()
-    
+
+    # Get all function names from the database class
+    functions: List[str] = [
+        func
+        for func in dir(db)
+        if callable(getattr(db, func)) and not func.startswith("__")
+    ]
+    functions.remove("connect")
+    functions.remove("disconnect")
+    functions.sort()
+
+    # Ask the user which function to run
+    questions: List = [
+        inquirer.List(
+            name="function",
+            message="Which function do you want to run?",
+            choices=functions,
+        )
+    ]
+    answers: dict | None = inquirer.prompt(questions)
+
+    additional_answers: dict | None = {}  # Initialize additional answers
+    if answers is None:
+        print("No function selected.")
+        sys.exit()
+
+    # If function is create_object, get all object names in res/db_objects
+    if (answers["function"] == "create_object") or (
+        answers["function"] == "drop_object"
+    ):
+        # Get all object names
+        objects: List[str] = [
+            obj.replace(".sql", "")
+            for obj in os.listdir(os.path.join(parent_dir, "../res/db_objects"))
+        ]
+        objects.sort()
+
+        questions: List = [
+            inquirer.List(
+                name="object",
+                message=f"Which object do you want to {answers['function'].replace('_object', '')}?",
+                choices=objects,
+            )
+        ]
+        additional_answers = inquirer.prompt(questions)
+
+    if answers["function"] == "fetch_data":
+        # Get all object names
+        objects: List[str] = [
+            obj.replace(".sql", "")
+            for obj in os.listdir(os.path.join(parent_dir, "../res/db_objects"))
+        ]
+        objects.sort()
+
+        questions: List = [
+            inquirer.List(
+                name="total_or_sql",
+                message="Do you want to select all the data of an object or write a specific SQL query?",
+                choices=["Select total object", "Write SQL query"],
+            )
+        ]
+        total_or_sql: dict | None = inquirer.prompt(questions)
+
+        if total_or_sql is None:
+            print("No choice made.")
+            sys.exit()
+        elif total_or_sql["total_or_sql"] == "Select total object":
+            questions: List = [
+                inquirer.List(
+                    name="total_object",
+                    message="Which object do you want to select all the data from?",
+                    choices=objects,
+                )
+            ]
+            additional_answers = inquirer.prompt(questions)
+        elif total_or_sql["total_or_sql"] == "Write SQL query":
+            questions: List = [
+                inquirer.Editor(
+                    "sql", message="Provide the sql query to fetch the data"
+                )
+            ]
+            additional_answers = inquirer.prompt(questions)
+
+    # Run the function
+    print(getattr(db, answers["function"])(**additional_answers))
+
+    # db.update_master_data(table="t_biases", columns_to_update=["content"], columns_to_filter={"bias_id": [601, 602]})
+    # sql = "DELETE FROM t_responses WHERE bias_id in (601, 602)"
+    # db.delete_data(sql=sql, commit=True)
+    # db.delete_data(total_object="t_currently_running")
+    # db.cleanup_responses()
     db.disconnect()
-"""
