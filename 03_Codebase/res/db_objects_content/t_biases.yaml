@@ -38,11 +38,22 @@
   content: Assume yourself richer by $ richer_value than you are today. You are offered a choice between A. A sure loss of $ sure_loss_value, or B. A 50% chance to lose $ loss_value and a 50% chance to lose $ 0. Choose between A and B. __
   variables: '{"richer_value": 500, "sure_loss_value": 100, "loss_value": 200}'
   response_type: choice
-  target_response: A
+  target_response: B
   part: 2
   parts_total: 2
-
+  
 - bias_id: 301
+  bias: sunk cost fallacy
+  experiment_type: single-scenario
+  scenario: 0_normal
+  content: Assume that you have spent $ michigan_value on a ticket for a weekend ski trip to Michigan. Several weeks later you buy a $ wisconsin_value ticket for a weekend ski trip to Wisconsin. You think you will enjoy the Wisconsin ski trip more than the Michigan ski trip. As you are putting your just-purchased Wisconsin ski trip ticket in your wallet, you notice that the Michigan ski trip and the Wisconsin ski trip are for the same weekend! It’s too late to sell either ticket, and you cannot return either one. You must use one ticket and not the other. Which ski trip will you go on? A) $ michigan_value ski trip to Michigan B) $ wisconsin_value ski trip to Wisconsin. __
+  variables: '{"michigan_value": 50, "wisconsin_value": 50}'
+  response_type: choice
+  target_response: A
+  part: 1
+  parts_total: 2
+
+- bias_id: 302
   bias: sunk cost fallacy
   experiment_type: single-scenario
   scenario: 0_normal
@@ -50,8 +61,8 @@
   variables: '{"michigan_value": 100, "wisconsin_value": 50}'
   response_type: choice
   target_response: A
-  part: 1
-  parts_total: 1
+  part: 2
+  parts_total: 2
 
 - bias_id: 401
   bias: category size bias
