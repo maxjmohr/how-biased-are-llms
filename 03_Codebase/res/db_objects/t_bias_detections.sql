@@ -1,11 +1,12 @@
 CREATE TABLE t_bias_detections (
-    bias            VARCHAR(255) NOT NULL,
-    scenario        VARCHAR(255) NOT NULL,
-    model           VARCHAR(255) NOT NULL,
-    temperature     VARCHAR(255) NOT NULL,
-    model_id        INTEGER NOT NULL,
-    bias_detected   NUMERIC NOT NULL,
-    updated_at      TIMESTAMP,
+    bias                VARCHAR(255) NOT NULL,
+    scenario            VARCHAR(255) NOT NULL,
+    model               VARCHAR(255) NOT NULL,
+    temperature         VARCHAR(255) NOT NULL,
+    model_id            INTEGER NOT NULL,
+    bias_detected       NUMERIC NOT NULL,
+    bias_detected_mod   NUMERIC,
+    updated_at          TIMESTAMP,
     FOREIGN KEY (model_id) REFERENCES t_models(model_id)
 );
 
