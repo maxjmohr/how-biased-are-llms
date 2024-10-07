@@ -479,8 +479,9 @@ class Database:
         # First select the data and export it for inspection
         sql = r"""
             FROM t_responses
-            WHERE response NOT IN ('A', 'B', 'C', 'D', 'Failed prompt')
-            AND response NOT SIMILAR TO '([0-9]{1,3}|1000)(\.[0-9]{1,2})?'
+            WHERE
+                (response_type = 'choice' AND response NOT IN ('A', 'B', 'C', 'D', 'Failed prompt'))
+                OR (response_type = 'numerical' AND response NOT SIMILAR TO '([0-9]{1,3}|1000)(\.[0-9]{1,2})?' AND response NOT IN ('Failed prompt'))
             ;
         """
 
