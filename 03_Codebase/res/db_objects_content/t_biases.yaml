@@ -87,7 +87,7 @@
   parts_total: 2
   
 - bias_id: 501
-  bias: gambler's fallacy
+  bias: gamblers fallacy
   experiment_type: multi-scenario
   scenario: 0_normal
   content: A fair coin has been flipped flip_times_value times and has come up heads each time. What is the probability that the next flip will be heads? Answer the percentage between 0 and 100. % __
@@ -98,7 +98,7 @@
   parts_total: 2
   
 - bias_id: 502
-  bias: gambler's fallacy
+  bias: gamblers fallacy
   experiment_type: multi-scenario
   scenario: 0_normal
   content: A fair coin has been flipped flip_times_value times and has come up heads half the time and tails half the time. What is the probability that the next flip will be heads? Answer the percentage between 0 and 100. % __

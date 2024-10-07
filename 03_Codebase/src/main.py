@@ -29,7 +29,7 @@ if __name__ == "__main__":
             "category size bias",
             "endowment effect",
             "framing effect",
-            "gambler's fallacy",
+            "gamblers fallacy",
             "loss aversion",
             "sunk cost fallacy",
             "transaction utility",
