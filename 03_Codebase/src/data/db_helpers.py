@@ -390,45 +390,37 @@ class Database:
         data["updated_at"] = pd.to_datetime("today")
         update_cols.append("updated_at")
 
-        # Get the columns to update the data
-        update_cols_str: str = ", ".join(
-            [f"{col} = '{data[col]}'" for col in update_cols]
-        )
-
-        # Get the columns to filter the data
-        # The where columns are all columns in data without the update_cols
-        where_cols: List[str] = [col for col in data.columns if col not in update_cols]
-        where_cols_str: str = ", ".join(
-            [f"{col} = '{data[col]}'" for col in where_cols]
-        )
-
         # Update row for row
-        for i in range(len(data)):
-            # Try to update for rows that exist
+        for _, row in data.iterrows():
+            # Try to insert rows, if they exist, update them
             try:
+                self.insert_data(table=object, data=row.to_frame().T, updated_at=False)
+            except Exception as e:
+                print(f"Error: {e}")
+                print("The primary key already exists, the data will be updated.")
+
+                # Get the columns to update the data
+                update_cols_str: str = ", ".join(
+                    [f"{col} = '{row[col]}'" for col in update_cols]
+                )
+
+                # Get the columns to filter the data
+                # The where columns are all columns in data without the update_cols
+                where_cols: List[str] = [
+                    col for col in data.columns if col not in update_cols
+                ]
+                where_cols_str: str = "AND ".join(
+                    [f"{col} = '{row[col]}'" for col in where_cols]
+                )
+
                 sql: str = (
                     f"UPDATE {object} SET {update_cols_str} WHERE {where_cols_str};"
                 )
                 self.execute_sql(sql=sql, commit=commit)
-                print(
-                    "\033[1m\033[92mSuccessfully updated data in table {}.\033[0m".format(
-                        object
-                    )
-                )
-            # If the line does not exist, insert it
-            except Exception as e:
-                print(f"Error: {e}")
-                print("The row does not exist yet, it will be inserted.")
-                sql: str = f"""
-                    INSERT INTO {object} ({", ".join(data.columns)})
-                    VALUES ({", ".join([f"'{data[col]}'" for col in data.columns])})
-                    ;
-                """
-                self.execute_sql(sql=sql, commit=commit)
 
         # Done
         print(
-            "\033[1m\033[92mSuccessfully updated data in table {}.\033[0m".format(
+            "\033[1m\033[92mSuccessfully inserted/updated data in table {}.\033[0m".format(
                 object
             )
         )
