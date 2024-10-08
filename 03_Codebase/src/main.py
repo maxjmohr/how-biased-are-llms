@@ -166,7 +166,7 @@ if __name__ == "__main__":
             currently_running: List[int] = list(
                 db.fetch_data(total_object="t_currently_running")["experiment_id"]
             )
-            if experiment["experiment_id"] in currently_running:
+            if experiment["experiment_id"].iloc[0] in currently_running:
                 # Remove experiment from df
                 experiments = experiments.iloc[1:]
                 continue
