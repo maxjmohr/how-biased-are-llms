@@ -465,6 +465,30 @@ class Database:
             """
             self.execute_sql(sql=sql, commit=True)
 
+    def add_scenario_1_persona(self) -> None:
+        "Use the bias master data of scenario 0_normal to generate 1_persona"
+        "The only changes are bias_id=bias_id+10 and scenario=1_persona"
+        sql: str = """
+            INSERT INTO t_biases (bias_id, bias, experiment_type, scenario, content, variables, response_type, target_response, part, parts_total)
+            SELECT 
+                bias_id + 10 AS bias_id, 
+                bias, 
+                experiment_type, 
+                '1_persona' AS scenario, 
+                content, 
+                variables, 
+                response_type, 
+                target_response, 
+                part, 
+                parts_total
+            FROM 
+                t_biases
+            WHERE
+                scenario = '0_normal';
+        """
+        self.execute_sql(sql=sql, commit=True)
+        print("\033[1m\033[92mSuccessfully added scenario 1_persona.\033[0m")
+
     def cleanup_responses(self) -> None:
         "Cleanup the responses table from wrong formatted answers"
         # Delete all responses that are not A, B, C, D or a number from 0 to 1000

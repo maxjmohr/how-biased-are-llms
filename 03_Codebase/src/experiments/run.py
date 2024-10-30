@@ -1,4 +1,5 @@
 from datetime import datetime
+import os
 from src.experiments.models import ModelInteractor
 from tqdm import trange
 from typing import List, Tuple
@@ -34,9 +35,25 @@ def run_experiment(
     reason: bool
         Whether to activate reasoning mode
     """
+    # Add additional message to prompt (e.g. persona)
+    if scenario == "1_persona":
+        # Read txt file
+        current_script_directory: str = os.path.dirname(os.path.realpath(__file__))
+        path: str = "../../res/prompt_additions/persona.txt"
+        total_path: str = os.path.join(current_script_directory, path)
+        with open(total_path, "r") as f:
+            additional_system_message: str = f.read()
+    else:
+        additional_system_message: str = ""
+
     # Initialize the model interactor
     print(f"{datetime.now()} | Initializing model interactor for model {model}")
-    mi = ModelInteractor(model=model, local=local, temperature=temperature)
+    mi = ModelInteractor(
+        model=model,
+        local=local,
+        temperature=temperature,
+        persona=additional_system_message,
+    )
     print(f"{datetime.now()} | Initialized model interactor for model {model}")
 
     # Check if test mode is activated
@@ -59,9 +76,13 @@ def run_experiment(
     for i in trange(n, desc=f"Scenario {scenario} for bias {bias} on model {model}"):
         # Prompt the model
         if reason:
-            total_response, correct_run = mi.prompt(total_content)
+            total_response, correct_run = mi.prompt(
+                total_content, additional_system_message=additional_system_message
+            )
         else:
-            total_response, correct_run = mi.prompt_unstructured(total_content)
+            total_response, correct_run = mi.prompt_unstructured(
+                total_content, additional_system_message=additional_system_message
+            )
         try:
             responses[i] = str(total_response.response)
             reasons[i] = total_response.reason
