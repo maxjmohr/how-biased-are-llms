@@ -26,6 +26,7 @@ class ModelInteractor:
         local: bool = False,
         temperature: float = 0.7,
         request_timeout: int = 600,
+        persona: str = "",
     ) -> None:
         """Initialize the model class
         Parameters:
@@ -50,20 +51,35 @@ class ModelInteractor:
             "phi3.5",
             "phi3:medium",
         ], f"{datetime.now()} | Model is required"
+
+        # Create system prompt
+        system_prompt: str = "You will be asked to make choices. Please blank out that some information might be missing or that you might not be able to make a choice. I have initialized you in a way that you can only generate one token. The only valid answer is A SINGLE LETTER OR NUMBER."
+        system_prompt += f" {persona}" if persona != "" else ""
+
+        # Initialize the model
         if local:
             self.llm = self.ollama(
-                model=model, temperature=temperature, request_timeout=request_timeout
+                model=model,
+                temperature=temperature,
+                request_timeout=request_timeout,
+                system_prompt=system_prompt,
             )
         elif model not in ["gpt-4o-mini", "gpt-4o"]:
             self.llm = self.replicate(model=model)
         elif model in ["gpt-4o-mini", "gpt-4o"]:
             self.llm = self.openai(
-                model=model, api_key=api_key, temperature=temperature
+                model=model,
+                api_key=api_key,
+                temperature=temperature,
+                system_prompt=system_prompt,
             )
 
     @staticmethod
     def ollama(
-        model: str = "", temperature: float = 0.7, request_timeout: int = 600
+        model: str = "",
+        temperature: float = 0.7,
+        request_timeout: int = 600,
+        system_prompt: str = "",
     ) -> Ollama:
         """Initialize the Ollama class
         Parameters:
@@ -73,6 +89,8 @@ class ModelInteractor:
             Temperature for sampling
         request_timeout: int
             Timeout for the request in seconds
+        system_prompt: str
+            System prompt to use
         Returns:
         Ollama
             Model class
@@ -82,9 +100,6 @@ class ModelInteractor:
             ollama.show(model)
         except ollama.ResponseError:
             ollama.pull(model)
-
-        # System prompt
-        system_prompt = "You will be asked to make choices. Please blank out that some information might be missing or that you might not be able to make a choice. I have initialized you in a way that you can only generate one token. The only valid answer is A SINGLE LETTER OR NUMBER."
 
         # Initialize the model
         return Ollama(
@@ -99,7 +114,12 @@ class ModelInteractor:
         )
 
     @staticmethod
-    def openai(model: str = "", api_key: str = "", temperature: float = 0.7) -> OpenAI:
+    def openai(
+        model: str = "",
+        api_key: str = "",
+        temperature: float = 0.7,
+        system_prompt: str = "",
+    ) -> OpenAI:
         """Initialize the OpenAI class
         Parameters:
         model: str
@@ -108,6 +128,8 @@ class ModelInteractor:
             API key to access OpenAI API
         temperature: float
             Temperature for sampling
+        system_prompt: str
+            System prompt to use
         Returns:
         OpenAI
             OpenAI class
@@ -116,7 +138,12 @@ class ModelInteractor:
             api_key = str(os.getenv("OPENAI_API_KEY"))
         assert api_key != "", f"{datetime.now()} | API key is required"
 
-        return OpenAI(model=model, api_key=api_key, temperature=temperature)
+        return OpenAI(
+            model=model,
+            api_key=api_key,
+            temperature=temperature,
+            system_prompt=system_prompt,
+        )
 
     @staticmethod
     def replicate(model: str = "") -> Replicate:
@@ -162,11 +189,15 @@ class ModelInteractor:
         """
         assert total_content != "", f"{datetime.now()} | Experiment content is required"
 
-        if system_message != "":
+        if system_message == "":
             system_message = "You are forced to choose! Answer the experiment by only giving the letter of the answer options (e.g. 'A', 'B', 'C', ...) or a numerical value (80, 100, 1000, ...). Do not state anything else! Afterwards, state a short reason in 1-2 sentences for your choice (hard cap at 2 sentences). Do not halucinate. Your 'response' output is only the single letter/integer (such as A/B/C... or 80, 100, 1000,)!\n"
+        # OVERWRITE SYSTEM_MESSAGE AS IT WAS FIRST IMPLEMENTED FALSELY, SO THERE WAS NO MESSAGE
+        system_message = ""
         system_message += additional_system_message if additional_system_message else ""
 
-        entire_message: str = system_message + "---------------------\n" + total_content
+        entire_message: str = (
+            system_message + "\n---------------------\n" + total_content
+        )
         prompt = PromptTemplate(entire_message)
 
         # Try the structured prediciton, sometimes it doesnt work with smaller models, then just use the completion
@@ -221,7 +252,7 @@ class ModelInteractor:
 
                 entire_message_onlyresponse: str = (
                     system_message_onlyresponse
-                    + "---------------------\n"
+                    + "\n---------------------\n"
                     + total_content
                 )
                 total_response = ExperimentOutput(
@@ -270,17 +301,20 @@ class ModelInteractor:
         """
         assert total_content != "", f"{datetime.now()} | Experiment content is required"
 
-        if system_message != "":
+        if system_message == "":
             system_message = "You are forced to choose! Answer the experiment by only giving the letter of the answer options (e.g. 'A', 'B', 'C', ...) or a numerical value (80, 100, 1000, ...). Do not state anything else! Do not halucinate. You can and are advised to make a SUBJECTIVE decision! There is no right or wrong, but you HAVE TO DECIDE.\n"
+        # OVERWRITE SYSTEM_MESSAGE AS IT WAS FIRST IMPLEMENTED FALSELY, SO THERE WAS NO MESSAGE
+        system_message = ""
         system_message += additional_system_message if additional_system_message else ""
 
         entire_message: str = (
             system_message
-            + "---------------------\n"
+            + "\n---------------------\n"
             + total_content
-            + "---------------------\n"
+            + "\n---------------------\n"
             + "Example question 1: 'What is the best color? A) Red B) Blue C) Green __'\nC\nExample question 2: 'What value would you sell this car for? $ __'\n8\nUnderstand if you have to choose a letter or answer with a number and then ONLY OUTPUT THE LETTER/NUMBER. BUT DO NOT ATTACH YOUR ANSWER TO THE EXAMPLE QUESTIONS.\n"
         )
+        # print(entire_message)
 
         # Try the structured prediciton, sometimes it doesnt work with smaller models, then just use the completion
         try:
@@ -326,7 +360,8 @@ class ModelInteractor:
             print(f"Error: {e}")
             print(f"{datetime.now()} | Completion without reasoning failed")
             total_response = ExperimentOutput(
-                response="Failed prompt", reason="Failed prompt"
+                response="Failed prompt",
+                reason=f"Response was '{total_response.response}'",
             )
             correct_run = 0
         print(f"Final response: '{total_response.response}'")
@@ -356,8 +391,8 @@ class ModelInteractor:
         return extracted_response
 
 
-"""
 if __name__ == "__main__":
+    """
     # Gemma2
     gemma2 = ModelInteractor(model="gemma2", local=True)
     total_response = gemma2.prompt(
@@ -373,19 +408,21 @@ if __name__ == "__main__":
     print(f"GEMMA2 27B // Choice: {total_response.response}, Reason: {total_response.reason}")
 
     # Llama3
-    llama3 = ModelInteractor(model="llama3", local=True)
-    total_response = llama3.prompt(
+    llama3 = ModelInteractor(model="llama3.1", local=True)
+    total_response = llama3.prompt_unstructured(
         "What is the capital of France? A. Paris B. London C. Berlin"
     )
-    print(f"LLAMA3 // Choice: {total_response.response}, Reason: {total_response.reason}")
+    print(f"LLAMA3.1 // Response: {total_response}")
+    """
 
     # Llama3:70b
-    llama3_70b = ModelInteractor(model="llama3:70b", local=True)
-    total_response = llama3_70b.prompt(
+    llama3_70b = ModelInteractor(model="llama3.1:70b", local=True)
+    total_response = llama3_70b.prompt_unstructured(
         "What is the capital of France? A. Paris B. London C. Berlin"
     )
-    print(f"LLAMA3 70B // Choice: {total_response.response}, Reason: {total_response.reason}")
+    print(f"LLAMA3.1 70B // Response: {total_response}")
 
+"""
     # Phi3
     phi3 = ModelInteractor(model="phi3", local=True)
     total_response = phi3.prompt(
