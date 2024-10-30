@@ -25,7 +25,7 @@ class ModelInteractor:
         api_key: str = "",
         local: bool = False,
         temperature: float = 0.7,
-        request_timeout: int = 600,
+        request_timeout: int = 36000,  # 10 hours
         persona: str = "",
     ) -> None:
         """Initialize the model class
@@ -361,7 +361,7 @@ class ModelInteractor:
             print(f"{datetime.now()} | Completion without reasoning failed")
             total_response = ExperimentOutput(
                 response="Failed prompt",
-                reason=f"Response was '{total_response.response}'",
+                reason=f"Response was '{total_response.response}'",  # type: ignore
             )
             correct_run = 0
         print(f"Final response: '{total_response.response}'")

@@ -11,6 +11,7 @@ from src.data.manipulations import (
 )
 from src.experiments.run import run_experiment
 from typing import List
+# import faulthandler
 
 if __name__ == "__main__":
     # faulthandler.enable()
