@@ -25,7 +25,7 @@ class ModelInteractor:
         api_key: str = "",
         local: bool = False,
         temperature: float = 0.7,
-        request_timeout: int = 600,
+        request_timeout: int = 36000, # 10 hours
     ) -> None:
         """Initialize the model class
         Parameters:
@@ -63,7 +63,7 @@ class ModelInteractor:
 
     @staticmethod
     def ollama(
-        model: str = "", temperature: float = 0.7, request_timeout: int = 600
+        model: str = "", temperature: float = 0.7, request_timeout: int = 60
     ) -> Ollama:
         """Initialize the Ollama class
         Parameters:
@@ -326,7 +326,7 @@ class ModelInteractor:
             print(f"Error: {e}")
             print(f"{datetime.now()} | Completion without reasoning failed")
             total_response = ExperimentOutput(
-                response="Failed prompt", reason="Failed prompt"
+                response="Failed prompt", reason=f"Response was '{total_response.response}'"
             )
             correct_run = 0
         print(f"Final response: '{total_response.response}'")
@@ -356,8 +356,9 @@ class ModelInteractor:
         return extracted_response
 
 
-"""
+
 if __name__ == "__main__":
+    """
     # Gemma2
     gemma2 = ModelInteractor(model="gemma2", local=True)
     total_response = gemma2.prompt(
@@ -373,19 +374,21 @@ if __name__ == "__main__":
     print(f"GEMMA2 27B // Choice: {total_response.response}, Reason: {total_response.reason}")
 
     # Llama3
-    llama3 = ModelInteractor(model="llama3", local=True)
-    total_response = llama3.prompt(
+    llama3 = ModelInteractor(model="llama3.1", local=True)
+    total_response = llama3.prompt_unstructured(
         "What is the capital of France? A. Paris B. London C. Berlin"
     )
-    print(f"LLAMA3 // Choice: {total_response.response}, Reason: {total_response.reason}")
+    print(f"LLAMA3.1 // Response: {total_response}")
+    """
 
     # Llama3:70b
-    llama3_70b = ModelInteractor(model="llama3:70b", local=True)
-    total_response = llama3_70b.prompt(
+    llama3_70b = ModelInteractor(model="llama3.1:70b", local=True)
+    total_response = llama3_70b.prompt_unstructured(
         "What is the capital of France? A. Paris B. London C. Berlin"
     )
-    print(f"LLAMA3 70B // Choice: {total_response.response}, Reason: {total_response.reason}")
+    print(f"LLAMA3.1 70B // Response: {total_response}")
 
+"""
     # Phi3
     phi3 = ModelInteractor(model="phi3", local=True)
     total_response = phi3.prompt(

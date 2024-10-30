@@ -11,8 +11,10 @@ from src.data.manipulations import (
 )
 from src.experiments.run import run_experiment
 from typing import List
+import faulthandler
 
 if __name__ == "__main__":
+    #faulthandler.enable()
     # Parse arguments
     parser: argparse.ArgumentParser = argparse.ArgumentParser(
         prog="Run Bias Experiments",
@@ -42,6 +44,14 @@ if __name__ == "__main__":
         "--bias_id",
         type=int,
         help="optional filter if bias id is known",
+        required=False,
+    )
+    parser.add_argument(
+        "-c",
+        "--cluster",
+        type=bool,
+        choices=[True, False],
+        help="optional flag to indicate if experiment is run on cluster",
         required=False,
     )
     parser.add_argument(
@@ -125,7 +135,11 @@ if __name__ == "__main__":
         n: int = 100
         if args.n_loops:
             n = args.n_loops
-        if args.model and (
+        if args.cluster:
+            experiments: pd.DataFrame = db.fetch_next_experiments(
+                n_loops=n, check_system=False
+            )
+        elif args.model and (
             # Ask user in terminal if they are sure to run the model on the selected device
             input(
                 "Are you sure you want to run the experiments on the selected model on this device (y/n)? "
@@ -219,7 +233,7 @@ if __name__ == "__main__":
                 }
             )
             # Save intermediate responses
-            responses_df.to_csv(f"{experiment['experiment_id'].iloc[0]}.csv")
+            responses_df.to_csv(f"{experiment['experiment_id'].iloc[0]}.csv", index=False)
             if test:  # If test mode, break here
                 print(f"response: {responses_df['response'].iloc[0]}")
                 print(f"reason: {responses_df['reason'].iloc[0]}")
@@ -236,7 +250,12 @@ if __name__ == "__main__":
                 break
 
             if not responses_df.empty:
-                db.insert_data(table="t_responses", data=responses_df, updated_at=True)
+                # If process beforehand was too long, reconnect to database
+                try:
+                    db.insert_data(table="t_responses", data=responses_df, updated_at=True)
+                except:
+                    db.connect()
+                    db.insert_data(table="t_responses", data=responses_df, updated_at=True)
 
             # Delete intermediate responses
             os.remove(f"{experiment['experiment_id'].iloc[0]}.csv")
@@ -256,4 +275,11 @@ if __name__ == "__main__":
 
     finally:
         # Close the database connection
+        print(f"{datetime.now()} | Closing database connection and deleting currently running experiments of this system")
+        sql = f"""
+        DELETE
+        FROM t_currently_running
+        WHERE system = '{platform.system()}';
+        """
+        db.execute_sql(sql=sql)
         db.disconnect()
