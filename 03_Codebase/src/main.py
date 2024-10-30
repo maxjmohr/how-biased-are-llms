@@ -112,7 +112,7 @@ if __name__ == "__main__":
         "-s",
         "--scenario",
         type=str,
-        choices=["00_normal", "01_odd_numbers"],
+        choices=["0_normal", "1_persona"],
         help="optional filter for experiment scenario",
         required=False,
     )
