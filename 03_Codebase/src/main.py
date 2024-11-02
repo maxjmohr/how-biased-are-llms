@@ -211,6 +211,7 @@ if __name__ == "__main__":
             responses, reasons, correct_runs = run_experiment(
                 bias=experiment["bias"].iloc[0],
                 scenario=experiment["scenario"].iloc[0],
+                response_type=experiment["response_type"].iloc[0],
                 total_content=experiment["total_content"].iloc[0],
                 model=experiment["model"].iloc[0],
                 local=experiment["local"].iloc[0],

@@ -8,6 +8,7 @@ from typing import List, Tuple
 def run_experiment(
     bias: str,
     scenario: str,
+    response_type: str,
     total_content: str,
     model: str,
     local: bool = False,
@@ -22,6 +23,8 @@ def run_experiment(
         Bias to study
     scenario: str
         Scenario of the experiment
+    response_type: str
+        Type of response
     local: bool,
         Run the model locally
     model: str,
@@ -81,7 +84,9 @@ def run_experiment(
             )
         else:
             total_response, correct_run = mi.prompt_unstructured(
-                total_content, additional_system_message=additional_system_message
+                total_content,
+                additional_system_message=additional_system_message,
+                response_type=response_type,
             )
         try:
             responses[i] = str(total_response.response)

@@ -286,6 +286,7 @@ class ModelInteractor:
         total_content: str,
         system_message: str = "",
         additional_system_message: str = "",
+        response_type: str = "",
     ) -> tuple[ExperimentOutput, Literal[1, 0]]:
         """Prompt the model without reasoning output and without structured prediction
         Parameters:
@@ -300,20 +301,31 @@ class ModelInteractor:
             Prompt for the experiment
         """
         assert total_content != "", f"{datetime.now()} | Experiment content is required"
+        assert (
+            response_type in ["choice", "numerical"]
+        ), f"{datetime.now()} | Response type is required and must be either 'choice' or 'numerical'"
 
         if system_message == "":
-            system_message = "You are forced to choose! Answer the experiment by only giving the letter of the answer options (e.g. 'A', 'B', 'C', ...) or a numerical value (80, 100, 1000, ...). Do not state anything else! Do not halucinate. You can and are advised to make a SUBJECTIVE decision! There is no right or wrong, but you HAVE TO DECIDE.\n"
-        # OVERWRITE SYSTEM_MESSAGE AS IT WAS FIRST IMPLEMENTED FALSELY, SO THERE WAS NO MESSAGE
-        system_message = ""
+            system_message = "You are forced to choose! Answer the experiment by only giving the letter of the answer options (e.g. A, B, C, ...) or a numerical value (80, 100, 1000, ...). Do not state anything else! Do not halucinate. "
         system_message += additional_system_message if additional_system_message else ""
+
+        # Tell the model what type of response we are expecting
+        if response_type == "choice":
+            output_message: str = "Your output should only be a LETTER (A, B, C, ...)."
+        else:
+            output_message: str = (
+                "Your output should only be a NUMBER (9, 80, 100, 1000, ...)."
+            )
 
         entire_message: str = (
             system_message
             + "\n---------------------\n"
             + total_content
             + "\n---------------------\n"
-            + "Example question 1: 'What is the best color? A) Red B) Blue C) Green __'\nC\nExample question 2: 'What value would you sell this car for? $ __'\n8\nUnderstand if you have to choose a letter or answer with a number and then ONLY OUTPUT THE LETTER/NUMBER. BUT DO NOT ATTACH YOUR ANSWER TO THE EXAMPLE QUESTIONS.\n"
+            + output_message
         )
+        # Prompt if model doesnt anwer with a number/letter
+        # entire_message = entire_message + "ONLY ANSWER THE LETTER (OPTION)!!!"
         # print(entire_message)
 
         # Try the structured prediciton, sometimes it doesnt work with smaller models, then just use the completion
@@ -337,7 +349,10 @@ class ModelInteractor:
             ):
                 correct_run = 1
             else:
-                print(
+                correct_run = 0
+                raise ValueError("Structured prediction response format failed")
+                # Don't use the extraction, it is not reliable
+                """print(
                     f"{datetime.now()} | Structured prediction failed, trying extraction with LLM extractor"
                 )
                 total_response.response = self.response_extractor(
@@ -355,6 +370,7 @@ class ModelInteractor:
                 else:
                     print(f"{datetime.now()} | Structured prediction failed")
                     raise ValueError("Structured prediction response format failed")
+                """
 
         except (Exception, ValueError) as e:
             print(f"Error: {e}")

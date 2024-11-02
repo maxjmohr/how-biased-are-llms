@@ -496,7 +496,7 @@ class Database:
         sql = r"""
             FROM t_responses
             WHERE
-                (response_type = 'choice' AND response NOT IN ('A', 'B', 'C', 'D', 'Failed prompt'))
+                (response_type = 'choice' AND response NOT IN ('A', 'B', 'Failed prompt'))
                 OR (response_type = 'numerical' AND response NOT SIMILAR TO '([0-9]{1,3}|1000)(\.[0-9]{1,2})?' AND response NOT IN ('Failed prompt'))
             ;
         """
