@@ -8,7 +8,7 @@ import os
 from pydantic import BaseModel
 from pydantic_core import ValidationError
 import re
-from typing import Literal
+from typing import Dict, Literal
 
 
 class ExperimentOutput(BaseModel):
@@ -57,22 +57,22 @@ class ModelInteractor:
         system_prompt += f" {persona}" if persona != "" else ""
 
         # Initialize the model
-        if local:
-            self.llm = self.ollama(
-                model=model,
-                temperature=temperature,
-                request_timeout=request_timeout,
-                system_prompt=system_prompt,
-            )
-        elif model not in ["gpt-4o-mini", "gpt-4o"]:
-            self.llm = self.replicate(model=model)
-        elif model in ["gpt-4o-mini", "gpt-4o"]:
+        if model in ["gpt-4o-mini", "gpt-4o"]:
             self.llm = self.openai(
                 model=model,
                 api_key=api_key,
                 temperature=temperature,
                 system_prompt=system_prompt,
             )
+        elif local:
+            self.llm = self.ollama(
+                model=model,
+                temperature=temperature,
+                request_timeout=request_timeout,
+                system_prompt=system_prompt,
+            )
+        else:
+            self.llm = self.replicate(model=model)
 
     @staticmethod
     def ollama(
@@ -136,13 +136,23 @@ class ModelInteractor:
         """
         if api_key == "":
             api_key = str(os.getenv("OPENAI_API_KEY"))
-        assert api_key != "", f"{datetime.now()} | API key is required"
+        assert (
+            api_key != ""
+        ), f"{datetime.now()} | API key is required (export OPENAI_API_KEY=...)"
+
+        # Get the exact model name
+        openai_dict: Dict[str, str] = {
+            "gpt-4o": "gpt-4o-2024-08-06",
+            "gpt-4o-mini": "gpt-4o-mini-2024-07-18",
+        }
+        model = openai_dict[model]
 
         return OpenAI(
             model=model,
             api_key=api_key,
             temperature=temperature,
             system_prompt=system_prompt,
+            max_tokens=2,
         )
 
     @staticmethod
