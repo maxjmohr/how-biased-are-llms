@@ -186,7 +186,7 @@ class BiasDetector:
 
     def fetch_group_responses(self, experiment_id: int) -> pd.DataFrame:
         "Fetch the responses and their occurences for the control/treatment group"
-        sql: str = f"SELECT response, count FROM v_responses_grouped WHERE experiment_id = {str(experiment_id)};"
+        sql: str = f"SELECT response, count FROM v_responses_grouped WHERE experiment_id = {str(experiment_id)} AND response != 'Failed prompt';"
         return self.db.fetch_data(sql=sql)
 
     def insert_results(self, data: pd.DataFrame) -> None:
@@ -351,7 +351,7 @@ if __name__ == "__main__":
         "sunk cost fallacy",
         "transaction utility",
     ]
-    scenarios: List[str] = ["all", "0_normal"]
+    scenarios: List[str] = ["all", "0_normal", "1_persona"]
     models: List[str] = [
         "all",
         "gemma2",

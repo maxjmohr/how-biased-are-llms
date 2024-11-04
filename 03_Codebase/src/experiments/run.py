@@ -62,12 +62,12 @@ def run_experiment(
     # Check if test mode is activated
     if test:
         print(
-            f"{datetime.now()} | Running experiment scenario {scenario} for bias {bias} on model {model} in test mode (loops=1)"
+            f"{datetime.now()} | Bias {bias} ({scenario}) on model {model} (temp={temperature}) in test mode (loops=1)"
         )
         n = 1
     else:
         print(
-            f"{datetime.now()} | Running experiment scenario {scenario} for bias {bias} on model {model} (loops={n})"
+            f"{datetime.now()} | Bias {bias} ({scenario}) on model {model} (temp={temperature}) for loops={n}"
         )
 
     # Store responses and whether they are in the correct format
@@ -76,7 +76,9 @@ def run_experiment(
     correct_runs: List[int] = [0] * n
 
     # Run the experiment
-    for i in trange(n, desc=f"Scenario {scenario} for bias {bias} on model {model}"):
+    for i in trange(
+        n, desc=f"Bias {bias} ({scenario}) on model {model} (temp={temperature})"
+    ):
         # Prompt the model
         if reason:
             total_response, correct_run = mi.prompt(

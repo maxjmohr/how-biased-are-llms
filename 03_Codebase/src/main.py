@@ -200,12 +200,14 @@ if __name__ == "__main__":
             # Get remaining loops
             print(f"{datetime.now()} | Calculating remaining loops")
             # Fetch the ran loops (perhaps in the meantime, the experiment was run by another process)
-            sql = f"SELECT correct_ran_loops FROM v_ran_experiments WHERE experiment_id = {experiment['experiment_id'].iloc[0]}"
-            correct_ran_loops: int | None = int(
-                db.fetch_data(sql=sql)["correct_ran_loops"].iloc[0]
-            )
-            if correct_ran_loops is None:
+            try:
+                sql = f"SELECT correct_ran_loops FROM v_ran_experiments WHERE experiment_id = {experiment['experiment_id'].iloc[0]}"
+                correct_ran_loops: int = int(
+                    db.fetch_data(sql=sql)["correct_ran_loops"].iloc[0]
+                )
+            except Exception:
                 correct_ran_loops = 0
+
             n_remain: int = calc_remaining_loops(
                 target_loops=n, correct_runs=correct_ran_loops
             )
