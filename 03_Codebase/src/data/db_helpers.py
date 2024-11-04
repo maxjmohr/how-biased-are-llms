@@ -487,7 +487,38 @@ class Database:
                 scenario = '0_normal';
         """
         self.execute_sql(sql=sql, commit=True)
-        print("\033[1m\033[92mSuccessfully added scenario 1_persona.\033[0m")
+
+    def add_model_temperatures(self) -> None:
+        "Use the model master data with temperature 0.7 to generate the other temperatures"
+        "The only changes is temperature"
+        temperatures: List[str] = ["1", "1.3"]
+        total_sql: str = ""
+        for i, temperature in enumerate(temperatures):
+            sql: str = f"""
+                INSERT INTO t_models (model_id, model, local, temperature, system, release_date, last_updated_at, download_date, size, number_parameters, model_architecture, ollama_id)
+                SELECT
+                    model_id + {i+1} AS model_id,
+                    model,
+                    local,
+                    '{temperature}' AS temperature,
+                    system,
+                    release_date,
+                    last_updated_at,
+                    download_date,
+                    size,
+                    number_parameters,
+                    model_architecture,
+                    ollama_id
+                FROM 
+                    t_models
+                WHERE
+                    temperature = '0.7';
+            """
+            total_sql += sql
+        self.execute_sql(sql=total_sql, commit=True)
+        print(
+            "\033[1m\033[92mSuccessfully added models with other temperatures.\033[0m"
+        )
 
     def cleanup_responses(self) -> None:
         "Cleanup the responses table from wrong formatted answers"
@@ -517,6 +548,8 @@ class Database:
             print(
                 f"{datetime.now()} | Deleted {count_prior - count_after} unusable responses from the responses table."
             )
+        # Delete excel
+        os.remove("responses_to_check.xlsx")
 
 
 if __name__ == "__main__":
