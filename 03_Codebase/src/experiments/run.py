@@ -39,7 +39,7 @@ def run_experiment(
         Whether to activate reasoning mode
     """
     # Add additional message to prompt (e.g. persona)
-    if scenario == "1_persona":
+    if scenario in ["1_persona", "2_odd_numbers", "3_large_numbers"]:
         # Read txt file
         current_script_directory: str = os.path.dirname(os.path.realpath(__file__))
         path: str = "../../res/prompt_additions/persona.txt"

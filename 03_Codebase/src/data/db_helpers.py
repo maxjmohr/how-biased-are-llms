@@ -1,5 +1,6 @@
 from datetime import datetime
 import getpass
+import json
 import os
 import pandas as pd
 import platform
@@ -488,10 +489,99 @@ class Database:
         """
         self.execute_sql(sql=sql, commit=True)
 
+    @staticmethod
+    def update_variables(variables: str, multiply_by: int | float) -> str:
+        "Update the variables in the biases by multiplying them by a certain number"
+        # Extract the dict from the string
+        variables_dict: Dict[str, int] = json.loads(variables)
+
+        # Multiply the values by the number and round them
+        variables_dict = {
+            key: round(value * multiply_by) for key, value in variables_dict.items()
+        }
+
+        # Return the dict with the updated variables as a string
+        return json.dumps(variables_dict)
+
+    def add_scenario_2_odd_numbers(self) -> None:
+        "Use the bias master data of scenario 0_normal to generate 2_odd_numbers"
+        "The only changes are bias_id=bias_id+20, scenario=2_odd_numbers and variables"
+        # First get the current data of scenario 0_normal
+        sql: str = "SELECT * FROM t_biases WHERE scenario = '0_normal';"
+        df_normal: pd.DataFrame = self.fetch_data(sql=sql)
+
+        # Update the variables
+        for _, row in df_normal.iterrows():
+            if (
+                row["bias_id"] in [601, 602]
+            ):  # Anchoring bias has share values (%), therefore we have to make reasonable changes
+                new_variables: str = self.update_variables(
+                    str(row["variables"]), multiply_by=1.17
+                )
+
+            else:
+                new_variables: str = self.update_variables(
+                    str(row["variables"]), multiply_by=9.7
+                )
+
+            sql: str = f"""
+                INSERT INTO t_biases (bias_id, bias, experiment_type, scenario, content, variables, response_type, target_response, part, parts_total)
+                VALUES (
+                    {row['bias_id'] + 20},
+                    '{row['bias']}',
+                    '{row['experiment_type']}',
+                    '2_odd_numbers',
+                    '{row['content']}',
+                    '{new_variables}',
+                    '{row['response_type']}',
+                    '{row['target_response']}',
+                    {row['part']},
+                    {row['parts_total']}
+                );
+            """
+            self.execute_sql(sql=sql, commit=True)
+
+    def add_scenario_3_large_numbers(self) -> None:
+        "Use the bias master data of scenario 0_normal to generate 3_large_numbers"
+        "The only changes are bias_id=bias_id+30, scenario=3_large_numbers and variables"
+        # First get the current data of scenario 0_normal
+        sql: str = "SELECT * FROM t_biases WHERE scenario = '0_normal';"
+        df_normal: pd.DataFrame = self.fetch_data(sql=sql)
+
+        # Update the variables
+        for _, row in df_normal.iterrows():
+            # Anchoring bias has share values (%), therefore we have to make reasonable changes
+            if row["bias_id"] == 601:
+                new_variables: str = """{"portion_value": 0}"""
+            elif row["bias_id"] == 602:
+                new_variables: str = """{"portion_value": 100}"""
+
+            else:
+                new_variables: str = self.update_variables(
+                    str(row["variables"]), multiply_by=55555.5
+                )
+
+            sql: str = f"""
+                INSERT INTO t_biases (bias_id, bias, experiment_type, scenario, content, variables, response_type, target_response, part, parts_total)
+                VALUES (
+                    {row['bias_id'] + 30},
+                    '{row['bias']}',
+                    '{row['experiment_type']}',
+                    '3_large_numbers',
+                    '{row['content']}',
+                    '{new_variables}',
+                    '{row['response_type']}',
+                    '{row['target_response']}',
+                    {row['part']},
+                    {row['parts_total']}
+                );
+            """
+            self.execute_sql(sql=sql, commit=True)
+
     def add_model_temperatures(self) -> None:
         "Use the model master data with temperature 0.7 to generate the other temperatures"
         "The only changes is temperature"
-        temperatures: List[str] = ["1", "1.3"]
+        temperatures: List[str] = ["1", "1.3", "0.2", "1.8"]
         total_sql: str = ""
         for i, temperature in enumerate(temperatures):
             sql: str = f"""

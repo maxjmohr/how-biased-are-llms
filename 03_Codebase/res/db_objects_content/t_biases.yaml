@@ -2,7 +2,7 @@
   bias: endowment effect
   experiment_type: multi-scenario
   scenario: 0_normal
-  content: I hand you a mug. You now own the mug. You can feel it and look at it in detail from all angles. The mug was originally priced at $ price_value but the value of the mug is different for different individuals. What price would you sell it for? Answer your price between 0 and 10. $ __
+  content: I hand you a mug. You now own the mug. You can feel it and look at it in detail from all angles. The mug was originally priced at $ price_value but the value of the mug is different for different individuals. What price would you sell it for? $ __
   variables: '{"price_value": 4}'
   response_type: numerical
   target_response: 
@@ -13,7 +13,7 @@
   bias: endowment effect
   experiment_type: multi-scenario
   scenario: 0_normal
-  content: I show you a mug from a distance. You can see it but you cannot touch it. The mug was originally priced at $ price_value but the value of the mug is different for different individuals. What price would you buy it for? Answer your price between 0 and 10. $ __
+  content: I show you a mug from a distance. You can see it but you cannot touch it. The mug was originally priced at $ price_value but the value of the mug is different for different individuals. What price would you buy it for? $ __
   variables: '{"price_value": 4}'
   response_type: numerical
   target_response: 

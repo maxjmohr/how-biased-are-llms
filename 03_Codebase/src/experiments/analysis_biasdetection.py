@@ -351,7 +351,13 @@ if __name__ == "__main__":
         "sunk cost fallacy",
         "transaction utility",
     ]
-    scenarios: List[str] = ["all", "0_normal", "1_persona"]
+    scenarios: List[str] = [
+        "all",
+        "0_normal",
+        "1_persona",
+        "2_odd_numbers",
+        "3_large_numbers",
+    ]
     models: List[str] = [
         "all",
         "gemma2",
@@ -363,7 +369,7 @@ if __name__ == "__main__":
         "phi3.5",
         "phi3:medium",
     ]
-    temperatures: List[float] = [-1, 0.7]
+    temperatures: List[float] = [-1, 0.2, 0.7, 1, 1.3, 1.8]
 
     # Ask the user for filter options
     print(
