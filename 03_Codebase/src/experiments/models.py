@@ -27,6 +27,7 @@ class ModelInteractor:
         temperature: float = 0.7,
         request_timeout: int = 36000,  # 10 hours
         persona: str = "",
+        max_tokens: int = 2,
     ) -> None:
         """Initialize the model class
         Parameters:
@@ -51,9 +52,11 @@ class ModelInteractor:
             "phi3.5",
             "phi3:medium",
         ], f"{datetime.now()} | Model is required"
+        self.model = model
+        self.local = local
 
         # Create system prompt
-        system_prompt: str = "You will be asked to make choices. Please blank out that some information might be missing or that you might not be able to make a choice. I have initialized you in a way that you can only generate one token. The only valid answer is A SINGLE LETTER OR NUMBER."
+        system_prompt: str = f"You will be asked to make choices. Please blank out that some information might be missing or that you might not be able to make a choice. I have initialized you in a way that you can only generate {max_tokens} tokens. The only valid answer is A SINGLE LETTER OR NUMBER."
         system_prompt += f" {persona}" if persona != "" else ""
 
         # Initialize the model
@@ -63,6 +66,7 @@ class ModelInteractor:
                 api_key=api_key,
                 temperature=temperature,
                 system_prompt=system_prompt,
+                max_tokens=max_tokens,
             )
         elif local:
             self.llm = self.ollama(
@@ -70,6 +74,7 @@ class ModelInteractor:
                 temperature=temperature,
                 request_timeout=request_timeout,
                 system_prompt=system_prompt,
+                max_tokens=max_tokens,
             )
         else:
             self.llm = self.replicate(model=model)
@@ -80,6 +85,7 @@ class ModelInteractor:
         temperature: float = 0.7,
         request_timeout: int = 600,
         system_prompt: str = "",
+        max_tokens: int = 2,
     ) -> Ollama:
         """Initialize the Ollama class
         Parameters:
@@ -91,6 +97,8 @@ class ModelInteractor:
             Timeout for the request in seconds
         system_prompt: str
             System prompt to use
+        max_tokens: int
+            Number of tokens to predict
         Returns:
         Ollama
             Model class
@@ -108,7 +116,8 @@ class ModelInteractor:
             request_timeout=request_timeout,
             system_prompt=system_prompt,
             additional_kwargs={
-                "num_predict": 2,  # Number of tokens to predict
+                "num_predict": max_tokens,  # Number of tokens to predict
+                # "keep_alive": 0,  # Unload the model from memory
                 # "repeat_last_n": 0 # Number of last responses (0 means no repetition)
             },
         )
@@ -119,6 +128,7 @@ class ModelInteractor:
         api_key: str = "",
         temperature: float = 0.7,
         system_prompt: str = "",
+        max_tokens: int = 2,
     ) -> OpenAI:
         """Initialize the OpenAI class
         Parameters:
@@ -130,6 +140,8 @@ class ModelInteractor:
             Temperature for sampling
         system_prompt: str
             System prompt to use
+        max_tokens: int
+            Number of tokens to predict
         Returns:
         OpenAI
             OpenAI class
@@ -152,7 +164,7 @@ class ModelInteractor:
             api_key=api_key,
             temperature=temperature,
             system_prompt=system_prompt,
-            max_tokens=2,
+            max_tokens=max_tokens,
         )
 
     @staticmethod
@@ -178,6 +190,13 @@ class ModelInteractor:
         ), f"{datetime.now()} | API key is required, please set global environment variable REPLICATE_API_TOKEN"
 
         return Replicate(model=model)
+
+    def close(self) -> None:
+        "Close and unload the model from memory"
+        if self.model in ["gpt-4o-mini", "gpt-4o"] or not self.local:
+            pass
+        else:
+            ollama.generate(model=self.model, prompt="Goodbye!", keep_alive=0)
 
     def prompt(
         self,
@@ -334,8 +353,6 @@ class ModelInteractor:
             + "\n---------------------\n"
             + output_message
         )
-        # Prompt if model doesnt anwer with a number/letter
-        # entire_message = entire_message + "ONLY ANSWER THE LETTER (OPTION)!!!"
         # print(entire_message)
 
         # Try the structured prediciton, sometimes it doesnt work with smaller models, then just use the completion

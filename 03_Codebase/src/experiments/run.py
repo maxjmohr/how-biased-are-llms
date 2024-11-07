@@ -49,6 +49,11 @@ def run_experiment(
     else:
         additional_system_message: str = ""
 
+    # Large numbers require more tokens
+    max_tokens: int = 2
+    if scenario == "3_large_numbers":
+        max_tokens = 10
+
     # Initialize the model interactor
     print(f"{datetime.now()} | Initializing model interactor for model {model}")
     mi = ModelInteractor(
@@ -56,6 +61,7 @@ def run_experiment(
         local=local,
         temperature=temperature,
         persona=additional_system_message,
+        max_tokens=max_tokens,
     )
     print(f"{datetime.now()} | Initialized model interactor for model {model}")
 
@@ -101,4 +107,5 @@ def run_experiment(
     print(
         f"{datetime.now()} | Finished experiment scenario {scenario} for bias {bias} on model {model}"
     )
+    mi.close()  # Close the model interactor
     return responses, reasons, correct_runs
