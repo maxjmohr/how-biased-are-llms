@@ -52,9 +52,63 @@
 
 \par Given our experimental design and technical implementation, each model is re-initialized between each question, meaning that it does not retain any memory or internal state between trials. Although the same model architecture is used, the fact that it is re-initialized before running the next question ensures that the responses from both groups are independent. There is no inherent correlation between the models' performances in group A and group B due to this re-initialization, which mimics the behavior of having entirely independent models for each group. Therefore, the key assumption of independence of observations is met, aligning this study with an independent two-group design. In a true repeated measures design, the models would have needed to answer both sets of questions (A and B) without resetting their state, creating a paired structure where each observation in group A could be directly compared with its counterpart in group B. Since we did not implement a paired output of both questions which would force an investigation and integration of their correlation, we argue that the appropriate framework for analysis is that of two independent groups \parencite{dunlap1996meta}.
 
-\subsubsection{Robust base prompt}
-\par Also describe how the normal prompt is structured.
-\par Try structured prediction, mentioning output format numerous occasions
+\subsubsection{Robust base prompt template}
+\par For all experiments, we target a basic prompting style similar to the questionnaires in the original studies to maintain consistency and control over the interactions across the models. Research suggests that well-structured prompts can significantly impact the quality and reliability of model outputs, especially in complex tasks like bias detection and structured information retrieval \parencite{chen2023unleashing,santu2023teler}. \textcite{santu2023teler} present a prompt taxonomy TELeR (Turn, Expression, Level of Details, Role) with suggestions on how to structure prompts for different, especially complex tasks. They generally suggest for higher complexity, the level of details and focus on structure in the prompt should increase. As we try to avoid too much additional details other than the survey itself, we orientate ourselves towards their "multi-sentence, paragraph-style" directive.
+
+\par \textcite{sahoo2024systematic} divide prompt engineering techniques by their application domains such as reasoning tasks, reducing hallucination, generating code and many more. They present many advanced chaining and multi-step prompt engineering techniques but refer to simple prompting techniques (zero- and few-shot prompting) for new tasks without extensive model training. Especially in zero-shot settings, models rely heavily on their general knowledge gained during training. This aligns with the study designs on human participants which in most cases, are not experts and do not receive additional information besides the survey questions. Concise and clear explanations improve the response quality and in some scenarios with basic tasks, zero-shot prompts can significantly outperform guided, few-shot prompts \parencite{chen2023unleashing,ekin2023prompt}. In zero-shot scenarios and likewise in our experiments, the prompt aims to trigger a model response which it was previously not trained on \parencite{marvin2023prompt}.
+
+\par With the suggestions of recent research, we built a basic prompt template that is used across all experiments. We do not provide additional context to the study questions besides some output formats suggestions for structured predictions (answering with a single letter or numerical value) \parencite{schmidt2024towards}. In this regard, the providing the hint that the models were only initialized to generate two tokens, improved the response quality. After some refinements and iterative testing to receive mostly structured and usable responses, we settled on the following prompt template:
+\begin{table}[ht]
+    \begin{tcolorbox}[
+        colframe=gray!90,    % Border color
+        colback=white,     % Background color
+        boxrule=0.4mm,     % Border thickness
+        arc=5mm,           % Rounded corners
+        title=\textbf{System message}, % Title of the box
+        fonttitle=\bfseries,   % Bold title
+    ]
+    You will be asked to make choices. Please blank out that some information might be missing or that you might not be able to make a choice. I have initialized you in a way that you can only generate 2 tokens. The only valid answer is \textbf{a single letter or number}.
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+        colframe=gray!90,    % Border color
+        colback=white,     % Background color
+        boxrule=0.4mm,     % Border thickness
+        arc=5mm,           % Rounded corners
+        title=\textbf{User message}, % Title of the box
+        fonttitle=\bfseries,   % Bold title
+    ]
+    You are forced to choose! Answer the experiment by only giving the letter of the answer options (e.g. A, B, C, ...) or a numerical value (80, 100, 1000, ...). Do not state anything else! Do not hallucinate.\\
+    --------------------------
+    \textit{Study question}
+    --------------------------\\
+    Your output should only be a LETTER (A, B, C, ...).
+    \end{tcolorbox}
+
+    \caption[Base prompt template]{\textit{Base prompt template for all experiment runs}}
+    \label{tab:prompt-template}
+    \centering
+\end{table}
+
+\par Another significant aspect of prompt engineering revolves around the addition of personas to the prompts. Personas are fictional characters that represent the target audience of the model and can be used to guide the model's responses towards a specific direction. Consisting of various persona variables, which can reflect demographics and other characteristics, personas have shown to influence large language models in their tasks and responses \parencite{chen2023unleashing,hu2024quantifying,olea2024evaluating}. \textcite{hu2024quantifying} depict that personas can have small but significant impacts on the models' outputs. Their research suggests that models are able to adapt their choices to the given persona but only in a narrow range. They find that the more persona variables are directly correlated with the response variable of the model, the higher the impact of the persona. \textcite{olea2024evaluating} compare single-agent personas (either fixed or fitted to the task) and multi-agent personas and find that for simple tasks with short answers, single-agent personas are more effective. While simple personas show slight gains, especially the expert personas, which were auto-generated by a LLM for each experiment question, show significant improvements in the models' responses.
+
+Like the studies we aim to recreate, we strive to measure a bias effect across an average, non-specific audience. For that reason and to translate the findings into our study, we create a simple persona with some general characteristics to fit with each experiment. This prohibits us from adding specific and correlated characteristics (relating to an expert persona) per experiment but should still provide a general guidance for the models' responses:
+\begin{table}[ht]
+    \begin{tcolorbox}[
+        colframe=gray!90,    % Border color
+        colback=white,     % Background color
+        boxrule=0.4mm,     % Border thickness
+        arc=5mm,           % Rounded corners
+        title=\textbf{Persona}, % Title of the box
+        fonttitle=\bfseries,   % Bold title
+    ]
+    You are a customer with median income and average education. You are selected at random to participate in a survey. You can only choose one of the presented options or assign a value. Behave humanlike and choose instinctively. You can and are advised to make a subjective decision! There is no right or wrong, but you \textbf{have to decide}.
+    \end{tcolorbox}
+
+    \caption[Persona description]{\textit{Persona description across all experiments}}
+    \label{tab:persona-description}
+    \centering
+\end{table}
 
 \subsubsection{Scenarios in form of prompt adjustments and variable changes}
 - Normal (replication of original study) \\
@@ -101,7 +155,7 @@ d = \frac{\bar{X}_{post} - \bar{X}_{pre}}{SD_{pooled}}
     \begin{cases} 
         |d| & \text{if bias = "framing effect"} \text{ or "transaction utility"} \\
         d & \text{if bias $\neq$ "framing effect" and } d \geq 0 \\
-        0 & \text{if } d < 0
+        0 & \text{else}
     \end{cases}
 \end{equation}
 \hspace{0.5cm} \textit{where:} \\
