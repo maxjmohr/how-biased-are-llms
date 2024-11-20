@@ -1,5 +1,6 @@
 from datetime import datetime
 from llama_index.core.prompts import PromptTemplate
+from llama_index.llms.anthropic import Anthropic
 from llama_index.llms.ollama import Ollama
 from llama_index.llms.openai import OpenAI
 from llama_index.llms.replicate import Replicate
@@ -25,7 +26,7 @@ class ModelInteractor:
         api_key: str = "",
         local: bool = False,
         temperature: float = 0.7,
-        request_timeout: int = 36000,  # 10 hours
+        request_timeout: int = 36000,  # 10 hour
         persona: str = "",
         max_tokens: int = 2,
     ) -> None:
@@ -43,6 +44,8 @@ class ModelInteractor:
             Timeout for the request in seconds
         """
         assert model in [
+            "claude-3-haiku",
+            "claude-3-5-sonnet",
             "gemma2",
             "gemma2:27b",
             "gpt-4o-mini",
@@ -62,6 +65,14 @@ class ModelInteractor:
         # Initialize the model
         if model in ["gpt-4o-mini", "gpt-4o"]:
             self.llm = self.openai(
+                model=model,
+                api_key=api_key,
+                temperature=temperature,
+                system_prompt=system_prompt,
+                max_tokens=max_tokens,
+            )
+        elif model in ["claude-3-haiku", "claude-3-5-sonnet", "gemma2", "gemma2:27b"]:
+            self.llm = self.anthropic(
                 model=model,
                 api_key=api_key,
                 temperature=temperature,
@@ -160,6 +171,50 @@ class ModelInteractor:
         model = openai_dict[model]
 
         return OpenAI(
+            model=model,
+            api_key=api_key,
+            temperature=temperature,
+            system_prompt=system_prompt,
+            max_tokens=max_tokens,
+        )
+
+    @staticmethod
+    def anthropic(
+        model: str = "",
+        api_key: str = "",
+        temperature: float = 0.7,
+        system_prompt: str = "",
+        max_tokens: int = 2,
+    ) -> Anthropic:
+        """Initialize the Anthropic class
+        Parameters:
+        model: str
+            Model to use
+        temperature: float
+            Temperature for sampling
+        request_timeout: int
+            Timeout for the request in seconds
+        system_prompt: str
+            System prompt to use
+        max_tokens: int
+            Number of tokens to predict
+        Returns:
+        Anthropic
+            Model class
+        """
+        if api_key == "":
+            api_key = str(os.getenv("ANTHROPIC_API_KEY"))
+        assert (
+            api_key != ""
+        ), f"{datetime.now()} | API key is required (export ANTHROPIC_API_KEY=...)"
+
+        # Get the exact model name
+        anthropic_dict: Dict[str, str] = {
+            "claude-3-haiku": "claude-3-haiku-20240307",
+            "claude-3-5-sonnet": "claude-3-5-sonnet-20240620",
+        }
+        model = anthropic_dict[model]
+        return Anthropic(
             model=model,
             api_key=api_key,
             temperature=temperature,

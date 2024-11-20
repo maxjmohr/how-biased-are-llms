@@ -74,6 +74,8 @@ if __name__ == "__main__":
         "--model",
         type=str,
         choices=[
+            "claude-3-haiku",
+            "claude-3-5-sonnet",
             "gemma2",
             "gemma2:27b",
             "gpt-4o-mini",
