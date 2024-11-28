@@ -1,4 +1,5 @@
 from datetime import datetime
+from llama_index.llms.ollama.base import Tuple
 import numpy as np
 from numpy.typing import NDArray
 import pandas as pd
@@ -146,7 +147,7 @@ class BiasDetector:
         q1_counts: pd.DataFrame,
         q2_counts: pd.DataFrame,
         map_answers: Dict[str, int],
-    ) -> float:
+    ) -> Tuple[float, int, int]:
         """Binary target variable computation for 2 question choice experiments
         Group 1 is control, Group 2 is treatment
         If Hypothesis test: Fisher's exact test: difference between observed and expected frequencies
@@ -163,11 +164,11 @@ class BiasDetector:
         )
 
         # Calulcate Cohen's d
-        return self.cohens_d_2g(q1_group, q2_group)
+        return self.cohens_d_2g(q1_group, q2_group), len(q1_group), len(q2_group)
 
     def compute_2q_numeric(
         self, q1_counts: pd.DataFrame, q2_counts: pd.DataFrame
-    ) -> float:
+    ) -> Tuple[float, int, int]:
         """Binary target variable computation for 2 question value estimation experiments
         Group 1 is control, Group 2 is treatment
         If Hypothesis test: Wilcoxon signed-rank test: difference between observed and expected values (median)
@@ -182,18 +183,35 @@ class BiasDetector:
         )
 
         # Calulcate Cohen's d
-        return self.cohens_d_2g(q1_group, q2_group)
+        return self.cohens_d_2g(q1_group, q2_group), len(q1_group), len(q2_group)
 
     def fetch_group_responses(self, experiment_id: int) -> pd.DataFrame:
         "Fetch the responses and their occurences for the control/treatment group"
         sql: str = f"SELECT response, count FROM v_responses_grouped WHERE experiment_id = {str(experiment_id)} AND response != 'Failed prompt';"
         return self.db.fetch_data(sql=sql)
 
-    def insert_results(self, data: pd.DataFrame) -> None:
-        "Insert/update the newly calculated bias_detected value"
-        "The dataframe should contain the columns bias, scenario, model, temperature, bias_id, model_id and bias_detected"
-        self.db.update_data(
-            object="t_bias_detections", data=data, update_cols=["bias_detected"]
+    def sampling_variance(
+        self, sample_size_g1: int, sample_size_g2: int, population_effect_size: float
+    ) -> float:
+        """Compute the sampling variance for an effect size
+        Sample size is the number of observations in each group
+        Population effect size of all experiments
+        The formula to compute the approximate sampling variance of Cohen's d is:
+            N = sample_size_g1 + sample_size_g2
+            ñ = (sample_size_g1*sample_size_g2) / (sample_size_g1+sample_size_g2)
+            c(x) = 1 - 3 / (4 * (N-2) - 1)
+        var =   (1 / ñ ) * ((N-2)/(N-4)) * (1 + ñ * pop_effect_size^2) - (pop_effect_size^2 / (c(N-2))^2)
+        """
+        # Compute N, ñ, c(x)
+        N: int = sample_size_g1 + sample_size_g2
+        n_: float = (sample_size_g1 * sample_size_g2) / (
+            sample_size_g1 + sample_size_g2
+        )
+        c: float = 1 - 3 / (4 * (N - 2) - 1)
+
+        # Compute the sampling variance
+        return (1 / n_) * ((N - 2) / (N - 4)) * (1 + n_ * population_effect_size**2) - (
+            population_effect_size**2 / (c) ** 2
         )
 
     def detect_bias(self) -> None:
@@ -289,13 +307,13 @@ class BiasDetector:
 
             # Start calculation
             if response_type == "choice" and map_choices_filter is not None:
-                bias_detected: float = self.compute_2q_choice(
+                bias_detected, sample_size_1, sample_size_2 = self.compute_2q_choice(
                     q1_counts=control_group_counts,
                     q2_counts=treatment_group_counts,
                     map_answers=map_choices_filter,
                 )
             else:
-                bias_detected: float = self.compute_2q_numeric(
+                bias_detected, sample_size_1, sample_size_2 = self.compute_2q_numeric(
                     q1_counts=control_group_counts,
                     q2_counts=treatment_group_counts,
                 )
@@ -316,6 +334,8 @@ class BiasDetector:
                                 "model": row["model"],
                                 "temperature": row["temperature"],
                                 "model_id": row["model_id"],
+                                "sample_size_1": sample_size_1,
+                                "sample_size_2": sample_size_2,
                                 "bias_detected": bias_detected,
                             }
                         ]
@@ -324,10 +344,88 @@ class BiasDetector:
                 ignore_index=True,
             )
 
+        # Compute the sampling variance
+        # Population effect size as mean of all biases detected
+        population_effect_size: float = float(results["bias_detected"].mean())
+
+        results["sampling_variance"] = results.apply(
+            lambda x: self.sampling_variance(
+                sample_size_g1=x["sample_size_1"],
+                sample_size_g2=x["sample_size_2"],
+                population_effect_size=population_effect_size,
+            ),
+            axis=1,
+        )
+
         # Insert the results
         print(f"{datetime.now()} | Inserting results into database")
-        print(results[["bias", "scenario", "model", "temperature", "bias_detected"]])
-        self.insert_results(data=results)
+        print(
+            results[
+                [
+                    "bias",
+                    "scenario",
+                    "model",
+                    "temperature",
+                    "bias_detected",
+                    "sampling_variance",
+                ]
+            ]
+        )
+        self.db.update_data(
+            object="t_bias_detections",
+            data=results,
+            update_cols=["bias_detected", "sampling_variance"],
+        )
+
+    def modify_detected_biases(self) -> None:
+        "Function to set negative biases to 0 and all values larger than 1 to 1"
+        print(f"{datetime.now()} | Modifying detected biases")
+        # Fetch the current bias_detected
+        table_data: pd.DataFrame = self.db.fetch_data(total_object="t_bias_detections")
+
+        # Drop updated_at
+        table_data.drop(columns=["updated_at"], inplace=True)
+
+        # Create bias_detected_mod (0 <= bias_detected_mod <= 1)
+        table_data["bias_detected_mod"] = table_data["bias_detected"].apply(
+            lambda x: 0 if x < 0 else (1 if x > 1 else x)
+        )
+
+        # Compute the sampling variance of modified bias_detected
+        population_effect_size: float = float(table_data["bias_detected_mod"].mean())
+
+        table_data["sampling_variance_mod"] = table_data.apply(
+            lambda x: self.sampling_variance(
+                sample_size_g1=x["sample_size_1"],
+                sample_size_g2=x["sample_size_2"],
+                population_effect_size=population_effect_size,
+            ),
+            axis=1,
+        )
+
+        # Assert that we have all columns left
+        assert set(table_data.columns) == {
+            "bias",
+            "scenario",
+            "model",
+            "temperature",
+            "model_id",
+            "sample_size_1",
+            "sample_size_2",
+            "bias_detected",
+            "sampling_variance",
+            "bias_detected_mod",
+            "sampling_variance_mod",
+        }, "Columns are not as expected."
+
+        # Update the table
+        self.db.update_data(
+            object="t_bias_detections",
+            data=table_data,
+            update_cols=["bias_detected_mod", "sampling_variance_mod"],
+        )
+        # self.db.delete_data(total_object="t_bias_detections")
+        # self.db.insert_data(table="t_bias_detections", data=table_data, updated_at=True)
 
 
 if __name__ == "__main__":
@@ -424,3 +522,4 @@ if __name__ == "__main__":
         == "y"
     ):
         bd.detect_bias()
+        bd.modify_detected_biases()
