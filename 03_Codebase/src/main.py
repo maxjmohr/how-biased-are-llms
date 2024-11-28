@@ -126,6 +126,14 @@ if __name__ == "__main__":
         help="activate test mode",
         required=False,
     )
+    parser.add_argument(
+        "-temp",
+        "--temperature",
+        type=float,
+        choices=[0.2, 0.7, 1, 1.3, 1.8],
+        help="optional filter for temperature",
+        required=False,
+    )
     args: argparse.Namespace = parser.parse_args()
 
     # Initialize and connect to the database
@@ -133,6 +141,10 @@ if __name__ == "__main__":
     db.connect()
 
     try:
+        # Turn temperature into string for filtering
+        if args.temperature:
+            args.temperature = str(args.temperature)
+
         # Get all runnable experiments
         n: int = 100
         if args.n_loops:
