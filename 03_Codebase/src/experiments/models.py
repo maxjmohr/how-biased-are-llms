@@ -71,7 +71,7 @@ class ModelInteractor:
                 system_prompt=system_prompt,
                 max_tokens=max_tokens,
             )
-        elif model in ["claude-3-haiku", "claude-3-5-sonnet", "gemma2", "gemma2:27b"]:
+        elif model in ["claude-3-haiku", "claude-3-5-sonnet"]:
             self.llm = self.anthropic(
                 model=model,
                 api_key=api_key,
