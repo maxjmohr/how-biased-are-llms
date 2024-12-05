@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from src.data.db_helpers import Database
@@ -92,7 +93,65 @@ def homogeneity_by_HunterSchmidt(
     ) / np.sum(1 / sampling_variances)
 
     # Homogeneity ratio
-    return float(vars_e / vars_d) if vars_d != 0 else 1.0
+    homogeneity_ratio = float(vars_e / vars_d) if vars_d != 0 else 1.0
+    return homogeneity_ratio if homogeneity_ratio <= 1.0 else 1.0
+
+
+def plot_homogeneity_heatmap(
+    x_axis_names: List[str],
+    y_axis_names: List[str],
+    values: np.ndarray,
+    save: bool = False,
+) -> None:
+    """
+    Plot a heatmap of homogeneity values
+    """
+    # If the dtype of the values is not float, convert it to float
+    if values.dtype != float:
+        values = np.array(values, dtype=float)
+
+    # Round to 3 decimal places
+    values = np.round(values, 3)
+
+    # Configure matplotlib to use LaTeX fonts
+    plt.rc("text", usetex=True)
+    plt.rc("font", family="serif")
+
+    fig, ax = plt.subplots()
+    cax = ax.imshow(values, cmap="coolwarm")
+
+    # Set ticks
+    ax.set_xticks(np.arange(len(x_axis_names)), labels=x_axis_names)
+    ax.set_yticks(np.arange(len(y_axis_names)), labels=y_axis_names)
+
+    # Rotate the x tick labels and set their alignment.
+    plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+
+    # Loop over data dimensions and create text annotations.
+    for i in range(len(y_axis_names)):
+        for j in range(len(x_axis_names)):
+            ax.text(
+                j,
+                i,
+                values[i, j],
+                ha="center",
+                va="center",
+                color="w",
+            )
+
+    # Add color bar
+    fig.colorbar(cax, ax=ax)
+
+    fig.tight_layout()
+    plt.show()
+
+    if save:
+        # Save as svg
+        fig.savefig(
+            "/Users/mAx/Documents/Master/04/Master_Thesis/02_Thesis/Chapters/04_Results/Homogeneity/homogeneity_heatmap.svg",
+            format="svg",
+            bbox_inches="tight",
+        )
 
 
 if __name__ == "__main__":
@@ -100,7 +159,7 @@ if __name__ == "__main__":
 
     # Ask the user for filter options
     print(
-        "If you want to compute the homogeneity on a more-detailed level, confirm the desired levels. Otherwise, the homogeneity will be computed across all experiments."
+        "If you want to compute the homogeneity on a more-detailed level, confirm the desired levels. Otherwise, the homogeneity will be computed across the average of all experiments."
     )
     questions: List = [
         inquirer.Confirm(
@@ -170,6 +229,7 @@ if __name__ == "__main__":
         combinations: pd.DataFrame = db.fetch_data(sql=sql)
 
         # Get subset of each level_cols combinations and calculate homogeneity per subset
+        results: pd.DataFrame = pd.DataFrame()
         for _, row in combinations.iterrows():
             # Get subset
             subset: pd.DataFrame = biases_variances
@@ -186,7 +246,50 @@ if __name__ == "__main__":
                 sampling_variances=subset["sampling_variance_mod"].to_numpy(),
             )
 
+            # Concate to results
+            append_row: pd.DataFrame = (
+                pd.Series(
+                    {
+                        **row,
+                        "homogeneity": homogeneity,
+                        "homogeneity_mod": homegeneity_mod,
+                    }
+                )
+                .to_frame()
+                .T
+            )
+            results = pd.concat([results, append_row], axis=0)
+
             # Print
             print(f"\033[1mCombination: {', '.join(row.tolist())}\033[0m")
             print(f"Homogeneity: {homogeneity}")
             print(f"Homogeneity with modified effect size: {homegeneity_mod}")
+
+        # Ask whether to store the homogeneity heatmap
+        if levels_list == ["bias", "model"]:
+            questions: List = [
+                inquirer.Confirm(
+                    name="save",
+                    message="Save the homogeneity heatmap (plot)?",
+                    default=False,
+                ),
+            ]
+            save: Dict[str, bool] | None = inquirer.prompt(questions)
+
+            # Prepare data for plotting
+            x_axis_names: List[str] = results["model"].unique().tolist()
+            y_axis_names: List[str] = results["bias"].unique().tolist()
+            values: np.ndarray = (
+                results["homogeneity"]
+                .to_numpy()
+                .reshape(len(y_axis_names), len(x_axis_names))
+            )
+
+            # Plot homogeneity heatmap
+            if save is not None:
+                plot_homogeneity_heatmap(
+                    x_axis_names=x_axis_names,
+                    y_axis_names=y_axis_names,
+                    values=values,
+                    save=save["save"],
+                )

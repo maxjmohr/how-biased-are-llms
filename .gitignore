@@ -30,6 +30,7 @@ pyrightconfig.json
 *.run.xml
 *.synctex.gz
 *.toc
+*svg-inkscape
 
 # Excel
 *~$*
