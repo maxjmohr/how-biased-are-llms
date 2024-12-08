@@ -1,20 +1,20 @@
 \section{Results}
-Xxx
-
 \subsection{Analysis of detected biases}
 Xxx
 
 \begin{figure}[htbp]
     \centering
     \includesvg{/Users/mAx/Documents/Master/04/Master_Thesis/02_Thesis/Chapters/04_Results/Overview/heatmap_detections.svg}
-    \caption[Scenario overview]{\centering \textit{Detected biases grouped by biases and models. The calculation of the target variable is described in chapter 3.4.1.}}
+    \caption[Heatmap of bias detections grouped by biases and models]{\centering \textit{Detected biases grouped by biases and models. Aggregated values are capped between 0 and 1. Detailed calculation and aggregation of the target variable are described in chapters \ref{methodologies:biasdetector} and \ref{methodologies:analysisbiasmodels}.}}
     \label{fig:detections-heatmap}
 \end{figure}
+
+\par We also tested the detected biases for homogeneity. Again grouping the detections by biases and models, we find a strong homogeneity in the effect size variances especially for cases with no bias detections (see figure \ref{fig:homogeneity-heatmap}). Applying the 75\% rule by Hunter and Schmidt (REF), we can particularly assume homogeneity for non-bias detections. One exception is the anchoring bias in phi3:medium, where we find a high homogeneous bias detection. Phi3:medium generally stands out with a high homogeneity across its effect sizes (except for the framing effect), indicating a high reliability of the effect size estimates and in turn the model responses. 
 
 \begin{figure}[htbp]
     \centering
     \includesvg{/Users/mAx/Documents/Master/04/Master_Thesis/02_Thesis/Chapters/04_Results/Homogeneity/homogeneity_heatmap.svg}
-    \caption[Scenario overview]{\centering \textit{Homogeneity of effect size variances grouped by biases and models. The homogeneity is calculated as the ratio of variance due to sample size and observed variance. For visualization purposes, ratios above 1 are set to 1.}}
+    \caption[Heatmap of homogeneity grouped by biases and models]{\centering \textit{Homogeneity of capped effect sizes (between 0 and 1) grouped by biases and models. Homogeneity is calculated as the ratio of variance due to sample size and observed variance (detailed in chapter \ref{methodologies:analysisbiasmodels}).}}
     \label{fig:homogeneity-heatmap}
 \end{figure}
 

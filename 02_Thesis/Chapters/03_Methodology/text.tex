@@ -1,4 +1,4 @@
-\section{Methodology}
+\section{Study design and methodology}
 \par This section provides an overview of the methodology used in this research. We outline the selected biases and models which form the scope of the study. Further, we outline the structural design of the studies as well as the prompts and various scenarios to be tested. To evaluate the models' behaviors, we present an approach to score the bias detections and based on these results, analyze the impacts of different scenarios and models.
 
 
@@ -124,7 +124,7 @@ Like the studies we aim to recreate, we strive to measure a bias effect across a
     Base & Replication of the original study using base prompt format \\ \addlinespace
     Without Persona & Base scenario but exclusion of persona \\ \addlinespace
     Odd values & Base scenario but multiplication of the study variables (e.g. prices) times 9.7 \\ \addlinespace
-    Large values & Base scenario but multiplication of the study variables (e.g. prices) times 55555.5 \\ \bottomrule
+    Large values & Base scenario but multiplication of the study variables (e.g. prices) times 55,555.5 \\ \bottomrule
     \end{tabular}
     \caption[Scenario overview]{\centering \textit{Overview of scenarios across experiments and their descriptions on prompt adjustments}}
     \label{tab:scenarios}
@@ -134,6 +134,7 @@ Like the studies we aim to recreate, we strive to measure a bias effect across a
 \subsection{Response analysis}
 
 \subsubsection{Processing responses into a bias indicator}
+\label{methodologies:biasdetector}
 \par With our study design of a control and test group per experiment, we aim to compare the response distributions to measure bias effects. While we are generally concerned with the existence of a bias in an experiment configuration, we especially aim to quantify the magnitude of the bias for more detailed comparisons and analysis between the experiments. With respect to identifying a bias effect, one could implement hypothesis tests for determining whether the response distributions differ significantly between the control and treatment groups. However, \textcite{sullivan2012using} suggest that while P values may indicate a significant effect, the size of the effect is not extractable. P values can be influenced by the effect size of differences or sample sizes and can thus be difficult to interpret. Significant P values do not necessarily stem from large effect sizes but can also e.g. come from a large sample size and small (and practically irrelevant) effects \parencite{borenstein2021introduction,sullivan2012using}. Further, even though methodology does exist to comparing P values and incorporating them into meta analyses, strong assumptions are needed to make the results comparable \parencite{borenstein2021introduction}.
 
 \par As the comparability of the experiments is a key aspect of our study and all experiments have similar structures and examine the same topic that is cognitive biases in large language models, we orient ourselves towards traditional meta analysis methodologies by computing a determined effect size per experiment. In our setting of two independent groups (pre- and post-test measurements), we can calculate the standardized difference of means (Cohen's d) as \parencite{borenstein2021introduction,goulet2018review,morris2002combining}:
@@ -154,21 +155,20 @@ d = \frac{\bar{X}_{post} - \bar{X}_{pre}}{SD_{pooled}}
 \hspace{0.5cm} \textit{where:} \\
 \hspace*{3em}
 \begin{tabular}{rl}
-    $n_{pre}$, $n_{post}$:& sample sizes of the control and treatment groups, respectively \\
-    $SD_{pre}$, $SD_{post}$:& standard deviations of the control and treatment groups, respectively
+    $n_{pre}$, $n_{post}$:& sample sizes of the control and treatment groups \\
+    $SD_{pre}$, $SD_{post}$:& standard deviations of the control and treatment groups
 \end{tabular} \\
 
 \par The effect size $d$ is a standardized measure and thus allows for comparisons between different experiments and studies. Cohen's $d$ can be interpreted as the magnitude of the bias effect, with larger values indicating a stronger bias effect. The effect size can be further interpreted using the guidelines by \textcite{cohen1988statistical} where values of 0.2, 0.5 and 0.8 are considered small, medium and large effects, respectively. While Cohen's $d$ is not an unbiased estimator of the population effect size due to overestimation and a correction factor has been developed to form Hedges' $g$ \parencite{hedges1981distribution}, \textcite{goulet2018review} suggest that the correction factor is especially necessary for small sample sizes $n_{total} < 16$. Therefore, we use the uncorrected Cohen's $d$ for our analysis as all sample sizes in our experiments are $n_{total} = 200$.
 
 \par For our experiments where we ask models to respond with numerical values, we can directly calculate the means and standard deviations of the responses to compute the effect size. To align with these experiments, we convert the models' responses in the choice experiments (i.e. A and B) to binary values, depending on which option we expect the models to choose in the treatment group. In the case of \textit{loss aversion}, we expect the control group to select the risk averse gain option ($A=0$) and the treatment group to select the risk seeking loss option ($B=1$) \parencite{thaler2015misbehaving}. We then calculate the effect size based on the binary responses.
 
-\par By nature of Cohen's $d$ calculation (Equation \ref{eq:cohensd}), the effect size can also be negative if the control group has a higher mean than the treatment group. For most of our bias experiments, we have recreated the experiments in a way that a higher mean in the treatment group refers to the expected bias effect. For a straightforward interpretation of a bias indicator, the minimum value of the effect size should equal zero to indicate no existing bias. We thus adjust the effect size for these experiments by setting every negative effect to zero. Exceptions to this are the experiments regarding the \textit{framing effect} and \textit{transaction utility} experiment. For both biases, a differentiating effect in either group hints at the existence of the bias. For these biases, we adjust for negative effect sizes by taking the absolute value of the effect size. The resulting metric, namely \textit{bias detected}, is the following:
+\par By nature of Cohen's $d$ calculation (Equation \ref{eq:cohensd}), the effect size can also be negative if the control group has a higher mean than the treatment group. For most of our bias experiments, we have recreated the experiments in a way that a higher mean in the treatment group refers to the expected bias effect. We thus expect a positive effect size for the existence of a bias and interpret any negative or zero effect sizes as no bias detected. Exceptions to this are the experiments regarding the \textit{framing effect} and \textit{transaction utility bias}. For these biases, a differentiating effect in either group hints at the existence of the bias. Therefore, we adjust the negative effect sizes by extracting their absolute values. The resulting metric, namely \textit{bias detected}, is the following:
 \begin{equation} \label{eq:bias_detected}
-    \text{bias detected} = 
-    \begin{cases} 
-        |d| & \text{if bias = "framing effect"} \text{ or "transaction utility"} \\
-        d & \text{if bias $\neq$ "framing effect" and } d \geq 0 \\
-        0 & \text{else}
+    \text{\textit{bias detected}} =
+    \begin{cases}
+        |d| & \text{if bias = \textit{framing effect} or \textit{transaction utility}} \\
+        d & \text{else}
     \end{cases}
 \end{equation}
 \hspace{0.5cm} \textit{where:} \\
@@ -177,12 +177,20 @@ d = \frac{\bar{X}_{post} - \bar{X}_{pre}}{SD_{pooled}}
     $d$:& Cohen's $d$ effect size by Equation \ref{eq:cohensd}
 \end{tabular}
 
-\subsubsection{Analysis of bias effects across all experiments}
-\par First give an overview of the detected biases, maybe a grid with biases on y and models on x, and a distribution, comparing detected biases and modified detected biases
-\par Then look at homogeneity, again with grid maybe. And then some high- and lowlights. Also in the end state (in the analysis itself) that this is the reason why we must do further analysis of the impacts and models, to see what other factors might influence the bias detection.
-\par With granular experiment level, we want to aggregate. \textcite{morris2002combining} suggests weighted average. We don't need that (show mathematically), can directly average.
+\subsubsection{Analysis of effect sizes across biases and models}
+\label{methodologies:analysisbiasmodels}
+\par The \textit{bias detected} metric allows us to compare the magnitude of the bias effects across all experiments. To follow our research question of whether biases are present in large language models and how they differ between biases and models, we group all experiment detections by bias and model. \textcite{morris2002combining} suggest an average weighted by the reciprocal of the sampling variance of the effect sizes to aggregate effect sizes. Per experiment, the sampling variance is influenced by the sample sizes and the population effect size (unweighted average). As all our experiments have the identical sample sizes and each group has one fixed unweighted population effect size, the sampling variance is constant across all experiments. We can thus directly average the effect sizes to aggregate the bias detections. With the aggregated effect sizes, we compare the detections across biases and models to analyze the presence and magnitude of biases in the models.
 
-\subsubsection{Estimations of scenario impacts}
+\par To simplify and illustrate the aggregated bias detections, we cap the aggregates at zero and one. Group effect sizes larger than one are set to one to indicate a large bias effect, while those smaller than zero are set to zero to indicate no detected biases. 
+As we solely cut off the aggregates and do not rescale the effect sizes themselves, we ensure to correctly weigh extremely large and small effect sizes in the aggregation. Further, by capping the aggregates and not rescaling them, we maintain the interpretation guidelines by \textcite{cohen1988statistical} where values of 0.2, 0.5 and 0.8 are considered small, medium and large effects, respectively.
+
+\par Besides the bias detections themselves, we test for homogeneity of the effect sizes across the models and biases. 
+
+\par Then look at homogeneity, again with grid maybe. And then some high- and lowlights. Also in the end state (in the analysis itself) that this is the reason why we must do further analysis of the impacts and models, to see what other factors might influence the bias detection.
+
+
+
+\subsubsection{Scenario impacts on bias detections}
 Average treatment effects of treated on randomized values as well as explicitly prompting humanlike behavior. The control group is the normal prompt.
 Perhaps with Repeated Measures ANOVA (RM-ANOVA) to see if there are significant differences between the scenarios.
 Perhaps Mixed-Effects Models to see if there are significant differences between the scenarios.

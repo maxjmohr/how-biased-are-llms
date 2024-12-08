@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from src.data.db_helpers import Database
 from src.experiments.bias_detection import BiasDetector
-from typing import Dict, List, Tuple
+from typing import Dict, List, Literal, Tuple
 
 
 def prepare_data(
@@ -97,10 +97,66 @@ def homogeneity_by_HunterSchmidt(
     return homogeneity_ratio if homogeneity_ratio <= 1.0 else 1.0
 
 
+def get_homogeneity_one_level(level: Literal["bias", "model"] = "bias") -> pd.DataFrame:
+    """
+    Calculate homogeneity for one level (bias or model) to display at the far right and bottom of the heatmap
+    """
+    # Fetch and prepare data
+    biases_variances = prepare_data(levels=[level])
+    assert isinstance(biases_variances, pd.DataFrame), "Data is not a DataFrame."
+
+    # Get all unique combinations of the actual values of the relevant levels
+    # Connect to the database
+    db = Database()
+    db.connect()
+
+    # Get unique values of the level
+    sql: str = f"""
+                SELECT DISTINCT {level}
+                FROM t_bias_detections
+                """
+    unique_values: pd.DataFrame = db.fetch_data(sql=sql)
+
+    # Get subset of each level_cols combinations and calculate homogeneity per subset
+    results: pd.DataFrame = pd.DataFrame()
+    for _, row in unique_values.iterrows():
+        # Get subset
+        subset: pd.DataFrame = biases_variances
+        subset = subset.loc[subset[level] == row[level]]
+
+        # Calculate homogeneity
+        homogeneity: float = homogeneity_by_HunterSchmidt(
+            effect_sizes=subset["bias_detected"].to_numpy(),
+            sampling_variances=subset["sampling_variance"].to_numpy(),
+        )
+        homegeneity_mod: float = homogeneity_by_HunterSchmidt(
+            effect_sizes=subset["bias_detected_mod"].to_numpy(),
+            sampling_variances=subset["sampling_variance_mod"].to_numpy(),
+        )
+
+        # Concate to results
+        append_row: pd.DataFrame = (
+            pd.Series(
+                {
+                    **row,
+                    "homogeneity": homogeneity,
+                    "homogeneity_mod": homegeneity_mod,
+                }
+            )
+            .to_frame()
+            .T
+        )
+        results = pd.concat([results, append_row], axis=0)
+
+    return results
+
+
 def plot_homogeneity_heatmap(
     x_axis_names: List[str],
     y_axis_names: List[str],
     values: np.ndarray,
+    bias_homogeneities: np.ndarray | None = None,
+    model_homogeneities: np.ndarray | None = None,
     save: bool = False,
 ) -> None:
     """
@@ -138,6 +194,51 @@ def plot_homogeneity_heatmap(
                 va="center",
                 color="w",
             )
+
+    if bias_homogeneities is not None and model_homogeneities is not None:
+        # If the dtype of the values is not float, convert it to float
+        if bias_homogeneities.dtype != float:
+            bias_homogeneities = np.array(bias_homogeneities, dtype=float)
+        if model_homogeneities.dtype != float:
+            model_homogeneities = np.array(model_homogeneities, dtype=float)
+
+        # Round to 3 decimal places
+        bias_homogeneities = np.round(bias_homogeneities, 3)
+        model_homogeneities = np.round(model_homogeneities, 3)
+
+        # Append model homogeneities at the top
+        for j in range(len(x_axis_names)):
+            ax.text(
+                j,
+                -1,  # Position above the heatmap rows
+                model_homogeneities[j],
+                ha="center",
+                va="center",
+                color="black",
+                fontsize=9,
+                fontweight="bold",  # Make bold
+            )
+
+        # Append bias homogeneities to the right
+        for i in range(len(y_axis_names)):
+            ax.text(
+                len(x_axis_names),  # Position after the heatmap columns
+                i,
+                bias_homogeneities[i],
+                ha="center",
+                va="center",
+                color="black",
+                fontsize=9,
+                fontweight="bold",  # Make bold
+            )
+
+        # Set limits to account for the added values
+        ax.set_xlim(-0.5, len(x_axis_names) + 0.5)
+        ax.set_ylim(len(y_axis_names) - 0.5, -1.5)
+
+    # Remove borders and ticks
+    ax.spines[:].set_visible(False)  # Hide all borders
+    ax.tick_params(top=False, bottom=False, left=False, right=False)
 
     # Add color bar
     fig.colorbar(cax, ax=ax)
@@ -265,8 +366,23 @@ if __name__ == "__main__":
             print(f"Homogeneity: {homogeneity}")
             print(f"Homogeneity with modified effect size: {homegeneity_mod}")
 
-        # Ask whether to store the homogeneity heatmap
         if levels_list == ["bias", "model"]:
+            # Ask whether to plot homogeneity or homogeneity_mod
+            questions: List = [
+                inquirer.Confirm(
+                    name="homogeneity",
+                    message="Plot unmodified homogeneity?",
+                    default=True,
+                ),
+            ]
+            homogeneity: Dict[str, bool] | None = inquirer.prompt(questions)
+
+            if homogeneity is not None and homogeneity["homogeneity"]:
+                which_homogeneity: str = "homogeneity"
+            else:
+                which_homogeneity: str = "homogeneity_mod"
+
+            # Ask whether to store the homogeneity heatmap
             questions: List = [
                 inquirer.Confirm(
                     name="save",
@@ -280,16 +396,49 @@ if __name__ == "__main__":
             x_axis_names: List[str] = results["model"].unique().tolist()
             y_axis_names: List[str] = results["bias"].unique().tolist()
             values: np.ndarray = (
-                results["homogeneity"]
+                results[which_homogeneity]
                 .to_numpy()
                 .reshape(len(y_axis_names), len(x_axis_names))
             )
 
-            # Plot homogeneity heatmap
-            if save is not None:
-                plot_homogeneity_heatmap(
-                    x_axis_names=x_axis_names,
-                    y_axis_names=y_axis_names,
-                    values=values,
-                    save=save["save"],
-                )
+            # Ask whether to add the overall bias and model homogeneities
+            questions: List = [
+                inquirer.Confirm(
+                    name="add",
+                    message="Add overall bias and model homogeneities to the heatmap?",
+                    default=False,
+                ),
+            ]
+            add: Dict[str, bool] | None = inquirer.prompt(questions)
+
+            if add is not None and add["add"]:
+                # Get homogeneity for the model and bias levels
+                homog_bias: pd.DataFrame = get_homogeneity_one_level(level="bias")
+                bias_homogeneities: np.ndarray = homog_bias[
+                    which_homogeneity
+                ].to_numpy()
+                homog_model: pd.DataFrame = get_homogeneity_one_level(level="model")
+                model_homogeneities: np.ndarray = homog_model[
+                    which_homogeneity
+                ].to_numpy()
+
+                # Plot homogeneity heatmap
+                if save is not None:
+                    plot_homogeneity_heatmap(
+                        x_axis_names=x_axis_names,
+                        y_axis_names=y_axis_names,
+                        values=values,
+                        bias_homogeneities=bias_homogeneities,
+                        model_homogeneities=model_homogeneities,
+                        save=save["save"],
+                    )
+
+            else:
+                # Plot homogeneity heatmap
+                if save is not None:
+                    plot_homogeneity_heatmap(
+                        x_axis_names=x_axis_names,
+                        y_axis_names=y_axis_names,
+                        values=values,
+                        save=save["save"],
+                    )

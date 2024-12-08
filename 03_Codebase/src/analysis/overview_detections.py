@@ -17,10 +17,14 @@ def fetch_data(
 
     detected_biases: pd.DataFrame = db.fetch_data(total_object="t_bias_detections")
 
-    # Group by the specified columns and average bias_detected_mod
-    relevant_columns: List[str] = group_by + ["bias_detected_mod"]
+    # Group by the specified columns and average bias_detected
+    relevant_columns: List[str] = group_by + ["bias_detected"]
     detected_biases = (
         detected_biases[relevant_columns].groupby(by=group_by).mean().reset_index()
+    )
+    # If <0 = 0, if >1 = 1
+    detected_biases["bias_detected"] = detected_biases["bias_detected"].apply(
+        lambda x: 0 if x < 0 else (1 if x > 1 else x)
     )
 
     # Get the unique values of the group_by columns
@@ -30,7 +34,7 @@ def fetch_data(
     # Create a matrix of the bias values
     values: np.ndarray = np.zeros((len(y_axis_names), len(x_axis_names)))
     values: np.ndarray = (
-        detected_biases["bias_detected_mod"]
+        detected_biases["bias_detected"]
         .to_numpy()
         .reshape(len(y_axis_names), len(x_axis_names))
     )
