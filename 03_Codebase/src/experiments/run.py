@@ -85,6 +85,9 @@ def run_experiment(
     for i in trange(
         n, desc=f"Bias {bias} ({scenario}) on model {model} (temp={temperature})"
     ):
+        # Sleep for 1 second to avoid rate limiting
+        # time.sleep(1)
+
         # Prompt the model
         if reason:
             total_response, correct_run = mi.prompt(
@@ -96,6 +99,8 @@ def run_experiment(
                 additional_system_message=additional_system_message,
                 response_type=response_type,
             )
+
+        # Store the response
         try:
             responses[i] = str(total_response.response)
             reasons[i] = total_response.reason

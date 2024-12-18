@@ -75,7 +75,7 @@ if __name__ == "__main__":
         type=str,
         choices=[
             "claude-3-haiku",
-            "claude-3-5-sonnet",
+            "claude-3.5-sonnet",
             "gemma2",
             "gemma2:27b",
             "gpt-4o-mini",

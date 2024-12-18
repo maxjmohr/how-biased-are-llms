@@ -458,6 +458,8 @@ if __name__ == "__main__":
     ]
     models: List[str] = [
         "all",
+        "claude-3-haiku",
+        "claude-3.5-sonnet",
         "gemma2",
         "gemma2:27b",
         "gpt-4o-mini",

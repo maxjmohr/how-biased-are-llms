@@ -45,7 +45,7 @@ class ModelInteractor:
         """
         assert model in [
             "claude-3-haiku",
-            "claude-3-5-sonnet",
+            "claude-3.5-sonnet",
             "gemma2",
             "gemma2:27b",
             "gpt-4o-mini",
@@ -71,7 +71,7 @@ class ModelInteractor:
                 system_prompt=system_prompt,
                 max_tokens=max_tokens,
             )
-        elif model in ["claude-3-haiku", "claude-3-5-sonnet"]:
+        elif model in ["claude-3-haiku", "claude-3.5-sonnet"]:
             self.llm = self.anthropic(
                 model=model,
                 api_key=api_key,
@@ -211,13 +211,17 @@ class ModelInteractor:
         # Get the exact model name
         anthropic_dict: Dict[str, str] = {
             "claude-3-haiku": "claude-3-haiku-20240307",
-            "claude-3-5-sonnet": "claude-3-5-sonnet-20240620",
+            "claude-3.5-sonnet": "claude-3-5-sonnet-20240620",
         }
         model = anthropic_dict[model]
+
+        # Adapt temperature between 0 and 1 instead of 0 and 2
+        temperature_adapted: float = float(temperature) / 2
+
         return Anthropic(
             model=model,
             api_key=api_key,
-            temperature=temperature,
+            temperature=temperature_adapted,
             system_prompt=system_prompt,
             max_tokens=max_tokens,
         )
@@ -248,7 +252,11 @@ class ModelInteractor:
 
     def close(self) -> None:
         "Close and unload the model from memory"
-        if self.model in ["gpt-4o-mini", "gpt-4o"] or not self.local:
+        if (
+            self.model
+            in ["gpt-4o-mini", "gpt-4o", "claude-3-haiku", "claude-3.5-sonnet"]
+            or not self.local
+        ):
             pass
         else:
             ollama.generate(model=self.model, prompt="Goodbye!", keep_alive=0)

@@ -101,3 +101,29 @@
   number_parameters: 24
   model_architecture: transformer
   ollama_id: cf611a26b048
+
+- model_id: 90
+  model: claude-3-haiku
+  local: False
+  temperature: 0.7
+  system: All
+  release_date: 2024-03-07
+  last_updated_at: 2024-03-07
+  download_date:
+  size:
+  number_parameters: 20
+  model_architecture: transformer
+  ollama_id:
+
+- model_id: 100
+  model: claude-3-5-sonnet
+  local: False
+  temperature: 0.7
+  system: All
+  release_date: 2024-06-20
+  last_updated_at: 2024-06-20
+  download_date:
+  size:
+  number_parameters: 70
+  model_architecture: transformer
+  ollama_id:
