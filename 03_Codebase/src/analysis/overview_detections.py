@@ -55,15 +55,19 @@ def plot_bias_heatmap(
     if values.dtype != float:
         values = np.array(values, dtype=float)
 
-    # Round to 3 decimal places
-    values = np.round(values, 3)
+    # Round
+    values = np.round(values, 2)
 
     # Configure matplotlib to use LaTeX fonts
     plt.rc("text", usetex=True)
     plt.rc("font", family="serif")
+    plt.rcParams.update({"font.size": 11})
+
+    # Create a color map
+    cmap = plt.get_cmap("coolwarm")
 
     fig, ax = plt.subplots()
-    cax = ax.imshow(values, cmap="coolwarm")
+    cax = ax.imshow(values, cmap=cmap)
 
     # Set ticks
     ax.set_xticks(np.arange(len(x_axis_names)), labels=x_axis_names)
@@ -75,17 +79,26 @@ def plot_bias_heatmap(
     # Loop over data dimensions and create text annotations.
     for i in range(len(y_axis_names)):
         for j in range(len(x_axis_names)):
+            value = values[i, j]
+
+            # Get the background color of the cell
+            bg_color = cmap(value / values.max())
+            # Calculate text color based on luminance
+            luminance = 0.299 * bg_color[0] + 0.587 * bg_color[1] + 0.114 * bg_color[2]
+            text_color = "white" if luminance < 0.5 else "black"
+
             ax.text(
                 j,
                 i,
-                values[i, j],
+                value,
                 ha="center",
                 va="center",
-                color="w",
+                color=text_color,
             )
 
     # Add color bar
-    fig.colorbar(cax, ax=ax)
+    cbar = fig.colorbar(cax, ax=ax, shrink=0.82)
+    cbar.ax.set_ylabel("bias detected", rotation=-90, va="bottom")
 
     fig.tight_layout()
     plt.show()
@@ -106,7 +119,7 @@ if __name__ == "__main__":
     questions: List = [
         inquirer.Confirm(
             name="save",
-            message="Save the homogeneity heatmap (plot)?",
+            message="Save the detection heatmap (plot)?",
             default=False,
         ),
     ]

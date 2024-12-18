@@ -166,15 +166,19 @@ def plot_homogeneity_heatmap(
     if values.dtype != float:
         values = np.array(values, dtype=float)
 
-    # Round to 3 decimal places
-    values = np.round(values, 3)
+    # Round
+    values = np.round(values, 2)
 
     # Configure matplotlib to use LaTeX fonts
     plt.rc("text", usetex=True)
     plt.rc("font", family="serif")
+    plt.rcParams.update({"font.size": 11})
+
+    # Create a color map
+    cmap = plt.get_cmap("coolwarm")
 
     fig, ax = plt.subplots()
-    cax = ax.imshow(values, cmap="coolwarm")
+    cax = ax.imshow(values, cmap=cmap)
 
     # Set ticks
     ax.set_xticks(np.arange(len(x_axis_names)), labels=x_axis_names)
@@ -186,13 +190,21 @@ def plot_homogeneity_heatmap(
     # Loop over data dimensions and create text annotations.
     for i in range(len(y_axis_names)):
         for j in range(len(x_axis_names)):
+            value = values[i, j]
+
+            # Get the background color of the cell
+            bg_color = cmap(value / values.max())
+            # Calculate text color based on luminance
+            luminance = 0.299 * bg_color[0] + 0.587 * bg_color[1] + 0.114 * bg_color[2]
+            text_color = "white" if luminance < 0.5 else "black"
+
             ax.text(
                 j,
                 i,
-                values[i, j],
+                value,
                 ha="center",
                 va="center",
-                color="w",
+                color=text_color,
             )
 
     if bias_homogeneities is not None and model_homogeneities is not None:
@@ -236,12 +248,13 @@ def plot_homogeneity_heatmap(
         ax.set_xlim(-0.5, len(x_axis_names) + 0.5)
         ax.set_ylim(len(y_axis_names) - 0.5, -1.5)
 
-    # Remove borders and ticks
-    ax.spines[:].set_visible(False)  # Hide all borders
-    ax.tick_params(top=False, bottom=False, left=False, right=False)
+        # Remove borders and ticks
+        ax.spines[:].set_visible(False)  # Hide all borders
+        ax.tick_params(top=False, bottom=False, left=False, right=False)
 
     # Add color bar
-    fig.colorbar(cax, ax=ax)
+    cbar = fig.colorbar(cax, ax=ax, shrink=0.82)
+    cbar.ax.set_ylabel("homogeneity", rotation=-90, va="bottom")
 
     fig.tight_layout()
     plt.show()
@@ -370,14 +383,14 @@ if __name__ == "__main__":
             # Ask whether to plot homogeneity or homogeneity_mod
             questions: List = [
                 inquirer.Confirm(
-                    name="homogeneity",
+                    name="homogeneity_q",
                     message="Plot unmodified homogeneity?",
                     default=True,
                 ),
             ]
-            homogeneity: Dict[str, bool] | None = inquirer.prompt(questions)
+            homogeneity_q: Dict[str, bool] | None = inquirer.prompt(questions)
 
-            if homogeneity is not None and homogeneity["homogeneity"]:
+            if homogeneity_q is not None and homogeneity_q["homogeneity_q"]:
                 which_homogeneity: str = "homogeneity"
             else:
                 which_homogeneity: str = "homogeneity_mod"
