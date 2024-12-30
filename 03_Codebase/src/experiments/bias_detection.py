@@ -116,7 +116,7 @@ class BiasDetector:
         Group 1 is control, Group 2 is treatment
         This is the formula we use (regardless if considered as two-group or repeated measures design):
         d = (M2 - M1) / sqrt(((n1 - 1) * std1^2 + (n2 - 1) * std2^2) / (n1 + n2 - 2))
-        If same sample size: d = (M1 - M2) / sqrt((s1^2 + s2^2) / 2)
+        If same sample size: d = (M2 - M1) / sqrt((s1^2 + s2^2) / 2)
         """
         # Compute means
         mean1: float = float(np.mean(group1))
@@ -223,12 +223,12 @@ class BiasDetector:
         g1_is_control: Dict[str, bool] = {
             "anchoring": True,  # Group 1 should estimate a lower proportion (control) than group 2
             "category size bias": True,  # Group 1 should estimate a lower percentage (control) than group 2
-            "endowment effect": False,  # Group 1 should estimate a lower value (control) than group 2
+            "endowment effect": False,  # Group 2 should estimate a lower value (control) than group 1
             "framing effect": True,  # Group 1 lost a random bill (control), group 2 lost the ticket
             "gamblers fallacy": False,  # Group 2 should estimate 50% (control) and possibly lower than group 1
             "loss aversion": True,  # Group 1 is gain scenario (control), group 2 is loss scenario
             "sunk cost fallacy": True,  # Group 1 has same valued tickets (control), group 2 the different valued tickets
-            "transaction utility": True,  # Group 1 has the scenario with lower prices (should choose other store) (control) and group 2 has higher prices
+            "transaction utility": False,  # Group 2 has the scenario with higher prices (should remain at store) (control) and group 1 has lower prices and should switch
         }
 
         # For the choice experiments, create a mapping of the answers to numeric values (if we expect higher B answers to show the bias, we should map B to 1)
@@ -236,13 +236,12 @@ class BiasDetector:
             "framing effect": {"A": 0, "B": 1},
             "loss aversion": {"A": 0, "B": 1},
             "sunk cost fallacy": {"A": 1, "B": 0},
-            "transaction utility": {"A": 1, "B": 0},
+            "transaction utility": {"A": 0, "B": 1},
         }
 
         # For some experiments, a negative Cohen's d also indicates the bias, in these cases take the absolute value
         absolute_d: List[str] = [
             "framing effect",
-            "transaction utility",
         ]
 
         # Get unique combinations of bias, scenario, model, temperature
