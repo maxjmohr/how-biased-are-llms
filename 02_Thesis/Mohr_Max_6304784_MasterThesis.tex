@@ -42,6 +42,10 @@
 \usepackage{subcaption} % For subfigures
 \usepackage{tcolorbox} % For colored boxes
 \usepackage{booktabs} % For tables
+\usepackage{rotating} % For rotating the table
+\usepackage{adjustbox} % To adjust table width
+\usepackage{caption} % Ensure this is in your preamble
+\usepackage{float}   % For forcing table positions
 
 % Increase line spacing for text
 \usepackage{setspace}
@@ -121,8 +125,15 @@
 \addcontentsline{toc}{section}{List of Abbreviations}
 \begin{tabbing}
     Abbreviation \hspace{1cm} \= Description \kill
+    AI \> Artificial Intelligence \\
+    GPT \> Generative Pre-trained Transformer \\
     LLM \> Large Language Model \\
+    MMLU \> Massive Multitask Language Understanding \\
+    RLHF \> Reinforcement Learning with Human Feedback \\
+    SLM \> Small Language Model \\
     TELeR \> Turn, Expression, Level of details and Role (taxonomy) \\
+    WTA \> Willingness-to-Accept \\
+    WTP \> Willingness-to-Pay \\
 \end{tabbing}
 
 \newpage
@@ -150,8 +161,20 @@
 \clearpage
 \pagenumbering{Roman} % Start Roman page numbering
 \setcounter{page}{7}
-\printbibliography
 \addcontentsline{toc}{section}{References}
+\printbibliography
+
+%%%=======| APPENDIX |=======%%%
+\newpage
+\thispagestyle{empty}
+\begin{center}
+  \vspace*{\fill}
+  {\Huge\textbf{APPENDIX}}
+  \vspace*{\fill}
+\end{center}
+\newpage
+\setcounter{page}{11}
+\include{Chapters/06_Appendix/text}
 
 %%%=======| FORMAL DECLARATION |=======%%%
 \newpage

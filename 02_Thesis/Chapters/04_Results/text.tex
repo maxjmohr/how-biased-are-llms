@@ -1,6 +1,6 @@
 \section{Results}
 \subsection{Analysis of detected biases}
-\par Aggregating across all biases and models, we find a total of 28 bias detections (\textit{bias detected} \geq\, 0.5). Displaying the aggregations as a heatmap in figure \ref{fig:detections-heatmap}, we can examine the distribution of bias detections across biases and models. As we aggregate the bias detections with the true effect sizes and afterwards cap off the aggregates, we find a large portion of the aggregate effect sizes either indicating no bias detection (0) or a full bias detection (1). However, the scaling in between the minimum and maximum stays untouched, we are still able to apply the interpretation guidelines by \textcite{cohen1988statistical}.
+\par Aggregating across all biases and models, we find a total of 28 bias detections (\textit{bias detected (capped)} \geq\, 0.5). Displaying the aggregations as a heatmap in figure \ref{fig:detections-heatmap}, we can examine the distribution of bias detections across biases and models. As we aggregate the bias detections with the true effect sizes and afterwards cap off the aggregates, we find a large portion of the aggregate effect sizes either indicating no bias detection (0) or a full bias detection (1). However, as the scaling in between the minimum and maximum stays untouched, we are still able to apply the interpretation guidelines by \textcite{cohen1988statistical}.
 
 \begin{figure}[htbp]
     \centering
@@ -11,7 +11,7 @@
 
 \par The heatmap depicts a high number of bias detections for the \textit{anchoring bias}, the \textit{endowment effect} and the \textit{framing effect}. Especially the \textit{anchoring bias} is detected with large impact in all models. This tells us that the models are heavily influenced in their estimations when being exposed to a reference point (anchor). The \textit{framing effect} is also detected in the models, some with a larger effect than others. Whether the model associates a monetary loss directly with another purchase seems to lead to different outputs. Generally, models with more parameters seem to be more biased towards this, with the small phi3.5 model being an exception. If detected, the \textit{endowment effect} also has a large impact on the models' responses. All models except for llama3.1 and phi3:medium are biased towards valuing their own possession higher than an offered item.
 
-\par Some biases were not detected in any of the models. Both the \textit{gambler's fallacy} and \textit{category size bias} are biases that examine the statistical understanding of independencies. The large language models seem to not show any bias towards these fallacies. The \textit{sunk cost fallacy} is also not detected in any of the models. Humans generally prefer the option (two simultaneous ski trips) with the larger sunk costs, independent of their actual emotional preference. Interestingly, we find that the models not only do not exhibit this bias, but prefer the emotionally preferred option with lower sunk costs. This could also be caused due missing relationship and reference towards the monetary value of the sunk costs. \textit{Loss aversion}, if detected, shows strong to very strong effects in the models or none at all. Especially the model families by Anthropic and OpenAi show strong tendencies to avoiding losses and therefore taking more risks. Smaller models show less bias towards \textit{loss aversion}. Interestingly, llama3.1:70b, which is one of the larger models we analyze and larger than the 8 billion parameter twin, shows less bias than the smaller model.
+\par Some biases were not detected in any of the models. Both the \textit{gambler's fallacy} and \textit{category size bias} are biases that examine the statistical understanding of independent subjects and events. The large language models seem to not show any bias towards these fallacies. The \textit{sunk cost fallacy} is also not detected in any of the models. Humans generally prefer the option (two simultaneous ski trips) with the larger sunk costs, independent of their actual emotional preference. Interestingly, we find that the models not only do not exhibit this bias, but prefer the emotionally preferred option with lower sunk costs. This could also be caused due missing relationship and reference towards the monetary value of the sunk costs. \textit{Loss aversion}, if detected, shows strong to very strong effects in the models or none at all. Especially the model families by Anthropic and OpenAi show strong tendencies to avoiding losses and therefore taking more risks. Smaller models show less bias towards \textit{loss aversion}. Interestingly, llama3.1:70b, which is one of the larger models we analyze and larger than the 8 billion parameter twin, shows less bias than the smaller model.
 
 The \textit{transaction utility bias} is an extreme case amongst our biases as it is never detected in the models except for gpt-4o and claude-3.5-sonnet. The experiment aimed to investigate if participants would shift your purchasing decision based on the transaction utility of the product (difference between prices). While human participants altered their decision based on the relative amount of money saved to the purchasing prices, most of the models understood that both scenarios had the same absolute price difference. As the experiment was also linked to a 20-minute drive to purchase the cheaper product, the models might not have understood this part of the impact on the decision-making process. However, gpt-4o and claude-3.5-sonnet did seem to understand the influences in the experiment and showed an unequivocal bias towards the \textit{transaction utility bias}.
 
@@ -32,6 +32,7 @@ The \textit{transaction utility bias} is an extreme case amongst our biases as i
 ANHANG DIE TABELLE MIT DEN AUFFÄLLIGEN HOMOGENITÄTEN
 
 \subsection{Scenario impact}
+\label{results:scenarioimpact}
 Xxx
 
 \subsection{Model analysis}
@@ -39,4 +40,5 @@ Xxx
 Xxx
 
 \subsection{Interactions}
+\label{results:interactions}
 Xxx
