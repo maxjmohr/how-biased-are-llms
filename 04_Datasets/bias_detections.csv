@@ -1,0 +1,1600 @@
+bias,scenario,model,temperature,sample_size_1,sample_size_2,bias_detected,bias_detected_mod
+anchoring,0_normal,claude-3-haiku,0.2,100,100,0.0,0.0
+anchoring,0_normal,claude-3-haiku,0.7,100,100,0.5167981681810448,0.5167981681810448
+anchoring,0_normal,claude-3-haiku,1.0,100,100,0.8854362278607385,0.8854362278607385
+anchoring,0_normal,claude-3-haiku,1.3,100,100,0.8648671225874438,0.8648671225874438
+anchoring,0_normal,claude-3-haiku,1.8,100,100,0.9542514100810284,0.9542514100810284
+anchoring,0_normal,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+anchoring,0_normal,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+anchoring,0_normal,claude-3.5-sonnet,1.0,100,100,0.18033392693348263,0.18033392693348263
+anchoring,0_normal,claude-3.5-sonnet,1.3,100,100,0.14213381090376256,0.14213381090376256
+anchoring,0_normal,claude-3.5-sonnet,1.8,100,100,0.23224433809720918,0.23224433809720918
+anchoring,0_normal,gemma2,0.2,100,100,0.0,0.0
+anchoring,0_normal,gemma2,0.7,100,100,2.188386883812945,1.0
+anchoring,0_normal,gemma2,1,100,100,4.334626953463016,1.0
+anchoring,0_normal,gemma2,1.3,100,100,4.115476148556393,1.0
+anchoring,0_normal,gemma2,1.8,100,100,4.52239437119147,1.0
+anchoring,0_normal,gemma2:27b,0.2,100,100,-0.22548405921437753,0.0
+anchoring,0_normal,gemma2:27b,0.7,100,100,-0.40179115951530336,0.0
+anchoring,0_normal,gemma2:27b,1,100,100,0.0792901995678964,0.0792901995678964
+anchoring,0_normal,gemma2:27b,1.3,100,100,0.15073906571402468,0.15073906571402468
+anchoring,0_normal,gemma2:27b,1.8,100,100,0.1783087096224272,0.1783087096224272
+anchoring,0_normal,gpt-4o,0.2,100,100,0.0,0.0
+anchoring,0_normal,gpt-4o,0.7,100,100,0.14213381090374572,0.14213381090374572
+anchoring,0_normal,gpt-4o,1,100,100,0.0,0.0
+anchoring,0_normal,gpt-4o,1.3,100,100,0.061342767213173145,0.061342767213173145
+anchoring,0_normal,gpt-4o,1.8,100,100,0.40409833317490274,0.40409833317490274
+anchoring,0_normal,gpt-4o-mini,0.2,100,100,0.0,0.0
+anchoring,0_normal,gpt-4o-mini,0.7,100,100,12.830920413573097,1.0
+anchoring,0_normal,gpt-4o-mini,1,100,100,12.648960949713697,1.0
+anchoring,0_normal,gpt-4o-mini,1.3,100,100,4.545660791070209,1.0
+anchoring,0_normal,gpt-4o-mini,1.8,100,100,3.076758668640281,1.0
+anchoring,0_normal,llama3.1,0.2,100,100,0.4388358899603172,0.4388358899603172
+anchoring,0_normal,llama3.1,0.7,100,100,1.0355015748226266,1.0
+anchoring,0_normal,llama3.1,1,100,100,0.4561288959538732,0.4561288959538732
+anchoring,0_normal,llama3.1,1.3,100,100,0.34268110419899844,0.34268110419899844
+anchoring,0_normal,llama3.1,1.8,100,100,0.5526802777887738,0.5526802777887738
+anchoring,0_normal,llama3.1:70b,0.2,100,100,1.672149582447854,1.0
+anchoring,0_normal,llama3.1:70b,0.7,100,100,1.1153570038162386,1.0
+anchoring,0_normal,llama3.1:70b,1,100,100,1.3269354036527639,1.0
+anchoring,0_normal,llama3.1:70b,1.3,100,100,1.1473220981141667,1.0
+anchoring,0_normal,llama3.1:70b,1.8,100,100,1.1428751174923604,1.0
+anchoring,0_normal,phi3.5,0.2,100,100,2.079276264405592,1.0
+anchoring,0_normal,phi3.5,0.7,100,100,2.186591400676289,1.0
+anchoring,0_normal,phi3.5,1,100,100,2.261368415784795,1.0
+anchoring,0_normal,phi3.5,1.3,100,100,2.298328760808394,1.0
+anchoring,0_normal,phi3.5,1.8,100,100,2.0218569200433483,1.0
+anchoring,0_normal,phi3:medium,0.2,100,100,2.1395992268925212,1.0
+anchoring,0_normal,phi3:medium,0.7,100,100,1.2242838900112545,1.0
+anchoring,0_normal,phi3:medium,1,100,100,0.7481412052331545,0.7481412052331545
+anchoring,0_normal,phi3:medium,1.3,100,100,0.9077953015958249,0.9077953015958249
+anchoring,0_normal,phi3:medium,1.8,100,100,0.9320379575181962,0.9320379575181962
+anchoring,1_persona,claude-3-haiku,0.2,100,100,0.0,0.0
+anchoring,1_persona,claude-3-haiku,0.7,100,100,0.8343456098554625,0.8343456098554625
+anchoring,1_persona,claude-3-haiku,1.0,100,100,0.9851480653312403,0.9851480653312403
+anchoring,1_persona,claude-3-haiku,1.3,100,100,1.262908697167326,1.0
+anchoring,1_persona,claude-3-haiku,1.8,100,100,1.275902916668073,1.0
+anchoring,1_persona,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+anchoring,1_persona,claude-3.5-sonnet,0.7,100,100,20.40508139995466,1.0
+anchoring,1_persona,claude-3.5-sonnet,1.0,100,100,14.010856226420234,1.0
+anchoring,1_persona,claude-3.5-sonnet,1.3,100,100,10.300430122067525,1.0
+anchoring,1_persona,claude-3.5-sonnet,1.8,100,100,7.785835486623288,1.0
+anchoring,1_persona,gemma2,0.2,100,100,8.287636715716596,1.0
+anchoring,1_persona,gemma2,0.7,100,100,4.714975589718357,1.0
+anchoring,1_persona,gemma2,1,100,100,3.722286257940518,1.0
+anchoring,1_persona,gemma2,1.3,100,100,4.064290378717164,1.0
+anchoring,1_persona,gemma2,1.8,100,100,4.667119235302921,1.0
+anchoring,1_persona,gemma2:27b,0.2,100,100,0.0,0.0
+anchoring,1_persona,gemma2:27b,0.7,100,100,7.170627582682552,1.0
+anchoring,1_persona,gemma2:27b,1,100,100,4.19832100732847,1.0
+anchoring,1_persona,gemma2:27b,1.3,100,100,3.535271031185661,1.0
+anchoring,1_persona,gemma2:27b,1.8,100,100,3.01811277776966,1.0
+anchoring,1_persona,gpt-4o,0.2,100,100,1.885618083164128,1.0
+anchoring,1_persona,gpt-4o,0.7,100,100,1.1194616666797124,1.0
+anchoring,1_persona,gpt-4o,1,100,100,0.9699475050246714,0.9699475050246714
+anchoring,1_persona,gpt-4o,1.3,100,100,0.44722768607120855,0.44722768607120855
+anchoring,1_persona,gpt-4o,1.8,100,100,0.29672891819347913,0.29672891819347913
+anchoring,1_persona,gpt-4o-mini,0.2,100,100,42.394300002410645,1.0
+anchoring,1_persona,gpt-4o-mini,0.7,100,100,10.344558256311641,1.0
+anchoring,1_persona,gpt-4o-mini,1,100,100,8.19869329173701,1.0
+anchoring,1_persona,gpt-4o-mini,1.3,100,100,5.58593495610064,1.0
+anchoring,1_persona,gpt-4o-mini,1.8,100,100,3.7019580803371865,1.0
+anchoring,1_persona,llama3.1,0.2,100,100,0.43758969651016516,0.43758969651016516
+anchoring,1_persona,llama3.1,0.7,100,100,0.8306730059494708,0.8306730059494708
+anchoring,1_persona,llama3.1,1,100,100,1.3984375330473409,1.0
+anchoring,1_persona,llama3.1,1.3,100,100,1.075306539088024,1.0
+anchoring,1_persona,llama3.1,1.8,100,100,0.6790002379397513,0.6790002379397513
+anchoring,1_persona,llama3.1:70b,0.2,100,100,1.8473451688449554,1.0
+anchoring,1_persona,llama3.1:70b,0.7,100,100,1.8868670976191326,1.0
+anchoring,1_persona,llama3.1:70b,1,100,100,1.4675974220754333,1.0
+anchoring,1_persona,llama3.1:70b,1.3,100,100,1.443399290128771,1.0
+anchoring,1_persona,llama3.1:70b,1.8,100,100,1.4519872795773208,1.0
+anchoring,1_persona,phi3.5,0.2,100,100,5.038587385428173,1.0
+anchoring,1_persona,phi3.5,0.7,100,100,1.7826004843051844,1.0
+anchoring,1_persona,phi3.5,1,100,100,2.418381877962415,1.0
+anchoring,1_persona,phi3.5,1.3,100,100,2.3046841036017693,1.0
+anchoring,1_persona,phi3.5,1.8,100,100,2.4033022298748294,1.0
+anchoring,1_persona,phi3:medium,0.2,100,100,2.64773494387806,1.0
+anchoring,1_persona,phi3:medium,0.7,100,100,1.268753198599403,1.0
+anchoring,1_persona,phi3:medium,1,100,100,1.2984496879453373,1.0
+anchoring,1_persona,phi3:medium,1.3,100,100,0.7481323316322006,0.7481323316322006
+anchoring,1_persona,phi3:medium,1.8,100,100,0.90254641604744,0.90254641604744
+anchoring,2_odd_numbers,claude-3-haiku,0.2,100,100,0.6358330083242746,0.6358330083242746
+anchoring,2_odd_numbers,claude-3-haiku,0.7,100,100,1.3692767097994223,1.0
+anchoring,2_odd_numbers,claude-3-haiku,1.0,100,100,1.4435401231084088,1.0
+anchoring,2_odd_numbers,claude-3-haiku,1.3,100,100,1.261041874155663,1.0
+anchoring,2_odd_numbers,claude-3-haiku,1.8,100,100,1.5091830566439808,1.0
+anchoring,2_odd_numbers,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+anchoring,2_odd_numbers,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+anchoring,2_odd_numbers,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+anchoring,2_odd_numbers,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+anchoring,2_odd_numbers,claude-3.5-sonnet,1.8,100,100,24.68404073523198,1.0
+anchoring,2_odd_numbers,gemma2,0.2,100,100,142.27594471464394,1.0
+anchoring,2_odd_numbers,gemma2,0.7,100,100,19.191774337011356,1.0
+anchoring,2_odd_numbers,gemma2,1,100,100,15.122933934942761,1.0
+anchoring,2_odd_numbers,gemma2,1.3,100,100,10.931456245437717,1.0
+anchoring,2_odd_numbers,gemma2,1.8,100,100,9.378463295022929,1.0
+anchoring,2_odd_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+anchoring,2_odd_numbers,gemma2:27b,0.7,100,100,6.337074721055141,1.0
+anchoring,2_odd_numbers,gemma2:27b,1,100,100,2.924923037832737,1.0
+anchoring,2_odd_numbers,gemma2:27b,1.3,100,100,2.5483736959497314,1.0
+anchoring,2_odd_numbers,gemma2:27b,1.8,100,100,1.999141276485887,1.0
+anchoring,2_odd_numbers,gpt-4o,0.2,100,100,1.8576103173124523,1.0
+anchoring,2_odd_numbers,gpt-4o,0.7,100,100,1.0234649576221537,1.0
+anchoring,2_odd_numbers,gpt-4o,1,100,100,0.7698394365817762,0.7698394365817762
+anchoring,2_odd_numbers,gpt-4o,1.3,100,100,0.7982773054786314,0.7982773054786314
+anchoring,2_odd_numbers,gpt-4o,1.8,100,100,0.41970637061842475,0.41970637061842475
+anchoring,2_odd_numbers,gpt-4o-mini,0.2,100,100,0.0,0.0
+anchoring,2_odd_numbers,gpt-4o-mini,0.7,100,100,25.78775444386549,1.0
+anchoring,2_odd_numbers,gpt-4o-mini,1,100,100,7.850145513159131,1.0
+anchoring,2_odd_numbers,gpt-4o-mini,1.3,100,100,5.394912590638523,1.0
+anchoring,2_odd_numbers,gpt-4o-mini,1.8,100,100,2.7850276170557797,1.0
+anchoring,2_odd_numbers,llama3.1,0.2,100,100,0.3461111822175097,0.3461111822175097
+anchoring,2_odd_numbers,llama3.1,0.7,100,100,0.7946203391048706,0.7946203391048706
+anchoring,2_odd_numbers,llama3.1,1,100,100,0.7345350488959309,0.7345350488959309
+anchoring,2_odd_numbers,llama3.1,1.3,100,100,1.004279427607448,1.0
+anchoring,2_odd_numbers,llama3.1,1.8,100,100,0.9492646858496827,0.9492646858496827
+anchoring,2_odd_numbers,llama3.1:70b,0.2,100,100,9.616807708505904,1.0
+anchoring,2_odd_numbers,llama3.1:70b,0.7,100,100,2.5290328094868637,1.0
+anchoring,2_odd_numbers,llama3.1:70b,1,100,100,2.7616576562781567,1.0
+anchoring,2_odd_numbers,llama3.1:70b,1.3,100,100,2.1676303663856533,1.0
+anchoring,2_odd_numbers,llama3.1:70b,1.8,100,100,2.2202396051296707,1.0
+anchoring,2_odd_numbers,phi3.5,0.2,100,100,3.497538054028346,1.0
+anchoring,2_odd_numbers,phi3.5,0.7,100,100,1.710760655812021,1.0
+anchoring,2_odd_numbers,phi3.5,1,100,100,1.1576179957958783,1.0
+anchoring,2_odd_numbers,phi3.5,1.3,100,100,1.1517628161153246,1.0
+anchoring,2_odd_numbers,phi3.5,1.8,100,100,1.0963756603100085,1.0
+anchoring,2_odd_numbers,phi3:medium,0.2,100,100,4.998738011085401,1.0
+anchoring,2_odd_numbers,phi3:medium,0.7,100,100,2.0557660644349496,1.0
+anchoring,2_odd_numbers,phi3:medium,1,100,100,1.5299423423056138,1.0
+anchoring,2_odd_numbers,phi3:medium,1.3,100,100,1.7249083731571095,1.0
+anchoring,2_odd_numbers,phi3:medium,1.8,100,100,1.3910779630263455,1.0
+anchoring,3_large_numbers,claude-3-haiku,0.2,100,100,0.0,0.0
+anchoring,3_large_numbers,claude-3-haiku,0.7,100,100,-0.42222385117540606,0.0
+anchoring,3_large_numbers,claude-3-haiku,1.0,100,100,-0.9508861942514877,0.0
+anchoring,3_large_numbers,claude-3-haiku,1.3,100,100,-1.1732464242486773,0.0
+anchoring,3_large_numbers,claude-3-haiku,1.8,100,100,-0.7174281273177389,0.0
+anchoring,3_large_numbers,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+anchoring,3_large_numbers,claude-3.5-sonnet,0.7,100,100,9.643974398413418,1.0
+anchoring,3_large_numbers,claude-3.5-sonnet,1.0,100,100,5.669559790493639,1.0
+anchoring,3_large_numbers,claude-3.5-sonnet,1.3,100,100,4.077493617220422,1.0
+anchoring,3_large_numbers,claude-3.5-sonnet,1.8,100,100,3.6969329933030375,1.0
+anchoring,3_large_numbers,gemma2,0.2,100,100,0.17885736766487986,0.17885736766487986
+anchoring,3_large_numbers,gemma2,0.7,100,100,0.5619518669084729,0.5619518669084729
+anchoring,3_large_numbers,gemma2,1,100,100,0.4972715992421769,0.4972715992421769
+anchoring,3_large_numbers,gemma2,1.3,100,100,0.5615196432836246,0.5615196432836246
+anchoring,3_large_numbers,gemma2,1.8,100,100,0.3906695035493955,0.3906695035493955
+anchoring,3_large_numbers,gemma2:27b,0.2,100,100,0.1421338109037423,0.1421338109037423
+anchoring,3_large_numbers,gemma2:27b,0.7,100,100,0.27468913708179565,0.27468913708179565
+anchoring,3_large_numbers,gemma2:27b,1,100,100,0.040579463916809604,0.040579463916809604
+anchoring,3_large_numbers,gemma2:27b,1.3,100,100,0.15590780467500803,0.15590780467500803
+anchoring,3_large_numbers,gemma2:27b,1.8,100,100,0.30124995628018786,0.30124995628018786
+anchoring,3_large_numbers,gpt-4o,0.2,100,100,0.3156321755654339,0.3156321755654339
+anchoring,3_large_numbers,gpt-4o,0.7,100,100,0.2243449358218531,0.2243449358218531
+anchoring,3_large_numbers,gpt-4o,1,100,100,-0.05384428705088641,0.0
+anchoring,3_large_numbers,gpt-4o,1.3,100,100,0.20514907570576982,0.20514907570576982
+anchoring,3_large_numbers,gpt-4o,1.8,100,100,-0.2508325482676522,0.0
+anchoring,3_large_numbers,gpt-4o-mini,0.2,100,100,3.587275876993892,1.0
+anchoring,3_large_numbers,gpt-4o-mini,0.7,100,100,1.161762585681943,1.0
+anchoring,3_large_numbers,gpt-4o-mini,1,100,100,1.0581457087614055,1.0
+anchoring,3_large_numbers,gpt-4o-mini,1.3,100,100,1.311098311386032,1.0
+anchoring,3_large_numbers,gpt-4o-mini,1.8,100,100,0.38251016056108644,0.38251016056108644
+anchoring,3_large_numbers,llama3.1,0.2,100,100,0.5343573676007145,0.5343573676007145
+anchoring,3_large_numbers,llama3.1,0.7,100,100,0.432848803428319,0.432848803428319
+anchoring,3_large_numbers,llama3.1,1,100,100,0.30492881348285533,0.30492881348285533
+anchoring,3_large_numbers,llama3.1,1.3,100,100,0.43260537085171213,0.43260537085171213
+anchoring,3_large_numbers,llama3.1,1.8,100,100,-0.0555413503508421,0.0
+anchoring,3_large_numbers,llama3.1:70b,0.2,100,100,2.2779735175399964,1.0
+anchoring,3_large_numbers,llama3.1:70b,0.7,100,100,0.6127685118407193,0.6127685118407193
+anchoring,3_large_numbers,llama3.1:70b,1,100,100,0.6193976720977242,0.6193976720977242
+anchoring,3_large_numbers,llama3.1:70b,1.3,100,100,0.6396834444991475,0.6396834444991475
+anchoring,3_large_numbers,llama3.1:70b,1.8,100,100,0.18270927574621865,0.18270927574621865
+anchoring,3_large_numbers,phi3.5,0.2,100,100,-14.071247279470285,0.0
+anchoring,3_large_numbers,phi3.5,0.7,100,100,-0.06912753210382919,0.0
+anchoring,3_large_numbers,phi3.5,1,100,100,0.139031297739776,0.139031297739776
+anchoring,3_large_numbers,phi3.5,1.3,100,100,0.7174528165055969,0.7174528165055969
+anchoring,3_large_numbers,phi3.5,1.8,100,100,0.8030278501577729,0.8030278501577729
+anchoring,3_large_numbers,phi3:medium,0.2,100,100,1.9751938085726968,1.0
+anchoring,3_large_numbers,phi3:medium,0.7,100,100,1.1681194281990805,1.0
+anchoring,3_large_numbers,phi3:medium,1,100,100,0.7220684215634465,0.7220684215634465
+anchoring,3_large_numbers,phi3:medium,1.3,100,100,0.46048258236819023,0.46048258236819023
+anchoring,3_large_numbers,phi3:medium,1.8,100,100,0.5796537589817883,0.5796537589817883
+category size bias,0_normal,claude-3-haiku,0.2,100,100,0.0,0.0
+category size bias,0_normal,claude-3-haiku,0.7,100,100,0.0,0.0
+category size bias,0_normal,claude-3-haiku,1.0,100,100,0.0,0.0
+category size bias,0_normal,claude-3-haiku,1.3,100,100,-0.09624161681802047,0.0
+category size bias,0_normal,claude-3-haiku,1.8,100,100,-0.32836561536946124,0.0
+category size bias,0_normal,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+category size bias,0_normal,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+category size bias,0_normal,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+category size bias,0_normal,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+category size bias,0_normal,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+category size bias,0_normal,gemma2,0.2,100,100,0.0,0.0
+category size bias,0_normal,gemma2,0.7,100,100,0.0,0.0
+category size bias,0_normal,gemma2,1,100,100,0.0,0.0
+category size bias,0_normal,gemma2,1.3,100,100,0.0,0.0
+category size bias,0_normal,gemma2,1.8,100,100,0.0,0.0
+category size bias,0_normal,gemma2:27b,0.2,100,100,0.0,0.0
+category size bias,0_normal,gemma2:27b,0.7,100,100,0.0,0.0
+category size bias,0_normal,gemma2:27b,1,100,100,0.0,0.0
+category size bias,0_normal,gemma2:27b,1.3,100,100,0.0,0.0
+category size bias,0_normal,gemma2:27b,1.8,100,100,0.0,0.0
+category size bias,0_normal,gpt-4o,0.2,100,100,-0.9962246519812993,0.0
+category size bias,0_normal,gpt-4o,0.7,100,100,-1.7691748112782326,0.0
+category size bias,0_normal,gpt-4o,1,100,100,-1.5407864633656538,0.0
+category size bias,0_normal,gpt-4o,1.3,100,100,-1.1049878138269367,0.0
+category size bias,0_normal,gpt-4o,1.8,100,100,-0.9097727881826897,0.0
+category size bias,0_normal,gpt-4o-mini,0.2,100,100,0.0,0.0
+category size bias,0_normal,gpt-4o-mini,0.7,100,100,0.0,0.0
+category size bias,0_normal,gpt-4o-mini,1,100,100,0.0,0.0
+category size bias,0_normal,gpt-4o-mini,1.3,100,100,0.0,0.0
+category size bias,0_normal,gpt-4o-mini,1.8,100,100,0.0,0.0
+category size bias,0_normal,llama3.1,0.2,100,100,-41.202625612797014,0.0
+category size bias,0_normal,llama3.1,0.7,100,100,-0.4055136510063444,0.0
+category size bias,0_normal,llama3.1,1,100,100,-2.3528582118863706,0.0
+category size bias,0_normal,llama3.1,1.3,100,100,-1.7015674377310877,0.0
+category size bias,0_normal,llama3.1,1.8,100,100,-1.4572761367376097,0.0
+category size bias,0_normal,llama3.1:70b,0.2,100,100,0.0,0.0
+category size bias,0_normal,llama3.1:70b,0.7,100,100,0.0,0.0
+category size bias,0_normal,llama3.1:70b,1,100,100,0.0,0.0
+category size bias,0_normal,llama3.1:70b,1.3,100,100,0.0,0.0
+category size bias,0_normal,llama3.1:70b,1.8,100,100,0.0,0.0
+category size bias,0_normal,phi3.5,0.2,100,100,-171.839777382622,0.0
+category size bias,0_normal,phi3.5,0.7,100,100,-7.378337383378137,0.0
+category size bias,0_normal,phi3.5,1,100,100,-172.62191748844882,0.0
+category size bias,0_normal,phi3.5,1.3,100,100,-171.34368494383583,0.0
+category size bias,0_normal,phi3.5,1.8,100,100,-175.0986535114947,0.0
+category size bias,0_normal,phi3:medium,0.2,100,100,-0.14213381090373725,0.0
+category size bias,0_normal,phi3:medium,0.7,100,100,0.45350490307225466,0.45350490307225466
+category size bias,0_normal,phi3:medium,1,100,100,0.3110432004333864,0.3110432004333864
+category size bias,0_normal,phi3:medium,1.3,100,100,0.2808343916288124,0.2808343916288124
+category size bias,0_normal,phi3:medium,1.8,100,100,0.5322864016350318,0.5322864016350318
+category size bias,1_persona,claude-3-haiku,0.2,100,100,0.0,0.0
+category size bias,1_persona,claude-3-haiku,0.7,100,100,-9.899494936611665,0.0
+category size bias,1_persona,claude-3-haiku,1.0,100,100,-3.205949195507224,0.0
+category size bias,1_persona,claude-3-haiku,1.3,100,100,-1.7056720841212853,0.0
+category size bias,1_persona,claude-3-haiku,1.8,100,100,-1.1877157236659752,0.0
+category size bias,1_persona,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+category size bias,1_persona,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+category size bias,1_persona,claude-3.5-sonnet,1.0,100,100,0.14322297480788987,0.14322297480788987
+category size bias,1_persona,claude-3.5-sonnet,1.3,100,100,0.14509525002199924,0.14509525002199924
+category size bias,1_persona,claude-3.5-sonnet,1.8,100,100,0.4082482904638633,0.4082482904638633
+category size bias,1_persona,gemma2,0.2,100,100,0.0,0.0
+category size bias,1_persona,gemma2,0.7,100,100,0.0,0.0
+category size bias,1_persona,gemma2,1,100,100,0.0,0.0
+category size bias,1_persona,gemma2,1.3,100,100,0.0,0.0
+category size bias,1_persona,gemma2,1.8,100,100,0.0,0.0
+category size bias,1_persona,gemma2:27b,0.2,100,100,0.0,0.0
+category size bias,1_persona,gemma2:27b,0.7,100,100,0.0,0.0
+category size bias,1_persona,gemma2:27b,1,100,100,0.0,0.0
+category size bias,1_persona,gemma2:27b,1.3,100,100,0.0,0.0
+category size bias,1_persona,gemma2:27b,1.8,100,100,0.0,0.0
+category size bias,1_persona,gpt-4o,0.2,100,100,-0.666987359381438,0.0
+category size bias,1_persona,gpt-4o,0.7,100,100,-0.8753842192013657,0.0
+category size bias,1_persona,gpt-4o,1,100,100,-1.034387121332794,0.0
+category size bias,1_persona,gpt-4o,1.3,100,100,-0.888507082670962,0.0
+category size bias,1_persona,gpt-4o,1.8,100,100,-0.7732830066969523,0.0
+category size bias,1_persona,gpt-4o-mini,0.2,100,100,0.0,0.0
+category size bias,1_persona,gpt-4o-mini,0.7,100,100,0.0,0.0
+category size bias,1_persona,gpt-4o-mini,1,100,100,0.0,0.0
+category size bias,1_persona,gpt-4o-mini,1.3,100,100,0.0,0.0
+category size bias,1_persona,gpt-4o-mini,1.8,100,100,0.0,0.0
+category size bias,1_persona,llama3.1,0.2,100,100,0.6400301197731769,0.6400301197731769
+category size bias,1_persona,llama3.1,0.7,100,100,0.23094010767585146,0.23094010767585146
+category size bias,1_persona,llama3.1,1,100,100,-0.2890432626265953,0.0
+category size bias,1_persona,llama3.1,1.3,100,100,-0.4987446726389136,0.0
+category size bias,1_persona,llama3.1,1.8,100,100,-0.6534674656973645,0.0
+category size bias,1_persona,llama3.1:70b,0.2,100,100,0.0,0.0
+category size bias,1_persona,llama3.1:70b,0.7,100,100,0.0,0.0
+category size bias,1_persona,llama3.1:70b,1,100,100,0.0,0.0
+category size bias,1_persona,llama3.1:70b,1.3,100,100,0.0,0.0
+category size bias,1_persona,llama3.1:70b,1.8,100,100,0.0,0.0
+category size bias,1_persona,phi3.5,0.2,100,100,-1.759072394071669,0.0
+category size bias,1_persona,phi3.5,0.7,100,100,-2.719245226842747,0.0
+category size bias,1_persona,phi3.5,1,100,100,-1.941812385683647,0.0
+category size bias,1_persona,phi3.5,1.3,100,100,-2.2058776106449955,0.0
+category size bias,1_persona,phi3.5,1.8,100,100,-2.13141076124699,0.0
+category size bias,1_persona,phi3:medium,0.2,100,100,-0.05099784538654788,0.0
+category size bias,1_persona,phi3:medium,0.7,100,100,0.14841599829066826,0.14841599829066826
+category size bias,1_persona,phi3:medium,1,100,100,0.262809573001826,0.262809573001826
+category size bias,1_persona,phi3:medium,1.3,100,100,0.2796010005754012,0.2796010005754012
+category size bias,1_persona,phi3:medium,1.8,100,100,0.08888913728143974,0.08888913728143974
+category size bias,2_odd_numbers,claude-3-haiku,0.2,100,100,0.0,0.0
+category size bias,2_odd_numbers,claude-3-haiku,0.7,100,100,-10.727078722451683,0.0
+category size bias,2_odd_numbers,claude-3-haiku,1.0,100,100,-3.7146060438223625,0.0
+category size bias,2_odd_numbers,claude-3-haiku,1.3,100,100,-3.6936488567197396,0.0
+category size bias,2_odd_numbers,claude-3-haiku,1.8,100,100,-2.720913199028109,0.0
+category size bias,2_odd_numbers,claude-3.5-sonnet,0.2,100,100,1.130791105638068,1.0
+category size bias,2_odd_numbers,claude-3.5-sonnet,0.7,100,100,1.331760078114815,1.0
+category size bias,2_odd_numbers,claude-3.5-sonnet,1.0,100,100,1.1269947265686913,1.0
+category size bias,2_odd_numbers,claude-3.5-sonnet,1.3,100,100,1.285150926243998,1.0
+category size bias,2_odd_numbers,claude-3.5-sonnet,1.8,100,100,0.7278209715900513,0.7278209715900513
+category size bias,2_odd_numbers,gemma2,0.2,100,100,0.0,0.0
+category size bias,2_odd_numbers,gemma2,0.7,100,100,0.0,0.0
+category size bias,2_odd_numbers,gemma2,1,100,100,0.0,0.0
+category size bias,2_odd_numbers,gemma2,1.3,100,100,0.0,0.0
+category size bias,2_odd_numbers,gemma2,1.8,100,100,0.0,0.0
+category size bias,2_odd_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+category size bias,2_odd_numbers,gemma2:27b,0.7,100,100,-0.8752861480213682,0.0
+category size bias,2_odd_numbers,gemma2:27b,1,100,100,-0.9828482788621724,0.0
+category size bias,2_odd_numbers,gemma2:27b,1.3,100,100,-1.2107014684068926,0.0
+category size bias,2_odd_numbers,gemma2:27b,1.8,100,100,-1.5715014377984997,0.0
+category size bias,2_odd_numbers,gpt-4o,0.2,100,100,0.0,0.0
+category size bias,2_odd_numbers,gpt-4o,0.7,100,100,-0.20203050891044216,0.0
+category size bias,2_odd_numbers,gpt-4o,1,100,100,0.04387399930718566,0.04387399930718566
+category size bias,2_odd_numbers,gpt-4o,1.3,100,100,-0.09797958971132713,0.0
+category size bias,2_odd_numbers,gpt-4o,1.8,100,100,0.1024481665143766,0.1024481665143766
+category size bias,2_odd_numbers,gpt-4o-mini,0.2,100,100,0.0,0.0
+category size bias,2_odd_numbers,gpt-4o-mini,0.7,100,100,0.0,0.0
+category size bias,2_odd_numbers,gpt-4o-mini,1,100,100,0.0,0.0
+category size bias,2_odd_numbers,gpt-4o-mini,1.3,100,100,0.0,0.0
+category size bias,2_odd_numbers,gpt-4o-mini,1.8,100,100,0.0,0.0
+category size bias,2_odd_numbers,llama3.1,0.2,100,100,0.0,0.0
+category size bias,2_odd_numbers,llama3.1,0.7,100,100,0.2886751345948128,0.2886751345948128
+category size bias,2_odd_numbers,llama3.1,1,100,100,0.21096922516470962,0.21096922516470962
+category size bias,2_odd_numbers,llama3.1,1.3,100,100,0.2635418140242495,0.2635418140242495
+category size bias,2_odd_numbers,llama3.1,1.8,100,100,0.42688080490612407,0.42688080490612407
+category size bias,2_odd_numbers,llama3.1:70b,0.2,100,100,-0.14213381090374028,0.0
+category size bias,2_odd_numbers,llama3.1:70b,1,100,100,-0.3236159339823562,0.0
+category size bias,2_odd_numbers,llama3.1:70b,1.3,100,100,0.04288450139351184,0.04288450139351184
+category size bias,2_odd_numbers,llama3.1:70b,1.8,100,100,0.25940262070027015,0.25940262070027015
+category size bias,2_odd_numbers,phi3.5,0.2,100,100,-0.707106781186548,0.0
+category size bias,2_odd_numbers,phi3.5,0.7,100,100,-1.1789107296460481,0.0
+category size bias,2_odd_numbers,phi3.5,1,100,100,-1.3587324409735164,0.0
+category size bias,2_odd_numbers,phi3.5,1.3,100,100,-1.3052600138300814,0.0
+category size bias,2_odd_numbers,phi3.5,1.8,100,100,-1.3052600138300814,0.0
+category size bias,2_odd_numbers,phi3:medium,0.2,100,100,0.197014688449385,0.197014688449385
+category size bias,2_odd_numbers,phi3:medium,0.7,100,100,-0.06791340948150623,0.0
+category size bias,2_odd_numbers,phi3:medium,1,100,100,0.04313716113522705,0.04313716113522705
+category size bias,2_odd_numbers,phi3:medium,1.3,100,100,0.19936633388691136,0.19936633388691136
+category size bias,2_odd_numbers,phi3:medium,1.8,100,100,-0.05834453425703283,0.0
+category size bias,3_large_numbers,claude-3-haiku,0.2,100,100,0.0,0.0
+category size bias,3_large_numbers,claude-3-haiku,0.7,100,100,-0.1421338109037403,0.0
+category size bias,3_large_numbers,claude-3-haiku,1.0,100,100,-0.4704401949255243,0.0
+category size bias,3_large_numbers,claude-3-haiku,1.3,100,100,-0.4767495129735051,0.0
+category size bias,3_large_numbers,claude-3-haiku,1.8,100,100,-0.9031116049586165,0.0
+category size bias,3_large_numbers,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+category size bias,3_large_numbers,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+category size bias,3_large_numbers,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+category size bias,3_large_numbers,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+category size bias,3_large_numbers,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+category size bias,3_large_numbers,gemma2,0.2,100,100,0.0,0.0
+category size bias,3_large_numbers,gemma2,0.7,100,100,0.19453972850802667,0.19453972850802667
+category size bias,3_large_numbers,gemma2,1,100,100,0.3558207366335283,0.3558207366335283
+category size bias,3_large_numbers,gemma2,1.3,100,100,0.03556902456770419,0.03556902456770419
+category size bias,3_large_numbers,gemma2,1.8,100,100,0.23282052774806872,0.23282052774806872
+category size bias,3_large_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+category size bias,3_large_numbers,gemma2:27b,0.7,100,100,0.0,0.0
+category size bias,3_large_numbers,gemma2:27b,1,100,100,0.0,0.0
+category size bias,3_large_numbers,gemma2:27b,1.3,100,100,0.0,0.0
+category size bias,3_large_numbers,gemma2:27b,1.8,100,100,0.0,0.0
+category size bias,3_large_numbers,gpt-4o,0.2,100,100,0.0,0.0
+category size bias,3_large_numbers,gpt-4o,0.7,100,100,0.0,0.0
+category size bias,3_large_numbers,gpt-4o,1,100,100,0.0,0.0
+category size bias,3_large_numbers,gpt-4o,1.3,100,100,0.0,0.0
+category size bias,3_large_numbers,gpt-4o,1.8,100,100,0.14880498143466583,0.14880498143466583
+category size bias,3_large_numbers,gpt-4o-mini,0.2,100,100,0.0,0.0
+category size bias,3_large_numbers,gpt-4o-mini,0.7,100,100,0.0,0.0
+category size bias,3_large_numbers,gpt-4o-mini,1,100,100,0.0,0.0
+category size bias,3_large_numbers,gpt-4o-mini,1.3,100,100,0.0,0.0
+category size bias,3_large_numbers,gpt-4o-mini,1.8,100,100,0.0,0.0
+category size bias,3_large_numbers,llama3.1,0.2,100,100,1.367522034968233,1.0
+category size bias,3_large_numbers,llama3.1,0.7,100,100,0.8260740341156233,0.8260740341156233
+category size bias,3_large_numbers,llama3.1,1,100,100,0.17666231067764818,0.17666231067764818
+category size bias,3_large_numbers,llama3.1,1.3,100,100,0.16393696317921336,0.16393696317921336
+category size bias,3_large_numbers,llama3.1,1.8,100,100,-0.04158148180459192,0.0
+category size bias,3_large_numbers,llama3.1:70b,0.2,100,100,0.0,0.0
+category size bias,3_large_numbers,llama3.1:70b,0.7,100,100,0.0,0.0
+category size bias,3_large_numbers,llama3.1:70b,1,100,100,0.0,0.0
+category size bias,3_large_numbers,llama3.1:70b,1.3,100,100,0.0,0.0
+category size bias,3_large_numbers,llama3.1:70b,1.8,100,100,0.0,0.0
+category size bias,3_large_numbers,phi3.5,0.2,100,100,0.0,0.0
+category size bias,3_large_numbers,phi3.5,0.7,100,100,-0.34934665736096926,0.0
+category size bias,3_large_numbers,phi3.5,1,100,100,-0.4446587857763074,0.0
+category size bias,3_large_numbers,phi3.5,1.3,100,100,-0.6217009631997137,0.0
+category size bias,3_large_numbers,phi3.5,1.8,100,100,-0.7083602928224374,0.0
+category size bias,3_large_numbers,phi3:medium,0.2,100,100,-2.304392268400084,0.0
+category size bias,3_large_numbers,phi3:medium,0.7,100,100,-0.25106378314938,0.0
+category size bias,3_large_numbers,phi3:medium,1,100,100,-0.26285551759951836,0.0
+category size bias,3_large_numbers,phi3:medium,1.3,100,100,-0.17256651536430756,0.0
+category size bias,3_large_numbers,phi3:medium,1.8,100,100,-0.27837060082789616,0.0
+endowment effect,0_normal,claude-3-haiku,0.2,100,100,0.0,0.0
+endowment effect,0_normal,claude-3-haiku,0.7,100,100,11.541890577164475,1.0
+endowment effect,0_normal,claude-3-haiku,1.0,100,100,9.352320435213105,1.0
+endowment effect,0_normal,claude-3-haiku,1.3,100,100,9.279316528150133,1.0
+endowment effect,0_normal,claude-3-haiku,1.8,100,100,7.077716464493249,1.0
+endowment effect,0_normal,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+endowment effect,0_normal,claude-3.5-sonnet,0.7,100,100,13.062355364990934,1.0
+endowment effect,0_normal,claude-3.5-sonnet,1.0,100,100,6.928203230275508,1.0
+endowment effect,0_normal,claude-3.5-sonnet,1.3,100,100,5.052070860177058,1.0
+endowment effect,0_normal,claude-3.5-sonnet,1.8,100,100,3.874129708033974,1.0
+endowment effect,0_normal,gemma2,0.2,100,100,3.0184617127124724,1.0
+endowment effect,0_normal,gemma2,0.7,100,100,1.653638837121848,1.0
+endowment effect,0_normal,gemma2,1,100,100,1.3532857603155117,1.0
+endowment effect,0_normal,gemma2,1.3,100,100,1.153393576400289,1.0
+endowment effect,0_normal,gemma2,1.8,100,100,0.7138138513324676,0.7138138513324676
+endowment effect,0_normal,gemma2:27b,0.2,100,100,0.0,0.0
+endowment effect,0_normal,gemma2:27b,0.7,100,100,1.4879483014484252,1.0
+endowment effect,0_normal,gemma2:27b,1,100,100,1.5529909197855154,1.0
+endowment effect,0_normal,gemma2:27b,1.3,100,100,1.429285035402721,1.0
+endowment effect,0_normal,gemma2:27b,1.8,100,100,8.024690894772183,1.0
+endowment effect,0_normal,gpt-4o,0.2,100,100,1.5345968084003725,1.0
+endowment effect,0_normal,gpt-4o,0.7,100,100,1.2859985566950416,1.0
+endowment effect,0_normal,gpt-4o,1,100,100,1.7171210723963681,1.0
+endowment effect,0_normal,gpt-4o,1.3,100,100,1.7787560291228108,1.0
+endowment effect,0_normal,gpt-4o,1.8,100,100,0.40846934520681544,0.40846934520681544
+endowment effect,0_normal,gpt-4o-mini,0.2,100,100,1.3321786320399738,1.0
+endowment effect,0_normal,gpt-4o-mini,0.7,100,100,4.01639025239768,1.0
+endowment effect,0_normal,gpt-4o-mini,1,100,100,2.715152812369968,1.0
+endowment effect,0_normal,gpt-4o-mini,1.3,100,100,1.5671600075264367,1.0
+endowment effect,0_normal,gpt-4o-mini,1.8,100,100,0.1569816126891904,0.1569816126891904
+endowment effect,0_normal,llama3.1,0.2,100,100,-101.58730713513636,0.0
+endowment effect,0_normal,llama3.1,0.7,100,100,0.35892357995334007,0.35892357995334007
+endowment effect,0_normal,llama3.1,1,100,100,0.6391776615047547,0.6391776615047547
+endowment effect,0_normal,llama3.1,1.3,100,100,0.6444047257116069,0.6444047257116069
+endowment effect,0_normal,llama3.1,1.8,100,100,-0.1855561138049707,0.0
+endowment effect,0_normal,llama3.1:70b,0.2,100,100,5.339332783810274,1.0
+endowment effect,0_normal,llama3.1:70b,0.7,100,100,0.5855537011575733,0.5855537011575733
+endowment effect,0_normal,llama3.1:70b,1,100,100,0.7426136167319354,0.7426136167319354
+endowment effect,0_normal,llama3.1:70b,1.3,100,100,0.6800640801679168,0.6800640801679168
+endowment effect,0_normal,llama3.1:70b,1.8,100,100,0.7483202675861743,0.7483202675861743
+endowment effect,0_normal,phi3.5,0.2,100,100,0.0,0.0
+endowment effect,0_normal,phi3.5,0.7,100,100,0.0,0.0
+endowment effect,0_normal,phi3.5,1,100,100,0.0,0.0
+endowment effect,0_normal,phi3.5,1.3,100,100,0.0,0.0
+endowment effect,0_normal,phi3.5,1.8,100,100,0.0,0.0
+endowment effect,0_normal,phi3:medium,0.2,100,100,-1.217681520275241,0.0
+endowment effect,0_normal,phi3:medium,0.7,100,100,-0.07599297114410435,0.0
+endowment effect,0_normal,phi3:medium,1,100,100,-0.3307592922378896,0.0
+endowment effect,0_normal,phi3:medium,1.3,100,100,-0.30469810064322517,0.0
+endowment effect,0_normal,phi3:medium,1.8,100,100,-0.5882943279839767,0.0
+endowment effect,1_persona,claude-3-haiku,0.2,100,100,6.928203230275508,1.0
+endowment effect,1_persona,claude-3-haiku,0.7,100,100,1.0364695928435188,1.0
+endowment effect,1_persona,claude-3-haiku,1.0,100,100,1.1100180250387373,1.0
+endowment effect,1_persona,claude-3-haiku,1.3,100,100,1.1273290398242,1.0
+endowment effect,1_persona,claude-3-haiku,1.8,100,100,1.2123375965437835,1.0
+endowment effect,1_persona,claude-3.5-sonnet,0.2,100,100,10.420493888850853,1.0
+endowment effect,1_persona,claude-3.5-sonnet,0.7,100,100,4.8091178015629925,1.0
+endowment effect,1_persona,claude-3.5-sonnet,1.0,100,100,4.6685581183245075,1.0
+endowment effect,1_persona,claude-3.5-sonnet,1.3,100,100,4.33226618784507,1.0
+endowment effect,1_persona,claude-3.5-sonnet,1.8,100,100,4.314602768631748,1.0
+endowment effect,1_persona,gemma2,0.2,100,100,0.6724072829574347,0.6724072829574347
+endowment effect,1_persona,gemma2,0.7,100,100,2.277664500957674,1.0
+endowment effect,1_persona,gemma2,1,100,100,1.7571723917199857,1.0
+endowment effect,1_persona,gemma2,1.3,100,100,1.6395545524424562,1.0
+endowment effect,1_persona,gemma2,1.8,100,100,0.3967820873536511,0.3967820873536511
+endowment effect,1_persona,gemma2:27b,0.2,100,100,0.0,0.0
+endowment effect,1_persona,gemma2:27b,0.7,100,100,3.2407270223111304,1.0
+endowment effect,1_persona,gemma2:27b,1,100,100,2.646234597452962,1.0
+endowment effect,1_persona,gemma2:27b,1.3,100,100,1.9661111522159074,1.0
+endowment effect,1_persona,gemma2:27b,1.8,100,100,0.9038259835005326,0.9038259835005326
+endowment effect,1_persona,gpt-4o,0.2,100,100,3.0266782212940164,1.0
+endowment effect,1_persona,gpt-4o,0.7,100,100,0.5095235076951882,0.5095235076951882
+endowment effect,1_persona,gpt-4o,1,100,100,-0.17244583491700957,0.0
+endowment effect,1_persona,gpt-4o,1.3,100,100,-0.08217142296623516,0.0
+endowment effect,1_persona,gpt-4o,1.8,100,100,2.4184039305953613,1.0
+endowment effect,1_persona,gpt-4o-mini,0.2,100,100,0.41702882811415,0.41702882811415
+endowment effect,1_persona,gpt-4o-mini,0.7,100,100,-0.2875387111681219,0.0
+endowment effect,1_persona,gpt-4o-mini,1,100,100,-0.12832700625497387,0.0
+endowment effect,1_persona,gpt-4o-mini,1.3,100,100,-0.013736704367904556,0.0
+endowment effect,1_persona,gpt-4o-mini,1.8,100,100,-0.10684580639723847,0.0
+endowment effect,1_persona,llama3.1,0.2,100,100,0.7022516587114174,0.7022516587114174
+endowment effect,1_persona,llama3.1,0.7,100,100,-0.4895920490896841,0.0
+endowment effect,1_persona,llama3.1,1,100,100,-0.1589229733058024,0.0
+endowment effect,1_persona,llama3.1,1.3,100,100,-0.3271443280438126,0.0
+endowment effect,1_persona,llama3.1,1.8,100,100,0.00833762266707663,0.00833762266707663
+endowment effect,1_persona,llama3.1:70b,0.2,100,100,0.0,0.0
+endowment effect,1_persona,llama3.1:70b,0.7,100,100,0.7645528515426081,0.7645528515426081
+endowment effect,1_persona,llama3.1:70b,1,100,100,0.5682424709277387,0.5682424709277387
+endowment effect,1_persona,llama3.1:70b,1.3,100,100,0.6263236713848016,0.6263236713848016
+endowment effect,1_persona,llama3.1:70b,1.8,100,100,0.4907893422621417,0.4907893422621417
+endowment effect,1_persona,phi3.5,0.2,100,100,0.0,0.0
+endowment effect,1_persona,phi3.5,0.7,100,100,0.0,0.0
+endowment effect,1_persona,phi3.5,1,100,100,0.0,0.0
+endowment effect,1_persona,phi3.5,1.3,100,100,0.0,0.0
+endowment effect,1_persona,phi3.5,1.8,100,100,0.0,0.0
+endowment effect,1_persona,phi3:medium,0.2,100,100,0.0,0.0
+endowment effect,1_persona,phi3:medium,0.7,100,100,-0.00975923309494415,0.0
+endowment effect,1_persona,phi3:medium,1,100,100,-0.18491538919276762,0.0
+endowment effect,1_persona,phi3:medium,1.3,100,100,0.0,0.0
+endowment effect,1_persona,phi3:medium,1.8,100,100,-0.3532223668852768,0.0
+endowment effect,2_odd_numbers,claude-3-haiku,0.2,100,100,1.1730928305086625,1.0
+endowment effect,2_odd_numbers,claude-3-haiku,0.7,100,100,1.4163651859757027,1.0
+endowment effect,2_odd_numbers,claude-3-haiku,1.0,100,100,1.1578564010029426,1.0
+endowment effect,2_odd_numbers,claude-3-haiku,1.3,100,100,1.1850628119330946,1.0
+endowment effect,2_odd_numbers,claude-3-haiku,1.8,100,100,0.6972220739177813,0.6972220739177813
+endowment effect,2_odd_numbers,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+endowment effect,2_odd_numbers,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+endowment effect,2_odd_numbers,claude-3.5-sonnet,1.0,100,100,56.99565817239984,1.0
+endowment effect,2_odd_numbers,claude-3.5-sonnet,1.3,100,100,22.154273895838966,1.0
+endowment effect,2_odd_numbers,claude-3.5-sonnet,1.8,100,100,18.992883239095256,1.0
+endowment effect,2_odd_numbers,gemma2,0.2,100,100,0.0,0.0
+endowment effect,2_odd_numbers,gemma2,0.7,100,100,0.0,0.0
+endowment effect,2_odd_numbers,gemma2,1,100,100,0.0,0.0
+endowment effect,2_odd_numbers,gemma2,1.3,100,100,0.0,0.0
+endowment effect,2_odd_numbers,gemma2,1.8,100,100,0.0,0.0
+endowment effect,2_odd_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+endowment effect,2_odd_numbers,gemma2:27b,0.7,100,100,0.0,0.0
+endowment effect,2_odd_numbers,gemma2:27b,1,100,100,0.0,0.0
+endowment effect,2_odd_numbers,gemma2:27b,1.3,100,100,0.0,0.0
+endowment effect,2_odd_numbers,gemma2:27b,1.8,100,100,0.0,0.0
+endowment effect,2_odd_numbers,gpt-4o,0.2,100,100,0.0,0.0
+endowment effect,2_odd_numbers,gpt-4o,0.7,100,100,11.968381402615053,1.0
+endowment effect,2_odd_numbers,gpt-4o,1,100,100,8.052142956678061,1.0
+endowment effect,2_odd_numbers,gpt-4o,1.3,100,100,5.774756399541157,1.0
+endowment effect,2_odd_numbers,gpt-4o,1.8,100,100,2.927823041980867,1.0
+endowment effect,2_odd_numbers,gpt-4o-mini,0.2,100,100,0.0,0.0
+endowment effect,2_odd_numbers,gpt-4o-mini,0.7,100,100,-0.5899459753031919,0.0
+endowment effect,2_odd_numbers,gpt-4o-mini,1,100,100,-0.5280036730818072,0.0
+endowment effect,2_odd_numbers,gpt-4o-mini,1.3,100,100,-0.5059783072524038,0.0
+endowment effect,2_odd_numbers,gpt-4o-mini,1.8,100,100,-0.7045638767423831,0.0
+endowment effect,2_odd_numbers,llama3.1,0.2,100,100,-0.08265058707953758,0.0
+endowment effect,2_odd_numbers,llama3.1,0.7,100,100,-0.554431164760543,0.0
+endowment effect,2_odd_numbers,llama3.1,1,100,100,-0.9428618814451996,0.0
+endowment effect,2_odd_numbers,llama3.1,1.3,100,100,-0.5732412885853122,0.0
+endowment effect,2_odd_numbers,llama3.1,1.8,100,100,-0.45810870835137607,0.0
+endowment effect,2_odd_numbers,llama3.1:70b,0.2,100,100,-0.4307595292859173,0.0
+endowment effect,2_odd_numbers,llama3.1:70b,0.7,100,100,0.11159049512641941,0.11159049512641941
+endowment effect,2_odd_numbers,llama3.1:70b,1,100,100,0.2455762454059679,0.2455762454059679
+endowment effect,2_odd_numbers,llama3.1:70b,1.3,100,100,0.15486198817398356,0.15486198817398356
+endowment effect,2_odd_numbers,llama3.1:70b,1.8,100,100,0.3634998378708476,0.3634998378708476
+endowment effect,2_odd_numbers,phi3.5,0.2,100,100,3.5050983275386565,1.0
+endowment effect,2_odd_numbers,phi3.5,0.7,100,100,1.1956226840596857,1.0
+endowment effect,2_odd_numbers,phi3.5,1,100,100,0.9659873011903752,0.9659873011903752
+endowment effect,2_odd_numbers,phi3.5,1.3,100,100,0.6311944030978032,0.6311944030978032
+endowment effect,2_odd_numbers,phi3.5,1.8,100,100,0.49455635397914616,0.49455635397914616
+endowment effect,2_odd_numbers,phi3:medium,0.2,100,100,-0.1421338109037403,0.0
+endowment effect,2_odd_numbers,phi3:medium,0.7,100,100,-0.8346636382715912,0.0
+endowment effect,2_odd_numbers,phi3:medium,1,100,100,-0.3974272710352367,0.0
+endowment effect,2_odd_numbers,phi3:medium,1.3,100,100,-0.7258187646660774,0.0
+endowment effect,2_odd_numbers,phi3:medium,1.8,100,100,-0.28354588553517507,0.0
+endowment effect,3_large_numbers,claude-3-haiku,0.2,100,100,0.0,0.0
+endowment effect,3_large_numbers,claude-3-haiku,0.7,100,100,0.14213381090373894,0.14213381090373894
+endowment effect,3_large_numbers,claude-3-haiku,1.0,100,100,0.06356417261637373,0.06356417261637373
+endowment effect,3_large_numbers,claude-3-haiku,1.3,100,100,0.49117140357255273,0.49117140357255273
+endowment effect,3_large_numbers,claude-3-haiku,1.8,100,100,0.5227446409243468,0.5227446409243468
+endowment effect,3_large_numbers,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+endowment effect,3_large_numbers,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+endowment effect,3_large_numbers,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+endowment effect,3_large_numbers,claude-3.5-sonnet,1.3,100,100,0.1421338109037403,0.1421338109037403
+endowment effect,3_large_numbers,claude-3.5-sonnet,1.8,100,100,0.07890639581985552,0.07890639581985552
+endowment effect,3_large_numbers,gemma2,0.2,100,100,-1.0387122643262259,0.0
+endowment effect,3_large_numbers,gemma2,0.7,100,100,-1.1210565307192466,0.0
+endowment effect,3_large_numbers,gemma2,1,100,100,-0.8659001139102893,0.0
+endowment effect,3_large_numbers,gemma2,1.3,100,100,-0.7225024990405287,0.0
+endowment effect,3_large_numbers,gemma2,1.8,100,100,-0.8097945141880145,0.0
+endowment effect,3_large_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+endowment effect,3_large_numbers,gemma2:27b,0.7,100,100,-0.013583772195312144,0.0
+endowment effect,3_large_numbers,gemma2:27b,1,100,100,-0.2000867911564928,0.0
+endowment effect,3_large_numbers,gemma2:27b,1.3,100,100,-0.02373897691724525,0.0
+endowment effect,3_large_numbers,gemma2:27b,1.8,100,100,-0.031022358373651398,0.0
+endowment effect,3_large_numbers,gpt-4o,0.2,100,100,2.4547214146177687,1.0
+endowment effect,3_large_numbers,gpt-4o,0.7,100,100,0.5699292392791746,0.5699292392791746
+endowment effect,3_large_numbers,gpt-4o,1,100,100,0.6751779056806052,0.6751779056806052
+endowment effect,3_large_numbers,gpt-4o,1.3,100,100,0.6487668464612837,0.6487668464612837
+endowment effect,3_large_numbers,gpt-4o,1.8,100,100,0.5204434630459835,0.5204434630459835
+endowment effect,3_large_numbers,gpt-4o-mini,0.2,100,100,0.0,0.0
+endowment effect,3_large_numbers,gpt-4o-mini,0.7,100,100,0.0,0.0
+endowment effect,3_large_numbers,gpt-4o-mini,1,100,100,0.19306665766516276,0.19306665766516276
+endowment effect,3_large_numbers,gpt-4o-mini,1.3,100,100,-0.04994953938176367,0.0
+endowment effect,3_large_numbers,gpt-4o-mini,1.8,100,100,0.16594762923667655,0.16594762923667655
+endowment effect,3_large_numbers,llama3.1,0.2,100,100,0.0,0.0
+endowment effect,3_large_numbers,llama3.1,0.7,100,100,-0.49538813250644176,0.0
+endowment effect,3_large_numbers,llama3.1,1,100,100,-0.6101411582925803,0.0
+endowment effect,3_large_numbers,llama3.1,1.3,100,100,-0.8523239218429421,0.0
+endowment effect,3_large_numbers,llama3.1,1.8,100,100,-0.6398529148346452,0.0
+endowment effect,3_large_numbers,llama3.1:70b,0.2,100,100,1.661897939677633,1.0
+endowment effect,3_large_numbers,llama3.1:70b,0.7,100,100,1.1306871870714574,1.0
+endowment effect,3_large_numbers,llama3.1:70b,1,100,100,0.9364791582575158,0.9364791582575158
+endowment effect,3_large_numbers,llama3.1:70b,1.3,100,100,0.7257696208393803,0.7257696208393803
+endowment effect,3_large_numbers,llama3.1:70b,1.8,100,100,0.3941575193791249,0.3941575193791249
+endowment effect,3_large_numbers,phi3.5,0.2,100,100,14.07124727947029,1.0
+endowment effect,3_large_numbers,phi3.5,0.7,100,100,2.8380139281485675,1.0
+endowment effect,3_large_numbers,phi3.5,1,100,100,2.5622469508751844,1.0
+endowment effect,3_large_numbers,phi3.5,1.3,100,100,2.1303361390658546,1.0
+endowment effect,3_large_numbers,phi3.5,1.8,100,100,1.5906376743091906,1.0
+endowment effect,3_large_numbers,phi3:medium,0.2,100,100,0.0,0.0
+endowment effect,3_large_numbers,phi3:medium,0.7,100,100,-0.439413627690043,0.0
+endowment effect,3_large_numbers,phi3:medium,1,100,100,-0.4781585801130248,0.0
+endowment effect,3_large_numbers,phi3:medium,1.3,100,100,-0.38997479542932134,0.0
+endowment effect,3_large_numbers,phi3:medium,1.8,100,100,-0.3624791193071738,0.0
+framing effect,0_normal,claude-3-haiku,0.2,100,100,0.0,0.0
+framing effect,0_normal,claude-3-haiku,0.7,100,100,0.14213381090374042,0.14213381090374042
+framing effect,0_normal,claude-3-haiku,1.0,100,100,0.0,0.0
+framing effect,0_normal,claude-3-haiku,1.3,100,100,0.20203050891044239,0.20203050891044239
+framing effect,0_normal,claude-3-haiku,1.8,100,100,0.42704360390747204,0.42704360390747204
+framing effect,0_normal,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+framing effect,0_normal,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+framing effect,0_normal,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+framing effect,0_normal,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+framing effect,0_normal,claude-3.5-sonnet,1.8,100,100,0.2886751345948129,0.2886751345948129
+framing effect,0_normal,gemma2,0.2,100,100,0.0,0.0
+framing effect,0_normal,gemma2,0.7,100,100,0.0,0.0
+framing effect,0_normal,gemma2,1,100,100,0.0,0.0
+framing effect,0_normal,gemma2,1.3,100,100,0.0,0.0
+framing effect,0_normal,gemma2,1.8,100,100,0.0,0.0
+framing effect,0_normal,gemma2:27b,0.2,100,100,0.0,0.0
+framing effect,0_normal,gemma2:27b,0.7,100,100,0.4447495899966607,0.4447495899966607
+framing effect,0_normal,gemma2:27b,1,100,100,0.7729182346164422,0.7729182346164422
+framing effect,0_normal,gemma2:27b,1.3,100,100,0.8382736442849092,0.8382736442849092
+framing effect,0_normal,gemma2:27b,1.8,100,100,0.8164965809277261,0.8164965809277261
+framing effect,0_normal,gpt-4o,0.2,100,100,0.0,0.0
+framing effect,0_normal,gpt-4o,0.7,100,100,0.0,0.0
+framing effect,0_normal,gpt-4o,1,100,100,0.2487080016869035,0.2487080016869035
+framing effect,0_normal,gpt-4o,1.3,100,100,0.20203050891044216,0.20203050891044216
+framing effect,0_normal,gpt-4o,1.8,100,100,0.14213381090374028,0.14213381090374028
+framing effect,0_normal,gpt-4o-mini,0.2,100,100,0.0,0.0
+framing effect,0_normal,gpt-4o-mini,0.7,100,100,0.0,0.0
+framing effect,0_normal,gpt-4o-mini,1,100,100,0.0,0.0
+framing effect,0_normal,gpt-4o-mini,1.3,100,100,0.0,0.0
+framing effect,0_normal,gpt-4o-mini,1.8,100,100,0.0,0.0
+framing effect,0_normal,llama3.1,0.2,100,100,0.0,0.0
+framing effect,0_normal,llama3.1,0.7,100,100,0.253002866951792,0.253002866951792
+framing effect,0_normal,llama3.1,1,100,100,0.1850130504879472,0.1850130504879472
+framing effect,0_normal,llama3.1,1.3,100,100,0.071888515468959,0.071888515468959
+framing effect,0_normal,llama3.1,1.8,100,100,0.15394843590950918,0.15394843590950918
+framing effect,0_normal,llama3.1:70b,0.2,100,100,0.0,0.0
+framing effect,0_normal,llama3.1:70b,0.7,100,100,6.9282032302755105,1.0
+framing effect,0_normal,llama3.1:70b,1,100,100,3.2403703492039297,1.0
+framing effect,0_normal,llama3.1:70b,1.3,100,100,3.658499061721266,1.0
+framing effect,0_normal,llama3.1:70b,1.8,100,100,2.2677868380553634,1.0
+framing effect,0_normal,phi3.5,0.2,100,100,9.899494936611665,1.0
+framing effect,0_normal,phi3.5,0.7,100,100,1.8453740556877367,1.0
+framing effect,0_normal,phi3.5,1,100,100,1.373374612641947,1.0
+framing effect,0_normal,phi3.5,1.3,100,100,1.2455313123897895,1.0
+framing effect,0_normal,phi3.5,1.8,100,100,0.46535449911159166,0.46535449911159166
+framing effect,0_normal,phi3:medium,0.2,100,100,0.0,0.0
+framing effect,0_normal,phi3:medium,0.7,100,100,0.2886751345948131,0.2886751345948131
+framing effect,0_normal,phi3:medium,1,100,100,0.5940885257860047,0.5940885257860047
+framing effect,0_normal,phi3:medium,1.3,100,100,0.5466722735905342,0.5466722735905342
+framing effect,0_normal,phi3:medium,1.8,100,100,0.7947194142390261,0.7947194142390261
+framing effect,1_persona,claude-3-haiku,0.2,100,100,0.0,0.0
+framing effect,1_persona,claude-3-haiku,0.7,100,100,0.0,0.0
+framing effect,1_persona,claude-3-haiku,1.0,100,100,0.0,0.0
+framing effect,1_persona,claude-3-haiku,1.3,100,100,0.0,0.0
+framing effect,1_persona,claude-3-haiku,1.8,100,100,0.14213381090374042,0.14213381090374042
+framing effect,1_persona,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+framing effect,1_persona,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+framing effect,1_persona,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+framing effect,1_persona,claude-3.5-sonnet,1.3,100,100,14.071247279470288,1.0
+framing effect,1_persona,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+framing effect,1_persona,gemma2,0.2,100,100,0.0635927279514235,0.0635927279514235
+framing effect,1_persona,gemma2,0.7,100,100,0.294818520599863,0.294818520599863
+framing effect,1_persona,gemma2,1,100,100,0.08139569275564806,0.08139569275564806
+framing effect,1_persona,gemma2,1.3,100,100,0.020010007506255492,0.020010007506255492
+framing effect,1_persona,gemma2,1.8,100,100,0.1606438657804998,0.1606438657804998
+framing effect,1_persona,gemma2:27b,0.2,100,100,0.0,0.0
+framing effect,1_persona,gemma2:27b,0.7,100,100,0.0,0.0
+framing effect,1_persona,gemma2:27b,1,100,100,0.0,0.0
+framing effect,1_persona,gemma2:27b,1.3,100,100,0.0,0.0
+framing effect,1_persona,gemma2:27b,1.8,100,100,0.0,0.0
+framing effect,1_persona,gpt-4o,0.2,100,100,0.0,0.0
+framing effect,1_persona,gpt-4o,0.7,100,100,0.0,0.0
+framing effect,1_persona,gpt-4o,1,100,100,0.0,0.0
+framing effect,1_persona,gpt-4o,1.3,100,100,0.14213381090374028,0.14213381090374028
+framing effect,1_persona,gpt-4o,1.8,100,100,0.3572948005052482,0.3572948005052482
+framing effect,1_persona,gpt-4o-mini,0.2,100,100,0.0,0.0
+framing effect,1_persona,gpt-4o-mini,0.7,100,100,0.0,0.0
+framing effect,1_persona,gpt-4o-mini,1,100,100,0.0,0.0
+framing effect,1_persona,gpt-4o-mini,1.3,100,100,0.14213381090374028,0.14213381090374028
+framing effect,1_persona,gpt-4o-mini,1.8,100,100,0.14213381090374028,0.14213381090374028
+framing effect,1_persona,llama3.1,0.2,100,100,0.14213381090374042,0.14213381090374042
+framing effect,1_persona,llama3.1,0.7,100,100,0.12191697571624358,0.12191697571624358
+framing effect,1_persona,llama3.1,1,100,100,0.08088927769096058,0.08088927769096058
+framing effect,1_persona,llama3.1,1.3,100,100,0.10425720702853716,0.10425720702853716
+framing effect,1_persona,llama3.1,1.8,100,100,0.11490458263551412,0.11490458263551412
+framing effect,1_persona,llama3.1:70b,0.2,100,100,0.0,0.0
+framing effect,1_persona,llama3.1:70b,0.7,100,100,0.49718307617612545,0.49718307617612545
+framing effect,1_persona,llama3.1:70b,1,100,100,0.49718307617612545,0.49718307617612545
+framing effect,1_persona,llama3.1:70b,1.3,100,100,0.7291402948817554,0.7291402948817554
+framing effect,1_persona,llama3.1:70b,1.8,100,100,0.9479191551169761,0.9479191551169761
+framing effect,1_persona,phi3.5,0.2,100,100,0.14213381090374042,0.14213381090374042
+framing effect,1_persona,phi3.5,0.7,100,100,0.4842434491970844,0.4842434491970844
+framing effect,1_persona,phi3.5,1,100,100,0.024772670011585673,0.024772670011585673
+framing effect,1_persona,phi3.5,1.3,100,100,0.4047243753719591,0.4047243753719591
+framing effect,1_persona,phi3.5,1.8,100,100,0.12889076303432254,0.12889076303432254
+framing effect,1_persona,phi3:medium,0.2,100,100,0.0,0.0
+framing effect,1_persona,phi3:medium,0.7,100,100,0.6625891564490793,0.6625891564490793
+framing effect,1_persona,phi3:medium,1,100,100,0.6172133998483675,0.6172133998483675
+framing effect,1_persona,phi3:medium,1.3,100,100,0.9479191551169761,0.9479191551169761
+framing effect,1_persona,phi3:medium,1.8,100,100,0.970142500145332,0.970142500145332
+framing effect,2_odd_numbers,claude-3-haiku,0.2,100,100,0.0,0.0
+framing effect,2_odd_numbers,claude-3-haiku,0.7,100,100,0.0,0.0
+framing effect,2_odd_numbers,claude-3-haiku,1.0,100,100,0.0,0.0
+framing effect,2_odd_numbers,claude-3-haiku,1.3,100,100,0.0,0.0
+framing effect,2_odd_numbers,claude-3-haiku,1.8,100,100,0.14213381090374042,0.14213381090374042
+framing effect,2_odd_numbers,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+framing effect,2_odd_numbers,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+framing effect,2_odd_numbers,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+framing effect,2_odd_numbers,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+framing effect,2_odd_numbers,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+framing effect,2_odd_numbers,gemma2,0.2,100,100,0.0,0.0
+framing effect,2_odd_numbers,gemma2,0.7,100,100,0.0,0.0
+framing effect,2_odd_numbers,gemma2,1,100,100,0.0,0.0
+framing effect,2_odd_numbers,gemma2,1.3,100,100,0.0,0.0
+framing effect,2_odd_numbers,gemma2,1.8,100,100,0.0,0.0
+framing effect,2_odd_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+framing effect,2_odd_numbers,gemma2:27b,0.7,100,100,0.0,0.0
+framing effect,2_odd_numbers,gemma2:27b,1,100,100,0.0,0.0
+framing effect,2_odd_numbers,gemma2:27b,1.3,100,100,0.0,0.0
+framing effect,2_odd_numbers,gemma2:27b,1.8,100,100,0.0,0.0
+framing effect,2_odd_numbers,gpt-4o,0.2,100,100,0.0,0.0
+framing effect,2_odd_numbers,gpt-4o,0.7,100,100,14.071247279470288,1.0
+framing effect,2_odd_numbers,gpt-4o,1,100,100,6.874702790778556,1.0
+framing effect,2_odd_numbers,gpt-4o,1.3,100,100,4.401222584000737,1.0
+framing effect,2_odd_numbers,gpt-4o,1.8,100,100,1.9214912781656572,1.0
+framing effect,2_odd_numbers,gpt-4o-mini,0.2,100,100,2.0107988715709055,1.0
+framing effect,2_odd_numbers,gpt-4o-mini,0.7,100,100,1.331792797482871,1.0
+framing effect,2_odd_numbers,gpt-4o-mini,1,100,100,1.5009575487729123,1.0
+framing effect,2_odd_numbers,gpt-4o-mini,1.3,100,100,1.246437945610986,1.0
+framing effect,2_odd_numbers,gpt-4o-mini,1.8,100,100,0.8310984032969776,0.8310984032969776
+framing effect,2_odd_numbers,llama3.1,0.2,100,100,0.0,0.0
+framing effect,2_odd_numbers,llama3.1,0.7,100,100,0.20203050891044239,0.20203050891044239
+framing effect,2_odd_numbers,llama3.1,1,100,100,0.47140452079103157,0.47140452079103157
+framing effect,2_odd_numbers,llama3.1,1.3,100,100,0.7729182346164417,0.7729182346164417
+framing effect,2_odd_numbers,llama3.1,1.8,100,100,0.7947194142390261,0.7947194142390261
+framing effect,2_odd_numbers,llama3.1:70b,0.2,100,100,0.0,0.0
+framing effect,2_odd_numbers,llama3.1:70b,0.7,100,100,0.0,0.0
+framing effect,2_odd_numbers,llama3.1:70b,1,100,100,0.0,0.0
+framing effect,2_odd_numbers,llama3.1:70b,1.3,100,100,0.0,0.0
+framing effect,2_odd_numbers,llama3.1:70b,1.8,100,100,0.0,0.0
+framing effect,2_odd_numbers,phi3.5,0.2,100,100,0.0,0.0
+framing effect,2_odd_numbers,phi3.5,0.7,100,100,0.0,0.0
+framing effect,2_odd_numbers,phi3.5,1,100,100,0.0,0.0
+framing effect,2_odd_numbers,phi3.5,1.3,100,100,0.0,0.0
+framing effect,2_odd_numbers,phi3.5,1.8,100,100,0.0,0.0
+framing effect,2_odd_numbers,phi3:medium,0.2,100,100,0.0,0.0
+framing effect,2_odd_numbers,phi3:medium,0.7,100,100,0.32444284226152525,0.32444284226152525
+framing effect,2_odd_numbers,phi3:medium,1,100,100,0.6625891564490793,0.6625891564490793
+framing effect,2_odd_numbers,phi3:medium,1.3,100,100,0.7729182346164417,0.7729182346164417
+framing effect,2_odd_numbers,phi3:medium,1.8,100,100,0.8164965809277261,0.8164965809277261
+framing effect,3_large_numbers,claude-3-haiku,0.2,100,100,0.0,0.0
+framing effect,3_large_numbers,claude-3-haiku,0.7,100,100,0.0,0.0
+framing effect,3_large_numbers,claude-3-haiku,1.0,100,100,0.0,0.0
+framing effect,3_large_numbers,claude-3-haiku,1.3,100,100,0.0,0.0
+framing effect,3_large_numbers,claude-3-haiku,1.8,100,100,0.0,0.0
+framing effect,3_large_numbers,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+framing effect,3_large_numbers,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+framing effect,3_large_numbers,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+framing effect,3_large_numbers,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+framing effect,3_large_numbers,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+framing effect,3_large_numbers,gemma2,0.2,100,100,0.0,0.0
+framing effect,3_large_numbers,gemma2,0.7,100,100,0.0,0.0
+framing effect,3_large_numbers,gemma2,1,100,100,0.0,0.0
+framing effect,3_large_numbers,gemma2,1.3,100,100,0.0,0.0
+framing effect,3_large_numbers,gemma2,1.8,100,100,0.0,0.0
+framing effect,3_large_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+framing effect,3_large_numbers,gemma2:27b,0.7,100,100,0.0,0.0
+framing effect,3_large_numbers,gemma2:27b,1,100,100,0.0,0.0
+framing effect,3_large_numbers,gemma2:27b,1.3,100,100,0.0,0.0
+framing effect,3_large_numbers,gemma2:27b,1.8,100,100,0.0,0.0
+framing effect,3_large_numbers,gpt-4o,0.2,100,100,1.130791105638068,1.0
+framing effect,3_large_numbers,gpt-4o,0.7,100,100,1.1547005383792515,1.0
+framing effect,3_large_numbers,gpt-4o,1,100,100,0.9868554810722414,0.9868554810722414
+framing effect,3_large_numbers,gpt-4o,1.3,100,100,1.008695011468421,1.0
+framing effect,3_large_numbers,gpt-4o,1.8,100,100,1.2264882813437328,1.0
+framing effect,3_large_numbers,gpt-4o-mini,0.2,100,100,0.0,0.0
+framing effect,3_large_numbers,gpt-4o-mini,0.7,100,100,0.0,0.0
+framing effect,3_large_numbers,gpt-4o-mini,1,100,100,0.0,0.0
+framing effect,3_large_numbers,gpt-4o-mini,1.3,100,100,0.0,0.0
+framing effect,3_large_numbers,gpt-4o-mini,1.8,100,100,0.14213381090374042,0.14213381090374042
+framing effect,3_large_numbers,llama3.1,0.2,100,100,0.0,0.0
+framing effect,3_large_numbers,llama3.1,0.7,100,100,0.0,0.0
+framing effect,3_large_numbers,llama3.1,1,100,100,0.0,0.0
+framing effect,3_large_numbers,llama3.1,1.3,100,100,0.0,0.0
+framing effect,3_large_numbers,llama3.1,1.8,100,100,0.0,0.0
+framing effect,3_large_numbers,llama3.1:70b,0.2,100,100,0.0,0.0
+framing effect,3_large_numbers,llama3.1:70b,0.7,100,100,0.0,0.0
+framing effect,3_large_numbers,llama3.1:70b,1,100,100,0.0,0.0
+framing effect,3_large_numbers,llama3.1:70b,1.3,100,100,0.0,0.0
+framing effect,3_large_numbers,llama3.1:70b,1.8,100,100,0.0,0.0
+framing effect,3_large_numbers,phi3.5,0.2,100,100,0.0,0.0
+framing effect,3_large_numbers,phi3.5,0.7,100,100,0.0,0.0
+framing effect,3_large_numbers,phi3.5,1,100,100,0.0,0.0
+framing effect,3_large_numbers,phi3.5,1.3,100,100,0.0,0.0
+framing effect,3_large_numbers,phi3.5,1.8,100,100,0.0,0.0
+framing effect,3_large_numbers,phi3:medium,0.2,100,100,0.0,0.0
+framing effect,3_large_numbers,phi3:medium,0.7,100,100,0.0,0.0
+framing effect,3_large_numbers,phi3:medium,1,100,100,0.0,0.0
+framing effect,3_large_numbers,phi3:medium,1.3,100,100,0.0,0.0
+framing effect,3_large_numbers,phi3:medium,1.8,100,100,0.0,0.0
+gamblers fallacy,0_normal,claude-3-haiku,0.2,100,100,0.0,0.0
+gamblers fallacy,0_normal,claude-3-haiku,0.7,100,100,0.0,0.0
+gamblers fallacy,0_normal,claude-3-haiku,1.0,100,100,0.0,0.0
+gamblers fallacy,0_normal,claude-3-haiku,1.3,100,100,0.0,0.0
+gamblers fallacy,0_normal,claude-3-haiku,1.8,100,100,0.0,0.0
+gamblers fallacy,0_normal,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+gamblers fallacy,0_normal,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+gamblers fallacy,0_normal,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+gamblers fallacy,0_normal,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+gamblers fallacy,0_normal,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+gamblers fallacy,0_normal,gemma2,0.2,100,100,0.0,0.0
+gamblers fallacy,0_normal,gemma2,0.7,100,100,0.0,0.0
+gamblers fallacy,0_normal,gemma2,1,100,100,0.0,0.0
+gamblers fallacy,0_normal,gemma2,1.3,100,100,0.0,0.0
+gamblers fallacy,0_normal,gemma2,1.8,100,100,0.0,0.0
+gamblers fallacy,0_normal,gemma2:27b,0.2,100,100,0.0,0.0
+gamblers fallacy,0_normal,gemma2:27b,0.7,100,100,0.0,0.0
+gamblers fallacy,0_normal,gemma2:27b,1,100,100,0.0,0.0
+gamblers fallacy,0_normal,gemma2:27b,1.3,100,100,0.0,0.0
+gamblers fallacy,0_normal,gemma2:27b,1.8,100,100,0.0,0.0
+gamblers fallacy,0_normal,gpt-4o,0.2,100,100,0.0,0.0
+gamblers fallacy,0_normal,gpt-4o,0.7,100,100,0.0,0.0
+gamblers fallacy,0_normal,gpt-4o,1,100,100,0.0,0.0
+gamblers fallacy,0_normal,gpt-4o,1.3,100,100,0.0,0.0
+gamblers fallacy,0_normal,gpt-4o,1.8,100,100,0.11744404390294053,0.11744404390294053
+gamblers fallacy,0_normal,gpt-4o-mini,0.2,100,100,0.0,0.0
+gamblers fallacy,0_normal,gpt-4o-mini,0.7,100,100,0.0,0.0
+gamblers fallacy,0_normal,gpt-4o-mini,1,100,100,0.0,0.0
+gamblers fallacy,0_normal,gpt-4o-mini,1.3,100,100,0.0,0.0
+gamblers fallacy,0_normal,gpt-4o-mini,1.8,100,100,0.0,0.0
+gamblers fallacy,0_normal,llama3.1,0.2,100,100,0.0,0.0
+gamblers fallacy,0_normal,llama3.1,0.7,100,100,0.0,0.0
+gamblers fallacy,0_normal,llama3.1,1,100,100,0.0,0.0
+gamblers fallacy,0_normal,llama3.1,1.3,100,100,0.0,0.0
+gamblers fallacy,0_normal,llama3.1,1.8,100,100,0.0,0.0
+gamblers fallacy,0_normal,llama3.1:70b,0.2,100,100,0.0,0.0
+gamblers fallacy,0_normal,llama3.1:70b,0.7,100,100,0.0,0.0
+gamblers fallacy,0_normal,llama3.1:70b,1,100,100,0.0,0.0
+gamblers fallacy,0_normal,llama3.1:70b,1.3,100,100,0.0,0.0
+gamblers fallacy,0_normal,llama3.1:70b,1.8,100,100,0.0,0.0
+gamblers fallacy,0_normal,phi3.5,0.2,100,100,0.0,0.0
+gamblers fallacy,0_normal,phi3.5,0.7,100,100,0.0,0.0
+gamblers fallacy,0_normal,phi3.5,1,100,100,0.0,0.0
+gamblers fallacy,0_normal,phi3.5,1.3,100,100,0.0,0.0
+gamblers fallacy,0_normal,phi3.5,1.8,100,100,0.0,0.0
+gamblers fallacy,0_normal,phi3:medium,0.2,100,100,0.0,0.0
+gamblers fallacy,0_normal,phi3:medium,0.7,100,100,0.0,0.0
+gamblers fallacy,0_normal,phi3:medium,1,100,100,0.0,0.0
+gamblers fallacy,0_normal,phi3:medium,1.3,100,100,0.0,0.0
+gamblers fallacy,0_normal,phi3:medium,1.8,100,100,0.0,0.0
+gamblers fallacy,1_persona,claude-3-haiku,0.2,100,100,0.0,0.0
+gamblers fallacy,1_persona,claude-3-haiku,0.7,100,100,0.0,0.0
+gamblers fallacy,1_persona,claude-3-haiku,1.0,100,100,0.0,0.0
+gamblers fallacy,1_persona,claude-3-haiku,1.3,100,100,0.0,0.0
+gamblers fallacy,1_persona,claude-3-haiku,1.8,100,100,0.0,0.0
+gamblers fallacy,1_persona,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+gamblers fallacy,1_persona,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+gamblers fallacy,1_persona,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+gamblers fallacy,1_persona,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+gamblers fallacy,1_persona,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+gamblers fallacy,1_persona,gemma2,0.2,100,100,0.0,0.0
+gamblers fallacy,1_persona,gemma2,0.7,100,100,0.0,0.0
+gamblers fallacy,1_persona,gemma2,1,100,100,0.0,0.0
+gamblers fallacy,1_persona,gemma2,1.3,100,100,0.0,0.0
+gamblers fallacy,1_persona,gemma2,1.8,100,100,0.0,0.0
+gamblers fallacy,1_persona,gemma2:27b,0.2,100,100,0.0,0.0
+gamblers fallacy,1_persona,gemma2:27b,0.7,100,100,0.0,0.0
+gamblers fallacy,1_persona,gemma2:27b,1,100,100,0.0,0.0
+gamblers fallacy,1_persona,gemma2:27b,1.3,100,100,0.0,0.0
+gamblers fallacy,1_persona,gemma2:27b,1.8,100,100,0.0,0.0
+gamblers fallacy,1_persona,gpt-4o,0.2,100,100,0.0,0.0
+gamblers fallacy,1_persona,gpt-4o,0.7,100,100,0.0,0.0
+gamblers fallacy,1_persona,gpt-4o,1,100,100,0.0,0.0
+gamblers fallacy,1_persona,gpt-4o,1.3,100,100,0.0,0.0
+gamblers fallacy,1_persona,gpt-4o,1.8,100,100,0.1450952500220025,0.1450952500220025
+gamblers fallacy,1_persona,gpt-4o-mini,0.2,100,100,0.0,0.0
+gamblers fallacy,1_persona,gpt-4o-mini,0.7,100,100,0.0,0.0
+gamblers fallacy,1_persona,gpt-4o-mini,1,100,100,0.0,0.0
+gamblers fallacy,1_persona,gpt-4o-mini,1.3,100,100,0.0,0.0
+gamblers fallacy,1_persona,gpt-4o-mini,1.8,100,100,0.0,0.0
+gamblers fallacy,1_persona,llama3.1,0.2,100,100,0.0,0.0
+gamblers fallacy,1_persona,llama3.1,0.7,100,100,0.0,0.0
+gamblers fallacy,1_persona,llama3.1,1,100,100,0.0,0.0
+gamblers fallacy,1_persona,llama3.1,1.3,100,100,0.0,0.0
+gamblers fallacy,1_persona,llama3.1,1.8,100,100,0.0,0.0
+gamblers fallacy,1_persona,llama3.1:70b,0.2,100,100,0.0,0.0
+gamblers fallacy,1_persona,llama3.1:70b,0.7,100,100,0.0,0.0
+gamblers fallacy,1_persona,llama3.1:70b,1,100,100,0.0,0.0
+gamblers fallacy,1_persona,llama3.1:70b,1.3,100,100,0.0,0.0
+gamblers fallacy,1_persona,llama3.1:70b,1.8,100,100,0.0,0.0
+gamblers fallacy,1_persona,phi3.5,0.2,100,100,0.0,0.0
+gamblers fallacy,1_persona,phi3.5,0.7,100,100,0.0,0.0
+gamblers fallacy,1_persona,phi3.5,1,100,100,0.0,0.0
+gamblers fallacy,1_persona,phi3.5,1.3,100,100,0.0,0.0
+gamblers fallacy,1_persona,phi3.5,1.8,100,100,0.0,0.0
+gamblers fallacy,1_persona,phi3:medium,0.2,100,100,0.0,0.0
+gamblers fallacy,1_persona,phi3:medium,0.7,100,100,0.0,0.0
+gamblers fallacy,1_persona,phi3:medium,1,100,100,0.0,0.0
+gamblers fallacy,1_persona,phi3:medium,1.3,100,100,0.0,0.0
+gamblers fallacy,1_persona,phi3:medium,1.8,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,claude-3-haiku,0.2,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,claude-3-haiku,0.7,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,claude-3-haiku,1.0,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,claude-3-haiku,1.3,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,claude-3-haiku,1.8,100,100,0.1421338109037403,0.1421338109037403
+gamblers fallacy,2_odd_numbers,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gemma2,0.2,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gemma2,0.7,100,100,0.5700253350223475,0.5700253350223475
+gamblers fallacy,2_odd_numbers,gemma2,1,100,100,0.8811493502699311,0.8811493502699311
+gamblers fallacy,2_odd_numbers,gemma2,1.3,100,100,1.1057529204649674,1.0
+gamblers fallacy,2_odd_numbers,gemma2,1.8,100,100,1.277257747432904,1.0
+gamblers fallacy,2_odd_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gemma2:27b,0.7,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gemma2:27b,1,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gemma2:27b,1.3,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gemma2:27b,1.8,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gpt-4o,0.2,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gpt-4o,0.7,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gpt-4o,1,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gpt-4o,1.3,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gpt-4o,1.8,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gpt-4o-mini,0.2,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gpt-4o-mini,0.7,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gpt-4o-mini,1,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gpt-4o-mini,1.3,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,gpt-4o-mini,1.8,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,llama3.1,0.2,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,llama3.1,0.7,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,llama3.1,1,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,llama3.1,1.3,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,llama3.1,1.8,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,llama3.1:70b,0.2,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,llama3.1:70b,0.7,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,llama3.1:70b,1,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,llama3.1:70b,1.3,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,llama3.1:70b,1.8,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,phi3.5,0.2,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,phi3.5,0.7,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,phi3.5,1,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,phi3.5,1.3,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,phi3.5,1.8,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,phi3:medium,0.2,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,phi3:medium,0.7,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,phi3:medium,1,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,phi3:medium,1.3,100,100,0.0,0.0
+gamblers fallacy,2_odd_numbers,phi3:medium,1.8,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,claude-3-haiku,0.2,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,claude-3-haiku,0.7,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,claude-3-haiku,1.0,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,claude-3-haiku,1.3,100,100,0.20203050891044214,0.20203050891044214
+gamblers fallacy,3_large_numbers,claude-3-haiku,1.8,100,100,0.20203050891044214,0.20203050891044214
+gamblers fallacy,3_large_numbers,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gemma2,0.2,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gemma2,0.7,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gemma2,1,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gemma2,1.3,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gemma2,1.8,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gemma2:27b,0.7,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gemma2:27b,1,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gemma2:27b,1.3,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gemma2:27b,1.8,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gpt-4o,0.2,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gpt-4o,0.7,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gpt-4o,1,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gpt-4o,1.3,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gpt-4o,1.8,100,100,0.04825234406533838,0.04825234406533838
+gamblers fallacy,3_large_numbers,gpt-4o-mini,0.2,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gpt-4o-mini,0.7,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gpt-4o-mini,1,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gpt-4o-mini,1.3,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,gpt-4o-mini,1.8,100,100,-0.11744404390294053,0.0
+gamblers fallacy,3_large_numbers,llama3.1,0.2,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,llama3.1,0.7,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,llama3.1,1,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,llama3.1,1.3,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,llama3.1,1.8,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,llama3.1:70b,0.2,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,llama3.1:70b,0.7,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,llama3.1:70b,1,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,llama3.1:70b,1.3,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,llama3.1:70b,1.8,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,phi3.5,0.2,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,phi3.5,0.7,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,phi3.5,1,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,phi3.5,1.3,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,phi3.5,1.8,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,phi3:medium,0.2,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,phi3:medium,0.7,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,phi3:medium,1,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,phi3:medium,1.3,100,100,0.0,0.0
+gamblers fallacy,3_large_numbers,phi3:medium,1.8,100,100,0.0,0.0
+loss aversion,0_normal,claude-3-haiku,0.2,100,100,9.899494936611665,1.0
+loss aversion,0_normal,claude-3-haiku,0.7,100,100,2.3858557568108956,1.0
+loss aversion,0_normal,claude-3-haiku,1.0,100,100,2.0150945537631877,1.0
+loss aversion,0_normal,claude-3-haiku,1.3,100,100,1.9272482233188633,1.0
+loss aversion,0_normal,claude-3-haiku,1.8,100,100,1.5118221941775123,1.0
+loss aversion,0_normal,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+loss aversion,0_normal,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+loss aversion,0_normal,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+loss aversion,0_normal,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+loss aversion,0_normal,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+loss aversion,0_normal,gemma2,0.2,100,100,0.0,0.0
+loss aversion,0_normal,gemma2,0.7,100,100,0.0,0.0
+loss aversion,0_normal,gemma2,1,100,100,0.0,0.0
+loss aversion,0_normal,gemma2,1.3,100,100,0.0,0.0
+loss aversion,0_normal,gemma2,1.8,100,100,0.0,0.0
+loss aversion,0_normal,gemma2:27b,0.2,100,100,6.164414002968976,1.0
+loss aversion,0_normal,gemma2:27b,0.7,100,100,2.0150945537631877,1.0
+loss aversion,0_normal,gemma2:27b,1,100,100,1.696481293880898,1.0
+loss aversion,0_normal,gemma2:27b,1.3,100,100,1.9703687322875556,1.0
+loss aversion,0_normal,gemma2:27b,1.8,100,100,1.628239168764121,1.0
+loss aversion,0_normal,gpt-4o,0.2,100,100,0.0,0.0
+loss aversion,0_normal,gpt-4o,0.7,100,100,14.071247279470288,1.0
+loss aversion,0_normal,gpt-4o,1,100,100,5.519870063438214,1.0
+loss aversion,0_normal,gpt-4o,1.3,100,100,3.3301340492356677,1.0
+loss aversion,0_normal,gpt-4o,1.8,100,100,2.4832250514736374,1.0
+loss aversion,0_normal,gpt-4o-mini,0.2,100,100,0.0,0.0
+loss aversion,0_normal,gpt-4o-mini,0.7,100,100,14.071247279470288,1.0
+loss aversion,0_normal,gpt-4o-mini,1,100,100,6.9282032302755105,1.0
+loss aversion,0_normal,gpt-4o-mini,1.3,100,100,3.620289146807684,1.0
+loss aversion,0_normal,gpt-4o-mini,1.8,100,100,2.4282851708990765,1.0
+loss aversion,0_normal,llama3.1,0.2,100,100,0.0,0.0
+loss aversion,0_normal,llama3.1,0.7,100,100,0.32444284226152525,0.32444284226152525
+loss aversion,0_normal,llama3.1,1,100,100,0.49718307617612545,0.49718307617612545
+loss aversion,0_normal,llama3.1,1.3,100,100,0.5705974021574558,0.5705974021574558
+loss aversion,0_normal,llama3.1,1.8,100,100,0.8164965809277261,0.8164965809277261
+loss aversion,0_normal,llama3.1:70b,0.2,100,100,0.0,0.0
+loss aversion,0_normal,llama3.1:70b,0.7,100,100,0.0,0.0
+loss aversion,0_normal,llama3.1:70b,1,100,100,0.0,0.0
+loss aversion,0_normal,llama3.1:70b,1.3,100,100,0.0,0.0
+loss aversion,0_normal,llama3.1:70b,1.8,100,100,0.0,0.0
+loss aversion,0_normal,phi3.5,0.2,100,100,0.0,0.0
+loss aversion,0_normal,phi3.5,0.7,100,100,0.0,0.0
+loss aversion,0_normal,phi3.5,1,100,100,0.0,0.0
+loss aversion,0_normal,phi3.5,1.3,100,100,0.0,0.0
+loss aversion,0_normal,phi3.5,1.8,100,100,0.0,0.0
+loss aversion,0_normal,phi3:medium,0.2,100,100,0.0,0.0
+loss aversion,0_normal,phi3:medium,0.7,100,100,0.0,0.0
+loss aversion,0_normal,phi3:medium,1,100,100,0.0,0.0
+loss aversion,0_normal,phi3:medium,1.3,100,100,0.0,0.0
+loss aversion,0_normal,phi3:medium,1.8,100,100,0.0,0.0
+loss aversion,1_persona,claude-3-haiku,0.2,100,100,0.0,0.0
+loss aversion,1_persona,claude-3-haiku,0.7,100,100,0.0,0.0
+loss aversion,1_persona,claude-3-haiku,1.0,100,100,0.14213381090374042,0.14213381090374042
+loss aversion,1_persona,claude-3-haiku,1.3,100,100,0.14213381090374042,0.14213381090374042
+loss aversion,1_persona,claude-3-haiku,1.8,100,100,0.47140452079103157,0.47140452079103157
+loss aversion,1_persona,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+loss aversion,1_persona,claude-3.5-sonnet,0.7,100,100,6.928203230275508,1.0
+loss aversion,1_persona,claude-3.5-sonnet,1.0,100,100,3.240370349203929,1.0
+loss aversion,1_persona,claude-3.5-sonnet,1.3,100,100,3.018461712712472,1.0
+loss aversion,1_persona,claude-3.5-sonnet,1.8,100,100,1.8856180831641267,1.0
+loss aversion,1_persona,gemma2,0.2,100,100,0.0,0.0
+loss aversion,1_persona,gemma2,0.7,100,100,0.0,0.0
+loss aversion,1_persona,gemma2,1,100,100,0.0,0.0
+loss aversion,1_persona,gemma2,1.3,100,100,0.0,0.0
+loss aversion,1_persona,gemma2,1.8,100,100,0.0,0.0
+loss aversion,1_persona,gemma2:27b,0.2,100,100,0.0,0.0
+loss aversion,1_persona,gemma2:27b,0.7,100,100,0.0,0.0
+loss aversion,1_persona,gemma2:27b,1,100,100,0.0,0.0
+loss aversion,1_persona,gemma2:27b,1.3,100,100,0.0,0.0
+loss aversion,1_persona,gemma2:27b,1.8,100,100,0.0,0.0
+loss aversion,1_persona,gpt-4o,0.2,100,100,0.0,0.0
+loss aversion,1_persona,gpt-4o,0.7,100,100,14.071247279470288,1.0
+loss aversion,1_persona,gpt-4o,1,100,100,9.899494936611669,1.0
+loss aversion,1_persona,gpt-4o,1.3,100,100,5.0622788017519005,1.0
+loss aversion,1_persona,gpt-4o,1.8,100,100,2.86531188703991,1.0
+loss aversion,1_persona,gpt-4o-mini,0.2,100,100,2.109884571066817,1.0
+loss aversion,1_persona,gpt-4o-mini,0.7,100,100,1.2782710330664753,1.0
+loss aversion,1_persona,gpt-4o-mini,1,100,100,1.6010351680920236,1.0
+loss aversion,1_persona,gpt-4o-mini,1.3,100,100,1.3126308091734116,1.0
+loss aversion,1_persona,gpt-4o-mini,1.8,100,100,1.0833262130632075,1.0
+loss aversion,1_persona,llama3.1,0.2,100,100,0.0,0.0
+loss aversion,1_persona,llama3.1,0.7,100,100,0.41702882811414943,0.41702882811414943
+loss aversion,1_persona,llama3.1,1,100,100,0.8382736442849092,0.8382736442849092
+loss aversion,1_persona,llama3.1,1.3,100,100,0.684934889218775,0.684934889218775
+loss aversion,1_persona,llama3.1,1.8,100,100,0.7947194142390261,0.7947194142390261
+loss aversion,1_persona,llama3.1:70b,0.2,100,100,0.0,0.0
+loss aversion,1_persona,llama3.1:70b,0.7,100,100,0.0,0.0
+loss aversion,1_persona,llama3.1:70b,1,100,100,0.0,0.0
+loss aversion,1_persona,llama3.1:70b,1.3,100,100,0.0,0.0
+loss aversion,1_persona,llama3.1:70b,1.8,100,100,0.0,0.0
+loss aversion,1_persona,phi3.5,0.2,100,100,0.0,0.0
+loss aversion,1_persona,phi3.5,0.7,100,100,0.0,0.0
+loss aversion,1_persona,phi3.5,1,100,100,0.0,0.0
+loss aversion,1_persona,phi3.5,1.3,100,100,0.0,0.0
+loss aversion,1_persona,phi3.5,1.8,100,100,0.0,0.0
+loss aversion,1_persona,phi3:medium,0.2,100,100,0.0,0.0
+loss aversion,1_persona,phi3:medium,0.7,100,100,0.0,0.0
+loss aversion,1_persona,phi3:medium,1,100,100,0.0,0.0
+loss aversion,1_persona,phi3:medium,1.3,100,100,0.0,0.0
+loss aversion,1_persona,phi3:medium,1.8,100,100,0.0,0.0
+loss aversion,2_odd_numbers,claude-3-haiku,0.2,100,100,0.0,0.0
+loss aversion,2_odd_numbers,claude-3-haiku,0.7,100,100,0.0,0.0
+loss aversion,2_odd_numbers,claude-3-haiku,1.0,100,100,0.0,0.0
+loss aversion,2_odd_numbers,claude-3-haiku,1.3,100,100,0.0,0.0
+loss aversion,2_odd_numbers,claude-3-haiku,1.8,100,100,0.0,0.0
+loss aversion,2_odd_numbers,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+loss aversion,2_odd_numbers,claude-3.5-sonnet,0.7,100,100,5.597618541248887,1.0
+loss aversion,2_odd_numbers,claude-3.5-sonnet,1.0,100,100,4.795831523312721,1.0
+loss aversion,2_odd_numbers,claude-3.5-sonnet,1.3,100,100,2.3858557568108956,1.0
+loss aversion,2_odd_numbers,claude-3.5-sonnet,1.8,100,100,2.0150945537631886,1.0
+loss aversion,2_odd_numbers,gemma2,0.2,100,100,0.0,0.0
+loss aversion,2_odd_numbers,gemma2,0.7,100,100,0.0,0.0
+loss aversion,2_odd_numbers,gemma2,1,100,100,0.0,0.0
+loss aversion,2_odd_numbers,gemma2,1.3,100,100,0.0,0.0
+loss aversion,2_odd_numbers,gemma2,1.8,100,100,0.0,0.0
+loss aversion,2_odd_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+loss aversion,2_odd_numbers,gemma2:27b,0.7,100,100,-0.32444284226152525,0.0
+loss aversion,2_odd_numbers,gemma2:27b,1,100,100,-0.6400301197731774,0.0
+loss aversion,2_odd_numbers,gemma2:27b,1.3,100,100,-0.9479191551169761,0.0
+loss aversion,2_odd_numbers,gemma2:27b,1.8,100,100,-0.9258200997725519,0.0
+loss aversion,2_odd_numbers,gpt-4o,0.2,100,100,0.0,0.0
+loss aversion,2_odd_numbers,gpt-4o,0.7,100,100,9.899494936611669,1.0
+loss aversion,2_odd_numbers,gpt-4o,1,100,100,9.849370589540278,1.0
+loss aversion,2_odd_numbers,gpt-4o,1.3,100,100,4.719500419591708,1.0
+loss aversion,2_odd_numbers,gpt-4o,1.8,100,100,3.2998823938304658,1.0
+loss aversion,2_odd_numbers,gpt-4o-mini,0.2,100,100,0.0,0.0
+loss aversion,2_odd_numbers,gpt-4o-mini,0.7,100,100,0.0,0.0
+loss aversion,2_odd_numbers,gpt-4o-mini,1,100,100,9.899494936611665,1.0
+loss aversion,2_odd_numbers,gpt-4o-mini,1.3,100,100,6.164414002968976,1.0
+loss aversion,2_odd_numbers,gpt-4o-mini,1.8,100,100,5.597618541248889,1.0
+loss aversion,2_odd_numbers,llama3.1,0.2,100,100,0.0,0.0
+loss aversion,2_odd_numbers,llama3.1,0.7,100,100,0.24870800168690366,0.24870800168690366
+loss aversion,2_odd_numbers,llama3.1,1,100,100,0.41702882811414943,0.41702882811414943
+loss aversion,2_odd_numbers,llama3.1,1.3,100,100,0.7071067811865472,0.7071067811865472
+loss aversion,2_odd_numbers,llama3.1,1.8,100,100,0.8600732686214937,0.8600732686214937
+loss aversion,2_odd_numbers,llama3.1:70b,0.2,100,100,0.0,0.0
+loss aversion,2_odd_numbers,llama3.1:70b,0.7,100,100,0.0,0.0
+loss aversion,2_odd_numbers,llama3.1:70b,1,100,100,0.0,0.0
+loss aversion,2_odd_numbers,llama3.1:70b,1.3,100,100,0.0,0.0
+loss aversion,2_odd_numbers,llama3.1:70b,1.8,100,100,0.0,0.0
+loss aversion,2_odd_numbers,phi3.5,0.2,100,100,0.0,0.0
+loss aversion,2_odd_numbers,phi3.5,0.7,100,100,0.0,0.0
+loss aversion,2_odd_numbers,phi3.5,1,100,100,0.0,0.0
+loss aversion,2_odd_numbers,phi3.5,1.3,100,100,0.0,0.0
+loss aversion,2_odd_numbers,phi3.5,1.8,100,100,0.0,0.0
+loss aversion,2_odd_numbers,phi3:medium,0.2,100,100,0.0,0.0
+loss aversion,2_odd_numbers,phi3:medium,0.7,100,100,0.0,0.0
+loss aversion,2_odd_numbers,phi3:medium,1,100,100,0.0,0.0
+loss aversion,2_odd_numbers,phi3:medium,1.3,100,100,0.0,0.0
+loss aversion,2_odd_numbers,phi3:medium,1.8,100,100,0.0,0.0
+loss aversion,3_large_numbers,claude-3-haiku,0.2,100,100,0.0,0.0
+loss aversion,3_large_numbers,claude-3-haiku,0.7,100,100,0.0,0.0
+loss aversion,3_large_numbers,claude-3-haiku,1.0,100,100,0.0,0.0
+loss aversion,3_large_numbers,claude-3-haiku,1.3,100,100,0.0,0.0
+loss aversion,3_large_numbers,claude-3-haiku,1.8,100,100,-0.14213381090374042,0.0
+loss aversion,3_large_numbers,claude-3.5-sonnet,0.2,100,100,1.6282391687641211,1.0
+loss aversion,3_large_numbers,claude-3.5-sonnet,0.7,100,100,1.3052600138300814,1.0
+loss aversion,3_large_numbers,claude-3.5-sonnet,1.0,100,100,1.414213562373095,1.0
+loss aversion,3_large_numbers,claude-3.5-sonnet,1.3,100,100,1.358732440973515,1.0
+loss aversion,3_large_numbers,claude-3.5-sonnet,1.8,100,100,1.5322617553657478,1.0
+loss aversion,3_large_numbers,gemma2,0.2,100,100,0.0,0.0
+loss aversion,3_large_numbers,gemma2,0.7,100,100,0.0,0.0
+loss aversion,3_large_numbers,gemma2,1,100,100,0.0,0.0
+loss aversion,3_large_numbers,gemma2,1.3,100,100,0.0,0.0
+loss aversion,3_large_numbers,gemma2,1.8,100,100,0.0,0.0
+loss aversion,3_large_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+loss aversion,3_large_numbers,gemma2:27b,0.7,100,100,0.0,0.0
+loss aversion,3_large_numbers,gemma2:27b,1,100,100,0.0,0.0
+loss aversion,3_large_numbers,gemma2:27b,1.3,100,100,0.0,0.0
+loss aversion,3_large_numbers,gemma2:27b,1.8,100,100,0.0,0.0
+loss aversion,3_large_numbers,gpt-4o,0.2,100,100,1.130791105638068,1.0
+loss aversion,3_large_numbers,gpt-4o,0.7,100,100,1.2535663410560174,1.0
+loss aversion,3_large_numbers,gpt-4o,1,100,100,1.5954480704349316,1.0
+loss aversion,3_large_numbers,gpt-4o,1.3,100,100,1.480702942189121,1.0
+loss aversion,3_large_numbers,gpt-4o,1.8,100,100,1.1156606807753295,1.0
+loss aversion,3_large_numbers,gpt-4o-mini,0.2,100,100,0.0,0.0
+loss aversion,3_large_numbers,gpt-4o-mini,0.7,100,100,4.79583152331272,1.0
+loss aversion,3_large_numbers,gpt-4o-mini,1,100,100,3.2047998936093656,1.0
+loss aversion,3_large_numbers,gpt-4o-mini,1.3,100,100,2.27429413073671,1.0
+loss aversion,3_large_numbers,gpt-4o-mini,1.8,100,100,1.435126459802756,1.0
+loss aversion,3_large_numbers,llama3.1,0.2,100,100,0.0,0.0
+loss aversion,3_large_numbers,llama3.1,0.7,100,100,0.32444284226152525,0.32444284226152525
+loss aversion,3_large_numbers,llama3.1,1,100,100,0.41702882811414943,0.41702882811414943
+loss aversion,3_large_numbers,llama3.1,1.3,100,100,0.6400301197731774,0.6400301197731774
+loss aversion,3_large_numbers,llama3.1,1.8,100,100,0.7729182346164417,0.7729182346164417
+loss aversion,3_large_numbers,llama3.1:70b,0.2,100,100,0.0,0.0
+loss aversion,3_large_numbers,llama3.1:70b,0.7,100,100,0.0,0.0
+loss aversion,3_large_numbers,llama3.1:70b,1,100,100,0.0,0.0
+loss aversion,3_large_numbers,llama3.1:70b,1.3,100,100,0.0,0.0
+loss aversion,3_large_numbers,llama3.1:70b,1.8,100,100,0.0,0.0
+loss aversion,3_large_numbers,phi3.5,0.2,100,100,0.0,0.0
+loss aversion,3_large_numbers,phi3.5,0.7,100,100,0.0,0.0
+loss aversion,3_large_numbers,phi3.5,1,100,100,0.0,0.0
+loss aversion,3_large_numbers,phi3.5,1.3,100,100,0.0,0.0
+loss aversion,3_large_numbers,phi3.5,1.8,100,100,0.0,0.0
+loss aversion,3_large_numbers,phi3:medium,0.2,100,100,0.0,0.0
+loss aversion,3_large_numbers,phi3:medium,0.7,100,100,0.0,0.0
+loss aversion,3_large_numbers,phi3:medium,1,100,100,0.0,0.0
+loss aversion,3_large_numbers,phi3:medium,1.3,100,100,0.0,0.0
+loss aversion,3_large_numbers,phi3:medium,1.8,100,100,0.0,0.0
+sunk cost fallacy,0_normal,claude-3-haiku,0.2,100,100,0.0,0.0
+sunk cost fallacy,0_normal,claude-3-haiku,0.7,100,100,0.14213381090374028,0.14213381090374028
+sunk cost fallacy,0_normal,claude-3-haiku,1.0,100,100,0.32444284226152514,0.32444284226152514
+sunk cost fallacy,0_normal,claude-3-haiku,1.3,100,100,0.5466722735905342,0.5466722735905342
+sunk cost fallacy,0_normal,claude-3-haiku,1.8,100,100,0.5222329678670935,0.5222329678670935
+sunk cost fallacy,0_normal,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+sunk cost fallacy,0_normal,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+sunk cost fallacy,0_normal,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+sunk cost fallacy,0_normal,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+sunk cost fallacy,0_normal,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gemma2,0.2,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gemma2,0.7,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gemma2,1,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gemma2,1.3,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gemma2,1.8,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gemma2:27b,0.2,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gemma2:27b,0.7,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gemma2:27b,1,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gemma2:27b,1.3,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gemma2:27b,1.8,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gpt-4o,0.2,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gpt-4o,0.7,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gpt-4o,1,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gpt-4o,1.3,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gpt-4o,1.8,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gpt-4o-mini,0.2,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gpt-4o-mini,0.7,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gpt-4o-mini,1,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gpt-4o-mini,1.3,100,100,0.0,0.0
+sunk cost fallacy,0_normal,gpt-4o-mini,1.8,100,100,0.0,0.0
+sunk cost fallacy,0_normal,llama3.1,0.2,100,100,0.0,0.0
+sunk cost fallacy,0_normal,llama3.1,0.7,100,100,0.0,0.0
+sunk cost fallacy,0_normal,llama3.1,1,100,100,0.0,0.0
+sunk cost fallacy,0_normal,llama3.1,1.3,100,100,0.0,0.0
+sunk cost fallacy,0_normal,llama3.1,1.8,100,100,0.0,0.0
+sunk cost fallacy,0_normal,llama3.1:70b,0.2,100,100,0.0,0.0
+sunk cost fallacy,0_normal,llama3.1:70b,0.7,100,100,0.0,0.0
+sunk cost fallacy,0_normal,llama3.1:70b,1,100,100,0.0,0.0
+sunk cost fallacy,0_normal,llama3.1:70b,1.3,100,100,0.0,0.0
+sunk cost fallacy,0_normal,llama3.1:70b,1.8,100,100,0.0,0.0
+sunk cost fallacy,0_normal,phi3.5,0.2,100,100,0.0,0.0
+sunk cost fallacy,0_normal,phi3.5,0.7,100,100,0.0,0.0
+sunk cost fallacy,0_normal,phi3.5,1,100,100,0.0,0.0
+sunk cost fallacy,0_normal,phi3.5,1.3,100,100,0.0,0.0
+sunk cost fallacy,0_normal,phi3.5,1.8,100,100,0.0,0.0
+sunk cost fallacy,0_normal,phi3:medium,0.2,100,100,0.0,0.0
+sunk cost fallacy,0_normal,phi3:medium,0.7,100,100,0.0,0.0
+sunk cost fallacy,0_normal,phi3:medium,1,100,100,0.0,0.0
+sunk cost fallacy,0_normal,phi3:medium,1.3,100,100,0.0,0.0
+sunk cost fallacy,0_normal,phi3:medium,1.8,100,100,0.0,0.0
+sunk cost fallacy,1_persona,claude-3-haiku,0.2,100,100,0.0,0.0
+sunk cost fallacy,1_persona,claude-3-haiku,0.7,100,100,0.0,0.0
+sunk cost fallacy,1_persona,claude-3-haiku,1.0,100,100,0.0,0.0
+sunk cost fallacy,1_persona,claude-3-haiku,1.3,100,100,0.0,0.0
+sunk cost fallacy,1_persona,claude-3-haiku,1.8,100,100,0.0,0.0
+sunk cost fallacy,1_persona,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+sunk cost fallacy,1_persona,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+sunk cost fallacy,1_persona,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+sunk cost fallacy,1_persona,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+sunk cost fallacy,1_persona,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gemma2,0.2,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gemma2,0.7,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gemma2,1,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gemma2,1.3,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gemma2,1.8,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gemma2:27b,0.2,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gemma2:27b,0.7,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gemma2:27b,1,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gemma2:27b,1.3,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gemma2:27b,1.8,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gpt-4o,0.2,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gpt-4o,0.7,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gpt-4o,1,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gpt-4o,1.3,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gpt-4o,1.8,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gpt-4o-mini,0.2,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gpt-4o-mini,0.7,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gpt-4o-mini,1,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gpt-4o-mini,1.3,100,100,0.0,0.0
+sunk cost fallacy,1_persona,gpt-4o-mini,1.8,100,100,0.0,0.0
+sunk cost fallacy,1_persona,llama3.1,0.2,100,100,0.0,0.0
+sunk cost fallacy,1_persona,llama3.1,0.7,100,100,0.0,0.0
+sunk cost fallacy,1_persona,llama3.1,1,100,100,0.0,0.0
+sunk cost fallacy,1_persona,llama3.1,1.3,100,100,0.0,0.0
+sunk cost fallacy,1_persona,llama3.1,1.8,100,100,0.0,0.0
+sunk cost fallacy,1_persona,llama3.1:70b,0.2,100,100,0.0,0.0
+sunk cost fallacy,1_persona,llama3.1:70b,0.7,100,100,0.0,0.0
+sunk cost fallacy,1_persona,llama3.1:70b,1,100,100,0.0,0.0
+sunk cost fallacy,1_persona,llama3.1:70b,1.3,100,100,0.0,0.0
+sunk cost fallacy,1_persona,llama3.1:70b,1.8,100,100,0.0,0.0
+sunk cost fallacy,1_persona,phi3.5,0.2,100,100,0.0,0.0
+sunk cost fallacy,1_persona,phi3.5,0.7,100,100,0.0,0.0
+sunk cost fallacy,1_persona,phi3.5,1,100,100,0.0,0.0
+sunk cost fallacy,1_persona,phi3.5,1.3,100,100,0.0,0.0
+sunk cost fallacy,1_persona,phi3.5,1.8,100,100,0.0,0.0
+sunk cost fallacy,1_persona,phi3:medium,0.2,100,100,0.0,0.0
+sunk cost fallacy,1_persona,phi3:medium,0.7,100,100,0.0,0.0
+sunk cost fallacy,1_persona,phi3:medium,1,100,100,0.0,0.0
+sunk cost fallacy,1_persona,phi3:medium,1.3,100,100,0.0,0.0
+sunk cost fallacy,1_persona,phi3:medium,1.8,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,claude-3-haiku,0.2,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,claude-3-haiku,0.7,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,claude-3-haiku,1.0,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,claude-3-haiku,1.3,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,claude-3-haiku,1.8,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gemma2,0.2,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gemma2,0.7,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gemma2,1,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gemma2,1.3,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gemma2,1.8,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gemma2:27b,0.7,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gemma2:27b,1,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gemma2:27b,1.3,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gemma2:27b,1.8,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gpt-4o,0.2,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gpt-4o,0.7,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gpt-4o,1,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gpt-4o,1.3,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gpt-4o,1.8,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gpt-4o-mini,0.2,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gpt-4o-mini,0.7,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gpt-4o-mini,1,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gpt-4o-mini,1.3,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,gpt-4o-mini,1.8,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,llama3.1,0.2,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,llama3.1,0.7,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,llama3.1,1,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,llama3.1,1.3,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,llama3.1,1.8,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,llama3.1:70b,0.2,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,llama3.1:70b,0.7,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,llama3.1:70b,1,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,llama3.1:70b,1.3,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,llama3.1:70b,1.8,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,phi3.5,0.2,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,phi3.5,0.7,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,phi3.5,1,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,phi3.5,1.3,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,phi3.5,1.8,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,phi3:medium,0.2,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,phi3:medium,0.7,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,phi3:medium,1,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,phi3:medium,1.3,100,100,0.0,0.0
+sunk cost fallacy,2_odd_numbers,phi3:medium,1.8,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,claude-3-haiku,0.2,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,claude-3-haiku,0.7,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,claude-3-haiku,1.0,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,claude-3-haiku,1.3,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,claude-3-haiku,1.8,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gemma2,0.2,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gemma2,0.7,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gemma2,1,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gemma2,1.3,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gemma2,1.8,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gemma2:27b,0.7,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gemma2:27b,1,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gemma2:27b,1.3,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gemma2:27b,1.8,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gpt-4o,0.2,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gpt-4o,0.7,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gpt-4o,1,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gpt-4o,1.3,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gpt-4o,1.8,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gpt-4o-mini,0.2,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gpt-4o-mini,0.7,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gpt-4o-mini,1,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gpt-4o-mini,1.3,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,gpt-4o-mini,1.8,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,llama3.1,0.2,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,llama3.1,0.7,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,llama3.1,1,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,llama3.1,1.3,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,llama3.1,1.8,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,llama3.1:70b,0.2,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,llama3.1:70b,0.7,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,llama3.1:70b,1,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,llama3.1:70b,1.3,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,llama3.1:70b,1.8,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,phi3.5,0.2,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,phi3.5,0.7,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,phi3.5,1,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,phi3.5,1.3,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,phi3.5,1.8,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,phi3:medium,0.2,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,phi3:medium,0.7,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,phi3:medium,1,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,phi3:medium,1.3,100,100,0.0,0.0
+sunk cost fallacy,3_large_numbers,phi3:medium,1.8,100,100,0.0,0.0
+transaction utility,0_normal,claude-3-haiku,0.2,100,100,0.0,0.0
+transaction utility,0_normal,claude-3-haiku,0.7,100,100,0.0,0.0
+transaction utility,0_normal,claude-3-haiku,1.0,100,100,0.0,0.0
+transaction utility,0_normal,claude-3-haiku,1.3,100,100,0.0,0.0
+transaction utility,0_normal,claude-3-haiku,1.8,100,100,0.0,0.0
+transaction utility,0_normal,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+transaction utility,0_normal,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+transaction utility,0_normal,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+transaction utility,0_normal,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+transaction utility,0_normal,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+transaction utility,0_normal,gemma2,0.2,100,100,0.0,0.0
+transaction utility,0_normal,gemma2,0.7,100,100,0.0,0.0
+transaction utility,0_normal,gemma2,1,100,100,0.0,0.0
+transaction utility,0_normal,gemma2,1.3,100,100,0.0,0.0
+transaction utility,0_normal,gemma2,1.8,100,100,0.0,0.0
+transaction utility,0_normal,gemma2:27b,0.2,100,100,0.0,0.0
+transaction utility,0_normal,gemma2:27b,0.7,100,100,0.0,0.0
+transaction utility,0_normal,gemma2:27b,1,100,100,0.0,0.0
+transaction utility,0_normal,gemma2:27b,1.3,100,100,0.0,0.0
+transaction utility,0_normal,gemma2:27b,1.8,100,100,0.0,0.0
+transaction utility,0_normal,gpt-4o,0.2,100,100,0.0,0.0
+transaction utility,0_normal,gpt-4o,0.7,100,100,2.2128153389150955,1.0
+transaction utility,0_normal,gpt-4o,1,100,100,3.3665016461206925,1.0
+transaction utility,0_normal,gpt-4o,1.3,100,100,3.2403703492039297,1.0
+transaction utility,0_normal,gpt-4o,1.8,100,100,2.919985580353725,1.0
+transaction utility,0_normal,gpt-4o-mini,0.2,100,100,0.0,0.0
+transaction utility,0_normal,gpt-4o-mini,0.7,100,100,0.0,0.0
+transaction utility,0_normal,gpt-4o-mini,1,100,100,0.0,0.0
+transaction utility,0_normal,gpt-4o-mini,1.3,100,100,0.0,0.0
+transaction utility,0_normal,gpt-4o-mini,1.8,100,100,0.0,0.0
+transaction utility,0_normal,llama3.1,0.2,100,100,0.0,0.0
+transaction utility,0_normal,llama3.1,0.7,100,100,0.0,0.0
+transaction utility,0_normal,llama3.1,1,100,100,0.0,0.0
+transaction utility,0_normal,llama3.1,1.3,100,100,0.0,0.0
+transaction utility,0_normal,llama3.1,1.8,100,100,0.0,0.0
+transaction utility,0_normal,llama3.1:70b,0.2,100,100,0.0,0.0
+transaction utility,0_normal,llama3.1:70b,0.7,100,100,0.0,0.0
+transaction utility,0_normal,llama3.1:70b,1,100,100,0.0,0.0
+transaction utility,0_normal,llama3.1:70b,1.3,100,100,0.0,0.0
+transaction utility,0_normal,llama3.1:70b,1.8,100,100,0.0,0.0
+transaction utility,0_normal,phi3.5,0.2,100,100,0.0,0.0
+transaction utility,0_normal,phi3.5,0.7,100,100,0.0,0.0
+transaction utility,0_normal,phi3.5,1,100,100,0.0,0.0
+transaction utility,0_normal,phi3.5,1.3,100,100,0.0,0.0
+transaction utility,0_normal,phi3.5,1.8,100,100,0.0,0.0
+transaction utility,0_normal,phi3:medium,0.2,100,100,0.0,0.0
+transaction utility,0_normal,phi3:medium,0.7,100,100,0.0,0.0
+transaction utility,0_normal,phi3:medium,1,100,100,0.0,0.0
+transaction utility,0_normal,phi3:medium,1.3,100,100,0.0,0.0
+transaction utility,0_normal,phi3:medium,1.8,100,100,0.0,0.0
+transaction utility,1_persona,claude-3-haiku,0.2,100,100,0.0,0.0
+transaction utility,1_persona,claude-3-haiku,0.7,100,100,0.0,0.0
+transaction utility,1_persona,claude-3-haiku,1.0,100,100,0.0,0.0
+transaction utility,1_persona,claude-3-haiku,1.3,100,100,0.0,0.0
+transaction utility,1_persona,claude-3-haiku,1.8,100,100,0.0,0.0
+transaction utility,1_persona,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+transaction utility,1_persona,claude-3.5-sonnet,0.7,100,100,0.0,0.0
+transaction utility,1_persona,claude-3.5-sonnet,1.0,100,100,0.0,0.0
+transaction utility,1_persona,claude-3.5-sonnet,1.3,100,100,0.0,0.0
+transaction utility,1_persona,claude-3.5-sonnet,1.8,100,100,0.0,0.0
+transaction utility,1_persona,gemma2,0.2,100,100,0.0,0.0
+transaction utility,1_persona,gemma2,0.7,100,100,0.0,0.0
+transaction utility,1_persona,gemma2,1,100,100,0.0,0.0
+transaction utility,1_persona,gemma2,1.3,100,100,0.0,0.0
+transaction utility,1_persona,gemma2,1.8,100,100,0.0,0.0
+transaction utility,1_persona,gemma2:27b,0.2,100,100,0.0,0.0
+transaction utility,1_persona,gemma2:27b,0.7,100,100,0.0,0.0
+transaction utility,1_persona,gemma2:27b,1,100,100,0.0,0.0
+transaction utility,1_persona,gemma2:27b,1.3,100,100,0.0,0.0
+transaction utility,1_persona,gemma2:27b,1.8,100,100,0.0,0.0
+transaction utility,1_persona,gpt-4o,0.2,100,100,0.0,0.0
+transaction utility,1_persona,gpt-4o,0.7,100,100,0.0,0.0
+transaction utility,1_persona,gpt-4o,1,100,100,6.874702790778556,1.0
+transaction utility,1_persona,gpt-4o,1.3,100,100,4.169169491508716,1.0
+transaction utility,1_persona,gpt-4o,1.8,100,100,3.529767592811071,1.0
+transaction utility,1_persona,gpt-4o-mini,0.2,100,100,0.0,0.0
+transaction utility,1_persona,gpt-4o-mini,0.7,100,100,0.0,0.0
+transaction utility,1_persona,gpt-4o-mini,1,100,100,0.20203050891044239,0.20203050891044239
+transaction utility,1_persona,gpt-4o-mini,1.3,100,100,0.14213381090374042,0.14213381090374042
+transaction utility,1_persona,gpt-4o-mini,1.8,100,100,0.24870800168690366,0.24870800168690366
+transaction utility,1_persona,llama3.1,0.2,100,100,0.0,0.0
+transaction utility,1_persona,llama3.1,0.7,100,100,0.0,0.0
+transaction utility,1_persona,llama3.1,1,100,100,0.0,0.0
+transaction utility,1_persona,llama3.1,1.3,100,100,0.0,0.0
+transaction utility,1_persona,llama3.1,1.8,100,100,0.0,0.0
+transaction utility,1_persona,llama3.1:70b,0.2,100,100,0.0,0.0
+transaction utility,1_persona,llama3.1:70b,0.7,100,100,0.0,0.0
+transaction utility,1_persona,llama3.1:70b,1,100,100,0.0,0.0
+transaction utility,1_persona,llama3.1:70b,1.3,100,100,0.0,0.0
+transaction utility,1_persona,llama3.1:70b,1.8,100,100,0.0,0.0
+transaction utility,1_persona,phi3.5,0.2,100,100,0.0,0.0
+transaction utility,1_persona,phi3.5,0.7,100,100,0.0,0.0
+transaction utility,1_persona,phi3.5,1,100,100,0.0,0.0
+transaction utility,1_persona,phi3.5,1.3,100,100,0.0,0.0
+transaction utility,1_persona,phi3.5,1.8,100,100,0.0,0.0
+transaction utility,1_persona,phi3:medium,0.2,100,100,0.0,0.0
+transaction utility,1_persona,phi3:medium,0.7,100,100,0.0,0.0
+transaction utility,1_persona,phi3:medium,1,100,100,0.0,0.0
+transaction utility,1_persona,phi3:medium,1.3,100,100,0.0,0.0
+transaction utility,1_persona,phi3:medium,1.8,100,100,0.0,0.0
+transaction utility,2_odd_numbers,claude-3-haiku,0.2,100,100,0.0,0.0
+transaction utility,2_odd_numbers,claude-3-haiku,0.7,100,100,0.0,0.0
+transaction utility,2_odd_numbers,claude-3-haiku,1.0,100,100,0.0,0.0
+transaction utility,2_odd_numbers,claude-3-haiku,1.3,100,100,0.0,0.0
+transaction utility,2_odd_numbers,claude-3-haiku,1.8,100,100,0.0,0.0
+transaction utility,2_odd_numbers,claude-3.5-sonnet,0.2,100,100,0.0,0.0
+transaction utility,2_odd_numbers,claude-3.5-sonnet,0.7,100,100,5.597618541248889,1.0
+transaction utility,2_odd_numbers,claude-3.5-sonnet,1.0,100,100,4.022663070879561,1.0
+transaction utility,2_odd_numbers,claude-3.5-sonnet,1.3,100,100,4.242640687119285,1.0
+transaction utility,2_odd_numbers,claude-3.5-sonnet,1.8,100,100,2.2677868380553634,1.0
+transaction utility,2_odd_numbers,gemma2,0.2,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gemma2,0.7,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gemma2,1,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gemma2,1.3,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gemma2,1.8,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gemma2:27b,0.7,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gemma2:27b,1,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gemma2:27b,1.3,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gemma2:27b,1.8,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gpt-4o,0.2,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gpt-4o,0.7,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gpt-4o,1,100,100,0.14213381090374042,0.14213381090374042
+transaction utility,2_odd_numbers,gpt-4o,1.3,100,100,0.41702882811414943,0.41702882811414943
+transaction utility,2_odd_numbers,gpt-4o,1.8,100,100,0.38799179683158497,0.38799179683158497
+transaction utility,2_odd_numbers,gpt-4o-mini,0.2,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gpt-4o-mini,0.7,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gpt-4o-mini,1,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gpt-4o-mini,1.3,100,100,0.0,0.0
+transaction utility,2_odd_numbers,gpt-4o-mini,1.8,100,100,0.14213381090374042,0.14213381090374042
+transaction utility,2_odd_numbers,llama3.1,0.2,100,100,0.0,0.0
+transaction utility,2_odd_numbers,llama3.1,0.7,100,100,0.0,0.0
+transaction utility,2_odd_numbers,llama3.1,1,100,100,0.0,0.0
+transaction utility,2_odd_numbers,llama3.1,1.3,100,100,0.0,0.0
+transaction utility,2_odd_numbers,llama3.1,1.8,100,100,0.0,0.0
+transaction utility,2_odd_numbers,llama3.1:70b,0.2,100,100,0.0,0.0
+transaction utility,2_odd_numbers,llama3.1:70b,0.7,100,100,0.0,0.0
+transaction utility,2_odd_numbers,llama3.1:70b,1,100,100,0.0,0.0
+transaction utility,2_odd_numbers,llama3.1:70b,1.3,100,100,0.0,0.0
+transaction utility,2_odd_numbers,llama3.1:70b,1.8,100,100,0.0,0.0
+transaction utility,2_odd_numbers,phi3.5,0.2,100,100,0.0,0.0
+transaction utility,2_odd_numbers,phi3.5,0.7,100,100,0.0,0.0
+transaction utility,2_odd_numbers,phi3.5,1,100,100,0.0,0.0
+transaction utility,2_odd_numbers,phi3.5,1.3,100,100,0.0,0.0
+transaction utility,2_odd_numbers,phi3.5,1.8,100,100,0.0,0.0
+transaction utility,2_odd_numbers,phi3:medium,0.2,100,100,0.0,0.0
+transaction utility,2_odd_numbers,phi3:medium,0.7,100,100,0.0,0.0
+transaction utility,2_odd_numbers,phi3:medium,1,100,100,0.0,0.0
+transaction utility,2_odd_numbers,phi3:medium,1.3,100,100,0.0,0.0
+transaction utility,2_odd_numbers,phi3:medium,1.8,100,100,0.0,0.0
+transaction utility,3_large_numbers,claude-3-haiku,0.2,100,100,0.0,0.0
+transaction utility,3_large_numbers,claude-3-haiku,0.7,100,100,0.0,0.0
+transaction utility,3_large_numbers,claude-3-haiku,1.0,100,100,0.0,0.0
+transaction utility,3_large_numbers,claude-3-haiku,1.3,100,100,0.0,0.0
+transaction utility,3_large_numbers,claude-3-haiku,1.8,100,100,0.0,0.0
+transaction utility,3_large_numbers,claude-3.5-sonnet,0.2,100,100,2.516611478423583,1.0
+transaction utility,3_large_numbers,claude-3.5-sonnet,0.7,100,100,2.109884571066817,1.0
+transaction utility,3_large_numbers,claude-3.5-sonnet,1.0,100,100,1.5017720029805361,1.0
+transaction utility,3_large_numbers,claude-3.5-sonnet,1.3,100,100,1.4719601443879748,1.0
+transaction utility,3_large_numbers,claude-3.5-sonnet,1.8,100,100,1.3587324409735149,1.0
+transaction utility,3_large_numbers,gemma2,0.2,100,100,0.0,0.0
+transaction utility,3_large_numbers,gemma2,0.7,100,100,0.0,0.0
+transaction utility,3_large_numbers,gemma2,1,100,100,0.0,0.0
+transaction utility,3_large_numbers,gemma2,1.3,100,100,0.0,0.0
+transaction utility,3_large_numbers,gemma2,1.8,100,100,0.0,0.0
+transaction utility,3_large_numbers,gemma2:27b,0.2,100,100,0.0,0.0
+transaction utility,3_large_numbers,gemma2:27b,0.7,100,100,0.0,0.0
+transaction utility,3_large_numbers,gemma2:27b,1,100,100,0.0,0.0
+transaction utility,3_large_numbers,gemma2:27b,1.3,100,100,0.0,0.0
+transaction utility,3_large_numbers,gemma2:27b,1.8,100,100,0.0,0.0
+transaction utility,3_large_numbers,gpt-4o,0.2,100,100,1.203443335628631,1.0
+transaction utility,3_large_numbers,gpt-4o,0.7,100,100,1.2283207764360915,1.0
+transaction utility,3_large_numbers,gpt-4o,1,100,100,1.442786419766011,1.0
+transaction utility,3_large_numbers,gpt-4o,1.3,100,100,1.3862065601673441,1.0
+transaction utility,3_large_numbers,gpt-4o,1.8,100,100,1.227704021384453,1.0
+transaction utility,3_large_numbers,gpt-4o-mini,0.2,100,100,0.0,0.0
+transaction utility,3_large_numbers,gpt-4o-mini,0.7,100,100,0.0,0.0
+transaction utility,3_large_numbers,gpt-4o-mini,1,100,100,0.0,0.0
+transaction utility,3_large_numbers,gpt-4o-mini,1.3,100,100,0.0,0.0
+transaction utility,3_large_numbers,gpt-4o-mini,1.8,100,100,0.0,0.0
+transaction utility,3_large_numbers,llama3.1,0.2,100,100,0.0,0.0
+transaction utility,3_large_numbers,llama3.1,0.7,100,100,0.0,0.0
+transaction utility,3_large_numbers,llama3.1,1,100,100,0.0,0.0
+transaction utility,3_large_numbers,llama3.1,1.3,100,100,0.0,0.0
+transaction utility,3_large_numbers,llama3.1,1.8,100,100,0.0,0.0
+transaction utility,3_large_numbers,llama3.1:70b,0.2,100,100,0.0,0.0
+transaction utility,3_large_numbers,llama3.1:70b,0.7,100,100,0.0,0.0
+transaction utility,3_large_numbers,llama3.1:70b,1,100,100,0.0,0.0
+transaction utility,3_large_numbers,llama3.1:70b,1.3,100,100,0.0,0.0
+transaction utility,3_large_numbers,llama3.1:70b,1.8,100,100,0.0,0.0
+transaction utility,3_large_numbers,phi3.5,0.2,100,100,0.0,0.0
+transaction utility,3_large_numbers,phi3.5,0.7,100,100,0.0,0.0
+transaction utility,3_large_numbers,phi3.5,1,100,100,0.0,0.0
+transaction utility,3_large_numbers,phi3.5,1.3,100,100,0.0,0.0
+transaction utility,3_large_numbers,phi3.5,1.8,100,100,0.0,0.0
+transaction utility,3_large_numbers,phi3:medium,0.2,100,100,0.0,0.0
+transaction utility,3_large_numbers,phi3:medium,0.7,100,100,0.0,0.0
+transaction utility,3_large_numbers,phi3:medium,1,100,100,0.0,0.0
+transaction utility,3_large_numbers,phi3:medium,1.3,100,100,0.0,0.0
+transaction utility,3_large_numbers,phi3:medium,1.8,100,100,0.0,0.0
