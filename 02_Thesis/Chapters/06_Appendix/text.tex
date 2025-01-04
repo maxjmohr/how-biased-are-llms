@@ -164,6 +164,52 @@
 \end{itemize}
 
 \newpage
+\section{Exemplary code snippet of experiment run}
+\label{appendix:example_code}
+
+\par Example code for \textit{Llama 3.1:70b} and \textit{framing effect} (question A, base scenario):
+
+% Define GitHub-inspired color scheme
+\definecolor{bg}{HTML}{F6F8FA} % Light gray background
+\definecolor{comment}{HTML}{6A737D} % Gray for comments
+\definecolor{keyword}{HTML}{D73A49} % Red for keywords
+\definecolor{string}{HTML}{032F62} % Blue for strings
+\definecolor{function}{HTML}{005CC5} % Dark blue for functions
+\definecolor{variable}{HTML}{E36209} % Orange for variables
+
+% Customize listings
+\lstdefinestyle{GitHubStyle}{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{keyword}\bfseries,
+    commentstyle=\color{comment}\itshape,
+    stringstyle=\color{string},
+    identifierstyle=\color{function},
+    backgroundcolor=\color{bg},
+    numberstyle=\tiny\color{comment},
+    numbers=left,
+    stepnumber=1,
+    numbersep=10pt,
+    frame=single,
+    framesep=5pt,
+    rulecolor=\color{black},
+    tabsize=4,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    columns=flexible, % Makes wrapping better
+    linewidth=\textwidth, % Ensure it fits within text width
+    breakindent=0pt, % Prevent indentation for wrapped lines
+    keepspaces=true
+}
+\lstset{style=GitHubStyle}
+
+\lstinputlisting[language=Python, style=GitHubStyle]{Chapters/06_Appendix/example_code.py}
+
+\newpage
 \section{Sampling variance and mean aggregation}
 \label{appendix:samplingvar_mean}
 

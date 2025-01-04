@@ -1,7 +1,15 @@
 \section{Introduction}
-Xxx
+\par In recent years, large language models (LLMs) have emerged as transformative tools in natural language processing, redefining the boundaries of what artificial intelligence can achieve. These models are capable of generating text, solving complex problems and reasoning over abstract concepts. Further, the models have evolved to also understand visual and auditory inputs, enabling them to perform a wide range of tasks across different modalities. As a result, LLMs are increasingly applied in various domains such as content creation, customer support, code generation and many more \parencite{hadi2024large, naveed2023comprehensive, zhao2023survey}.
 
-\par Research questions:
-\par 1. Do large language models exhibit cognitive biases in their decision-making processes?
-\par 2. Do different prompts, values and variables impact the biases detected in the models?
-\par 3. Which models and model parameters are more prone to biases and how do they compare to each other?
+\par Despite their impressive capabilities, the growing use of LLMs has raised concerns about the underlying decision-making and reasoning processes of these models. Research has shown that LLMs do not only capture the statistical and linguistic patterns in the training data but also learn general knowledge and human patterns. This had led to the research regarding the existence cognitive biases in the decision-making of language models \parencite{schramowski2022large}. Understanding the biases is crucial for ensuring the ethical and fair usage of these models in practice \parencite{echterhoff2024cognitive}. While in some application areas such as medical diagnosis, biases can have severe consequences and models with fewer biases are preferred, in other areas such as market research, human-like behavior and decision patterns in the models can be desirable \parencite{talboy2023challenging}.
+
+\par We address this research gap by focusing on the following research questions:
+\begin{enumerate}[itemsep=0pt, parsep=0pt, topsep=0pt]
+    \item Do large language models exhibit cognitive biases in their decision-making?
+    \item Do different prompts and variable values impact the biases detected in the models?
+    \item Which models and model features are more prone to biases?
+\end{enumerate}
+
+\par To answer these questions, we conduct a series of experiments with different biases and model configurations. We process the responses into a target variable and quantitatively analyze the detected biases. We further investigate the impact of different scenarios on the biases detected and analyze the model features that could explain the detections.
+
+\par We structure the thesis as follows: in chapter \ref{chapter:theoreticalbackground}, we provide an overview of the existing research on cognitive biases and the recent developments in large language models. We then introduce the selected biases and models as well as describe the study design and analysis of bias detections in chapter \ref{chapter:methodology}. In chapter \ref{chapter:results}, we present the results of our experiments and discuss the implications of the biases detected. Lastly, we conclude our findings and provide an outlook on future research in chapter \ref{chapter:discussionoutlook}.

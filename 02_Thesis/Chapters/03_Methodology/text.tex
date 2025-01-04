@@ -1,4 +1,6 @@
 \section{Study design and methodology}
+\label{chapter:methodology}
+
 \par This section provides an overview of the methodology used in this research. We outline the selected biases and models which form the scope of the study. Further, we outline the structural design of the studies as well as the prompts and various scenarios to be tested. To evaluate the models' behaviors, we present an approach to score the bias detections and based on these results, analyze the impacts of different scenarios and models.
 
 
@@ -45,7 +47,7 @@
 
 
 \subsection{Structuring of experiments}
-\par The following will depict the construction of the experiments. For the term \textit{experiment}, we refer to a unique combination of a bias with a scenario (detailed in section \ref{methodologies:scenarios}) run on a model with a specified temperature.
+\par The following will depict the construction of the experiments. For the term \textit{experiment}, we refer to a unique combination of a bias with a scenario (detailed in section \ref{methodologies:scenarios}) run on a model with a specified temperature. An exemplary code snippet of an experiment run is appended in Appendix \ref{appendix:example_code}.
 
 \subsubsection{Study designs}
 \par We target to structure all experiments in a consistent manner to ensure comparability and a unified analysis afterwards. Most studies which we base our experiments on are structured in a way that two or more questions with slightly different wording are asked to the participants. Some studies ask for value estimations while others are constructed as choice experiments (two choice options i.e. A and B). The response distributions to these questions are then compared to detect biases, identically or similarly to control and treatment group study designs. We adopt this design for each experiment where we prompt the model two questions with slight variations in wording 100 times each to form a control and treatment group \parencite{cohen1988statistical,morris2002combining}. In case we cannot correctly extract a model response, we reiterate the question as often as necessary to receive 100 valid responses. One exception is the study regarding the sunk cost fallacy where participants are asked only once to choose between two scenarios with different sunk costs \parencite{arkes1985psychology}. To align with our study design, we add a second question to act as the control where the sunk costs are identical and thus expect different and unilateral response distribution (as there is now no economical and solely a subjective reason to pursue the choice the participants feel like doing).

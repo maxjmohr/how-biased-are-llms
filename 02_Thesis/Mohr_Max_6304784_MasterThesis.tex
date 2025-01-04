@@ -29,7 +29,7 @@
 \usepackage{hyperref} % For hyperlinks
 \hypersetup{
   colorlinks   = true, % Colours links instead of ugly boxes
-  urlcolor     = blue, % Colour for external hyperlinks
+  urlcolor     = black, % Colour for external hyperlinks
   linkcolor    = black, % Colour of internal links
   citecolor   = black % Colour of citations
 }
@@ -45,7 +45,10 @@
 \usepackage{rotating} % For rotating the table
 \usepackage{adjustbox} % To adjust table width
 \usepackage{caption} % Ensure this is in your preamble
-\usepackage{float}   % For forcing table positions
+\usepackage{float} % For forcing table positions
+\usepackage{listings} % For code snippets
+\usepackage{xcolor} % For colors
+\usepackage{enumitem} % For customizing lists
 
 % Increase line spacing for text
 \usepackage{setspace}
@@ -129,7 +132,10 @@
     GPT \> Generative Pre-trained Transformer \\
     LLM \> Large Language Model \\
     MMLU \> Massive Multitask Language Understanding \\
+    NLP \> Natural Language Processing \\
     RLHF \> Reinforcement Learning with Human Feedback \\
+    RNN \> Recurrent Neural Network \\
+    PLM \> Pre-trained Language Model \\
     SLM \> Small Language Model \\
     TELeR \> Turn, Expression, Level of details and Role (taxonomy) \\
     WTA \> Willingness-to-Accept \\
@@ -150,8 +156,9 @@
 \pagenumbering{arabic} % Switch to Arabic page numbering
 
 % Chapters
-\include{Chapters/01_Introduction/text}
-\include{Chapters/02_TheoreticalBackground/text}
+\input{Chapters/01_Introduction/text}
+\vspace{0.5cm}
+\input{Chapters/02_TheoreticalBackground/text}
 \include{Chapters/03_Methodology/text}
 \include{Chapters/04_Results/text}
 \include{Chapters/05_DiscussionOutlook/text}
