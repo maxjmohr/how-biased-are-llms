@@ -1,0 +1,35 @@
+\begin{center}
+\begin{tabular}{lclc}
+\toprule
+\textbf{Dep. Variable:}                   & bias\_detected\_capped & \textbf{  R-squared:         } &     0.007   \\
+\textbf{Model:}                           &          OLS           & \textbf{  Adj. R-squared:    } &     0.005   \\
+\textbf{Method:}                          &     Least Squares      & \textbf{  F-statistic:       } &     3.803   \\
+\textbf{Date:}                            &    Sat, 04 Jan 2025    & \textbf{  Prob (F-statistic):} &  0.00988    \\
+\textbf{Time:}                            &        22:17:33        & \textbf{  Log-Likelihood:    } &   -770.11   \\
+\textbf{No. Observations:}                &           1599         & \textbf{  AIC:               } &     1548.   \\
+\textbf{Df Residuals:}                    &           1595         & \textbf{  BIC:               } &     1570.   \\
+\textbf{Df Model:}                        &              3         & \textbf{                     } &             \\
+\textbf{Covariance Type:}                 &       nonrobust        & \textbf{                     } &             \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lcccccc}
+                                          & \textbf{coef} & \textbf{std err} & \textbf{t} & \textbf{P$> |$t$|$} & \textbf{[0.025} & \textbf{0.975]}  \\
+\midrule
+\textbf{Intercept}                        &       0.2523  &        0.020     &    12.868  &         0.000        &        0.214    &        0.291     \\
+\textbf{C(scenario)[T.1\_no\_persona]}    &       0.0081  &        0.028     &     0.292  &         0.771        &       -0.046    &        0.062     \\
+\textbf{C(scenario)[T.2\_odd\_numbers]}   &      -0.0001  &        0.028     &    -0.005  &         0.996        &       -0.055    &        0.054     \\
+\textbf{C(scenario)[T.3\_large\_numbers]} &      -0.0734  &        0.028     &    -2.649  &         0.008        &       -0.128    &       -0.019     \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lclc}
+\textbf{Omnibus:}       & 266.007 & \textbf{  Durbin-Watson:     } &    2.042  \\
+\textbf{Prob(Omnibus):} &   0.000 & \textbf{  Jarque-Bera (JB):  } &  411.605  \\
+\textbf{Skew:}          &   1.236 & \textbf{  Prob(JB):          } & 4.18e-90  \\
+\textbf{Kurtosis:}      &   2.738 & \textbf{  Cond. No.          } &     4.79  \\
+\bottomrule
+\end{tabular}
+%\caption{OLS Regression Results}
+\end{center}
+
+Notes: \newline
+ [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

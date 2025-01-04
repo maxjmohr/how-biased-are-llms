@@ -1,0 +1,52 @@
+\begin{center}
+\begin{tabular}{lclc}
+\toprule
+\textbf{Dep. Variable:}                   &  bias\_detected  & \textbf{  R-squared:         } &      0.072   \\
+\textbf{Model:}                           &       OLS        & \textbf{  Adj. R-squared:    } &      0.060   \\
+\textbf{Method:}                          &  Least Squares   & \textbf{  F-statistic:       } &      6.092   \\
+\textbf{Date:}                            & Sat, 04 Jan 2025 & \textbf{  Prob (F-statistic):} &   6.61e-16   \\
+\textbf{Time:}                            &     22:17:33     & \textbf{  Log-Likelihood:    } &    -5923.3   \\
+\textbf{No. Observations:}                &        1599      & \textbf{  AIC:               } &  1.189e+04   \\
+\textbf{Df Residuals:}                    &        1578      & \textbf{  BIC:               } &  1.200e+04   \\
+\textbf{Df Model:}                        &          20      & \textbf{                     } &              \\
+\textbf{Covariance Type:}                 &    nonrobust     & \textbf{                     } &              \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lcccccc}
+                                          & \textbf{coef} & \textbf{std err} & \textbf{t} & \textbf{P$> |$t$|$} & \textbf{[0.025} & \textbf{0.975]}  \\
+\midrule
+\textbf{Intercept}                        &       3.9224  &        1.197     &     3.276  &         0.001        &        1.574    &        6.271     \\
+\textbf{C(bias)[T.category size bias]}    &      -7.3005  &        0.991     &    -7.368  &         0.000        &       -9.244    &       -5.357     \\
+\textbf{C(bias)[T.endowment effect]}      &      -2.0941  &        0.990     &    -2.116  &         0.034        &       -4.035    &       -0.153     \\
+\textbf{C(bias)[T.framing effect]}        &      -2.7081  &        0.990     &    -2.737  &         0.006        &       -4.649    &       -0.767     \\
+\textbf{C(bias)[T.gamblers fallacy]}      &      -3.2171  &        0.990     &    -3.251  &         0.001        &       -5.158    &       -1.276     \\
+\textbf{C(bias)[T.loss aversion]}         &      -2.0655  &        0.990     &    -2.087  &         0.037        &       -4.007    &       -0.125     \\
+\textbf{C(bias)[T.sunk cost fallacy]}     &      -3.2323  &        0.990     &    -3.266  &         0.001        &       -5.173    &       -1.291     \\
+\textbf{C(bias)[T.transaction utility]}   &      -2.9421  &        0.990     &    -2.973  &         0.003        &       -4.883    &       -1.001     \\
+\textbf{C(model)[T.claude-3.5-sonnet]}    &       1.8203  &        1.106     &     1.645  &         0.100        &       -0.350    &        3.990     \\
+\textbf{C(model)[T.gemma2]}               &       1.2924  &        1.106     &     1.168  &         0.243        &       -0.878    &        3.463     \\
+\textbf{C(model)[T.gemma2:27b]}           &       0.0876  &        1.106     &     0.079  &         0.937        &       -2.082    &        2.258     \\
+\textbf{C(model)[T.gpt-4o]}               &       0.9837  &        1.106     &     0.889  &         0.374        &       -1.186    &        3.154     \\
+\textbf{C(model)[T.gpt-4o-mini]}          &       1.1737  &        1.106     &     1.061  &         0.289        &       -0.996    &        3.344     \\
+\textbf{C(model)[T.llama3.1]}             &      -1.0772  &        1.106     &    -0.974  &         0.330        &       -3.247    &        1.093     \\
+\textbf{C(model)[T.llama3.1:70b]}         &       0.1346  &        1.108     &     0.121  &         0.903        &       -2.039    &        2.308     \\
+\textbf{C(model)[T.phi3.5]}               &      -4.3647  &        1.106     &    -3.945  &         0.000        &       -6.535    &       -2.195     \\
+\textbf{C(model)[T.phi3:medium]}          &      -0.1172  &        1.106     &    -0.106  &         0.916        &       -2.287    &        2.053     \\
+\textbf{C(scenario)[T.1\_no\_persona]}    &      -2.1589  &        0.700     &    -3.085  &         0.002        &       -3.531    &       -0.786     \\
+\textbf{C(scenario)[T.2\_odd\_numbers]}   &       0.5583  &        0.700     &     0.797  &         0.425        &       -0.815    &        1.932     \\
+\textbf{C(scenario)[T.3\_large\_numbers]} &      -0.5939  &        0.700     &    -0.849  &         0.396        &       -1.966    &        0.779     \\
+\textbf{temperature}                      &      -0.1271  &        0.458     &    -0.278  &         0.781        &       -1.025    &        0.771     \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lclc}
+\textbf{Omnibus:}       & 2620.002 & \textbf{  Durbin-Watson:     } &      1.986   \\
+\textbf{Prob(Omnibus):} &   0.000  & \textbf{  Jarque-Bera (JB):  } & 3123791.020  \\
+\textbf{Skew:}          & -10.172  & \textbf{  Prob(JB):          } &       0.00   \\
+\textbf{Kurtosis:}      & 218.574  & \textbf{  Cond. No.          } &       16.8   \\
+\bottomrule
+\end{tabular}
+%\caption{OLS Regression Results}
+\end{center}
+
+Notes: \newline
+ [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

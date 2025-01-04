@@ -1,0 +1,42 @@
+\begin{center}
+\begin{tabular}{lclc}
+\toprule
+\textbf{Dep. Variable:}                     & bias\_detected\_capped & \textbf{  R-squared:         } &     0.041   \\
+\textbf{Model:}                             &          OLS           & \textbf{  Adj. R-squared:    } &     0.036   \\
+\textbf{Method:}                            &     Least Squares      & \textbf{  F-statistic:       } &     8.410   \\
+\textbf{Date:}                              &    Sat, 04 Jan 2025    & \textbf{  Prob (F-statistic):} &  3.03e-11   \\
+\textbf{Time:}                              &        22:17:40        & \textbf{  Log-Likelihood:    } &   -742.67   \\
+\textbf{No. Observations:}                  &           1599         & \textbf{  AIC:               } &     1503.   \\
+\textbf{Df Residuals:}                      &           1590         & \textbf{  BIC:               } &     1552.   \\
+\textbf{Df Model:}                          &              8         & \textbf{                     } &             \\
+\textbf{Covariance Type:}                   &       nonrobust        & \textbf{                     } &             \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lcccccc}
+                                            & \textbf{coef} & \textbf{std err} & \textbf{t} & \textbf{P$> |$t$|$} & \textbf{[0.025} & \textbf{0.975]}  \\
+\midrule
+\textbf{Intercept}                          &      -0.0198  &        0.247     &    -0.080  &         0.936        &       -0.505    &        0.465     \\
+\textbf{temperature}                        &       0.0691  &        0.018     &     3.867  &         0.000        &        0.034    &        0.104     \\
+\textbf{release\_date\_diff}                &      -0.0006  &        0.001     &    -0.680  &         0.497        &       -0.002    &        0.001     \\
+\textbf{last\_updated\_date\_diff}          &       0.0005  &        0.001     &     0.470  &         0.638        &       -0.002    &        0.003     \\
+\textbf{training\_data\_cutoff\_date\_diff} &       0.0004  &        0.000     &     2.077  &         0.038        &      2.5e-05    &        0.001     \\
+\textbf{number\_parameters}                 &       0.0015  &        0.001     &     2.885  &         0.004        &        0.000    &        0.002     \\
+\textbf{context\_length}                    &      -0.0004  &        0.001     &    -0.590  &         0.555        &       -0.002    &        0.001     \\
+\textbf{mmlu}                               &      -0.0065  &        0.004     &    -1.519  &         0.129        &       -0.015    &        0.002     \\
+\textbf{chatbot\_arena}                     &       0.0004  &        0.000     &     1.517  &         0.130        &       -0.000    &        0.001     \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lclc}
+\textbf{Omnibus:}       & 250.948 & \textbf{  Durbin-Watson:     } &    0.739  \\
+\textbf{Prob(Omnibus):} &   0.000 & \textbf{  Jarque-Bera (JB):  } &  382.049  \\
+\textbf{Skew:}          &   1.193 & \textbf{  Prob(JB):          } & 1.09e-83  \\
+\textbf{Kurtosis:}      &   2.794 & \textbf{  Cond. No.          } & 3.31e+04  \\
+\bottomrule
+\end{tabular}
+%\caption{OLS Regression Results}
+\end{center}
+
+Notes: \newline
+ [1] Standard Errors assume that the covariance matrix of the errors is correctly specified. \newline
+ [2] The condition number is large, 3.31e+04. This might indicate that there are \newline
+ strong multicollinearity or other numerical problems.
