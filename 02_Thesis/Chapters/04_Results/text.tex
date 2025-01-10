@@ -8,7 +8,7 @@
 \begin{figure}[htbp]
     \centering
     \includesvg[width=0.9\textwidth]{/Users/mAx/Documents/Master/04/Master_Thesis/02_Thesis/Chapters/04_Results/Overview/bias_detections_distribution.svg}
-    \caption[Distribution of bias detections]{\centering \textit{Distribution of bias detections (uncapped). Plot depicts distributions of bias detections between -1.7 and 1.7 which represents 87.4 \% of all detections (for visualization purposes).}}
+    \caption[Distribution plot of bias detections]{\centering \textit{Distribution of bias detections (uncapped). Plot depicts distributions of bias detections between -1.7 and 1.7 which represents 87.4 \% of all detections (for visualization purposes).}}
     \label{fig:detections-distribution}
 \end{figure}
 
@@ -31,14 +31,14 @@ The \textit{transaction utility bias} is an extreme case amongst our biases as i
 
 
 \subsubsection{Homogeneities of bias detections}
+\par We also test the detected biases for homogeneity. The focus lies on whether a bias was detected and not on the exact effect size. Therefore, in contrast to the aggregated bias detections, we transform the original bias detections before calculating the homogeneities, then set limits at 0 and 1 and display them in a heatmap (see Figure \ref{fig:homogeneity-heatmap}). Applying the 75\% rule by Hunter and Schmidt (REF), we particularly find homogeneity for non-bias detections.
+
 \begin{figure}[htbp]
     \centering
     \includesvg{/Users/mAx/Documents/Master/04/Master_Thesis/02_Thesis/Chapters/04_Results/Homogeneity/homogeneity_heatmap.svg}
     \caption[Heatmap of homogeneities grouped by biases and models]{\centering \textit{Homogeneities of capped effect sizes (between 0 and 1) grouped by biases and models. Each homogeneity is calculated as the ratio of variance due to sampling error and observed variance (detailed in chapter \ref{methodologies:analysisbiasmodels}).}}
     \label{fig:homogeneity-heatmap}
 \end{figure}
-
-\par We also test the detected biases for homogeneity. The focus lies on whether a bias was detected and not on the exact effect size. Therefore, in contrast to the aggregated bias detections, we transform the original bias detections before calculating the homogeneities, then set limits at 0 and 1 and display them in a heatmap (see figure \ref{fig:homogeneity-heatmap}). Applying the 75\% rule by Hunter and Schmidt (REF), we particularly find homogeneity for non-bias detections.
 
 \par As we expected, slight and strong bias detections are quite heterogeneous across the bias-model combinations. This indicates that the effect sizes (even though capped) are not consistent across the combinations. The averaging of the effect sizes of all scenarios and model temperatures can be one reason for the heterogeneity. The small but perhaps influential adaptions to the model prompts and their response behavior could lead to slightly different model responses and thus effect sizes. Further, re-initializing the models between each experiment could also lead to inconsistent responses. Though, there are some exceptions: for the \textit{anchoring bias} in \textit{Phi3:Medium}, we find a very homogenous, high bias detection. Other than that for bias detections \geq\, 0.3, we only find slight homogeneity of \geq\, 0.3 for the \textit{anchoring bias} in \textit{Llama3.1:70b} and the \textit{framing effect} in \textit{Claude-3.5-Sonnet}. We also detect a few cases of low bias detections with low homogeneity; all homogeneity anomalies are listed in Table \ref{tab:homogeneity_anomalies}. A low homogeneity even though we did not detect a bias could indicate that in some scenarios or with some model temperatures, a bias is more present than in others. Therefore, we need to further analyze the bias detections to understand the model behaviors in more detail.
 
@@ -53,11 +53,11 @@ The \textit{transaction utility bias} is an extreme case amongst our biases as i
 \begin{figure}[htbp]
     \centering
     \includesvg[width=0.7\textwidth]{/Users/mAx/Documents/Master/04/Master_Thesis/02_Thesis/Chapters/04_Results/Scenarios/scenario_detections.svg}
-    \caption[Bias detections by scenarios]{\centering \textit{Bias detections (uncapped) grouped by scenarios. Plot depicts distributions of bias detections between -5 and 5 (for visualization purposes).}}
+    \caption[Distribution plots of bias detections by scenarios]{\centering \textit{Bias detections (uncapped) grouped by scenarios. Plot depicts distributions of bias detections between -5 and 5 (for visualization purposes).}}
     \label{fig:scenario-detections}
 \end{figure}
 
-\par A glimpse at the distributions in Figure \ref{fig:scenario-detections} and the regression results of the scenarios on \textit{bias detected (capped)} extends our analysis. The distribution plots do not display clear differences except a slight decrease of minimal bias detections in the scenario with extremely large values. This aligns with the regression results where this scenario has the only significant effect with a slightly negative impact (-0.07) on the bias detections compared to the base scenario. The scenario with similar but odd numerical values did not show any significant impact in both regressions. Further, the regressions exclusively of the scenarios on the bias detections (Appendix \ref{appendix:regr_scenarios}) indicate that the explained variance of the scenarios is very low ($R^2 \leq 1 \%$). The low $R^2$ indicates that scenarios alone do not sufficiently explain the variability in bias detections, suggesting other factors play a more prominent role. While some scenarios do show slight significant impacts and tendencies (missing persona and large numbers lead to lower biasness in the models), the overall impact of the scenarios on the bias detections appears to be minimal.
+\par A glimpse at the distributions in Figure \ref{fig:scenario-detections} and the regression results of the scenarios on \textit{bias detected (capped)} extends our analysis. The distribution plots do not display clear differences except a slight decrease of minimal bias detections in the scenario with extremely large values. This aligns with the regression results where this scenario has the only significant effect with a slightly negative effect (-0.07) on the bias detections compared to the base scenario. The scenario with similar but odd numerical values did not show any significant impact in both regressions. Further, the regressions exclusively of the scenarios on the bias detections (Appendix \ref{appendix:regr_scenarios}) indicate that the explained variance of the scenarios is very low ($R^2 \leq 1 \%$). The low $R^2$ indicates that scenarios alone do not sufficiently explain the variability in bias detections, suggesting other factors play a more prominent role. While some scenarios do show slight significant impacts and tendencies (missing persona and large numbers lead to lower biasness in the models), the overall influence of the scenarios on the bias detections appears to be minimal.
 
 
 \subsection{Model feature analysis}
