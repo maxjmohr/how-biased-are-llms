@@ -8,11 +8,11 @@ To run any scripts or contribute to the project, simply install the dependencies
 ```bash
 biasesllms -m venv .venv
 source .venv/bin/activate
-biasesllms -m pip install -r requirements.txt
+biasesllms -m pip install -r .config/requirements.txt
 ```
 
 ```bash
-conda env create -n biasesllms -f environment_nobuilds.yml
+conda env create -n biasesllms -f .config/environment_nobuilds.yml
 conda activate biasesllms
 ```
 
