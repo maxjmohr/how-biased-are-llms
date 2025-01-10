@@ -159,9 +159,9 @@ class ModelInteractor:
         """
         if api_key == "":
             api_key = str(os.getenv("OPENAI_API_KEY"))
-        assert (
-            api_key != ""
-        ), f"{datetime.now()} | API key is required (export OPENAI_API_KEY=...)"
+        assert api_key != "", (
+            f"{datetime.now()} | API key is required (export OPENAI_API_KEY=...)"
+        )
 
         # Get the exact model name
         openai_dict: Dict[str, str] = {
@@ -204,9 +204,9 @@ class ModelInteractor:
         """
         if api_key == "":
             api_key = str(os.getenv("ANTHROPIC_API_KEY"))
-        assert (
-            api_key != ""
-        ), f"{datetime.now()} | API key is required (export ANTHROPIC_API_KEY=...)"
+        assert api_key != "", (
+            f"{datetime.now()} | API key is required (export ANTHROPIC_API_KEY=...)"
+        )
 
         # Get the exact model name
         anthropic_dict: Dict[str, str] = {
@@ -244,9 +244,9 @@ class ModelInteractor:
         model = map[model]
 
         api_key = str(os.getenv("REPLICATE_API_TOKEN"))
-        assert (
-            api_key != ""
-        ), f"{datetime.now()} | API key is required, please set global environment variable REPLICATE_API_TOKEN"
+        assert api_key != "", (
+            f"{datetime.now()} | API key is required, please set global environment variable REPLICATE_API_TOKEN"
+        )
 
         return Replicate(model=model)
 
@@ -393,9 +393,9 @@ class ModelInteractor:
             Prompt for the experiment
         """
         assert total_content != "", f"{datetime.now()} | Experiment content is required"
-        assert (
-            response_type in ["choice", "numerical"]
-        ), f"{datetime.now()} | Response type is required and must be either 'choice' or 'numerical'"
+        assert response_type in ["choice", "numerical"], (
+            f"{datetime.now()} | Response type is required and must be either 'choice' or 'numerical'"
+        )
 
         if system_message == "":
             system_message = "You are forced to choose! Answer the experiment by only giving the letter of the answer options (e.g. A, B, C, ...) or a numerical value (80, 100, 1000, ...). Do not state anything else! Do not halucinate. "

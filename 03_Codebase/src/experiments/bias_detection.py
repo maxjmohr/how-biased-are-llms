@@ -296,13 +296,12 @@ class BiasDetector:
 
             # Choice or numeric experiment?
             response_type: str = str(row["response_type"])
-            assert (
-                response_type
-                in [
-                    "choice",
-                    "numerical",
-                ]
-            ), f"Invalid response type (should be either 'choice' or 'numerical'). Currently it is {response_type}."
+            assert response_type in [
+                "choice",
+                "numerical",
+            ], (
+                f"Invalid response type (should be either 'choice' or 'numerical'). Currently it is {response_type}."
+            )
 
             # Start calculation
             if response_type == "choice" and map_choices_filter is not None:

@@ -61,9 +61,9 @@ def prepare_data(
             ),
             axis=1,
         )
-        assert (
-            not merged_df.isnull().values.any()
-        ), "There are missing values in the data."
+        assert not merged_df.isnull().values.any(), (
+            "There are missing values in the data."
+        )
 
         # Return all effect sizes and their average variances
         return_cols: List[str] = levels + [

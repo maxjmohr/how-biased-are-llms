@@ -157,9 +157,9 @@ class Database:
         pd.DataFrame
             Data fetched from the database
         """
-        assert (
-            total_object != "" or sql != ""
-        ), "Please provide either the object name or the SQL script to fetch the data."
+        assert total_object != "" or sql != "", (
+            "Please provide either the object name or the SQL script to fetch the data."
+        )
 
         if total_object != "":
             sql_final: str = f"SELECT * FROM {total_object}"
@@ -249,9 +249,9 @@ class Database:
         definitely_delete: bool
             Whether to skip the confirmation
         """
-        assert (
-            total_object != "" or sql != ""
-        ), "Please provide either the table name or the SQL script to delete the data."
+        assert total_object != "" or sql != "", (
+            "Please provide either the table name or the SQL script to delete the data."
+        )
 
         # Delete all data data
         if sql == "":
@@ -299,9 +299,9 @@ class Database:
         drop_if_exists: bool
             Whether to drop the object if it already exists
         """
-        assert (
-            object != "" or sql != ""
-        ), "Please provide either the object name or the SQL script to create the object."
+        assert object != "" or sql != "", (
+            "Please provide either the object name or the SQL script to create the object."
+        )
 
         # Drop the table if it exists
         if drop_if_exists:
@@ -341,9 +341,9 @@ class Database:
         cascade: bool
             Whether to drop the object and all its dependencies
         """
-        assert (
-            object != "" or sql != ""
-        ), "Please provide either the object name or the SQL script to drop the object."
+        assert object != "" or sql != "", (
+            "Please provide either the object name or the SQL script to drop the object."
+        )
 
         # SQL query to drop the table/view (cascade if necessary)
         sql_final: str = sql
