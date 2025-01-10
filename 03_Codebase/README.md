@@ -1,20 +1,33 @@
 # The Codebase
-Welcome to the codebase for my master's thesis.
+Welcome to the codebase of my masters thesis.
 
 ## Dependencies
 
 To run any scripts or contribute to the project, simply install the dependencies via pip or anaconda:
 
 ```bash
-fynd -m venv .venv
+biasesllms -m venv .venv
 source .venv/bin/activate
-fynd -m pip install -r requirements.txt
+biasesllms -m pip install -r requirements.txt
 ```
 
 ```bash
-conda env create -n tue_mthesis -f environment_nobuilds.yml
-conda activate tue_mthesis
+conda env create -n biasesllms -f environment_nobuilds.yml
+conda activate biasesllms
 ```
 
+## Structure
+
+- **res**: Contains the database resources and contents
+- **src**: Contains the source code for the project
+    - **analysis**: Contains the code for the analysis of the results
+    - **cluster**: Contains the code for the cluster setup
+    - **data**: Contains the code for the data processing
+    - **experiments**: Contains the code for the experiments
+    - **main.py**: The main entry point for the project
+- **notebooks**: Contains some jupyter notebooks for testing
+
 ## Pipeline Overview
+
+The diagram shows the pipeline of the experiments and which database table and scripts are used in which step:
 ![pipeline](experiment_cycle.png)
