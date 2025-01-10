@@ -471,18 +471,18 @@ class Database:
         "The only changes are bias_id=bias_id+10 and scenario=1_persona"
         sql: str = """
             INSERT INTO t_biases (bias_id, bias, experiment_type, scenario, content, variables, response_type, target_response, part, parts_total)
-            SELECT 
-                bias_id + 10 AS bias_id, 
-                bias, 
-                experiment_type, 
-                '1_persona' AS scenario, 
-                content, 
-                variables, 
-                response_type, 
-                target_response, 
-                part, 
+            SELECT
+                bias_id + 10 AS bias_id,
+                bias,
+                experiment_type,
+                '1_persona' AS scenario,
+                content,
+                variables,
+                response_type,
+                target_response,
+                part,
                 parts_total
-            FROM 
+            FROM
                 t_biases
             WHERE
                 scenario = '0_normal';
@@ -527,16 +527,16 @@ class Database:
             sql: str = f"""
                 INSERT INTO t_biases (bias_id, bias, experiment_type, scenario, content, variables, response_type, target_response, part, parts_total)
                 VALUES (
-                    {row['bias_id'] + 20},
-                    '{row['bias']}',
-                    '{row['experiment_type']}',
+                    {row["bias_id"] + 20},
+                    '{row["bias"]}',
+                    '{row["experiment_type"]}',
                     '2_odd_numbers',
-                    '{row['content']}',
+                    '{row["content"]}',
                     '{new_variables}',
-                    '{row['response_type']}',
-                    '{row['target_response']}',
-                    {row['part']},
-                    {row['parts_total']}
+                    '{row["response_type"]}',
+                    '{row["target_response"]}',
+                    {row["part"]},
+                    {row["parts_total"]}
                 );
             """
             self.execute_sql(sql=sql, commit=True)
@@ -564,16 +564,16 @@ class Database:
             sql: str = f"""
                 INSERT INTO t_biases (bias_id, bias, experiment_type, scenario, content, variables, response_type, target_response, part, parts_total)
                 VALUES (
-                    {row['bias_id'] + 30},
-                    '{row['bias']}',
-                    '{row['experiment_type']}',
+                    {row["bias_id"] + 30},
+                    '{row["bias"]}',
+                    '{row["experiment_type"]}',
                     '3_large_numbers',
-                    '{row['content']}',
+                    '{row["content"]}',
                     '{new_variables}',
-                    '{row['response_type']}',
-                    '{row['target_response']}',
-                    {row['part']},
-                    {row['parts_total']}
+                    '{row["response_type"]}',
+                    '{row["target_response"]}',
+                    {row["part"]},
+                    {row["parts_total"]}
                 );
             """
             self.execute_sql(sql=sql, commit=True)
@@ -587,7 +587,7 @@ class Database:
             sql: str = f"""
                 INSERT INTO t_models (model_id, model, local, temperature, system, release_date, last_updated_at, download_date, size, number_parameters, model_architecture, ollama_id)
                 SELECT
-                    model_id + {i+1} AS model_id,
+                    model_id + {i + 1} AS model_id,
                     model,
                     local,
                     '{temperature}' AS temperature,
@@ -599,7 +599,7 @@ class Database:
                     number_parameters,
                     model_architecture,
                     ollama_id
-                FROM 
+                FROM
                     t_models
                 WHERE
                     temperature = '0.7';
