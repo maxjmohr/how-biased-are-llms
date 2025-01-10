@@ -3,78 +3,44 @@
 \section{Bias details and experiments}
 \label{appendix:biases}
 
-\begin{table}[h!]
-    \centering
-    \caption[Bias overview and experiment questions]{\centering \textit{Overview of the bias concepts and the corresponding experiment questions. "A" refers to the (perhaps modified) question for the control group, "B" for the test group. "Expect" refers to the expected results.}}
-    \label{tab:bias_overview}
-    \adjustbox{max width=\textwidth}{
-    \begin{tabular}{l|p{7.8cm}p{7.8cm}}
+\begin{small}
+\begin{longtable}[c]{p{2cm}p{1.5cm}p{1.5cm}p{3.5cm}p{3.5cm}p{2cm}}
+    \caption[Detailed bias experiments]{\centering \textit{Overview of the bias concepts and the corresponding experiment questions. "A" refers to the (perhaps modified) question for the control group, "B" for the test group. "Expect" refers to the expected results.}} \label{tab:bias_overview} \\
     \toprule
-    \textbf{Bias} & Anchoring bias & Category size bias \\
+    \textbf{Bias} & \textbf{Concept} & \textbf{Source} & \textbf{A} & \textbf{B} & \textbf{Expect} \\
     \midrule
-    \textbf{Concept} & Reliance on previous anchor for subsequent decision & Misjudgment of probabilities due to category size \\
-    \textbf{Source} & \textcite{tversky1974judgment} & \textcite{isaac2014judging} \\
-    \textbf{A} & Do you think the portion of African countries in the United Nations is higher or lower than \textbf{10\%}? Now that you have thought about that, what would you estimate the actual exact portion to be? Answer the percentage between 0 and 100 (Please only answer the percentage as a number without the \% sign.). \% \_\_ & Imagine a lottery containing \textbf{15} balls. Balls \textbf{1} to \textbf{5} are black, \textbf{6} to \textbf{10} are gray, and \textbf{11} to \textbf{15} are white. If one ball is drawn from the urn, what is the probability that it will be ball \textbf{8}? Answer the percentage between 0 and 100. \% \_\_ \\
-    \textbf{B} & Do you think the portion of African countries in the United Nations is higher or lower than \textbf{65\%}? Now that you have thought about that, what would you estimate the actual exact portion to be? Answer the percentage between 0 and 100 (Please only answer the percentage as a number without the \% sign.). \% \_\_ & Imagine a lottery containing \textbf{15} balls. Balls \textbf{1} to \textbf{2} are black, \textbf{3} to \textbf{13} are gray, and \textbf{14} to \textbf{15} are white. If one ball is drawn from the urn, what is the probability that it will be ball \textbf{8}? Answer the percentage between 0 and 100. \% \_\_ \\
-    \textbf{Expect} & Higher estimations in B due to higher anchor & Higher estimations in B due to larger category size \\
-    \midrule
-    \bottomrule
-    \end{tabular}}
-\end{table}
+    \endfirsthead
 
-\begin{table}[h!]
-    \ContinuedFloat % Marks this table as part of the previous one
-    \centering
-    \adjustbox{max width=\textwidth}{
-    \begin{tabular}{l|p{7.8cm}p{7.8cm}}
+    \multicolumn{6}{l}{\textit{Continued}} \\
     \toprule
-    \textbf{Bias} & Endowment effect & Framing effect \\
+    \textbf{Bias} & \textbf{Concept} & \textbf{Source} & \textbf{A} & \textbf{B} & \textbf{Expect} \\
     \midrule
-    \textbf{Concept} & Overvaluation of owned items and vice versa & Different valuations and decision-making due to framing \\
-    \textbf{Source} & \textcite{kahneman1990experimental} & \textcite{tversky1981framing} \\
-    \textbf{A} & I show you a mug from a distance. You can see it but you cannot touch it. The mug was originally priced at \textbf{\$4}, but the value of the mug is different for different individuals. What price would you buy it for? \$ \_\_ & Imagine that you have decided to see a play and paid the admission price of \textbf{\$10} per ticket. As you enter the theater, you discover that you have lost the ticket. The seat was not marked and the ticket cannot be recovered. Would you pay \textbf{\$10} for another ticket to the play? Choose between A) Yes or B) No. \_\_ \\
-    \textbf{B} & I hand you a mug. You now own the mug. You can feel it and look at it in detail from all angles. The mug was originally priced at \textbf{\$4}, but the value of the mug is different for different individuals. What price would you sell it for? \$ \_\_ & Imagine that you have decided to see a play where admission is \textbf{\$10}. As you enter the theater, you discover that you have lost a \textbf{\$10} bill. Would you still pay \textbf{\$10} for a ticket to the play? Choose between A) Yes or B) No. \_\_ \\
-    \textbf{Expect} & Higher valuation in B due to ownership & Different decision-making in A and B due to framing \\
-    \midrule
-    \bottomrule
-    \end{tabular}}
-\end{table}
+    \endhead
 
-\newpage
-\begin{table}[h!]
-    \ContinuedFloat % Marks this table as part of the previous one
-    \centering
-    \adjustbox{max width=\textwidth}{
-    \begin{tabular}{l|p{7.8cm}p{7.8cm}}
-    \toprule
-    \textbf{Bias} & Gambler's fallacy & Loss aversion \\
     \midrule
-    \textbf{Concept} & Misunderstanding of independent events & Avoidance of losses through risk-taking over gains \\
-    \textbf{Source} & \textcite{leonard2015gambling} & \textcite{thaler2015misbehaving} \\
-    \textbf{A} & A fair coin has been flipped \textbf{6} times and has come up heads half the time and tails half the time. What is the probability that the next flip will be heads? Answer the percentage between 0 and 100. \% \_\_ & Assume yourself richer by \textbf{\$300} than you are today. You are offered a choice between A. A sure gain of \textbf{\$100}, or B. A 50\% chance to gain \textbf{\$200} and a 50\% chance to lose \$0. Choose between A and B. \_\_ \\
-    \textbf{B} & A fair coin has been flipped \textbf{6} times and has come up heads each time. What is the probability that the next flip will be heads? Answer the percentage between 0 and 100. \% \_\_ & Assume yourself richer by \textbf{\$500} than you are today. You are offered a choice between A. A sure loss of \textbf{\$100}, or B. A 50\% chance to lose \textbf{\$200} and a 50\% chance to lose \$0. Choose between A and B. \_\_ \\
-    \textbf{Expect} & Higher estimations in B due to gambler's fallacy & Higher portion of risk-seeking option in A due to loss aversion \\
-    \midrule
-    \bottomrule
-    \end{tabular}}
-\end{table}
+    \multicolumn{6}{r}{\textit{Continued on next page}} \\
+    \endfoot
 
-\begin{table}[h!]
-    \ContinuedFloat % Marks this table as part of the previous one
-    \centering
-    \adjustbox{max width=\textwidth}{
-    \begin{tabular}{l|p{7.8cm}p{7.8cm}}
-    \toprule
-    \textbf{Bias} & Sunk cost fallacy & Transaction utility theory \\
-    \midrule
-    \textbf{Concept} & Overvaluation of past investments & Decision-making based on relative price differences \\
-    \textbf{Source} & \textcite{arkes1985psychology} & \textcite{thaler1983transaction} \\
-    \textbf{A} & Assume that you have spent \textbf{\$50} on a ticket for a weekend ski trip to Michigan. Several weeks later you buy a \textbf{\$50} ticket for a weekend ski trip to Wisconsin. You think you will enjoy the Wisconsin ski trip more than the Michigan ski trip. As you are putting your just-purchased Wisconsin ski trip ticket in your wallet, you notice that the Michigan ski trip and the Wisconsin ski trip are for the same weekend! It’s too late to sell either ticket, and you cannot return either one. You must use one ticket and not the other. Which ski trip will you go on? A) \textbf{\$50} ski trip to Michigan B) \textbf{\$50} ski trip to Wisconsin. \_\_ & You set off to buy a new television. At the store where you expect to buy it, you find that the price is \textbf{\$650}. A clerk informs you that the same item is available at another branch of the same store for on \textbf{\$640}. The store is a 20-minute drive away and the clerk assures you that they have what you want there. Do you buy A) at the initial store or B) go to the other store? Choose between A and B. \_\_ \\
-    \textbf{B} & Assume that you have spent \textbf{\$100} on a ticket for a weekend ski trip to Michigan. Several weeks later you buy a \textbf{\$50} ticket for a weekend ski trip to Wisconsin. ...\textit{identical to A}... Which ski trip will you go on? A) \textbf{\$100} ski trip to Michigan B) \textbf{\$50} ski trip to Wisconsin. \_\_ & You set off to buy a new radio. At the store where you expect to buy it, you find that the price is \textbf{\$35}. A clerk informs you that the same item is available at another branch of the same store for on \textbf{\$25}. The store is a 20-minute drive away and the clerk assures you that they have what you want there. Do you buy A) at the initial store or B) go to the other store? Choose between A and B. \_\_ \\
-    \textbf{Expect} & Higher portion of choosing the expensive and emotionally less-preferred option in B & Majority choosing the cheaper option in A \\
     \bottomrule
-    \end{tabular}}
-\end{table}
+    \endlastfoot
+
+    Anchoring bias & Reliance on previous anchor for subsequent decision & \textcite{tversky1974judgment} & Do you think the portion of African countries in the United Nations is higher or lower than \textbf{10\%}? Now that you have thought about that, what would you estimate the actual exact portion to be? Answer the percentage between 0 and 100 (Please only answer the percentage as a number without the \% sign.). \% \_\_ & Do you think the portion of African countries in the United Nations is higher or lower than \textbf{65\%}? Now that you have thought about that, what would you estimate the actual exact portion to be? Answer the percentage between 0 and 100 (Please only answer the percentage as a number without the \% sign.). \% \_\_ & Higher estimations in B due to higher anchor \\
+    \midrule
+    Category size bias & Misjudgment of probabilities due to category size & \textcite{isaac2014judging} & Imagine a lottery containing \textbf{15} balls. Balls \textbf{1} to \textbf{5} are black, \textbf{6} to \textbf{10} are gray, and \textbf{11} to \textbf{15} are white. If one ball is drawn from the urn, what is the probability that it will be ball \textbf{8}? Answer the percentage between 0 and 100. \% \_\_ & Imagine a lottery containing \textbf{15} balls. Balls \textbf{1} to \textbf{2} are black, \textbf{3} to \textbf{13} are gray, and \textbf{14} to \textbf{15} are white. If one ball is drawn from the urn, what is the probability that it will be ball \textbf{8}? Answer the percentage between 0 and 100. \% \_\_ & Higher estimations in B due to larger category size \\
+    \midrule
+    Endowment effect & Overvaluation of owned items and vice versa & \textcite{kahneman1990experimental} & I show you a mug from a distance. You can see it but you cannot touch it. The mug was originally priced at \textbf{\$4}, but the value of the mug is different for different individuals. What price would you buy it for? \$ \_\_ & I hand you a mug. You now own the mug. You can feel it and look at it in detail from all angles. The mug was originally priced at \textbf{\$4}, but the value of the mug is different for different individuals. What price would you sell it for? \$ \_\_ & Higher valuation in B due to ownership \\
+    \midrule
+    Framing effect & Different valuations and decision-making due to framing & \textcite{tversky1981framing} & Imagine that you have decided to see a play and paid the admission price of \textbf{\$10} per ticket. As you enter the theater, you discover that you have lost the ticket. The seat was not marked and the ticket cannot be recovered. Would you pay \textbf{\$10} for another ticket to the play? Choose between A) Yes or B) No. \_\_ & Imagine that you have decided to see a play where admission is \textbf{\$10}. As you enter the theater, you discover that you have lost a \textbf{\$10} bill. Would you still pay \textbf{\$10} for a ticket to the play? Choose between A) Yes or B) No. \_\_ & Different decision-making in A and B due to framing \\
+    \midrule
+    Gambler's fallacy & Misunderstanding of independent events & \textcite{leonard2015gambling} & A fair coin has been flipped \textbf{6} times and has come up heads half the time and tails half the time. What is the probability that the next flip will be heads? Answer the percentage between 0 and 100. \% \_\_ & A fair coin has been flipped \textbf{6} times and has come up heads each time. What is the probability that the next flip will be heads? Answer the percentage between 0 and 100. \% \_\_ & Higher estimations in B due to gambler's fallacy \\
+    \midrule
+    Loss aversion & Avoidance of losses through risk-taking over gains & \textcite{thaler2015misbehaving} & Assume yourself richer by \textbf{\$300} than you are today. You are offered a choice between A. A sure gain of \textbf{\$100}, or B. A 50\% chance to gain \textbf{\$200} and a 50\% chance to lose \$0. Choose between A and B. \_\_ & Assume yourself richer by \textbf{\$500} than you are today. You are offered a choice between A. A sure loss of \textbf{\$100}, or B. A 50\% chance to lose \textbf{\$200} and a 50\% chance to lose \$0. Choose between A and B. \_\_ & Higher portion of risk-seeking option in A due to loss aversion \\
+    \midrule
+    Sunk cost fallacy & Overvaluation of past investments & \textcite{arkes1985psychology} & Assume that you have spent \textbf{\$50} on a ticket for a weekend ski trip to Michigan. Several weeks later you buy a \textbf{\$50} ticket for a weekend ski trip to Wisconsin. You think you will enjoy the Wisconsin ski trip more than the Michigan ski trip. As you are putting your just-purchased Wisconsin ski trip ticket in your wallet, you notice that the Michigan ski trip and the Wisconsin ski trip are for the same weekend! It’s too late to sell either ticket, and you cannot return either one. You must use one ticket and not the other. Which ski trip will you go on? A) \textbf{\$50} ski trip to Michigan B) \textbf{\$50} ski trip to Wisconsin. \_\_ & Assume that you have spent \textbf{\$100} on a ticket for a weekend ski trip to Michigan. Several weeks later you buy a \textbf{\$50} ticket for a weekend ski trip to Wisconsin. ...\textit{identical to A}... Which ski trip will you go on? A) \textbf{\$100} ski trip to Michigan B) \textbf{\$50} ski trip to Wisconsin. \_\_ & Higher portion of choosing the expensive and emotionally less-preferred option in B \\
+    \midrule
+    Transaction utility theory & Decision-making based on relative price differences & \textcite{thaler1983transaction} & You set off to buy a new television. At the store where you expect to buy it, you find that the price is \textbf{\$650}. A clerk informs you that the same item is available at another branch of the same store for on \textbf{\$640}. The store is a 20-minute drive away and the clerk assures you that they have what you want there. Do you buy A) at the initial store or B) go to the other store? Choose between A and B. \_\_ & You set off to buy a new radio. At the store where you expect to buy it, you find that the price is \textbf{\$35}. A clerk informs you that the same item is available at another branch of the same store for on \textbf{\$25}. The store is a 20-minute drive away and the clerk assures you that they have what you want there. Do you buy A) at the initial store or B) go to the other store? Choose between A and B. \_\_ & Higher portion of choosing the alternative option in B due to stronger relative effect of \textbf{\$10} on \$35 than on \$650 \\
+\end{longtable}
+\end{small}
 
 \par All \textbf{bold} variables are the adapted variables in the scenarios.
 
@@ -130,29 +96,6 @@
     \end{tabular}}
     \caption*{*Approximated values due to lack of official documentation  **\textcite{huggingface2024chatbotarena}}
 \end{table}
-
-% \begin{sidewaystable}[htbp]
-%     \centering
-%     \adjustbox{max width=\textheight}{
-%     \begin{tabular}{llllllll}
-%         \toprule
-%         Model & Release Date & Last Updated Date & Training Data Cutoff Date & Number Parameters & Context Length & MMLU & Chatbot Arena \\
-%         \midrule
-%         claude-3-haiku & 294 & 294 & 513 & 20 & 200 & 75.2 & 1179 \\
-%         claude-3.5-sonnet & 189 & 189 & 269 & 70 & 200 & 88.7 & 1268 \\
-%         gemma2 & 182 & 144 & 208 & 9 & 8192 & 71.3 & 1191 \\
-%         gemma2:27b & 182 & 144 & 208 & 27 & 8192 & 75.2 & 1220 \\
-%         gpt-4o-mini & 161 & 161 & 452 & 175 & 128 & 82 & 1273 \\
-%         gpt-4o & 227 & 142 & 452 & 40 & 128 & 88.7 & 1265 \\
-%         llama3.1 & 156 & 137 & 391 & 8 & 128 & 73 & 1176 \\
-%         llama3.1:70b & 156 & 137 & 391 & 70 & 128 & 86 & 1248 \\
-%         phi3.5 & 128 & 128 & 452 & 4 & 128 & 69 & 1037 \\
-%         phi3:medium & 247 & 144 & 452 & 14 & 4 & 78 & 1123 \\
-%         \bottomrule
-%     \end{tabular}}
-%     \caption[Model comparison table]{\centering \textit{Comparison of selected models and their features}}
-%     % \label{tab:model_comparison}
-% \end{sidewaystable}
 
 \par For most of the models, we were able to collect relevant information. However, there is less official documentation on the closed-source models. Following are the sources:
 \begin{itemize}
@@ -265,6 +208,36 @@
     \hat{\sigma}^2_{d} = \frac{\sum_{i=1}^{n} w_{i} (d_{i}-\bar{d})}{\sum_{i=1}^{n} w_{i}} = \frac{\sum_{i=1}^{n} (d_{i}-\bar{d})}{n}
 \end{equation}
 \hspace{0.5cm} \textit{if} $n_{pre} = \bar{n}_{pre}$ and $n_{post} = \bar{n}_{post}$
+
+
+\newpage
+\section{Homogeneity anomalies}
+
+In the following table, we list exceptions to the analysis that mostly non-bias detections were homogeneous and bias detections were heterogeneous. Anomalies include bias and model combinations with one of the following detection-homogeneity pairing:
+\begin{itemize}
+    \item homogeneous detection: b.d. (capped) $> 0.3$ \& homogeneity (capped) $> 0.3$
+    \item heterogeneous non-detection: b.d. (capped) $< 0.3$ \& homogeneity (capped) $< 0.3$
+\end{itemize}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{llrr}
+    \toprule
+    \textbf{bias} & \textbf{model} & \textbf{b.d. (capped)} & \textbf{homogeneity (capped)} \\
+    \midrule
+    Anchoring & phi3:medium & 1.000000 & 0.90121 \\
+    Anchoring & llama3.1:70b & 1.000000 & 0.493774 \\
+    Framing Effect & claude-3.5-sonnet & 0.717996 & 0.404175 \\
+    Framing Effect & gemma2:27b & 0.143622 & 0.231243 \\
+    Gambler's Fallacy & gemma2 & 0.191709 & 0.161869 \\
+    Category Size Bias & llama3.1 & 0.000000 & 0.240563 \\
+    \bottomrule
+    \end{tabular}
+    \caption[Anomalies of homogeneity calculations]{\centering \textit{Anomalies of homogeneity calculations}}
+    \label{tab:homogeneity_anomalies}
+    \end{table}
+
+\par \textbf{Note:} \textit{b.d. (capped)} refers to the capped bias detection.
 
 
 \newpage

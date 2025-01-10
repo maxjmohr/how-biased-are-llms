@@ -70,7 +70,7 @@ for i in range(n):
 
     # Make sure if there are letters, it is only one letter
     if (
-        (len(str(response)) == 1 and str(response).isalpha())  # Single letter
+        (len(response) == 1 and response.isalpha())  # Single letter
         or str(response).isdigit()  # Valid number
     ):
         correct_run: int = 1
