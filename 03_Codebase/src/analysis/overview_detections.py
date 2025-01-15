@@ -98,7 +98,7 @@ def plot_bias_heatmap(
 
     # Add color bar
     cbar = fig.colorbar(cax, ax=ax, shrink=0.82)
-    cbar.ax.set_ylabel("bias detected", rotation=-90, va="bottom")
+    cbar.ax.set_ylabel("bias detected (capped)", rotation=-90, va="bottom")
 
     fig.tight_layout()
     plt.show()

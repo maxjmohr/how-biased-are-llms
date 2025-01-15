@@ -125,8 +125,9 @@
 \tableofcontents
 
 \newpage
-\section*{List of Abbreviations}
-\addcontentsline{toc}{section}{List of Abbreviations}
+\phantomsection
+\section*{List of abbreviations}
+\addcontentsline{toc}{section}{List of abbreviations}
 \begin{tabbing}
     Abbreviation \hspace{1cm} \= Description \kill
     AI \> Artificial Intelligence \\
@@ -144,12 +145,16 @@
 \end{tabbing}
 
 \newpage
+\phantomsection
+\renewcommand{\listtablename}{List of tables}
 \listoftables
-\addcontentsline{toc}{section}{List of Tables}
+\addcontentsline{toc}{section}{List of tables}
 
 \newpage
+\phantomsection
+\renewcommand{\listfigurename}{List of figures}
 \listoffigures
-\addcontentsline{toc}{section}{List of Figures}
+\addcontentsline{toc}{section}{List of figures}
 
 
 %%%=======| MAIN CONTENT |=======%%%
@@ -161,14 +166,15 @@
 \vspace{0.5cm}
 \input{Chapters/02_TheoreticalBackground/text}
 \input{Chapters/03_Methodology/text}
-\include{Chapters/04_Results/text}
-\include{Chapters/05_DiscussionOutlook/text}
+\input{Chapters/04_Results/text}
+\input{Chapters/05_DiscussionOutlook/text}
 
 
 %%%=======| REFERENCES |=======%%%
 \clearpage
 \pagenumbering{Roman} % Start Roman page numbering
 \setcounter{page}{7}
+\phantomsection
 \addcontentsline{toc}{section}{References}
 \printbibliography
 
@@ -192,7 +198,7 @@
 
 \vspace{1cm}
 
-Munich, January 29, 2025
+Munich, January 16, 2025
 
 \vspace{1cm}
 \makebox[5cm]{\hrulefill}\\
