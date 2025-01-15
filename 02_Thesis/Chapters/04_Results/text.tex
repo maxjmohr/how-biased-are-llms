@@ -50,7 +50,7 @@
     \renewcommand{\arraystretch}{1.2}
     \adjustbox{max width=\textwidth}{
     \begin{tabular}{lccc|ccc}
-        \hline
+        \toprule
         \textbf{Target variable} & \multicolumn{3}{c}{\textbf{bias\_detected (R\textsuperscript{2}=7.2\%)}}
         & \multicolumn{3}{c}{\textbf{bias\_detected\_capped (R\textsuperscript{2}=36.7\%)}} \\
         \textit{Variable} & \textit{Coef.} & \textit{Std. Err.} & \textit{p-value} & \textit{Coef.} & \textit{Std. Err.} & \textit{p-value} \\
@@ -76,7 +76,7 @@
         Scenario: 2\_odd\_numbers & 0.5583 & 0.700 & 0.425 & -0.0006 & 0.022 & 0.977 \\
         Scenario: 3\_large\_numbers & -0.5939 & 0.700 & 0.396 & -0.0734 & 0.022 & 0.001 \\
         Temperature & -0.1271 & 0.458 & 0.781 & 0.0692 & 0.015 & 0.000 \\
-        \hline
+        \bottomrule
     \end{tabular}
     }
     \caption[Summary of regressions of experiment variables on bias detections]{\centering  \textit{Summarized overview of regressions of experiment variables on bias detections. More detailed results can be found in Appendix \ref{appendix:regr_allexper}.}}
@@ -111,7 +111,7 @@
     \renewcommand{\arraystretch}{1.2}
     \adjustbox{max width=\textwidth}{
     \begin{tabular}{lccc|ccc}
-        \hline
+        \toprule
         \textbf{Target variable} & \multicolumn{3}{c}{\textbf{bias\_detected (R\textsuperscript{2}=2.4\%)}}
         & \multicolumn{3}{c}{\textbf{bias\_detected\_capped (R\textsuperscript{2}=4.1\%)}} \\
         \textit{Variable} & \textit{Coef.} & \textit{Std. Err.} & \textit{p-value} & \textit{Coef.} & \textit{Std. Err.} & \textit{p-value} \\
@@ -125,7 +125,7 @@
         Context length              & -0.0012 & 0.016 & 0.940 & -0.0004 & 0.001 & 0.555 \\
         MMLU                        & 0.0554 & 0.113 & 0.624 & -0.0065 & 0.004 & 0.129 \\
         Chatbot Arena               & 0.0168 & 0.008 & 0.026 & 0.0004 & 0.000 & 0.130 \\
-        \hline
+        \bottomrule
     \end{tabular}
     }
     \caption[Summary of regressions of model features on bias detections]{\centering  \textit{Summarized overview of regressions of model features on bias detections. More detailed results can be found in Appendix \ref{appendix:regr_modelfeats}.}}
